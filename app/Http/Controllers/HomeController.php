@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Account\Account;
+use App\Model\Character\Character;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	foreach (Account::all() as $account) {
+    	foreach (Character::all() as $account) {
     		var_dump($account);
 		}
 
