@@ -25,7 +25,7 @@
 				</a>
 				<a href="#" class="item">Home</a>
 			</nav>
-			
+
 		</main>
 		<footer>
 			<div class="ui container">FOOTER</div>
