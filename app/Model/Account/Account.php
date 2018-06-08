@@ -2,6 +2,7 @@
 
 namespace App\Model\Account;
 
+use App\Model\Character\Character;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int votes
  * @property int vote_jeu
  * @property int vote_total
- * @property AccountDetail details
+ * @property AccountDetail detail
  */
 class Account extends Model
 {
@@ -31,6 +32,12 @@ class Account extends Model
 
 	/** @var string */
 	protected $table = 'ACCOUNT_TBL';
+
+	/** @var array */
+	protected $with = [
+		'detail',
+		'characters'
+	];
 
 	/** @var array */
 	protected $fillable = [
@@ -51,12 +58,22 @@ class Account extends Model
 	];
 
 	/**
-	 * Return the detail of current account.
+	 * Return the detail for this account.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
 	 */
-	public function details()
+	public function detail()
 	{
 		return $this->hasOne(AccountDetail::class, 'account', 'account');
+	}
+
+	/**
+	 * Return all characters for this account.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function characters()
+	{
+		return $this->hasMany(Character::class, 'account', 'account');
 	}
 }

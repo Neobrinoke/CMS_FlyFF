@@ -2,6 +2,7 @@
 
 namespace App\Model\Character;
 
+use App\Model\Account\Account;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property string m_idPlayer
  * @property string serverindex
- * @property string account
  * @property string m_szName
  * @property int playerslot
  * @property int dwWorldID
@@ -112,6 +112,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int m_nMetierExp
  * @property int m_BurnPts
  * @property int m_nHideCoat
+ * @property Account account
  */
 class Character extends Model
 {
@@ -120,6 +121,11 @@ class Character extends Model
 
 	/** @var string */
 	protected $table = 'CHARACTER_TBL';
+
+//	/** @var array */
+//	protected $with = [
+//		'account'
+//	];
 
 	/** @var array */
 	protected $fillable = [
@@ -227,4 +233,14 @@ class Character extends Model
 		'm_BurnPts',
 		'm_nHideCoat'
 	];
+
+	/**
+	 * Return the account for this character.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function account()
+	{
+		return $this->belongsTo(Account::class, 'account', 'account');
+	}
 }
