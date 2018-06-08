@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
 	public function run()
 	{
 		for ($i = 0; $i < 10; $i++) {
-			\App\User::query()->create([
+			\App\Model\Web\User::query()->create([
 				'name' => 'john doe ' . $i,
 				'email' => 'john' . $i . '@doe.fr',
 				'password' => bcrypt('0000')

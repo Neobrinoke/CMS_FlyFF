@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Model\Account\Account;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	dd(User::all()->first());
+    	foreach (Account::all() as $account) {
+    		var_dump($account);
+		}
+
+		die();
+
         return view('home');
     }
 }
