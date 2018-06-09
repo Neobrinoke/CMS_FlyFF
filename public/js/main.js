@@ -11,6 +11,8 @@ $(document).ready(function () {
 		let currentUrl = window.location.pathname;
 		let hrefUrl = getLocation($(this).attr('href')).pathname;
 
+		console.log(currentUrl + ' | ' + hrefUrl);
+
 		if (currentUrl === hrefUrl) {
 			$(this).addClass('active');
 		} else {
@@ -19,7 +21,7 @@ $(document).ready(function () {
 	});
 });
 
-let getLocation = function(href) {
+let getLocation = function (href) {
 	let l = document.createElement("a");
 	l.href = href;
 	return l;

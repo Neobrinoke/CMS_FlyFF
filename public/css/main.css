@@ -3,7 +3,7 @@
 	border-radius: 0 !important;
 }
 
-.right.menu .item, .right.menu.ui.dropdown.icon.item {
+.right.menu .item:last-child, .right.menu.ui.dropdown.icon.item {
 	border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 
@@ -45,16 +45,22 @@ main section.content {
 }
 
 .box .ui.attached.message, .ui.labeled.input .ui.label {
-	background-color: #e8dcc6;
+	background-color: #01aff8;
+	color: white;
+	padding: 10px 15px;
+}
+
+.box .ui.attached.segment {
+	padding: 15px;
 }
 
 .ui.menu.stackable .ui.container a.active {
 	background-color: white;
 }
 
-.ui.menu.stackable .ui.container a.active::after {
+.ui.menu.stackable .ui.container a.active::after, .ui.menu.stackable .ui.container a:hover::after {
 	content: "";
-	border-bottom: 6px solid #caba9e;
+	border-bottom: 6px solid #01aff8;
 	bottom: -1px;
 	left: 0;
 	right: 0;
@@ -64,6 +70,10 @@ main section.content {
 
 .box {
 	margin-bottom: 15px;
+}
+
+.ui.single.line.table tbody tr:hover {
+	background-color: #88e6ff;
 }
 
 @media screen and (max-width: 991px) {

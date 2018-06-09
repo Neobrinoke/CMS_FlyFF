@@ -243,4 +243,14 @@ class Character extends Model
 	{
 		return $this->belongsTo(Account::class, 'account', 'account');
 	}
+
+	/**
+	 * Return all players order by specified column.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public static function getForRanking()
+	{
+		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('m_nJob', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+	}
 }

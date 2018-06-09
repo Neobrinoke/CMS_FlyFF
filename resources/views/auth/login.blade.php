@@ -10,20 +10,20 @@
 				<div class="field {{ $errors->has('email') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="email" class="ui label"><i class="envelope icon"></i></label>
-						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="{{ __('site.login.email') }}">
+						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('site.login.email')">
 					</div>
 				</div>
 				<div class="field {{ $errors->has('password') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="password" class="ui label"><i class="key icon"></i></label>
-						<input type="password" id="password" name="password" placeholder="{{ __('site.login.password') }}">
+						<input type="password" id="password" name="password" placeholder="@lang('site.login.password')">
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="field">
-			<a href="{{ route('password.request') }}" class="ui left floated red basic button">{{ __('site.login.password_lost') }}</a>
-			<button class="ui right floated brown button" type="submit">{{ __('site.login.submit') }}</button>
+			<a href="{{ route('password.request') }}" class="ui left floated red basic button">@lang('site.login.password_lost')</a>
+			<button class="ui right floated brown button" type="submit">@lang('site.login.submit')</button>
 		</div>
 	</form>
 @endsection

@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Home URL
 Route::get('/', 'HomeController@home')->name('home');
+
+// Ranking URL
+Route::get('/ranking/player', 'RankingController@player')->name('ranking.player');
