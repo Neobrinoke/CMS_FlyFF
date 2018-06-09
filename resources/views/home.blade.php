@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Accueil')
+@section('title', __('site.nav.home'))
 
 @section('content')
 	<div class="box">
