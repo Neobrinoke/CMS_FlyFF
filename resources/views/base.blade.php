@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>@yield('title', 'Accueil') - {{ config('app.name', 'Laravel') }}</title>
+		<title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
 		<link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -17,7 +17,20 @@
 		<main class="ui container">
 			@include('include.aside')
 			<section class="content">
-				@yield('content')
+				<div class="box">
+					<div class="ui attached message">
+						<h1 class="header">@yield('title')</h1>
+					</div>
+					<div class="ui attached fluid clearing segment">
+						@if($errors->any())
+							@include('messages.error')
+						@endif
+						@if (session('status'))
+							@include('messages.success')
+						@endif
+						@yield('content')
+					</div>
+				</div>
 			</section>
 		</main>
 		@include('include.footer')

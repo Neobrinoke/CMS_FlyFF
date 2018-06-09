@@ -3,7 +3,7 @@
 	border-radius: 0 !important;
 }
 
-.right.menu .item:last-child {
+.right.menu .item, .right.menu.ui.dropdown.icon.item {
 	border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 
@@ -67,6 +67,10 @@ main section.content {
 }
 
 @media screen and (max-width: 991px) {
+	
+	#my_account {
+		display: none;
+	}
 
 	main.ui.container aside {
 		width: 100%;

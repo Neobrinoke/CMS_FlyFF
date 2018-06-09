@@ -1,6 +1,6 @@
 <aside>
 	@auth
-		<div class="box">
+		<div class="box" id="my_account">
 			<div class="ui attached message">
 				<h1 class="header">{{ __('site.title.my_account') }}</h1>
 			</div>
@@ -11,7 +11,13 @@
 				</form>
 			</div>
 		</div>
-	@else
-		@include('auth.login')
-	@endif
+	@endauth
+	<div class="box">
+		<div class="ui attached message">
+			<h1 class="header">{{ __('site.title.server_info') }}</h1>
+		</div>
+		<div class="ui attached fluid segment">
+			<h1>Content</h1>
+		</div>
+	</div>
 </aside>
