@@ -1,13 +1,37 @@
+/* BASE CSS (Semantic UI) */
 * {
 	border-radius: 0 !important;
 }
 
-header, footer {
-	padding: 50px 0;
-	height: 300px;
-	background-color: #0d71bb;
+.right.menu .item:last-child {
+	border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 
-main {
-	background-color: #975b33;
+.ui.footer.segment {
+	margin: 5em 0 0;
+	padding: 5em 0;
+}
+
+/* THEME CSS (CMS FlyFF) */
+body {
+	background: url('/img/background.jpg') no-repeat #ffffff;
+	background-size: cover;
+}
+
+section.logo {
+	margin: 50px 0;
+	text-align: center;
+}
+
+main.ui.container {
+	display: flex;
+}
+
+main.ui.container aside {
+	width: 250px;
+	margin-right: 10px;
+}
+
+main section.content {
+	flex: 1;
 }
