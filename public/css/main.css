@@ -12,6 +12,10 @@
 	padding: 5em 0;
 }
 
+.ui.labeled.input .ui.label .icon {
+	margin: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 body {
 	background: url('/img/background.jpg') no-repeat #ffffff;
@@ -34,4 +38,22 @@ main.ui.container aside {
 
 main section.content {
 	flex: 1;
+}
+
+.box .ui.attached.message, .ui.labeled.input .ui.label {
+	background-color: #e8dcc6;
+}
+
+.ui.menu.stackable .ui.container a.active {
+	background-color: white;
+}
+
+.ui.menu.stackable .ui.container a.active::after {
+	content: "";
+	border-bottom: 6px solid #caba9e;
+	bottom: -1px;
+	left: 0;
+	right: 0;
+	position: absolute;
+	width: 100%;
 }

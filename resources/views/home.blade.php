@@ -1,5 +1,7 @@
 @extends('base')
 
+@section('title', 'Accueil')
+
 @section('content')
 	<div class="box">
 		<div class="ui attached message">
