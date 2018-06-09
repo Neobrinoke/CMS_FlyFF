@@ -1,10 +1,10 @@
 <nav class="ui menu stackable">
 	<div class="ui container">
-		<a href="{{ route('home') }}" class="header item active"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
-		<a href="#" class="item">{{ __('site.nav.ranking') }}</a>
-		<a href="#" class="item">{{ __('site.nav.download') }}</a>
-		<a href="#" class="item">{{ __('site.nav.support') }}</a>
-		<a href="#" class="item">{{ __('site.nav.shop') }}</a>
+		<a href="{{ route('home') }}" class="header item"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
+		<a href="{{ route('login') }}" class="item">{{ __('site.nav.ranking') }}</a>
+		<a href="{{ route('register') }}" class="item">{{ __('site.nav.download') }}</a>
+		<a href="{{ route('password.request') }}" class="item">{{ __('site.nav.support') }}</a>
+		<a href="{{ route('home') }}" class="item">{{ __('site.nav.shop') }}</a>
 		<div class="right menu">
 			@auth
 				<div class="ui dropdown icon item">
