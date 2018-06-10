@@ -155,5 +155,9 @@ return [
 	'sex' => [
 		'boy' => 'Garçon',
 		'girl' => 'Fille'
+	],
+	'online_status' => [
+		'online' => 'En ligne',
+		'offline' => 'Hors ligne'
 	]
 ];

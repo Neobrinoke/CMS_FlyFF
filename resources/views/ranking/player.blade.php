@@ -24,7 +24,13 @@
 					<td>{{ $character->m_nLevel }}</td>
 					<td><i class="{{ $character->getSexIcon() }} icon" title="{{ $character->getSexTitle() }}" style="font-size: 1.5em;"></i></td>
 					<td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
-					<td>{{ $character->serverindex }}</td>
+					<td>
+						@if($character->onlineInfo->isOnline())
+							<div class="ui green label">@lang('site.online_status.online')</div>
+						@else
+							<div class="ui red label">@lang('site.online_status.offline')</div>
+						@endif
+					</td>
 				</tr>
 			@endforeach
 		</tbody>
@@ -39,3 +45,4 @@
 @endsection
 
 <?php /** @var \App\Model\Character\Character $character */ ?>
+<?php /** @var \App\Model\Character\MultiServerInfo $character ->onlineInfo */ ?>

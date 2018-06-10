@@ -117,6 +117,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Account account
  * @property GuildMember guild_member
  * @property Guild guild
+ * @property MultiServerInfo online
  */
 class Character extends Model
 {
@@ -277,6 +278,16 @@ class Character extends Model
 	public function guildMember()
 	{
 		return $this->hasOne(GuildMember::class, 'm_idPlayer', 'm_idPlayer');
+	}
+
+	/**
+	 * Return online info for this character.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function onlineInfo()
+	{
+		return $this->hasOne(MultiServerInfo::class, 'm_idPlayer', 'm_idPlayer');
 	}
 
 	/**

@@ -65,7 +65,13 @@
 						@endfor
 					</td>
 					<td>{{ $member->player->CreateTime }}</td>
-					<td>{{ $member->player->m_szName }}</td>
+					<td>
+						@if($member->player->onlineInfo->isOnline())
+							<div class="ui green label">@lang('site.online_status.online')</div>
+						@else
+							<div class="ui red label">@lang('site.online_status.offline')</div>
+						@endif
+					</td>
 				</tr>
 			@endforeach
 		</tbody>
