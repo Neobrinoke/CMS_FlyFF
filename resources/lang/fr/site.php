@@ -24,7 +24,8 @@ return [
 		'support' => 'Support',
 		'shop' => 'Boutique',
 		'login' => 'Connexion',
-		'register' => 'S\'inscrire'
+		'register' => 'S\'inscrire',
+		'guild' => 'Détails de la guild [:name]',
 	],
 	'title' => [
 		'connect' => 'Connexion',
@@ -81,6 +82,9 @@ return [
 			'logo' => 'Logo',
 			'created_at' => 'Création'
 		]
+	],
+	'guild' => [
+
 	],
 	'jobs' => [
 		'vagrant' => 'Vagabond',

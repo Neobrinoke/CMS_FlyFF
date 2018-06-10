@@ -34,12 +34,6 @@ class Account extends Model
 	protected $table = 'ACCOUNT_TBL';
 
 	/** @var array */
-	protected $with = [
-		'detail',
-		'characters'
-	];
-
-	/** @var array */
 	protected $fillable = [
 		'account',
 		'password',

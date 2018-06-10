@@ -3,7 +3,7 @@
 @section('title', __('site.title.guild_ranking'))
 
 @section('content')
-	<table class="ui single line table">
+	<table class="ui single line selectable table">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			@foreach($guilds as $guild)
-				<tr>
+				<tr onclick="window.location = '{{ route('guild.show', [$guild]) }}'">
 					<td>{{ current_iteration($guilds, $loop) }}</td>
 					<td>{{ $guild->m_szGuild }}</td>
 					<td>{{ $guild->m_nLevel }}</td>

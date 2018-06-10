@@ -3,7 +3,7 @@
 @section('title', __('site.title.player_ranking'))
 
 @section('content')
-	<table class="ui single line table">
+	<table class="ui single line selectable table">
 		<thead>
 			<tr>
 				<th>#</th>

@@ -121,15 +121,16 @@ use Illuminate\Database\Eloquent\Model;
 class Character extends Model
 {
 	/** @var string */
+	protected $primaryKey = 'm_idPlayer';
+
+	/** @var bool */
+	public $incrementing = false;
+
+	/** @var string */
 	protected $connection = 'character';
 
 	/** @var string */
 	protected $table = 'CHARACTER_TBL';
-
-//	/** @var array */
-//	protected $with = [
-//		'account'
-//	];
 
 	/** @var array */
 	protected $fillable = [

@@ -22,3 +22,6 @@ Route::get('/', 'HomeController@home')->name('home');
 // Ranking URL
 Route::get('/ranking/player', 'RankingController@player')->name('ranking.player');
 Route::get('/ranking/guild', 'RankingController@guild')->name('ranking.guild');
+
+// Guild URL
+Route::get('/guild/{guild}', 'GuildController@show')->name('guild.show')->where('id', '[0-9]+');

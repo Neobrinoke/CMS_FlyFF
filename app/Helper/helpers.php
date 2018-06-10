@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Pagination\LengthAwarePaginator;
+
 if (!function_exists('current_iteration')) {
-	function current_iteration(\Illuminate\Pagination\LengthAwarePaginator $collection, $loop)
+	function current_iteration(LengthAwarePaginator $collection, $loop): int
 	{
 		if ($collection->currentPage() > 1) {
 			return $loop->iteration + ($collection->perPage() * ($collection->currentPage() - 1));
@@ -12,7 +14,7 @@ if (!function_exists('current_iteration')) {
 }
 
 if (!function_exists('sec_to_ydhm')) {
-	function sec_to_ydhm($sec)
+	function sec_to_ydhm($sec): ?string
 	{
 		$years = intval(intval($sec) / 31104000);
 		if ($years > 1) {
@@ -48,5 +50,7 @@ if (!function_exists('sec_to_ydhm')) {
 		} else if ($seconds >= 0) {
 			return trans('site.time.second');
 		}
+
+		return null;
 	}
 }

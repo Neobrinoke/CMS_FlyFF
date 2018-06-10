@@ -40,6 +40,12 @@ use Illuminate\Support\Collection;
 class Guild extends Model
 {
 	/** @var string */
+	protected $primaryKey = 'm_idGuild';
+
+	/** @var bool */
+	public $incrementing = false;
+
+	/** @var string */
 	protected $connection = 'character';
 
 	/** @var string */
@@ -102,6 +108,11 @@ class Guild extends Model
 		return $this->members()->where('m_nClass', '=', 0)->get()->first()->player();
 	}
 
+	/**
+	 * Return formatted logo, or - if she doesn't have logo, for this guild.
+	 *
+	 * @return string
+	 */
 	public function getLogo()
 	{
 		$this->m_dwLogo = 11;
