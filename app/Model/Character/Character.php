@@ -113,7 +113,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int m_nMetierExp
  * @property int m_BurnPts
  * @property int m_nHideCoat
+ *
  * @property Account account
+ * @property GuildMember guild_member
+ * @property Guild guild
  */
 class Character extends Model
 {
@@ -242,7 +245,7 @@ class Character extends Model
 	 */
 	public static function getForRanking()
 	{
-		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('m_nJob', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
 	}
 
 	/**
@@ -253,6 +256,26 @@ class Character extends Model
 	public function account()
 	{
 		return $this->belongsTo(Account::class, 'account', 'account');
+	}
+
+	/**
+	 * Return the guild for this character.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function guild()
+	{
+		return $this->guild_member->guild();
+	}
+
+	/**
+	 * Return the guild member for this character.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function guildMember()
+	{
+		return $this->hasOne(GuildMember::class, 'm_idPlayer', 'm_idPlayer');
 	}
 
 	/**

@@ -2,22 +2,16 @@ $(document).ready(function () {
 	$('.ui.accordion').accordion();
 	$('.ui.dropdown').dropdown();
 	$('.ui.checkbox').checkbox();
+	$('.ui.progress').progress();
+	$('.ui.progress.ratio').progress({
+		label: 'ratio',
+		text: {
+			ratio   : '{value} / {total}'
+		}
+	});
 
 	$('.message .close').on('click', function () {
 		$(this).closest('.message').transition('fade');
-	});
-
-	$('.ui.menu.stackable .ui.container > .item').each(function () {
-		let currentUrl = window.location.pathname;
-		let hrefUrl = getLocation($(this).attr('href')).pathname;
-
-		console.log(currentUrl + ' | ' + hrefUrl);
-
-		if (currentUrl === hrefUrl) {
-			$(this).addClass('active');
-		} else {
-			$(this).removeClass('active');
-		}
 	});
 });
 

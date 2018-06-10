@@ -1,7 +1,13 @@
 <nav class="ui menu stackable">
 	<div class="ui container">
 		<a href="{{ route('home') }}" class="header item"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
-		<a href="{{ route('ranking.player') }}" class="item">@lang('site.nav.ranking')</a>
+		<div class="ui dropdown icon item">
+			@lang('site.nav.ranking.header')
+			<div class="menu">
+				<a href="{{ route('ranking.player') }}" class="item">@lang('site.nav.ranking.players')</a>
+				<a href="{{ route('ranking.guild') }}" class="item">@lang('site.nav.ranking.guilds')</a>
+			</div>
+		</div>
 		<a href="{{ route('register') }}" class="item">@lang('site.nav.download')</a>
 		<a href="{{ route('password.request') }}" class="item">@lang('site.nav.support')</a>
 		<a href="{{ route('home') }}" class="item">@lang('site.nav.shop')</a>

@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.player_ranking'))
+@section('title', __('site.title.guild_ranking'))
 
 @section('content')
 	<table class="ui single line table">
@@ -16,27 +16,32 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($characters as $character)
+			@foreach($guilds as $guild)
 				<tr>
-					<td>{{ current_iteration($characters, $loop) }}</td>
-					<td>{{ $character->m_szName }}</td>
-					<td><img src="{{ $character->getJob()->getImageJob() }}" height="26"></td>
-					<td>{{ $character->m_nLevel }}</td>
-					<td><i class="venus icon"></i></td>
-					<td>{{ $character->TotalPlayTime }}</td>
-					<td>{{ $character->serverindex }}</td>
+					<td>{{ current_iteration($guilds, $loop) }}</td>
+					<td>{{ $guild->m_szGuild }}</td>
+					<td>{{ $guild->m_nLevel }}</td>
+					<td>
+						<div class="ui teal progress ratio" data-value="{{ $guild->members->count() }}" data-total="65">
+							<div class="bar">
+								<div class="progress"></div>
+							</div>
+						</div>
+					</td>
+					<td>{{ $guild->leader->m_szName }}</td>
+					<td>{!! $guild->getLogo() !!}</td>
+					<td>{{ \Carbon\Carbon::createFromTimeString($guild->CreateTime)->format('d/m/Y') }}</td>
 				</tr>
 			@endforeach
 		</tbody>
 		<tfoot>
 			<tr>
 				<th colspan="7">
-					{{ $characters->links() }}
+					{{ $guilds->links() }}
 				</th>
 			</tr>
 		</tfoot>
 	</table>
 @endsection
 
-<?php /** @var \App\Model\Character\Character $character */ ?>
-<?php /** @var \Illuminate\Pagination\LengthAwarePaginator $characters */ ?>
+<?php /** @var \App\Model\Character\Guild $guild */ ?>

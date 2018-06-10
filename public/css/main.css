@@ -20,6 +20,10 @@ body ::-webkit-scrollbar-thumb {
 	border-radius: 0;
 }
 
+.ui.progress:last-child {
+	margin: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 body {
 	background: url('/img/background.jpg') no-repeat #ffffff;

@@ -21,3 +21,4 @@ Route::get('/', 'HomeController@home')->name('home');
 
 // Ranking URL
 Route::get('/ranking/player', 'RankingController@player')->name('ranking.player');
+Route::get('/ranking/guild', 'RankingController@guild')->name('ranking.guild');

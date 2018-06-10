@@ -23,7 +23,7 @@
 					<td><img src="{{ $character->getJob()->getImageJob() }}" height="26"></td>
 					<td>{{ $character->m_nLevel }}</td>
 					<td>{!! $character->getSexIcon() !!}</td>
-					<td>{{ $character->TotalPlayTime }}</td>
+					<td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
 					<td>{{ $character->serverindex }}</td>
 				</tr>
 			@endforeach
@@ -39,4 +39,3 @@
 @endsection
 
 <?php /** @var \App\Model\Character\Character $character */ ?>
-<?php /** @var \Illuminate\Pagination\LengthAwarePaginator $characters */ ?>

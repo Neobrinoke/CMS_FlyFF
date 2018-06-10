@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Character\Character;
-use Illuminate\Http\Request;
+use App\Model\Character\Guild;
 
 class RankingController extends Controller
 {
@@ -16,6 +16,18 @@ class RankingController extends Controller
 	{
 		$characters = Character::getForRanking()->paginate(20);
 
-    	return view('ranking.player', compact('characters'));
+		return view('ranking.player', compact('characters'));
+	}
+
+	/**
+	 * Show ranking for all guilds.
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function guild()
+	{
+		$guilds = Guild::getForRanking()->paginate(20);
+
+		return view('ranking.guild', compact('guilds'));
 	}
 }
