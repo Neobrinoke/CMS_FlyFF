@@ -19,6 +19,9 @@ Auth::routes();
 // Home URL
 Route::get('/', 'HomeController@home')->name('home');
 
+// Article URL
+Route::get('/articles', 'ArticleController@index')->name('article.index');
+
 // Ranking URL
 Route::get('/ranking/player', 'RankingController@player')->name('ranking.player');
 Route::get('/ranking/guild', 'RankingController@guild')->name('ranking.guild');

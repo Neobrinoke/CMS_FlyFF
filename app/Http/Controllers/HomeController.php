@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Web\Article;
+
 class HomeController extends Controller
 {
 	/**
@@ -11,6 +13,9 @@ class HomeController extends Controller
 	 */
 	public function home()
 	{
-		return view('home');
+		$controller = 'home';
+		$articles = Article::all()->take(6);
+
+		return view('article.index', compact('articles', 'controller'));
 	}
 }

@@ -28,6 +28,14 @@ tr[onclick] {
 	cursor: pointer;
 }
 
+.ui.accordion {
+	margin-bottom: 15px;
+}
+
+.ui.accordion:last-child {
+	margin-bottom: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 body {
 	background: url('/img/background.jpg') no-repeat #ffffff;

@@ -97,7 +97,7 @@ class Guild extends Model
 	{
 		return $this->hasMany(GuildMember::class, 'm_idGuild', 'm_idGuild')
 			->orderBy('m_nMemberLv')
-			->orderBy('m_nClass')
+			->orderBy('m_nClass', 'DESC')
 			->orderBy('m_nGivePxp', 'DESC')
 			->orderBy('m_nGiveGold', 'DESC')
 			->orderBy('CreateTime');
