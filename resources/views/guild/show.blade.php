@@ -1,23 +1,77 @@
 @extends('base')
 
-@section('title', __('site.nav.home'))
+@section('title', __('site.nav.guild', ['name' => $guild->m_szGuild]))
 
 @section('content')
-	<div class="ui styled fluid accordion">
-		<div class="title"><i class="dropdown icon"></i>What is a dog?</div>
-		<div class="content">
-			<p class="transition">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-		</div>
-
-		<div class="title"><i class="dropdown icon"></i>What kinds of dogs are there?</div>
-		<div class="content">
-			<p class="transition">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-		</div>
-
-		<div class="title"><i class="dropdown icon"></i>How do you acquire a dog?</div>
-		<div class="content">
-			<p class="transition">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-			<p class="transition">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+	<h4 class="ui dividing header">@lang('site.guild.info_divider')</h4>
+	<div class="ui segments">
+		<div class="ui horizontal segments">
+			<div class="ui segment">
+				@if($guild->hasLogo())
+					<img class="ui image guild_logo" src="{{ $guild->getLogo() }}"/>
+				@endif
+				<span>@lang('site.guild.leader') {{ $guild->leader->m_szName }}</span>
+			</div>
+			<div class="ui segment">
+				<span>@lang('site.guild.penya') {{ $guild->m_nGuildGold }}</span>
+			</div>
+			<div class="ui segment">
+				<span>@lang('site.guild.lvl') {{ $guild->m_nLevel }}</span>
+			</div>
 		</div>
 	</div>
+
+	<h4 class="ui dividing header">@lang('site.guild.gs_divider')</h4>
+	<div class="ui segments">
+		<div class="ui horizontal segments">
+			<div class="ui segment">
+				<span>@lang('site.guild.gs_point') {{ $guild->m_nWinPoint }}</span>
+			</div>
+			<div class="ui segment">
+				<span>@lang('site.guild.gs_win') {{ $guild->m_nWin }}</span>
+			</div>
+			<div class="ui segment">
+				<span>@lang('site.guild.gs_lose') {{ $guild->m_nLose }}</span>
+			</div>
+			<div class="ui segment">
+				<span>@lang('site.guild.gs_surrender') {{ $guild->m_nSurrender }}</span>
+			</div>
+		</div>
+	</div>
+
+	<h4 class="ui dividing header">@lang('site.guild.member_divider')</h4>
+	<table class="ui single line selectable table">
+		<thead>
+			<tr>
+				<th>@lang('site.guild.member_ranking.name')</th>
+				<th>@lang('site.guild.member_ranking.job')</th>
+				<th>@lang('site.guild.member_ranking.lvl')</th>
+				<th>@lang('site.guild.member_ranking.gender')</th>
+				<th>@lang('site.guild.member_ranking.rank')</th>
+				<th>@lang('site.guild.member_ranking.member_since')</th>
+				<th>@lang('site.guild.member_ranking.status')</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($guild->members as $member)
+				<tr>
+					<td>{{ $member->player->m_szName }}</td>
+					<td><img src="{{ $member->player->getJob()->getImageJob() }}" height="26" title="{{ $member->player->getJob()->getName() }}"></td>
+					<td>{{ $member->player->m_nLevel }}</td>
+					<td><i class="{{ $member->player->getSexIcon() }} icon" title="{{ $member->player->getSexTitle() }}" style="font-size: 1.5em;"></i></td>
+					<td>
+						@for($i = 0; $i <= (int)$member->m_nClass; $i++)
+							<img src="{{ $member->getRankLogo() }}" title="{{ $member->getRankTitle() }}">
+						@endfor
+					</td>
+					<td>{{ $member->player->CreateTime }}</td>
+					<td>{{ $member->player->m_szName }}</td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
 @endsection
+
+<?php /** @var \App\Model\Character\Guild $guild */ ?>
+<?php /** @var \App\Model\Character\GuildMember $member */ ?>
+<?php /** @var \App\Model\Character\Character $member ->player */ ?>

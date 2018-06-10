@@ -95,7 +95,12 @@ class Guild extends Model
 	 */
 	public function members()
 	{
-		return $this->hasMany(GuildMember::class, 'm_idGuild', 'm_idGuild');
+		return $this->hasMany(GuildMember::class, 'm_idGuild', 'm_idGuild')
+			->orderBy('m_nMemberLv')
+			->orderBy('m_nClass')
+			->orderBy('m_nGivePxp', 'DESC')
+			->orderBy('m_nGiveGold', 'DESC')
+			->orderBy('CreateTime');
 	}
 
 	/**
@@ -108,6 +113,12 @@ class Guild extends Model
 		return $this->members()->where('m_nClass', '=', 0)->get()->first()->player();
 	}
 
+	public function hasLogo()
+	{
+		$this->m_dwLogo = 11;
+		return (int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27;
+	}
+
 	/**
 	 * Return formatted logo, or - if she doesn't have logo, for this guild.
 	 *
@@ -115,13 +126,9 @@ class Guild extends Model
 	 */
 	public function getLogo()
 	{
-		$this->m_dwLogo = 11;
-		if ((int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27) {
-			if ($this->m_dwLogo < 10) {
-				$this->m_dwLogo = '0' . $this->m_dwLogo;
-			}
-			return '<img src="' . asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo)) . '"/>';
+		if ($this->m_dwLogo < 10) {
+			$this->m_dwLogo = '0' . $this->m_dwLogo;
 		}
-		return '-';
+		return asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
 	}
 }

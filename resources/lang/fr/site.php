@@ -84,7 +84,27 @@ return [
 		]
 	],
 	'guild' => [
-
+		'info_divider' => 'Informations général de la guilde',
+		'gs_divider' => 'Informations sur les Guildes Sièges',
+		'member_divider' => 'Liste des membres',
+		'leader' => 'Chef:',
+		'penya' => 'Penyas:',
+		'lvl' => 'Niveau:',
+		'member_count' => 'Nombre de membres:',
+		'gs_point' => 'Points:',
+		'gs_win' => 'Gagnées:',
+		'gs_lose' => 'Perdus:',
+		'gs_surrender' => 'Abandonnées:',
+		'member_ranking' => [
+			'name' => 'Nom',
+			'job' => 'Classe',
+			'lvl' => 'Niveau',
+			'gender' => 'Genre',
+			'rank' => 'Grade',
+			'rank_lvl' => 'Niveau de Grade',
+			'member_since' => 'Membre depuis',
+			'status' => 'Statut'
+		]
 	],
 	'jobs' => [
 		'vagrant' => 'Vagabond',
@@ -124,5 +144,16 @@ return [
 		'force_master' => 'Chanoine',
 		'mentalist' => 'Envouteur',
 		'arcanist' => 'Arcaniste'
+	],
+	'guild_rank' => [
+		'master' => 'Maître',
+		'general' => 'Général',
+		'officer' => 'Officier',
+		'veteran' => 'Vétéran',
+		'member' => 'Membre'
+	],
+	'sex' => [
+		'boy' => 'Garçon',
+		'girl' => 'Fille'
 	]
 ];

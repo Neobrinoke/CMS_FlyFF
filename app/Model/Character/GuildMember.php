@@ -30,6 +30,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GuildMember extends Model
 {
+	public const RANK_MASTER = 0;
+	public const RANK_GENERAL = 1;
+	public const RANK_OFFICER = 2;
+	public const RANK_VETERAN = 3;
+	public const RANK_MEMBER = 4;
+
+	public const RANKS = [
+		self::RANK_MASTER => 'master',
+		self::RANK_GENERAL => 'general',
+		self::RANK_OFFICER => 'officer',
+		self::RANK_VETERAN => 'veteran',
+		self::RANK_MEMBER => 'member',
+	];
+
 	/** @var string */
 	protected $connection = 'character';
 
@@ -73,5 +87,29 @@ class GuildMember extends Model
 	public function player()
 	{
 		return $this->belongsTo(Character::class, 'm_idPlayer', 'm_idPlayer');
+	}
+
+	/**
+	 * Return name of logo for his rank or null (it's not supposed to happen).
+	 *
+	 * @return null|string
+	 */
+	public function getRankLogo(): ?string
+	{
+		$name = ucfirst(self::RANKS[$this->m_nMemberLv]);
+
+		return asset(sprintf("/img/guilds/%s.png", $name));
+	}
+
+	/**
+	 * Return name of logo for his rank or null (it's not supposed to happen).
+	 *
+	 * @return null|string
+	 */
+	public function getRankTitle(): ?string
+	{
+		$name = self::RANKS[$this->m_nMemberLv];
+
+		return trans(sprintf("site.guild_rank.%s", $name));
 	}
 }

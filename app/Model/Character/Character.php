@@ -298,9 +298,23 @@ class Character extends Model
 	public function getSexIcon(): string
 	{
 		if ((int)$this->m_dwSex === 0) {
-			return '<i class="mars icon" style="font-size: 1.5em;"></i>';
+			return 'mars';
 		} else {
-			return '<i class="venus icon" style="font-size: 1.5em;"></i>';
+			return 'venus';
+		}
+	}
+
+	/**
+	 * Return HTML icon gender for this character.
+	 *
+	 * @return string
+	 */
+	public function getSexTitle(): string
+	{
+		if ((int)$this->m_dwSex === 0) {
+			return trans('site.sex.boy');
+		} else {
+			return trans('site.sex.girl');
 		}
 	}
 

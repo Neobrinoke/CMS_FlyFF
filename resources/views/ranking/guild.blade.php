@@ -29,7 +29,13 @@
 						</div>
 					</td>
 					<td>{{ $guild->leader->m_szName }}</td>
-					<td>{!! $guild->getLogo() !!}</td>
+					<td>
+						@if($guild->hasLogo())
+							<img class="ui image" src="{{ $guild->getLogo() }}"/>
+						@else
+							-
+						@endif
+					</td>
 					<td>{{ \Carbon\Carbon::createFromTimeString($guild->CreateTime)->format('d/m/Y') }}</td>
 				</tr>
 			@endforeach

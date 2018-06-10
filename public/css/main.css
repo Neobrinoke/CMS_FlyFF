@@ -84,6 +84,13 @@ main section.content {
 	background-color: #01aff8;
 }
 
+.ui.image.guild_logo {
+	margin-right: 0.25em;
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+}
+
 @media screen and (max-width: 991px) {
 
 	#my_account {

@@ -20,9 +20,9 @@
 				<tr>
 					<td>{{ current_iteration($characters, $loop) }}</td>
 					<td>{{ $character->m_szName }}</td>
-					<td><img src="{{ $character->getJob()->getImageJob() }}" height="26"></td>
+					<td><img src="{{ $character->getJob()->getImageJob() }}" height="26" title="{{ $character->getJob()->getName() }}"></td>
 					<td>{{ $character->m_nLevel }}</td>
-					<td>{!! $character->getSexIcon() !!}</td>
+					<td><i class="{{ $character->getSexIcon() }} icon" title="{{ $character->getSexTitle() }}" style="font-size: 1.5em;"></i></td>
 					<td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
 					<td>{{ $character->serverindex }}</td>
 				</tr>

@@ -15,7 +15,6 @@ class GuildController extends Controller
 	 */
 	public function show(Guild $guild)
 	{
-		dd($guild);
 		return view('guild.show', compact('guild'));
 	}
 }
