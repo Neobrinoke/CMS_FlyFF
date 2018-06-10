@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<button class="ui right floated brown button" type="submit">@lang('site.register.submit')</button>
+			<button class="ui right floated primary button" type="submit">@lang('site.register.submit')</button>
 		</div>
 	</form>
 @endsection

@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<button class="ui right floated brown button" type="submit">@lang('site.password_reset.submit_request')</button>
+			<button class="ui right floated primary button" type="submit">@lang('site.password_reset.submit_request')</button>
 		</div>
 	</form>
 @endsection

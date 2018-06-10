@@ -23,7 +23,7 @@
 		</div>
 		<div class="field">
 			<a href="{{ route('password.request') }}" class="ui left floated red basic button">@lang('site.login.password_lost')</a>
-			<button class="ui right floated brown button" type="submit">@lang('site.login.submit')</button>
+			<button class="ui right floated primary button" type="submit">@lang('site.login.submit')</button>
 		</div>
 	</form>
 @endsection

@@ -7,12 +7,12 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>@lang('site.ranking.player.name')</th>
-				<th>@lang('site.ranking.player.job')</th>
-				<th>@lang('site.ranking.player.lvl')</th>
-				<th>@lang('site.ranking.player.gender')</th>
-				<th>@lang('site.ranking.player.played_time')</th>
-				<th>@lang('site.ranking.player.status')</th>
+				<th>@lang('site.ranking.guild.name')</th>
+				<th>@lang('site.ranking.guild.lvl')</th>
+				<th>@lang('site.ranking.guild.members')</th>
+				<th>@lang('site.ranking.guild.leader')</th>
+				<th>@lang('site.ranking.guild.logo')</th>
+				<th>@lang('site.ranking.guild.created_at')</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,7 +22,7 @@
 					<td>{{ $character->m_szName }}</td>
 					<td><img src="{{ $character->getJob()->getImageJob() }}" height="26"></td>
 					<td>{{ $character->m_nLevel }}</td>
-					<td>{!! $character->getSexIcon() !!}</td>
+					<td><i class="venus icon"></i></td>
 					<td>{{ $character->TotalPlayTime }}</td>
 					<td>{{ $character->serverindex }}</td>
 				</tr>

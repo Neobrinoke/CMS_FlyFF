@@ -3,6 +3,7 @@
 namespace App\Model\Character;
 
 use App\Model\Account\Account;
+use App\Model\Resource\PropJob;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -235,6 +236,16 @@ class Character extends Model
 	];
 
 	/**
+	 * Return all players order by specified column.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public static function getForRanking()
+	{
+		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('m_nJob', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+	}
+
+	/**
 	 * Return the account for this character.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -245,12 +256,60 @@ class Character extends Model
 	}
 
 	/**
-	 * Return all players order by specified column.
+	 * Return jobs info for this character.
 	 *
-	 * @return \Illuminate\Database\Eloquent\Builder
+	 * @return PropJob
+	 * @throws \Exception
 	 */
-	public static function getForRanking()
+	public function getJob(): PropJob
 	{
-		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('m_nJob', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+		return PropJob::find($this->m_nJob);
+	}
+
+	/**
+	 * Return HTML icon gender for this character.
+	 *
+	 * @return string
+	 */
+	public function getSexIcon(): string
+	{
+		if ((int)$this->m_dwSex === 0) {
+			return '<i class="mars icon" style="font-size: 1.5em;"></i>';
+		} else {
+			return '<i class="venus icon" style="font-size: 1.5em;"></i>';
+		}
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function hasMasterRank(): bool
+	{
+		return !is_null($this->getMasterRank());
+	}
+
+	/**
+	 * Return number of master rank for this character.
+	 *
+	 * @return int|null
+	 */
+	public function getMasterRank(): ?int
+	{
+		if ($this->m_nJob > 16 && $this->m_nJob < 24) {
+			if ($this->m_nLevel >= 110) {
+				return 6;
+			} else if ($this->m_nLevel >= 100) {
+				return 5;
+			} else if ($this->m_nLevel >= 100) {
+				return 4;
+			} else if ($this->m_nLevel >= 100) {
+				return 3;
+			} else if ($this->m_nLevel >= 100) {
+				return 2;
+			} else if ($this->m_nLevel >= 60) {
+				return 1;
+			}
+		}
+		return null;
 	}
 }

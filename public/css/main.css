@@ -72,6 +72,10 @@ main section.content {
 	margin-bottom: 15px;
 }
 
+.ui.primary {
+	background-color: #01aff8;
+}
+
 .ui.single.line.table tbody tr:hover {
 	background-color: #88e6ff;
 }
