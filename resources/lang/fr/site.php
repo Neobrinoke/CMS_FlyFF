@@ -85,16 +85,16 @@ return [
 	],
 	'guild' => [
 		'info_divider' => 'Informations général de la guilde',
-		'gs_divider' => 'Informations sur les Guildes Sièges',
+		'gvg_divider' => 'Informations sur les Guèrres des Guildes',
 		'member_divider' => 'Liste des membres',
 		'leader' => 'Chef:',
 		'penya' => 'Penyas:',
 		'lvl' => 'Niveau:',
 		'member_count' => 'Nombre de membres:',
-		'gs_point' => 'Points:',
-		'gs_win' => 'Gagnées:',
-		'gs_lose' => 'Perdus:',
-		'gs_surrender' => 'Abandonnées:',
+		'gvg_point' => 'Points:',
+		'gvg_win' => 'Gagnées:',
+		'gvg_lose' => 'Perdus:',
+		'gvg_surrender' => 'Abandonnées:',
 		'member_ranking' => [
 			'name' => 'Nom',
 			'job' => 'Classe',
@@ -150,7 +150,7 @@ return [
 		'general' => 'Général',
 		'officer' => 'Officier',
 		'veteran' => 'Vétéran',
-		'member' => 'Membre'
+		'member' => 'Novice'
 	],
 	'sex' => [
 		'boy' => 'Garçon',

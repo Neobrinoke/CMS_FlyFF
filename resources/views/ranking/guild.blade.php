@@ -22,9 +22,8 @@
 					<td>{{ $guild->m_szGuild }}</td>
 					<td>{{ $guild->m_nLevel }}</td>
 					<td>
-						<div class="ui teal progress ratio" data-value="{{ $guild->members->count() }}" data-total="65">
+						<div class="ui teal progress" data-value="{{ $guild->members->count() }}" data-total="65">
 							<div class="bar">
-								<div class="progress"></div>
 							</div>
 						</div>
 					</td>

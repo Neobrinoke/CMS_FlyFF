@@ -21,26 +21,26 @@
 		</div>
 	</div>
 
-	<h4 class="ui dividing header">@lang('site.guild.gs_divider')</h4>
+	<h4 class="ui dividing header">@lang('site.guild.gvg_divider')</h4>
 	<div class="ui segments">
 		<div class="ui horizontal segments">
 			<div class="ui segment">
-				<span>@lang('site.guild.gs_point') {{ $guild->m_nWinPoint }}</span>
+				<span>@lang('site.guild.gvg_point') {{ $guild->m_nWinPoint }}</span>
 			</div>
 			<div class="ui segment">
-				<span>@lang('site.guild.gs_win') {{ $guild->m_nWin }}</span>
+				<span>@lang('site.guild.gvg_win') {{ $guild->m_nWin }}</span>
 			</div>
 			<div class="ui segment">
-				<span>@lang('site.guild.gs_lose') {{ $guild->m_nLose }}</span>
+				<span>@lang('site.guild.gvg_lose') {{ $guild->m_nLose }}</span>
 			</div>
 			<div class="ui segment">
-				<span>@lang('site.guild.gs_surrender') {{ $guild->m_nSurrender }}</span>
+				<span>@lang('site.guild.gvg_surrender') {{ $guild->m_nSurrender }}</span>
 			</div>
 		</div>
 	</div>
 
-	<h4 class="ui dividing header">@lang('site.guild.member_divider')</h4>
-	<table class="ui single line selectable table">
+	<h4 class="ui dividing header">@lang('site.guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->getMaxMembersCount() }})</h4>
+	<table class="ui single line compact selectable table">
 		<thead>
 			<tr>
 				<th>@lang('site.guild.member_ranking.name')</th>
@@ -64,10 +64,10 @@
 							<img src="{{ $member->getRankLogo() }}" title="{{ $member->getRankTitle() }}">
 						@endfor
 					</td>
-					<td>{{ $member->player->CreateTime }}</td>
+					<td>{{ \Carbon\Carbon::createFromTimeString($member->player->CreateTime)->format('d/m/Y') }}</td>
 					<td>
 						@if($member->player->onlineInfo->isOnline())
-							<div class="ui green label">@lang('site.online_status.online')</div>
+							<div class="ui olive label">@lang('site.online_status.online')</div>
 						@else
 							<div class="ui red label">@lang('site.online_status.offline')</div>
 						@endif

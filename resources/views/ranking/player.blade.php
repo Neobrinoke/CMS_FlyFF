@@ -3,7 +3,7 @@
 @section('title', __('site.title.player_ranking'))
 
 @section('content')
-	<table class="ui single line selectable table">
+	<table class="ui single line compact selectable table">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -26,7 +26,7 @@
 					<td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
 					<td>
 						@if($character->onlineInfo->isOnline())
-							<div class="ui green label">@lang('site.online_status.online')</div>
+							<div class="ui olive label">@lang('site.online_status.online')</div>
 						@else
 							<div class="ui red label">@lang('site.online_status.offline')</div>
 						@endif

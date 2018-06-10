@@ -68,7 +68,7 @@ main section.content {
 
 .ui.menu .item.active::after, .ui.menu .item:hover::after {
 	content: "";
-	border-bottom: 6px solid #01aff8;
+	border-bottom: 4px solid #01aff8;
 	bottom: -1px;
 	left: 0;
 	right: 0;

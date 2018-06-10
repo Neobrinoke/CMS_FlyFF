@@ -131,4 +131,14 @@ class Guild extends Model
 		}
 		return asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
 	}
+
+	/**
+	 * Return max members count for this guild.
+	 *
+	 * @return \Illuminate\Config\Repository|mixed
+	 */
+	public function getMaxMembersCount()
+	{
+		return config(sprintf("resources.guild.maxMembersCount.%d", $this->m_nLevel));
+	}
 }
