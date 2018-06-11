@@ -3,21 +3,25 @@
 @section('title', __('site.nav.home'))
 
 @section('content')
-	<div class="ui styled fluid accordion">
-		<div class="title"><i class="dropdown icon"></i>What is a dog?</div>
-		<div class="content">
-			<p class="transition">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+	<div class="box">
+		<div class="ui primary attached message">
+			<h1 class="header">@yield('title')</h1>
 		</div>
-
-		<div class="title"><i class="dropdown icon"></i>What kinds of dogs are there?</div>
-		<div class="content">
-			<p class="transition">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-		</div>
-
-		<div class="title"><i class="dropdown icon"></i>How do you acquire a dog?</div>
-		<div class="content">
-			<p class="transition">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-			<p class="transition">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+		<div class="ui attached fluid clearing segment">
+			<div class="ui styled fluid accordion">
+				@foreach($articles->take(5) as $article)
+					<div class="title {{ $loop->first ? 'active' : '' }}"><i class="dropdown icon"></i>{{ $article->title }}</div>
+					<div class="content {{ $loop->first ? 'active' : '' }}">
+						<p class="transition {{ $loop->first ? 'visible' : '' }}">{!! $article->content !!}</p>
+					</div>
+				@endforeach
+			</div>
+			@if($articles->count() > 5)
+				<a class="ui right labeled icon green very basic button right floated" href="{{ route('article.index', ['page' => 2]) }}"><i class="right arrow icon"></i>@lang('site.article.show_more')</a>
+			@endif
 		</div>
 	</div>
 @endsection
+
+<?php /** @var \Illuminate\Support\Collection $articles */ ?>
+<?php /** @var \App\Model\Web\Article $article */ ?>

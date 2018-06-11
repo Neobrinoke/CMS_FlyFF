@@ -16,6 +16,6 @@ class HomeController extends Controller
 		$controller = 'home';
 		$articles = Article::all()->take(6);
 
-		return view('article.index', compact('articles', 'controller'));
+		return view('home', compact('articles', 'controller'));
 	}
 }

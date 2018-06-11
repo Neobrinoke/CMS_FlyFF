@@ -1,7 +1,7 @@
 <aside>
 	@auth
 		<div class="box" id="my_account">
-			<div class="ui attached message">
+			<div class="ui primary attached message">
 				<h1 class="header">@lang('site.title.my_account')</h1>
 			</div>
 			<div class="ui attached fluid segment">
@@ -13,7 +13,7 @@
 		</div>
 	@endauth
 	<div class="box">
-		<div class="ui attached message">
+		<div class="ui primary attached message">
 			<h1 class="header">@lang('site.title.server_info')</h1>
 		</div>
 		<div class="ui attached fluid segment">

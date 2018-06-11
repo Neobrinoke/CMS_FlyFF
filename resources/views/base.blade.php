@@ -17,20 +17,13 @@
 		<main class="ui container">
 			@include('include.aside')
 			<section class="content">
-				<div class="box">
-					<div class="ui attached message">
-						<h1 class="header">@yield('title')</h1>
-					</div>
-					<div class="ui attached fluid clearing segment">
-						@if($errors->any())
-							@include('messages.error')
-						@endif
-						@if (session('status'))
-							@include('messages.success')
-						@endif
-						@yield('content')
-					</div>
-				</div>
+				@if($errors->any())
+					@include('messages.error')
+				@endif
+				@if (session('status'))
+					@include('messages.success')
+				@endif
+				@yield('content')
 			</section>
 		</main>
 		@include('include.footer')

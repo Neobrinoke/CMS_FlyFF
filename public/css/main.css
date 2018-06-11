@@ -37,6 +37,11 @@ tr[onclick] {
 }
 
 /* THEME CSS (CMS FlyFF) */
+* {
+	--primary-color: #27a4ca;
+	--primary-color-hover: #2386a5;
+}
+
 body {
 	background: url('/img/background.jpg') no-repeat #ffffff;
 	background-size: cover;
@@ -61,13 +66,8 @@ main section.content {
 }
 
 .box .ui.attached.message, .ui.labeled.input .ui.label {
-	background-color: #01aff8;
 	color: white;
-	padding: 10px 15px;
-}
-
-.box .ui.attached.segment {
-	padding: 15px;
+	padding: 1em 1em;
 }
 
 .ui.menu.stackable .ui.container a.active {
@@ -76,7 +76,7 @@ main section.content {
 
 .ui.menu .item.active::after, .ui.menu .item:hover::after {
 	content: "";
-	border-bottom: 4px solid #01aff8;
+	border-bottom: 4px solid var(--primary-color);
 	bottom: -1px;
 	left: 0;
 	right: 0;
@@ -89,7 +89,13 @@ main section.content {
 }
 
 .ui.primary {
-	background-color: #01aff8;
+	background-color: var(--primary-color)!important;
+}
+
+a.ui.primary:hover,
+button.ui.primary:hover,
+input[type='submit'].ui.primary:hover {
+	background-color: var(--primary-color-hover)!important;
 }
 
 .ui.image.guild_logo {
