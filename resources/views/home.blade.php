@@ -8,16 +8,31 @@
 			<h1 class="header">@yield('title')</h1>
 		</div>
 		<div class="ui attached fluid clearing segment">
-			<div class="ui styled fluid accordion">
-				@foreach($articles->take(5) as $article)
-					<div class="title {{ $loop->first ? 'active' : '' }}"><i class="dropdown icon"></i>{{ $article->title }}</div>
-					<div class="content {{ $loop->first ? 'active' : '' }}">
-						<p class="transition {{ $loop->first ? 'visible' : '' }}">{!! $article->content !!}</p>
+			<div class="ui unstackable divided items">
+				@foreach($articles->take(3) as $article)
+					<div class="item">
+						<div class="ui small image">
+							<img src="https://semantic-ui.com/images/wireframe/image.png">
+						</div>
+						<div class="content">
+							<div class="header">{{ substr($article->title, 0, 50) }}...</div>
+							<div class="meta">
+								<span class="detail">Par Neobrinoke, Le 25/03/2015 à 18:25</span>
+							</div>
+							<div class="description">
+								<p>{!! substr($article->content, 0, 150) !!}...</p>
+							</div>
+							<div class="extra">
+								<div class="ui label">Mise à jour</div>
+								<div class="ui right floated primary button">Voir plus sur l'article<i class="right chevron icon"></i></div>
+							</div>
+						</div>
 					</div>
 				@endforeach
 			</div>
-			@if($articles->count() > 5)
-				<a class="ui right labeled icon green very basic button right floated" href="{{ route('article.index', ['page' => 2]) }}"><i class="right arrow icon"></i>@lang('site.article.show_more')</a>
+			<div class="ui divider"></div>
+			@if($articles->count() > 3)
+				<a href="{{ route('article.index', ['page' => 2]) }}" class="ui right floated button green basic">@lang('site.article.show_more')<i class="right chevron icon"></i></a>
 			@endif
 		</div>
 	</div>

@@ -120,3 +120,13 @@ input[type='submit'].ui.primary:hover {
 		display: block;
 	}
 }
+
+@media only screen and (max-width: 767px) {
+	.ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
+		display: none!important;
+	}
+
+	.ui.items > .item > .image + .content {
+		padding-left: 0;
+	}
+}
