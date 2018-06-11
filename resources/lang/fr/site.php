@@ -33,7 +33,9 @@ return [
 		]
 	],
 	'article' => [
-		'show_more' => 'Voir plus d\'articles'
+		'show_all' => 'Voir plus d\'articles',
+		'show_more' => 'Voir plus sur l\'article',
+		'detail' => 'Par :name, le :date à :time',
 	],
 	'login' => [
 		'email' => 'Adresse email',

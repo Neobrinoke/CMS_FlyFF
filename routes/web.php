@@ -21,6 +21,7 @@ Route::get('/', 'HomeController@home')->name('home');
 
 // Article URL
 Route::get('/articles', 'ArticleController@index')->name('article.index');
+Route::get('/article/{article}-{slug}', 'ArticleController@show')->name('article.show');
 
 // Ranking URL
 Route::get('/ranking/player', 'RankingController@player')->name('ranking.player');

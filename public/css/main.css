@@ -36,6 +36,10 @@ tr[onclick] {
 	margin-bottom: 0;
 }
 
+.ui.items:last-of-type {
+	margin: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 * {
 	--primary-color: #27a4ca;
@@ -89,13 +93,13 @@ main section.content {
 }
 
 .ui.primary {
-	background-color: var(--primary-color)!important;
+	background-color: var(--primary-color) !important;
 }
 
 a.ui.primary:hover,
 button.ui.primary:hover,
 input[type='submit'].ui.primary:hover {
-	background-color: var(--primary-color-hover)!important;
+	background-color: var(--primary-color-hover) !important;
 }
 
 .ui.image.guild_logo {
@@ -123,7 +127,7 @@ input[type='submit'].ui.primary:hover {
 
 @media only screen and (max-width: 767px) {
 	.ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
-		display: none!important;
+		display: none !important;
 	}
 
 	.ui.items > .item > .image + .content {

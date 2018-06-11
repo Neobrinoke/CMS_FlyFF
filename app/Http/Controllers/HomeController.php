@@ -13,9 +13,8 @@ class HomeController extends Controller
 	 */
 	public function home()
 	{
-		$controller = 'home';
-		$articles = Article::all()->take(6);
+		$articles = Article::all()->take(3);
 
-		return view('home', compact('articles', 'controller'));
+		return view('home', compact('articles'));
 	}
 }

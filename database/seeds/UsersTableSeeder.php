@@ -18,5 +18,11 @@ class UsersTableSeeder extends Seeder
 				'password' => bcrypt('0000')
 			]);
 		}
+
+		\App\Model\Web\User::query()->create([
+			'name' => 'Neobrinoke',
+			'email' => 'neobrinoke@gmail.com',
+			'password' => bcrypt('neobrinoke')
+		]);
 	}
 }

@@ -8,18 +8,32 @@
 			<h1 class="header">@yield('title')</h1>
 		</div>
 		<div class="ui attached fluid clearing segment">
-			<div class="ui styled fluid accordion">
+			<section class="ui unstackable divided items">
 				@foreach($articles as $article)
-					<div class="title {{ $loop->first ? 'active' : '' }}"><i class="dropdown icon"></i>{{ $article->title }}</div>
-					<div class="content {{ $loop->first ? 'active' : '' }}">
-						<p class="transition {{ $loop->first ? 'visible' : '' }}">{!! $article->content !!}</p>
-					</div>
+					<article class="item">
+						<div class="ui small image">
+							<img src="{{ $article->image_thumbnail }}">
+						</div>
+						<div class="content">
+							<div class="header">{{ str_limit($article->title, 50) }}...</div>
+							<div class="meta">
+								<span class="detail">{{ $article->detail_info }}</span>
+							</div>
+							<div class="description">
+								<p>{!! str_limit($article->content, 150) !!}...</p>
+							</div>
+							<div class="extra">
+								<div class="ui {{ $article->category->color }} label">{{ $article->category->label }}</div>
+								<a class="ui right floated primary button" href="{{ route('article.show', [$article, $article->slug]) }}">@lang('site.article.show_more')<i class="right chevron icon"></i></a>
+							</div>
+						</div>
+					</article>
 				@endforeach
-			</div>
+			</section>
+			<div class="ui divider"></div>
 			{{ $articles->links() }}
 		</div>
 	</div>
 @endsection
 
-<?php /** @var \Illuminate\Support\Collection $articles */ ?>
 <?php /** @var \App\Model\Web\Article $article */ ?>
