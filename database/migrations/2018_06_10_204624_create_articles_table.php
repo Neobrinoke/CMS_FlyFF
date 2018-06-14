@@ -21,8 +21,8 @@ class CreateArticlesTable extends Migration
 			$table->integer('category_id');
 			$table->string('image_thumbnail');
 			$table->string('image_header')->nullable();
-			$table->timestamps();
-			$table->softDeletes();
+			$table->timestamps(1);
+			$table->softDeletes('deleted_at', 1);
 		});
 	}
 

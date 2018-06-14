@@ -17,8 +17,8 @@ class CreateArticleCategoriesTable extends Migration
 			$table->increments('id');
 			$table->string('label');
 			$table->string('color')->nullable();
-			$table->timestamps();
-			$table->softDeletes();
+			$table->timestamps(1);
+			$table->softDeletes('deleted_at', 1);
 		});
 	}
 
