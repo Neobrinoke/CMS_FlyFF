@@ -18,13 +18,25 @@ $(document).ready(function () {
 	$('[data-modal]').click(function (e) {
 		e.preventDefault();
 		$($(this).attr('data-modal')).modal('show');
-	})
+	});
 
 	// Auto submit form with only data attr in HTML
 	$('[data-submit]').click(function (e) {
 		e.preventDefault();
 		$($(this).attr('data-submit')).submit();
-	})
+	});
+
+	// Auto show element with only data attr in HTML
+	$('[data-show]').click(function (e) {
+		e.preventDefault();
+		$($(this).attr('data-show')).css('display', 'block');
+	});
+
+	// Auto hide element with only data attr in HTML
+	$('[data-hide]').click(function (e) {
+		e.preventDefault();
+		$($(this).attr('data-hide')).css('display', 'none');
+	});
 });
 
 let getLocation = function (href) {

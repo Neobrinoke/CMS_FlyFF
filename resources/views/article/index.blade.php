@@ -25,7 +25,7 @@
 							<div class="extra">
 								<div class="ui {{ $article->category->color }} label">{{ $article->category->label }}</div>
 								@if($article->authorized_comment)
-									<span class="ui teal label"><i class="comment outline icon"></i>{{ $article->comments->count() }}</span>
+									<span class="ui teal label"><i class="comment outline icon"></i>{{ $article->comment_count }}</span>
 								@endif
 								<a class="ui right floated primary button" href="{{ route('article.show', [$article, $article->slug]) }}">@lang('site.article.show_more')<i class="right chevron icon"></i></a>
 							</div>

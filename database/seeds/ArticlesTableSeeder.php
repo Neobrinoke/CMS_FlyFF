@@ -48,6 +48,7 @@ class ArticlesTableSeeder extends Seeder
 			for ($i = 0; $i < 20; $i++) {
 
 				$rand = rand(0, (count($images) - 1));
+				$isCommentable = rand(0, 1);
 
 				$article = Article::query()->create([
 					'title' => $faker->realText(50),
@@ -56,15 +57,17 @@ class ArticlesTableSeeder extends Seeder
 					'image_thumbnail' => $images[$rand],
 					'image_header' => ($i % 2) == 0 ? 'http://eu-uimg-wgp.webzen.com/1220129452/HtmlEdit/10112017_113105_fr-500x175_414659.jpg' : null,
 					'category_id' => $category->id,
-					'authorized_comment' => rand(0, 1)
+					'authorized_comment' => $isCommentable
 				]);
 
-				for ($j = 0; $j < rand(0, 10); $j++) {
-					ArticleComment::query()->create([
-						'author_id' => $user->id,
-						'article_id' => $article->id,
-						'content' => $faker->text(50)
-					]);
+				if ($isCommentable) {
+					for ($j = 0; $j < rand(0, 10); $j++) {
+						ArticleComment::query()->create([
+							'author_id' => $user->id,
+							'article_id' => $article->id,
+							'content' => $faker->text(50)
+						]);
+					}
 				}
 			}
 		}

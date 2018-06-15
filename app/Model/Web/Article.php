@@ -19,15 +19,17 @@ use Illuminate\Support\Collection;
  * @property string image_thumbnail
  * @property string image_header
  * @property bool authorized_comment
+ * @property int comment_count
+ * @property string detail_info
+ * @property string slug
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
  *
- * @property string detail_info
- * @property string slug
  * @property User author
  * @property ArticleCategory category
  * @property Collection comments
+ * @property Collection responses
  */
 class Article extends Model
 {
@@ -70,7 +72,27 @@ class Article extends Model
 	 */
 	public function comments()
 	{
-		return $this->hasMany(ArticleComment::class);
+		return $this->hasMany(ArticleComment::class)->whereNull('comment_id')->orderByDesc('created_at');
+	}
+
+	/**
+	 * Return all responses for this article.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function responses()
+	{
+		return $this->hasMany(ArticleComment::class)->whereNotNull('comment_id')->orderByDesc('created_at');
+	}
+
+	/**
+	 * Return all response and comment count for this article.
+	 *
+	 * @return int
+	 */
+	public function getCommentCountAttribute(): int
+	{
+		return $this->comments->count() + $this->responses->count();
 	}
 
 	/**
@@ -78,7 +100,7 @@ class Article extends Model
 	 *
 	 * @return array|\Illuminate\Contracts\Translation\Translator|null|string
 	 */
-	public function getDetailInfoAttribute()
+	public function getDetailInfoAttribute(): string
 	{
 		$name = $this->author->name;
 		$date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
@@ -95,7 +117,7 @@ class Article extends Model
 	 *
 	 * @return string
 	 */
-	public function getSlugAttribute()
+	public function getSlugAttribute(): string
 	{
 		return str_slug($this->title);
 	}

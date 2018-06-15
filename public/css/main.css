@@ -52,6 +52,10 @@ tr[onclick] {
 	max-width: 100%;
 }
 
+.ui.comments .comment .comments {
+	padding-bottom: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 * {
 	--primary-color: #27a4ca;

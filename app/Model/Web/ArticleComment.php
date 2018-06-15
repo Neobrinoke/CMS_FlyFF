@@ -5,6 +5,7 @@ namespace App\Model\Web;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Auth;
  * @package App\Model\Web
  *
  * @property int id
+ * @property int article_id
  * @property int author_id
+ * @property int|null comment_id
  * @property string content
  * @property bool is_mine
  * @property Carbon created_at
@@ -21,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
  *
  * @property Article article
  * @property User author
+ * @property Collection responses
  */
 class ArticleComment extends Model
 {
@@ -30,6 +34,7 @@ class ArticleComment extends Model
 	protected $fillable = [
 		'article_id',
 		'author_id',
+		'comment_id',
 		'content'
 	];
 
@@ -54,6 +59,16 @@ class ArticleComment extends Model
 	}
 
 	/**
+	 * Return all response for this comment.
+	 *
+	 * @return Collection
+	 */
+	public function getResponsesAttribute(): Collection
+	{
+		return self::query()->where('comment_id', $this->id)->orderByDesc('created_at')->get();
+	}
+
+	/**
 	 * Return true if this comment belongs to the current user.
 	 *
 	 * @return bool
@@ -61,5 +76,22 @@ class ArticleComment extends Model
 	public function getIsMineAttribute(): bool
 	{
 		return intval($this->author_id) === Auth::id();
+	}
+
+	/**
+	 * Force delete current comment and response for this comment.
+	 *
+	 * @return bool|null
+	 */
+	public function forceDelete()
+	{
+		if ($this->responses->isNotEmpty()) {
+			/** @var ArticleComment $response */
+			foreach ($this->responses as $response) {
+				$response->forceDelete();
+			}
+		}
+
+		return parent::forceDelete();
 	}
 }

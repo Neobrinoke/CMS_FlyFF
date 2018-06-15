@@ -17,6 +17,7 @@ class CreateArticleCommentsTable extends Migration
 			$table->increments('id');
 			$table->unsignedInteger('article_id')->index();
 			$table->unsignedInteger('author_id')->index();
+			$table->unsignedInteger('comment_id')->index()->nullable();
 			$table->longText('content');
 			$table->timestamps(1);
 			$table->softDeletes('deleted_at', 1);

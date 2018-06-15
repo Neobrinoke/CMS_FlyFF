@@ -42,10 +42,17 @@ return [
 			'read' => 'Commentaires',
 			'comment' => 'Commentaire',
 			'submit' => 'Envoyer',
-			'submit_messages' => [
-				'success' => 'Le commentaire a bien été envoyé',
-				'edit' => 'Le commentaire a bien été édité',
-				'delete' => 'Le commentaire a bien été supprimé',
+			'submit_comment' => [
+				'comment' => [
+					'create' => 'Le commentaire a bien été envoyé',
+					'edit' => 'Le commentaire a bien été édité',
+					'delete' => 'Le commentaire a bien été supprimé',
+				],
+				'response' => [
+					'create' => 'La réponse a bien été envoyée',
+					'edit' => 'La réponse a bien été éditée',
+					'delete' => 'La réponse a bien été supprimée',
+				]
 			]
 		]
 	],
@@ -53,14 +60,20 @@ return [
 		'reply' => 'Répondre',
 		'edit' => 'Editer',
 		'delete' => 'Supprimer',
-		'delete_confirm' => [
+		'delete_modal' => [
+			'header' => 'Suppression de commentaire',
 			'messages' => [
 				'Voulez-vous vraiment supprimer ce commentaire ?',
-				'Toute les réponses seront aussi supprimé.',
-				'Cette action est irréversible et prend effet imédiatement après la confirmation.'
+				'Toute les réponses associées seront aussi supprimées.',
+				'Cette action est irréversible et prend effet immédiatement après la confirmation.'
 			],
 			'yes' => 'Oui, supprimer le commentaire',
 			'no' => 'Non surtout pas !'
+		],
+		'edit_modal' => [
+			'header' => 'Edition de commentaire',
+			'cancel' => 'Annuler',
+			'submit' => 'Envoyer'
 		]
 	],
 	'login' => [
