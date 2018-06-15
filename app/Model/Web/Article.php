@@ -5,6 +5,7 @@ namespace App\Model\Web;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 /**
  * Class Article
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int author_id
  * @property string image_thumbnail
  * @property string image_header
- * @property ArticleCategory category
+ * @property bool authorized_comment
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
@@ -25,6 +26,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string detail_info
  * @property string slug
  * @property User author
+ * @property ArticleCategory category
+ * @property Collection comments
  */
 class Article extends Model
 {
@@ -61,6 +64,16 @@ class Article extends Model
 	}
 
 	/**
+	 * Return all comments for this article.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function comments()
+	{
+		return $this->hasMany(ArticleComment::class);
+	}
+
+	/**
 	 * Return creator name, date and time for this article.
 	 *
 	 * @return array|\Illuminate\Contracts\Translation\Translator|null|string
@@ -70,7 +83,11 @@ class Article extends Model
 		$name = $this->author->name;
 		$date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
 		$time = Carbon::createFromTimeString($this->created_at)->toTimeString();
-		return trans('site.article.detail', compact('name', 'date', 'time'));
+		return trans('site.article.detail', [
+			'name' => $name,
+			'date' => $date,
+			'time' => $time
+		]);
 	}
 
 	/**

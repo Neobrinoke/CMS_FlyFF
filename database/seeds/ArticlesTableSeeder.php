@@ -1,5 +1,10 @@
 <?php
 
+use App\Model\Web\Article;
+use App\Model\Web\ArticleCategory;
+use App\Model\Web\ArticleComment;
+use App\Model\Web\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class ArticlesTableSeeder extends Seeder
@@ -11,8 +16,12 @@ class ArticlesTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$faker = \Faker\Factory::create();
-		$user = \App\Model\Web\User::query()->where('name', '=', 'Neobrinoke')->get()->first();
+		/** @var User $user */
+		/** @var Article $article */
+		/** @var ArticleCategory $category */
+
+		$faker = Factory::create();
+		$user = User::query()->where('name', '=', 'Neobrinoke')->get()->first();
 		$images = [
 			'http://eu-uimg-wgp.webzen.com/1220129452/News/31052018_144440_fr-170x127_530808.jpg',
 			'http://eu-uimg-wgp.webzen.com/1220129452/News/25052018_110852_fr-170x127_401321.jpg',
@@ -25,12 +34,12 @@ class ArticlesTableSeeder extends Seeder
 
 		$categories = [];
 
-		$categories[] = \App\Model\Web\ArticleCategory::query()->create([
+		$categories[] = ArticleCategory::query()->create([
 			'label' => 'Mise à jour',
 			'color' => 'orange'
 		]);
 
-		$categories[] = \App\Model\Web\ArticleCategory::query()->create([
+		$categories[] = ArticleCategory::query()->create([
 			'label' => 'Nouveauté',
 			'color' => 'purple'
 		]);
@@ -40,14 +49,23 @@ class ArticlesTableSeeder extends Seeder
 
 				$rand = rand(0, (count($images) - 1));
 
-				\App\Model\Web\Article::query()->create([
+				$article = Article::query()->create([
 					'title' => $faker->realText(50),
 					'content' => $faker->realText(500),
 					'author_id' => $user->id,
 					'image_thumbnail' => $images[$rand],
 					'image_header' => ($i % 2) == 0 ? 'http://eu-uimg-wgp.webzen.com/1220129452/HtmlEdit/10112017_113105_fr-500x175_414659.jpg' : null,
-					'category_id' => $category->id
+					'category_id' => $category->id,
+					'authorized_comment' => rand(0, 1)
 				]);
+
+				for ($j = 0; $j < rand(0, 10); $j++) {
+					ArticleComment::query()->create([
+						'author_id' => $user->id,
+						'article_id' => $article->id,
+						'content' => $faker->text(50)
+					]);
+				}
 			}
 		}
 	}

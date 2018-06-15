@@ -13,12 +13,13 @@ return [
 		'shop' => 'Boutique',
 		'login' => 'Connexion',
 		'register' => 'S\'inscrire',
-		'guild' => 'Détails de la guild [:name]',
+		'guild' => 'Détails de la guild [:name]'
 	],
 	'title' => [
 		'connect' => 'Connexion',
 		'register' => 'S\'inscrire',
 		'news' => 'Actualité',
+		'article' => ':title',
 		'my_account' => 'Mon compte',
 		'server_info' => 'Informations du serveur',
 		'password_reset' => 'Réinitialisation du mot de passe',
@@ -36,6 +37,31 @@ return [
 		'show_all' => 'Voir plus d\'articles',
 		'show_more' => 'Voir plus sur l\'article',
 		'detail' => 'Par :name, le :date à :time',
+		'comment' => [
+			'post' => 'Postez votre commentaire',
+			'read' => 'Commentaires',
+			'comment' => 'Commentaire',
+			'submit' => 'Envoyer',
+			'submit_messages' => [
+				'success' => 'Le commentaire a bien été envoyé',
+				'edit' => 'Le commentaire a bien été édité',
+				'delete' => 'Le commentaire a bien été supprimé',
+			]
+		]
+	],
+	'comment' => [
+		'reply' => 'Répondre',
+		'edit' => 'Editer',
+		'delete' => 'Supprimer',
+		'delete_confirm' => [
+			'messages' => [
+				'Voulez-vous vraiment supprimer ce commentaire ?',
+				'Toute les réponses seront aussi supprimé.',
+				'Cette action est irréversible et prend effet imédiatement après la confirmation.'
+			],
+			'yes' => 'Oui, supprimer le commentaire',
+			'no' => 'Non surtout pas !'
+		]
 	],
 	'login' => [
 		'email' => 'Adresse email',
@@ -163,6 +189,6 @@ return [
 		'minutes' => ':minutes minutes',
 		'minute' => '1 minute',
 		'seconds' => ':seconds secondes',
-		'second' => '1 seconde',
+		'second' => '1 seconde'
 	]
 ];

@@ -40,6 +40,18 @@ tr[onclick] {
 	margin: 0;
 }
 
+.ui.right.floated {
+	float: right;
+}
+
+.ui.left.floated {
+	float: left;
+}
+
+.ui.comments {
+	max-width: 100%;
+}
+
 /* THEME CSS (CMS FlyFF) */
 * {
 	--primary-color: #27a4ca;
@@ -67,6 +79,7 @@ main.ui.container aside {
 
 main section.content {
 	flex: 1;
+	max-width: calc(100% - 250px);
 }
 
 .box .ui.attached.message, .ui.labeled.input .ui.label {
@@ -122,6 +135,10 @@ input[type='submit'].ui.primary:hover {
 
 	main.ui.container {
 		display: block;
+	}
+
+	main section.content {
+		max-width: 100%;
 	}
 }
 

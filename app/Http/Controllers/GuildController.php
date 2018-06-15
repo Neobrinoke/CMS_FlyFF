@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Character\Character;
 use App\Model\Character\Guild;
+use Illuminate\Http\Response;
 
 class GuildController extends Controller
 {
@@ -11,10 +11,12 @@ class GuildController extends Controller
 	 * Show detail of this guild.
 	 *
 	 * @param Guild $guild
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 * @return Response
 	 */
 	public function show(Guild $guild)
 	{
-		return view('guild.show', compact('guild'));
+		return view('guild.show', [
+			'guild' => $guild
+		]);
 	}
 }

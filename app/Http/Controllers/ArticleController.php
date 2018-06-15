@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Model\Web\Article;
+use Illuminate\Http\Response;
 
 class ArticleController extends Controller
 {
 	/**
 	 * Show all articles.
 	 *
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 * @return Response
 	 */
 	public function index()
 	{
 		$articles = Article::query()->paginate(5);
 
-		return view('article.index', compact('articles'));
+		return view('article.index', [
+			'articles' => $articles
+		]);
 	}
 
 	/**
@@ -23,10 +26,19 @@ class ArticleController extends Controller
 	 *
 	 * @param Article $article
 	 * @param string $slug
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 * @return Response
 	 */
 	public function show(Article $article, string $slug)
 	{
-		return view('article.show', compact('article'));
+		if ($slug !== $article->slug) {
+			return redirect()->route('article.show', [
+				'id' => $article->id,
+				'slug' => $article->slug
+			]);
+		}
+
+		return view('article.show', [
+			'article' => $article
+		]);
 	}
 }
