@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.nav.guild', ['name' => $guild->m_szGuild]))
+@section('title', __('site.title.guild_detail', ['name' => $guild->m_szGuild]))
 
 @section('content')
 	<div class="box">

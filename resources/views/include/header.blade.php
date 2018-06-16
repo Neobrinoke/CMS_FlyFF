@@ -1,6 +1,7 @@
 <nav class="ui menu stackable">
 	<div class="ui container">
 		<a href="{{ route('home') }}" class="header item"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
+		<a href="{{ route('article.index') }}" class="item">@lang('site.nav.news')</a>
 		<div class="ui dropdown icon item">
 			@lang('site.nav.ranking.header')
 			<div class="menu">
@@ -14,7 +15,7 @@
 		<div class="right menu">
 			@auth
 				<div class="ui dropdown icon item">
-					<span>{{ auth()->user()->name }} <i class="user circle icon"></i></span>
+					<span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>
 					<div class="menu">
 						<div class="item">My account</div>
 						<div class="divider"></div>

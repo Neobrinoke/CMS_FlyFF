@@ -3,6 +3,7 @@
 return [
 	'nav' => [
 		'home' => 'Accueil',
+		'news' => 'Actualité',
 		'ranking' => [
 			'header' => 'Classement',
 			'players' => 'Joueurs',
@@ -12,8 +13,7 @@ return [
 		'support' => 'Support',
 		'shop' => 'Boutique',
 		'login' => 'Connexion',
-		'register' => 'S\'inscrire',
-		'guild' => 'Détails de la guild [:name]'
+		'register' => 'S\'inscrire'
 	],
 	'title' => [
 		'connect' => 'Connexion',
@@ -24,7 +24,8 @@ return [
 		'server_info' => 'Informations du serveur',
 		'password_reset' => 'Réinitialisation du mot de passe',
 		'player_ranking' => 'Classement des joueurs',
-		'guild_ranking' => 'Classement des guildes'
+		'guild_ranking' => 'Classement des guildes',
+		'guild_detail' => 'Détails de la guild [:name]'
 	],
 	'home' => [
 		'aside' => [
