@@ -45,6 +45,13 @@ class Article extends Model
 		'image_header',
 	];
 
+	/** @var array */
+	protected $dates = [
+		'created_at',
+		'updated_at',
+		'deleted_at'
+	];
+
 	/**
 	 * Return author for this article.
 	 *

@@ -56,6 +56,19 @@ tr[onclick] {
 	padding-bottom: 0;
 }
 
+.ui.cards > .card > .buttons, .ui.card > .buttons, .ui.cards > .card > .button, .ui.card > .button {
+	margin: 0;
+	width: 100%;
+}
+
+.ui.cards > .card > :last-child, .ui.card > :last-child {
+	border-radius: 0 !important;
+}
+
+.card img.ui.floated.image {
+	margin-bottom: 0;
+}
+
 /* THEME CSS (CMS FlyFF) */
 * {
 	--primary-color: #27a4ca;

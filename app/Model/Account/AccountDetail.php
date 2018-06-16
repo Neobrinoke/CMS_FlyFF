@@ -13,13 +13,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string gamecode
  * @property string tester
  * @property string m_chLoginAuthority
- * @property Carbon regdate
  * @property string BlockTime
  * @property string EndTime
  * @property string WebTime
  * @property string isuse
- * @property Carbon secession
  * @property string email
+ * @property Carbon secession
+ * @property Carbon regdate
  */
 class AccountDetail extends Model
 {
@@ -35,12 +35,18 @@ class AccountDetail extends Model
 		'gamecode',
 		'tester',
 		'm_chLoginAuthority',
-		'regdate',
 		'BlockTime',
 		'EndTime',
 		'WebTime',
 		'isuse',
+		'email',
 		'secession',
-		'email'
+		'regdate'
+	];
+
+	/** @var array */
+	protected $dates = [
+		'secession',
+		'regdate'
 	];
 }

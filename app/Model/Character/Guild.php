@@ -78,6 +78,12 @@ class Guild extends Model
 		'CreateTime'
 	];
 
+	/** @var array */
+	protected $dates = [
+		'CreateTime'
+	];
+
+
 	/**
 	 * Return all guilds order by specified column.
 	 *

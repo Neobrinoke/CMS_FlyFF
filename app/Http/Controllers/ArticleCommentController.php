@@ -88,7 +88,7 @@ class ArticleCommentController extends Controller
 	}
 
 	/**
-	 * Update the specified resource in storage.
+	 * Store a newly created resource in storage.
 	 *
 	 * @param Request $request
 	 * @param Article $article

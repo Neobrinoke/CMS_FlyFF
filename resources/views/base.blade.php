@@ -14,6 +14,8 @@
 	</head>
 	<body>
 		@include('include.header')
+		<section class="ui container">
+		</section>
 		<main class="ui container">
 			@include('include.aside')
 			<section class="content">

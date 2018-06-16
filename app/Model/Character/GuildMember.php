@@ -69,6 +69,12 @@ class GuildMember extends Model
 		'm_nClass'
 	];
 
+	/** @var array */
+	protected $dates = [
+		'CreateTime'
+	];
+
+
 	/**
 	 * Return guild for this guild member.
 	 *
