@@ -29,7 +29,10 @@ Route::get('/ranking/player', 'RankingController@player')->name('ranking.player'
 Route::get('/ranking/guild', 'RankingController@guild')->name('ranking.guild');
 
 // Guild URL
-Route::get('/guild/{guild}', 'GuildController@show')->name('guild.show')->where('id', '[0-9]+');
+Route::get('/guild/{guild}', 'GuildController@show')->name('guild.show');
+
+// Download URL
+Route::get('/downloads', 'DownloadController@index')->name('download.index');
 
 Route::group(['middleware' => 'auth'], function () {
 	// Article comment URL

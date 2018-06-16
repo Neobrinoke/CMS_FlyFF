@@ -21,7 +21,9 @@ class ArticlesTableSeeder extends Seeder
 		/** @var ArticleCategory $category */
 
 		$faker = Factory::create();
+
 		$user = User::query()->where('name', '=', 'Neobrinoke')->get()->first();
+
 		$images = [
 			'http://eu-uimg-wgp.webzen.com/1220129452/News/31052018_144440_fr-170x127_530808.jpg',
 			'http://eu-uimg-wgp.webzen.com/1220129452/News/25052018_110852_fr-170x127_401321.jpg',

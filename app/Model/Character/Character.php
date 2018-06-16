@@ -74,7 +74,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string isblock
  * @property string End_Time
  * @property string BlockTime
- * @property Carbon CreateTime
  * @property int m_tmAccFuel
  * @property string m_tGuildMember
  * @property int m_dwSkillPoint
@@ -95,7 +94,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int PKExp
  * @property int AngelExp
  * @property int AngelLevel
- * @property Carbon FinalLevelDt
  * @property int m_dwPetId
  * @property int m_nExpLog
  * @property int m_nAngelExpLog
@@ -113,6 +111,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int m_nMetierExp
  * @property int m_BurnPts
  * @property int m_nHideCoat
+ * @property Carbon CreateTime
+ * @property Carbon FinalLevelDt
  *
  * @property Account account
  * @property GuildMember guild_member
@@ -238,6 +238,12 @@ class Character extends Model
 		'm_nMetierExp',
 		'm_BurnPts',
 		'm_nHideCoat'
+	];
+
+	/** @var array */
+	protected $dates = [
+		'CreateTime',
+		'FinalLevelDt'
 	];
 
 	/**

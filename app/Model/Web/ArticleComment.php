@@ -41,6 +41,13 @@ class ArticleComment extends Model
 		'content'
 	];
 
+	/** @var array */
+	protected $dates = [
+		'created_at',
+		'updated_at',
+		'deleted_at'
+	];
+
 	/**
 	 * Return article for this comment.
 	 *

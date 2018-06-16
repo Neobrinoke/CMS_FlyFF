@@ -3,13 +3,13 @@
 return [
 	'nav' => [
 		'home' => 'Accueil',
-		'news' => 'Actualité',
+		'news' => 'Actualités',
 		'ranking' => [
 			'header' => 'Classement',
 			'players' => 'Joueurs',
 			'guilds' => 'Guildes',
 		],
-		'download' => 'Téléchargement',
+		'download' => 'Téléchargements',
 		'support' => 'Support',
 		'shop' => 'Boutique',
 		'login' => 'Connexion',
@@ -18,14 +18,15 @@ return [
 	'title' => [
 		'connect' => 'Connexion',
 		'register' => 'S\'inscrire',
-		'news' => 'Actualité',
+		'news' => 'Actualités',
 		'article' => ':title',
 		'my_account' => 'Mon compte',
 		'server_info' => 'Informations du serveur',
 		'password_reset' => 'Réinitialisation du mot de passe',
 		'player_ranking' => 'Classement des joueurs',
 		'guild_ranking' => 'Classement des guildes',
-		'guild_detail' => 'Détails de la guild [:name]'
+		'guild_detail' => 'Détails de la guild [:name]',
+		'download' => 'Téléchargements'
 	],
 	'home' => [
 		'aside' => [
@@ -140,6 +141,14 @@ return [
 			'member_since' => 'Membre depuis',
 			'status' => 'Statut'
 		]
+	],
+	'download' => [
+		'created_at' => 'Ajouté il y\'a:',
+		'updated_at' => 'Modifié il y\'a:',
+		'size' => 'Taille:',
+		'action' => 'Télécharger',
+		'clients_links' => 'Liens des Clients',
+		'patcher_links' => 'Liens des Patcheurs',
 	],
 	'jobs' => [
 		'vagrant' => 'Vagabond',
