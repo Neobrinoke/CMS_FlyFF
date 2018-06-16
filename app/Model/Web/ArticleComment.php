@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
  * @property string content
  * @property bool is_mine
  * @property bool has_responses
+ * @property bool is_response
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at

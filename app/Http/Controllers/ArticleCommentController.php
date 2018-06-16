@@ -97,7 +97,7 @@ class ArticleCommentController extends Controller
 	 */
 	public function storeResponse(Request $request, Article $article, ArticleComment $articleComment)
 	{
-		if ($article->authorized_comment) {
+		if ($article->authorized_comment && !$articleComment->is_response) {
 			$validateData = $request->validate([
 				'content' => 'required|max:250'
 			]);
