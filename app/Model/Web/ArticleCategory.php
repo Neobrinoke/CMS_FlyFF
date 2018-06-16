@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @property int id
  * @property string label
  * @property string color
+ * @property string slug
  * @property Collection articles
  * @property Carbon created_at
  * @property Carbon updated_at
@@ -36,6 +37,16 @@ class ArticleCategory extends Model
 	 */
 	public function articles()
 	{
-		return $this->hasMany(Article::class);
+		return $this->hasMany(Article::class, 'category_id', 'id');
+	}
+
+	/**
+	 * Return slug for this category.
+	 *
+	 * @return string
+	 */
+	public function getSlugAttribute()
+	{
+		return str_slug($this->label);
 	}
 }

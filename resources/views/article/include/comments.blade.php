@@ -1,4 +1,4 @@
-<div class="ui comments" @if(!is_null($parentId)) id="comment_{{ $parentId }}_responses" style="display: none;" @endif>
+<div class="ui comments" @if(!is_null($parentId)) id="comment_{{ $parentId }}_responses" @endif>
 	@foreach($comments as $comment)
 		<div class="comment">
 			<a class="avatar" href="#"><img src="https://semantic-ui.com/images/avatar/small/matt.jpg"></a>
@@ -20,7 +20,7 @@
 							<a data-modal="#comment_{{ $comment->id }}_destroy_modal"><i class="trash icon"></i>@lang('site.comment.delete')</a>
 						@endif
 						@if($comment->has_responses)
-							<a data-toggle="#comment_{{ $comment->id }}_responses" data-hideMessage="<i class='eye icon'></i>@lang('site.comment.hide')" data-showMessage="<i class='eye icon'></i>@lang('site.comment.show')"><i class='eye icon'></i>@lang('site.comment.show')</a>
+							<a data-toggle="#comment_{{ $comment->id }}_responses" data-hideMessage="<i class='eye icon'></i>@lang('site.comment.hide')" data-showMessage="<i class='eye icon'></i>@lang('site.comment.show')"><i class='eye icon'></i>@lang('site.comment.hide')</a>
 						@endif
 					</div>
 				@endauth

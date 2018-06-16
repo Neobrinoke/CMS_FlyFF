@@ -23,7 +23,7 @@
 								<p>{!! str_limit($article->content, 150) !!}...</p>
 							</div>
 							<div class="extra">
-								<div class="ui {{ $article->category->color }} label">{{ $article->category->label }}</div>
+								<a class="ui {{ $article->category->color }} label" href="{{ route('article.category.show', [$article->category, $article->category->slug]) }}">{{ $article->category->label }}</a>
 								@if($article->authorized_comment)
 									<span class="ui teal label"><i class="comment outline icon"></i>{{ $article->comment_count }}</span>
 								@endif
