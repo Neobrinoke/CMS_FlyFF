@@ -18,12 +18,14 @@ use Illuminate\Support\Facades\Auth;
  * @property int|null comment_id
  * @property string content
  * @property bool is_mine
+ * @property bool has_responses
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
  *
  * @property Article article
  * @property User author
+ * @property ArticleComment|null parent
  * @property Collection responses
  */
 class ArticleComment extends Model
@@ -59,6 +61,16 @@ class ArticleComment extends Model
 	}
 
 	/**
+	 * Return parent for this response.
+	 *
+	 * @return Model|null
+	 */
+	public function getParentAttribute(): ?Model
+	{
+		return self::query()->where('id', $this->comment_id)->first();
+	}
+
+	/**
 	 * Return all response for this comment.
 	 *
 	 * @return Collection
@@ -76,6 +88,26 @@ class ArticleComment extends Model
 	public function getIsMineAttribute(): bool
 	{
 		return intval($this->author_id) === Auth::id();
+	}
+
+	/**
+	 * Return true if responses exists for this comment.
+	 *
+	 * @return bool
+	 */
+	public function getHasResponsesAttribute(): bool
+	{
+		return $this->responses->isNotEmpty();
+	}
+
+	/**
+	 * Return true if this comment is an response.
+	 *
+	 * @return bool
+	 */
+	public function getIsResponseAttribute(): bool
+	{
+		return !is_null($this->parent);
 	}
 
 	/**

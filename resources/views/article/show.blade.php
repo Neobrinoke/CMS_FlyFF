@@ -22,9 +22,7 @@
 		@if($article->authorized_comment)
 			<section class="ui fluid clearing segment">
 				<h3 class="ui dividing header">@lang('site.article.comment.read')</h3>
-				<div class="ui comments">
-					@include('article.include.comments', ['comments' => $article->comments])
-				</div>
+				@include('article.include.comments', ['comments' => $article->comments, 'parentId' => null])
 			</section>
 			@auth
 				<section class="ui fluid clearing segment">

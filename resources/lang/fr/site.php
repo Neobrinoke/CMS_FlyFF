@@ -60,6 +60,8 @@ return [
 		'reply' => 'Répondre',
 		'edit' => 'Editer',
 		'delete' => 'Supprimer',
+		'show' => 'Afficher les réponses',
+		'hide' => 'Masquer les réponses',
 		'delete_modal' => [
 			'header' => 'Suppression de commentaire',
 			'messages' => [

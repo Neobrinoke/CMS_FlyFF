@@ -37,6 +37,20 @@ $(document).ready(function () {
 		e.preventDefault();
 		$($(this).attr('data-hide')).css('display', 'none');
 	});
+
+	// Auto toggle element with only data attr in HTML
+	$('[data-toggle]').click(function (e) {
+		e.preventDefault();
+		let element = $($(this).attr('data-toggle'));
+
+		if(element.css('display') === 'none') {
+			element.css('display', 'block');
+			$(this).html($(this).attr('data-hideMessage'));
+		} else {
+			element.css('display', 'none');
+			$(this).html($(this).attr('data-showMessage'));
+		}
+	});
 });
 
 let getLocation = function (href) {

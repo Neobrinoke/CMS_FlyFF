@@ -1,4 +1,4 @@
-<div class="comments">
+<div class="ui comments" @if(!is_null($parentId)) id="comment_{{ $parentId }}_responses" style="display: none;" @endif>
 	@foreach($comments as $comment)
 		<div class="comment">
 			<a class="avatar" href="#"><img src="https://semantic-ui.com/images/avatar/small/matt.jpg"></a>
@@ -10,13 +10,27 @@
 				<div class="text">{{ $comment->content }}</div>
 				@auth
 					<div class="actions">
-						<a data-show="#comment_{{ $comment->id }}_reply_section"><i class="reply icon"></i>@lang('site.comment.reply')</a>
+						@if($comment->is_response)
+							<a data-show="#comment_{{ $comment->parent->id }}_reply_section"><i class="reply icon"></i>@lang('site.comment.reply')</a>
+						@else
+							<a data-show="#comment_{{ $comment->id }}_reply_section"><i class="reply icon"></i>@lang('site.comment.reply')</a>
+						@endif
 						@if($comment->is_mine)
 							<a data-modal="#comment_{{ $comment->id }}_edit_modal"><i class="edit icon"></i>@lang('site.comment.edit')</a>
 							<a data-modal="#comment_{{ $comment->id }}_destroy_modal"><i class="trash icon"></i>@lang('site.comment.delete')</a>
 						@endif
+						@if($comment->has_responses)
+							<a data-toggle="#comment_{{ $comment->id }}_responses" data-hideMessage="<i class='eye icon'></i>@lang('site.comment.hide')" data-showMessage="<i class='eye icon'></i>@lang('site.comment.show')"><i class='eye icon'></i>@lang('site.comment.show')</a>
+						@endif
 					</div>
-					<section class="ui fluid clearing segment" id="comment_{{ $comment->id }}_reply_section" style="display: none;">
+				@endauth
+			</div>
+			@if($comment->has_responses)
+				@include('article.include.comments', ['comments' => $comment->responses, 'parentId' => $comment->id])
+			@endif
+			@auth
+				@if(!$comment->is_response)
+					<section class="ui fluid clearing segment" id="comment_{{ $comment->id }}_reply_section" style="display: none; margin-left: 1em;">
 						<form class="ui form {{ $errors->any() ? 'error' : '' }}" action="{{ route('article.comment.response.store', [$article, $comment]) }}" method="POST">
 							@csrf
 							<div class="required field {{ $errors->has('content') ? 'error'  : '' }}">
@@ -27,11 +41,8 @@
 							<button class="ui primary right labeled icon button" type="submit"><i class="checkmark icon"></i>@lang('site.article.comment.submit')</button>
 						</form>
 					</section>
-				@endauth
-			</div>
-			@if($comment->responses->isNotEmpty())
-				@include('article.include.comments', ['comments' => $comment->responses])
-			@endif
+				@endif
+			@endauth
 		</div>
 	@endforeach
 </div>
