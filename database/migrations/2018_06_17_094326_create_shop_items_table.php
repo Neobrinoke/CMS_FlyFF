@@ -21,7 +21,6 @@ class CreateShopItemsTable extends Migration
 			$table->string('title');
 			$table->longText('description')->nullable();
 			$table->integer('price');
-			$table->integer('qte');
 			$table->string('image_thumbnail');
 			$table->timestamps(1);
 			$table->softDeletes('deleted_at', 1);

@@ -9,13 +9,12 @@
 		<title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
 		<link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/main.css') }}" rel="stylesheet">
 		@yield('css')
 	</head>
 	<body>
 		@include('include.header')
-		<section class="ui container">
-		</section>
 		<main class="ui container">
 			@include('include.aside')
 			<section class="content">
@@ -32,6 +31,7 @@
 
 		<script src="{{ asset('js/jquery.js') }}"></script>
 		<script src="{{ asset('js/semantic.js') }}"></script>
+		<script src="{{ asset('js/swiper.js') }}"></script>
 		<script src="{{ asset('js/main.js') }}"></script>
 		@yield('js')
 	</body>

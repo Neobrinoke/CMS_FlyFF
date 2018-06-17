@@ -32,10 +32,7 @@ class ArticleController extends Controller
 	public function show(Article $article, string $slug)
 	{
 		if ($slug !== $article->slug) {
-			return redirect()->route('article.show', [
-				'article' => $article->id,
-				'slug' => $article->slug
-			]);
+			return redirect()->route('article.show', [$article->id, $article->slug]);
 		}
 
 		return view('article.show', [
@@ -46,10 +43,7 @@ class ArticleController extends Controller
 	public function categoryShow(ArticleCategory $category, string $slug)
 	{
 		if ($slug !== $category->slug) {
-			return redirect()->route('article.category.show', [
-				'category' => $category,
-				'slug' => $category->slug
-			]);
+			return redirect()->route('article.category.show', [$category, $category->slug]);
 		}
 
 		return view('article.index', [

@@ -1,0 +1,65 @@
+@extends('base')
+
+@section('title', __('site.title.shop_item_detail', ['name' => $item->title]))
+
+@section('content')
+	<div class="box">
+		<div class="ui primary attached message">
+			<h1 class="header">@yield('title')</h1>
+		</div>
+		<div class="ui attached fluid clearing segment">
+			<div class="ui left floated" style="max-width: 200px; margin-right: 15px;">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						@foreach($item->images as $image)
+							<div class="swiper-slide">
+								<img src="{{ $image->image }}" width="200" height="350">
+							</div>
+						@endforeach
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+				</div>
+			</div>
+			<div class="ui left floated">
+				<p>{{ $item->description }} </p>
+				<p>
+					<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
+					<span>{{ $item->price }}</span>
+				</p>
+				<form class="ui form" action="{{ route('shop.cart.store', [$item]) }}" method="POST">
+					@csrf
+					<div class="field">
+						<label for="qte">Quantité</label>
+						<input type="number" name="qte" id="qte" value="1">
+					</div>
+					<button class="ui fluid primary button" type="submit">Ajouter au panié</button>
+				</form>
+			</div>
+		</div>
+	</div>
+@endsection
+
+@section('js')
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 1,
+			spaceBetween: 30,
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	</script>
+@endsection
+
+<?php /** @var \App\Model\Web\ShopItem $item */ ?>
+<?php /** @var \App\Model\Web\ShopImage $image */ ?>

@@ -14,6 +14,7 @@ return [
 		'download' => 'Téléchargements',
 		'support' => 'Support',
 		'shop' => 'Boutique',
+		'cart' => 'Panier (:number)',
 		'login' => 'Connexion',
 		'register' => 'S\'inscrire'
 	],
@@ -30,6 +31,7 @@ return [
 		'guild_detail' => 'Détails de la guild [:name]',
 		'download' => 'Téléchargements',
 		'shop' => 'Boutique',
+		'cart' => 'Mon panier',
 		'shop_detail' => 'Boutique [:name]',
 		'shop_item_detail' => 'Détails de l\'objet [:name]'
 	],
@@ -181,7 +183,7 @@ return [
 		'qte' => 'Quantité',
 		'sale_types' => [
 			ShopItem::SALE_CS_TYPE => 'GPotato Point',
-			ShopItem::SALE_VOTE_TYPE => 'Vote point'
+			ShopItem::SALE_VOTE_TYPE => 'Vote Point'
 		]
 	],
 	'jobs' => [
