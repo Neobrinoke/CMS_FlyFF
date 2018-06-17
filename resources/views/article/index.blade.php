@@ -34,7 +34,7 @@
 				@endforeach
 			</section>
 			<div class="ui divider"></div>
-			{{ $articles->links() }}
+			{{ $articles->appends(request()->except('page'))->links() }}
 		</div>
 	</div>
 @endsection

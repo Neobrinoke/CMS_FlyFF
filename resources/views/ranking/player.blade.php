@@ -42,7 +42,7 @@
 				<tfoot>
 					<tr>
 						<th colspan="7">
-							{{ $characters->links() }}
+							{{ $characters->appends(request()->except('page'))->links() }}
 						</th>
 					</tr>
 				</tfoot>

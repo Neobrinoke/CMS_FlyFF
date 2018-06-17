@@ -34,12 +34,15 @@ Route::get('/guild/{guild}', 'GuildController@show')->name('guild.show');
 // Download URL
 Route::get('/downloads', 'DownloadController@index')->name('download.index');
 
+// Shop URL
+Route::get('/shops', 'ShopController@index')->name('shop.index');
+Route::get('/shop/{shop}-{slug}', 'ShopController@show')->name('shop.show');
+Route::get('/shop/{shop}-{slug}/{item}-{slug}', 'ShopController@item')->name('shop.item');
+
 Route::group(['middleware' => 'auth'], function () {
 	// Article comment URL
 	Route::post('/article/{article}/comment', 'ArticleCommentController@store')->name('article.comment.store');
 	Route::post('/article/{article}/comment/{articleComment}/update', 'ArticleCommentController@update')->name('article.comment.update');
 	Route::post('/article/{article}/comment/{articleComment}/destroy', 'ArticleCommentController@destroy')->name('article.comment.destroy');
 	Route::post('/article/{article}/comment/{articleComment}/response', 'ArticleCommentController@storeResponse')->name('article.comment.response.store');
-	Route::post('/article/{article}/comment/{articleComment}/response/{commentResponse}/update', 'ArticleCommentController@update')->name('article.comment.reponse.update');
-	Route::post('/article/{article}/comment/{articleComment}/response/{commentResponse}/destroy', 'ArticleCommentController@destroy')->name('article.comment.reponse.destroy');
 });
