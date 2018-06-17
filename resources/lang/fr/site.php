@@ -26,7 +26,9 @@ return [
 		'player_ranking' => 'Classement des joueurs',
 		'guild_ranking' => 'Classement des guildes',
 		'guild_detail' => 'Détails de la guild [:name]',
-		'download' => 'Téléchargements'
+		'download' => 'Téléchargements',
+		'shop' => 'Boutique',
+		'shop_detail' => 'Détails de l\'objet [:name]'
 	],
 	'home' => [
 		'aside' => [
