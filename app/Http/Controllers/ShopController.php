@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Model\Web\Shop;
 use App\Model\Web\ShopCategory;
-use App\Model\Web\ShopItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -42,8 +41,8 @@ class ShopController extends Controller
 		}
 
 		$categories = ShopCategory::all();
-
 		$itemQuery = $shop->items();
+		$canNotFind = false;
 
 		if ($request->input('title')) {
 			$itemQuery->where('title', 'like', '%' . $request->input('title') . '%');
@@ -67,18 +66,22 @@ class ShopController extends Controller
 			$itemQuery->orderBy($column, $direction);
 		}
 
-		//@todo implement research with $request
+		if ($request->input('sale_type')) {
+			$itemQuery->where('sale_type', $request->input('sale_type'));
+		}
 
 		$items = $itemQuery->paginate(15);
 
 		if ($items->isEmpty()) {
+			$canNotFind = true;
 			$items = $shop->items()->paginate(15);
 		}
 
 		return view('shop.show', [
 			'shop' => $shop,
 			'categories' => $categories,
-			'items' => $items
+			'items' => $items,
+			'canNotFind' => $canNotFind
 		]);
 	}
 }

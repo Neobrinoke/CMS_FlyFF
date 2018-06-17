@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
  * @property string title
  * @property string description
  * @property int price
+ * @property int qte
  * @property string image_thumbnail
  * @property string slug
  * @property string sale_image

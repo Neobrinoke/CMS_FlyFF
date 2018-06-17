@@ -3,6 +3,7 @@
 namespace App\Model\Web;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -37,6 +38,11 @@ class Shop extends Model
 		'updated_at',
 		'deleted_at'
 	];
+
+	public static function all($columns = ['*'])
+	{
+		return self::query()->whereHas('items')->get();
+	}
 
 	/**
 	 * Return all items for this shop.

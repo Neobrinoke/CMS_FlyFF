@@ -158,13 +158,16 @@ return [
 	'shop' => [
 		'choose_shop' => 'Choisissez une boutique !',
 		'show_item_details' => 'Voir les détails de l\'objet',
-		'search_section' => [
+		'search' => [
 			'header' => 'Section de recherche',
 			'title' => 'Titre',
 			'price' => 'Prix',
 			'category' => 'Catégorie',
+			'devise' => 'Devise',
 			'sort_by' => 'Trié par',
-			'select_categories' => 'Sélectionnez une ou plusieurs catégorie(s)',
+			'select_categories' => 'Sélectionnez une/des catégorie(s)',
+			'submit' => 'Rechercher',
+			'can_not_find' => 'Aucun article ne correspond exactement à vos critères.',
 			'sort_list' => [
 				/**
 				 * These keys need to be formatted like that (column-direction). That's important!
