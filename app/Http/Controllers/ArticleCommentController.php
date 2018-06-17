@@ -32,10 +32,7 @@ class ArticleCommentController extends Controller
 			$request->session()->flash('status', trans('site.article.comment.submit_comment.comment.create'));
 		}
 
-		return redirect()->route('article.show', [
-			'article' => $article,
-			'slug' => $article->slug
-		]);
+		return redirect()->route('article.show', [$article, $article->slug]);
 	}
 
 	/**
@@ -59,10 +56,7 @@ class ArticleCommentController extends Controller
 			$request->session()->flash('status', trans('site.article.comment.submit_comment.comment.edit'));
 		}
 
-		return redirect()->route('article.show', [
-			'article' => $article,
-			'slug' => $article->slug
-		]);
+		return redirect()->route('article.show', [$article, $article->slug]);
 	}
 
 	/**
@@ -81,10 +75,7 @@ class ArticleCommentController extends Controller
 			$request->session()->flash('status', trans('site.article.comment.submit_comment.comment.delete'));
 		}
 
-		return redirect()->route('article.show', [
-			'article' => $article,
-			'slug' => $article->slug
-		]);
+		return redirect()->route('article.show', [$article,  $article->slug]);
 	}
 
 	/**
@@ -111,9 +102,6 @@ class ArticleCommentController extends Controller
 			$request->session()->flash('status', trans('site.article.comment.submit_comment.response.create'));
 		}
 
-		return redirect()->route('article.show', [
-			'article' => $article,
-			'slug' => $article->slug
-		]);
+		return redirect()->route('article.show', [$article, $article->slug]);
 	}
 }

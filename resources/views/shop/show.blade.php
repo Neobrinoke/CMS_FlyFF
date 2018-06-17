@@ -74,14 +74,10 @@
 								<span>{{ $item->price }}</span>
 								<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
 							</div>
-							<div class="right aligned meta">
-								<span style="vertical-align: middle;">{{ $item->qte }}</span>
-								<img class="ui middle aligned image" src="{{ asset('/img/count.png') }}" title="{{ trans('site.shop.qte') }}">
-							</div>
 							<div class="meta">
 							</div>
 						</div>
-						<a class="ui compact bottom attached primary right labeled icon button" href="" target="_blank"><i class="right arrow icon"></i>@lang('site.shop.show_item_details')</a>
+						<a class="ui compact bottom attached primary right labeled icon button" href="{{ route('shop.item', [$shop, $item, $item->slug]) }}" target="_blank"><i class="right arrow icon"></i>@lang('site.shop.show_item_details')</a>
 					</div>
 				@endforeach
 			</section>

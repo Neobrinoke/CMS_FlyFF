@@ -12,6 +12,7 @@
 		<a href="{{ route('download.index') }}" class="item"><i class="download icon"></i>@lang('site.nav.download')</a>
 		<a href="{{ route('shop.index') }}" class="item"><i class="shopping cart icon"></i>@lang('site.nav.shop')</a>
 		<div class="right menu">
+			<a href="{{ route('shop.cart') }}" class="item">@lang('site.nav.cart', ['number' => count(session('cart.items') ?? [])])</a>
 			@auth
 				<div class="ui dropdown icon item">
 					<span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>

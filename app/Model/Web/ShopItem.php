@@ -18,14 +18,15 @@ use Illuminate\Support\Collection;
  * @property string title
  * @property string description
  * @property int price
- * @property int qte
  * @property string image_thumbnail
  * @property string slug
  * @property string sale_image
+ * @property int qte
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
  *
+ * @property Shop shop
  * @property ShopCategory category
  * @property Collection images
  */
@@ -81,7 +82,7 @@ class ShopItem extends Model
 	 */
 	public function images()
 	{
-		return $this->hasMany(ShopImage::class);
+		return $this->hasMany(ShopImage::class, 'item_id', 'id');
 	}
 
 	/**
