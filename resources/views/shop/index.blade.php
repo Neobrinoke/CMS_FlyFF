@@ -8,20 +8,21 @@
 			<h1 class="header"><i class="shopping cart icon"></i>@yield('title')</h1>
 		</div>
 		<div class="ui attached fluid clearing segment">
-			<h2 class="ui dividing header">@lang('site.download.clients_links')</h2>
-			<div class="ui three stackable cards">
-				@foreach($clients as $download)
-					@include('download.include.card')
-				@endforeach
-			</div>
-			<h2 class="ui dividing header">@lang('site.download.patcher_links')</h2>
-			<div class="ui three stackable cards">
-				@foreach($patchers as $download)
-					@include('download.include.card')
+			<h2 class="ui dividing center aligned header">@lang('site.shop.choose_shop')</h2>
+			<div class="ui link three centered stackable cards">
+				@foreach($shops as $shop)
+					<div class="card">
+						@if($shop->image_thumbnail)
+							<a class="image" href="{{ route('shop.show', [$shop, $shop->slug]) }}"><img src="{{ $shop->image_thumbnail }}"></a>
+						@endif
+						<div class="content">
+							<span class="header center aligned">{{ $shop->label }}</span>
+						</div>
+					</div>
 				@endforeach
 			</div>
 		</div>
 	</div>
 @endsection
 
-<?php /** @var \App\Model\Web\Download $download */ ?>
+<?php /** @var \App\Model\Web\Shop $shop */ ?>

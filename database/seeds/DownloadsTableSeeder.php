@@ -17,8 +17,6 @@ class DownloadsTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$user = User::query()->where('name', '=', 'Neobrinoke')->get()->first();
-
 		$images = [
 			'https://cdn.worldvectorlogo.com/logos/mega-icon.svg',
 			'https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/MediaFire.png',
@@ -33,7 +31,6 @@ class DownloadsTableSeeder extends Seeder
 			$randType = rand(1, 2) === 1 ? Download::TYPE_CLIENT : Download::TYPE_PATCHER;
 
 			Download::query()->create([
-				'author_id' => $user->id,
 				'size' => rand(1, 8) . ' Go',
 				'image' => $randImg,
 				'link' => $randImg,

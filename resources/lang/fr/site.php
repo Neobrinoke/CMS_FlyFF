@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Web\ShopItem;
+
 return [
 	'nav' => [
 		'home' => 'Accueil',
@@ -28,7 +30,8 @@ return [
 		'guild_detail' => 'Détails de la guild [:name]',
 		'download' => 'Téléchargements',
 		'shop' => 'Boutique',
-		'shop_detail' => 'Détails de l\'objet [:name]'
+		'shop_detail' => 'Boutique [:name]',
+		'shop_item_detail' => 'Détails de l\'objet [:name]'
 	],
 	'home' => [
 		'aside' => [
@@ -151,6 +154,32 @@ return [
 		'action' => 'Télécharger',
 		'clients_links' => 'Liens des Clients',
 		'patcher_links' => 'Liens des Patcheurs',
+	],
+	'shop' => [
+		'choose_shop' => 'Choisissez une boutique !',
+		'show_item_details' => 'Voir les détails de l\'objet',
+		'search_section' => [
+			'header' => 'Section de recherche',
+			'title' => 'Titre',
+			'price' => 'Prix',
+			'category' => 'Catégorie',
+			'sort_by' => 'Trié par',
+			'select_categories' => 'Sélectionnez une ou plusieurs catégorie(s)',
+			'sort_list' => [
+				/**
+				 * These keys need to be formatted like that (column-direction). That's important!
+				 */
+				'price-asc' => 'Prix ↑',
+				'price-desc' => 'Prix ↓',
+				'title-asc' => 'Nom ↑',
+				'title-desc' => 'Nom ↓'
+			]
+		],
+		'qte' => 'Quantité',
+		'sale_types' => [
+			ShopItem::SALE_CS_TYPE => 'GPotato Point',
+			ShopItem::SALE_VOTE_TYPE => 'Vote point'
+		]
 	],
 	'jobs' => [
 		'vagrant' => 'Vagabond',

@@ -47,7 +47,7 @@
 				<tfoot>
 					<tr>
 						<th colspan="7">
-							{{ $guilds->links() }}
+							{{ $guilds->appends(request()->except('page'))->links() }}
 						</th>
 					</tr>
 				</tfoot>

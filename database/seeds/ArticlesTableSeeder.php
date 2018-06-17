@@ -16,12 +16,9 @@ class ArticlesTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		/** @var User $user */
-		/** @var Article $article */
-		/** @var ArticleCategory $category */
-
 		$faker = Factory::create();
 
+		/** @var User $user */
 		$user = User::query()->where('name', '=', 'Neobrinoke')->get()->first();
 
 		$images = [
@@ -46,17 +43,19 @@ class ArticlesTableSeeder extends Seeder
 			'color' => 'purple'
 		]);
 
+		/** @var ArticleCategory $category */
 		foreach ($categories as $category) {
 			for ($i = 0; $i < 20; $i++) {
 
-				$rand = rand(0, (count($images) - 1));
+				$image = $images[array_rand($images)];
 				$isCommentable = rand(0, 1);
 
+				/** @var Article $article */
 				$article = Article::query()->create([
 					'title' => $faker->realText(50),
 					'content' => $faker->realText(500),
 					'author_id' => $user->id,
-					'image_thumbnail' => $images[$rand],
+					'image_thumbnail' => $image,
 					'image_header' => ($i % 2) == 0 ? 'http://eu-uimg-wgp.webzen.com/1220129452/HtmlEdit/10112017_113105_fr-500x175_414659.jpg' : null,
 					'category_id' => $category->id,
 					'authorized_comment' => $isCommentable

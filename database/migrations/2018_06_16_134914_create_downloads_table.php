@@ -15,7 +15,6 @@ class CreateDownloadsTable extends Migration
     {
         Schema::create('downloads', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('author_id')->index();
 			$table->integer('type');
 			$table->string('size');
 			$table->string('image');
