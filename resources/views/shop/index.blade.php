@@ -1,11 +1,11 @@
 @extends('base')
 
-@section('title', __('site.title.download'))
+@section('title', __('site.title.shop'))
 
 @section('content')
 	<div class="box">
 		<div class="ui primary attached message">
-			<h1 class="header"><i class="download icon"></i>@yield('title')</h1>
+			<h1 class="header"><i class="shopping cart icon"></i>@yield('title')</h1>
 		</div>
 		<div class="ui attached fluid clearing segment">
 			<h2 class="ui dividing header">@lang('site.download.clients_links')</h2>

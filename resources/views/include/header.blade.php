@@ -1,23 +1,24 @@
 <nav class="ui menu stackable">
 	<div class="ui container">
 		<a href="{{ route('home') }}" class="header item"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
-		<a href="{{ route('article.index') }}" class="item">@lang('site.nav.news')</a>
-		<div class="ui dropdown icon item">
-			@lang('site.nav.ranking.header')
+		<a href="{{ route('article.index') }}" class="item"><i class="newspaper outline icon"></i>@lang('site.nav.news')</a>
+		<div class="ui dropdown item">
+			<i class="sort amount up icon"></i>@lang('site.nav.ranking.header')
 			<div class="menu">
 				<a href="{{ route('ranking.player') }}" class="item">@lang('site.nav.ranking.players')</a>
 				<a href="{{ route('ranking.guild') }}" class="item">@lang('site.nav.ranking.guilds')</a>
 			</div>
 		</div>
-		<a href="{{ route('download.index') }}" class="item">@lang('site.nav.download')</a>
-		<a href="{{ route('password.request') }}" class="item">@lang('site.nav.support')</a>
-		<a href="{{ route('home') }}" class="item">@lang('site.nav.shop')</a>
+		<a href="{{ route('download.index') }}" class="item"><i class="download icon"></i>@lang('site.nav.download')</a>
+		<a href="{{ route('home') }}" class="item"><i class="shopping cart icon"></i>@lang('site.nav.shop')</a>
 		<div class="right menu">
 			@auth
 				<div class="ui dropdown icon item">
 					<span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>
 					<div class="menu">
 						<div class="item">My account</div>
+						<div class="divider"></div>
+						<a href="{{ route('password.request') }}" class="item">@lang('site.nav.support')</a>
 						<div class="divider"></div>
 						<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="item">
 							<i class="sign out icon"></i>@lang('site.home.aside.my_account.logout')

@@ -5,7 +5,7 @@
 @section('content')
 	<div class="box">
 		<div class="ui primary attached message">
-			<h1 class="header">@yield('title')</h1>
+			<h1 class="header"><i class="newspaper outline icon"></i>@yield('title')</h1>
 		</div>
 		<section class="ui attached fluid clearing segment">
 			@if($article->image_header)
