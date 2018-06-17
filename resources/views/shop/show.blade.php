@@ -9,11 +9,11 @@
 		</div>
 		<div class="ui attached fluid clearing segment">
 			<section class="ui clearing segment">
-				<h3 class="ui dividing header">@lang('site.shop.search_section.header')</h3>
+				<h3 class="ui dividing header">@lang('site.shop.search.header')</h3>
 				<form class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
 					<div class="fields">
 						<div class="six wide field">
-							<label for="title">@lang('site.shop.search_section.title')</label>
+							<label for="title">@lang('site.shop.search.title')</label>
 							<input type="text" name="title" id="title" value="{{ request('title') }}">
 						</div>
 						<div class="ten wide field">
@@ -28,53 +28,64 @@
 							</div>
 						</div>
 					</div>
-					<div class="two fields">
+					<div class="three fields">
 						<div class="field">
-							<label for="category_id">@lang('site.shop.search_section.category')</label>
+							<label for="category_id">@lang('site.shop.search.category')</label>
 							<select multiple="" class="ui dropdown" name="category_id[]" id="category_id">
-								<option value="">@lang('site.shop.search_section.select_categories')</option>
+								<option value="">@lang('site.shop.search.select_categories')</option>
 								@foreach($categories as $category)
 									<option value="{{ $category->id }}" {{ collect(request('category_id'))->contains($category->id) ? 'selected' : '' }}>{{ $category->label }}</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="field">
-							<label for="sort_by">@lang('site.shop.search_section.sort_by')</label>
+							<label for="sale_type">@lang('site.shop.search.sort_by')</label>
+							<select class="ui dropdown" name="sale_type" id="sale_type">
+								@foreach(trans('site.shop.sale_types') as $key => $value)
+									<option value="{{ $key }}" {{ intval(request('sale_type')) === $key ? 'selected' : '' }}>{{ $value }}</option>
+								@endforeach
+							</select>
+						</div>
+						<div class="field">
+							<label for="sort_by">@lang('site.shop.search.sort_by')</label>
 							<select class="ui dropdown" name="sort_by" id="sort_by">
-								@foreach(trans('site.shop.search_section.sort_list') as $key => $value)
+								@foreach(trans('site.shop.search.sort_list') as $key => $value)
 									<option value="{{ $key }}" {{ request('sort_by') === $key ? 'selected' : '' }}>{!! $value !!}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
-					<button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>Rechercher</button>
+					<button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('site.shop.search.submit')</button>
 				</form>
 			</section>
-			@if($items->isNotEmpty())
-				<section class="ui three stackable cards">
-					@foreach($items as $item)
-						<div class="ui card">
-							<div class="content">
-								<img class="ui mini left floated image" src="{{ $item->image_thumbnail }}">
-								<p class="right aligned header">{{ $item->title }} {{ $item->category->label }}</p>
-								<div class="right aligned meta">
-									<span>{{ $item->price }}</span>
-									<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
-								</div>
-								<div class="right aligned meta">
-									<span style="vertical-align: middle;">1</span>
-									<img class="ui middle aligned image" src="/img/count.png" title="{{ trans('site.shop.qte') }}">
-								</div>
-								<div class="meta">
-								</div>
-							</div>
-							<a class="ui compact bottom attached primary right labeled icon button" href="" target="_blank"><i class="right arrow icon"></i>@lang('site.shop.show_item_details')</a>
-						</div>
-					@endforeach
-				</section>
-			@else
-				<div class="ui error message">Error</div>
+
+
+			@if($canNotFind)
+				<div class="ui error message">@lang('site.shop.search.can_not_find')</div>
 			@endif
+
+			<section class="ui three stackable cards">
+				@foreach($items as $item)
+					<div class="ui card">
+						<div class="content">
+							<img class="ui mini left floated image" src="{{ $item->image_thumbnail }}">
+							<p class="right aligned header">{{ $item->title }} {{ $item->category->label }}</p>
+							<div class="right aligned meta">
+								<span>{{ $item->price }}</span>
+								<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
+							</div>
+							<div class="right aligned meta">
+								<span style="vertical-align: middle;">{{ $item->qte }}</span>
+								<img class="ui middle aligned image" src="{{ asset('/img/count.png') }}" title="{{ trans('site.shop.qte') }}">
+							</div>
+							<div class="meta">
+							</div>
+						</div>
+						<a class="ui compact bottom attached primary right labeled icon button" href="" target="_blank"><i class="right arrow icon"></i>@lang('site.shop.show_item_details')</a>
+					</div>
+				@endforeach
+			</section>
+
 			<div class="ui divider"></div>
 			{{ $items->appends(request()->except('page'))->links() }}
 		</div>

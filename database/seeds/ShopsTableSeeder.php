@@ -90,6 +90,7 @@ class ShopsTableSeeder extends Seeder
 						'title' => $faker->text(15),
 						'description' => $faker->text(50),
 						'price' => $faker->numberBetween(50, 2500),
+						'qte' => $faker->numberBetween(1, 50),
 						'image_thumbnail' => $image
 					]);
 
