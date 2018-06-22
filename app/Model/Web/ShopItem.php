@@ -21,7 +21,8 @@ use Illuminate\Support\Collection;
  * @property string image_thumbnail
  * @property string slug
  * @property string sale_image
- * @property int qte
+ * @property int quantity
+ * @property int total_price
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
@@ -105,5 +106,15 @@ class ShopItem extends Model
 		$type = intval($this->sale_type) === self::SALE_VOTE_TYPE ? 'vote' : 'cs';
 
 		return asset(sprintf("/img/sale_%s_image.png", $type));
+	}
+
+	/**
+	 * Return total price for this item.
+	 *
+	 * @return int
+	 */
+	public function getTotalPriceAttribute(): int
+	{
+		return $this->price * ($this->quantity ?? 1);
 	}
 }

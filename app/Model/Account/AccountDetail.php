@@ -30,21 +30,6 @@ class AccountDetail extends Model
 	protected $table = 'ACCOUNT_TBL_DETAIL';
 
 	/** @var array */
-	protected $fillable = [
-		'account',
-		'gamecode',
-		'tester',
-		'm_chLoginAuthority',
-		'BlockTime',
-		'EndTime',
-		'WebTime',
-		'isuse',
-		'email',
-		'secession',
-		'regdate'
-	];
-
-	/** @var array */
 	protected $dates = [
 		'secession',
 		'regdate'

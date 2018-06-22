@@ -19,10 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string reload
  * @property string OldPassword
  * @property string TempPassword
- * @property int cash
- * @property int votes
- * @property int vote_jeu
- * @property int vote_total
  * @property AccountDetail detail
  */
 class Account extends Model
@@ -32,24 +28,6 @@ class Account extends Model
 
 	/** @var string */
 	protected $table = 'ACCOUNT_TBL';
-
-	/** @var array */
-	protected $fillable = [
-		'account',
-		'password',
-		'isuse',
-		'member',
-		'id_no1',
-		'id_no2',
-		'realname',
-		'reload',
-		'OldPassword',
-		'TempPassword',
-		'cash',
-		'votes',
-		'vote_jeu',
-		'vote_total'
-	];
 
 	/**
 	 * Return the detail for this account.

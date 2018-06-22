@@ -168,7 +168,10 @@ return [
 			'devise' => 'Devise',
 			'sort_by' => 'Trié par',
 			'select_categories' => 'Sélectionnez une/des catégorie(s)',
+			'select_devises' => 'Sélectionnez une/des devise(s)',
+			'select_sort' => 'Sélectionnez un ordre de tri',
 			'submit' => 'Rechercher',
+			'clear_form' => 'Vider la recherche',
 			'can_not_find' => 'Aucun article ne correspond exactement à vos critères.',
 			'sort_list' => [
 				/**
@@ -180,10 +183,18 @@ return [
 				'title-desc' => 'Nom ↓'
 			]
 		],
-		'qte' => 'Quantité',
+		'quantity' => 'Quantité',
+		'add_to_cart' => 'Ajouter au panier',
 		'sale_types' => [
 			ShopItem::SALE_CS_TYPE => 'GPotato Point',
 			ShopItem::SALE_VOTE_TYPE => 'Vote Point'
+		],
+		'cart' => [
+			'image' => 'Image',
+			'name' => 'Nom',
+			'quantity' => 'Qte',
+			'unit_price' => 'Prix Unit.',
+			'ttl_price' => 'Prix Ttl.'
 		]
 	],
 	'jobs' => [

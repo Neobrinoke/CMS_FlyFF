@@ -6,7 +6,7 @@ $(document).ready(function () {
 	$('.ui.progress.ratio').progress({
 		label: 'ratio',
 		text: {
-			ratio   : '{value} / {total}'
+			ratio: '{value} / {total}'
 		}
 	});
 
@@ -43,7 +43,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		let element = $($(this).attr('data-toggle'));
 
-		if(element.css('display') === 'none') {
+		if (element.css('display') === 'none') {
 			element.css('display', 'block');
 			$(this).html($(this).attr('data-hideMessage'));
 		} else {
@@ -51,10 +51,9 @@ $(document).ready(function () {
 			$(this).html($(this).attr('data-showMessage'));
 		}
 	});
-});
 
-let getLocation = function (href) {
-	let l = document.createElement("a");
-	l.href = href;
-	return l;
-};
+	$('#reset_form').click(function (e) {
+		e.preventDefault();
+		$(this).parent().form('clear');
+	});
+});

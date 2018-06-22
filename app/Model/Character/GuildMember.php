@@ -22,8 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int m_idWar
  * @property int m_idVote
  * @property string isuse
- * @property Carbon CreateTime
  * @property int m_nClass
+ * @property Carbon CreateTime
  *
  * @property Guild guild
  * @property Character player
@@ -49,25 +49,6 @@ class GuildMember extends Model
 
 	/** @var string */
 	protected $table = 'GUILD_MEMBER_TBL';
-
-	/** @var array */
-	protected $fillable = [
-		'm_idPlayer',
-		'serverindex',
-		'm_idGuild',
-		'm_szAlias',
-		'm_nWin',
-		'm_nLose',
-		'm_nSurrender',
-		'm_nMemberLv',
-		'm_nGiveGold',
-		'm_nGivePxp',
-		'm_idWar',
-		'm_idVote',
-		'isuse',
-		'CreateTime',
-		'm_nClass'
-	];
 
 	/** @var array */
 	protected $dates = [

@@ -52,33 +52,6 @@ class Guild extends Model
 	protected $table = 'GUILD_TBL';
 
 	/** @var array */
-	protected $fillable = [
-		'm_idGuild',
-		'serverindex',
-		'Lv_1',
-		'Lv_2',
-		'Lv_3',
-		'Lv_4',
-		'Pay_0',
-		'Pay_1',
-		'Pay_2',
-		'Pay_3',
-		'Pay_4',
-		'm_szGuild',
-		'm_nLevel',
-		'm_nGuildGold',
-		'm_nGuildPxp',
-		'm_nWin',
-		'm_nLose',
-		'm_nSurrender',
-		'm_nWinPoint',
-		'm_dwLogo',
-		'm_szNotice',
-		'isuse',
-		'CreateTime'
-	];
-
-	/** @var array */
 	protected $dates = [
 		'CreateTime'
 	];
