@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Cart;
 use App\Model\Web\Shop;
 use App\Model\Web\ShopCategory;
 use App\Model\Web\ShopItem;
@@ -106,14 +107,13 @@ class ShopController extends Controller
 	/**
 	 * Return view for cart.
 	 *
+	 * @param Cart $cart
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function cart()
+	public function cart(Cart $cart)
 	{
-		$items = session('cart.items') ?? [];
-
 		return view('shop.cart.show', [
-			'items' => $items
+			'cart' => $cart
 		]);
 	}
 
@@ -122,24 +122,32 @@ class ShopController extends Controller
 	 *
 	 * @param Request $request
 	 * @param ShopItem $item
+	 * @param Cart $cart
 	 * @return Response
 	 */
-	public function cartStore(Request $request, ShopItem $item)
+	public function cartStore(Request $request, ShopItem $item, Cart $cart)
 	{
-		$items = session('cart.items', []);
-
-		$item->qte = 1;
-		if ($request->input('qte') > 1) {
-			$item->qte = $request->input('qte');
+		$item->quantity = 1;
+		if ($request->input('quantity') > 1) {
+			$item->quantity = $request->input('quantity');
 		}
 
-		if (isset($items[$item->id])) {
-			$items[$item->id]->qte += $item->qte;
-		} else {
-			$items[$item->id] = $item;
-		}
+		$cart->addItem($item);
 
-		session(['cart.items' => $items]);
+		return redirect()->route('shop.cart');
+	}
+
+	/**
+	 * Destroy item from cart.
+	 *
+	 * @param Request $request
+	 * @param ShopItem $item
+	 * @param Cart $cart
+	 * @return Response
+	 */
+	public function cartUpdate(Request $request, ShopItem $item, Cart $cart)
+	{
+		$cart->updateQuantity($item, $request->input('direction'));
 
 		return redirect()->route('shop.cart');
 	}
@@ -148,17 +156,12 @@ class ShopController extends Controller
 	 * Destroy item from cart.
 	 *
 	 * @param ShopItem $item
+	 * @param Cart $cart
 	 * @return Response
 	 */
-	public function cartDestroy(ShopItem $item)
+	public function cartDestroy(ShopItem $item, Cart $cart)
 	{
-		$items = session('cart.items', []);
-
-		if (isset($items[$item->id])) {
-			unset($items[$item->id]);
-		}
-
-		session(['cart.items' => $items]);
+		$cart->removeItem($item);
 
 		return redirect()->route('shop.cart');
 	}

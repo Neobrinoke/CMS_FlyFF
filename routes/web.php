@@ -39,8 +39,9 @@ Route::get('/shops', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{shop}-{slug}', 'ShopController@show')->name('shop.show');
 Route::get('/shop/{shop}/{item}-{slug}', 'ShopController@item')->name('shop.item');
 Route::get('/shop/cart', 'ShopController@cart')->name('shop.cart');
-Route::post('/cart/{item}/add', 'ShopController@cartStore')->name('shop.cart.store');
-Route::post('/cart/{item}/remove', 'ShopController@cartDestroy')->name('shop.cart.destroy');
+Route::post('/shop/cart/{item}/add', 'ShopController@cartStore')->name('shop.cart.store');
+Route::post('/shop/cart/{item}/update', 'ShopController@cartUpdate')->name('shop.cart.update');
+Route::post('/shop/cart/{item}/remove', 'ShopController@cartDestroy')->name('shop.cart.destroy');
 
 Route::group(['middleware' => 'auth'], function () {
 	// Article comment URL

@@ -10,7 +10,7 @@
 		<div class="ui attached fluid clearing segment">
 			<section class="ui clearing segment">
 				<h3 class="ui dividing header">@lang('site.shop.search.header')</h3>
-				<form class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
+				<form id="search_shop_form" class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
 					<div class="fields">
 						<div class="six wide field">
 							<label for="title">@lang('site.shop.search.title')</label>
@@ -39,8 +39,9 @@
 							</select>
 						</div>
 						<div class="field">
-							<label for="sale_type">@lang('site.shop.search.sort_by')</label>
+							<label for="sale_type">@lang('site.shop.search.devise')</label>
 							<select class="ui dropdown" name="sale_type" id="sale_type">
+								<option value="">@lang('site.shop.search.select_devises')</option>
 								@foreach(trans('site.shop.sale_types') as $key => $value)
 									<option value="{{ $key }}" {{ intval(request('sale_type')) === $key ? 'selected' : '' }}>{{ $value }}</option>
 								@endforeach
@@ -49,6 +50,7 @@
 						<div class="field">
 							<label for="sort_by">@lang('site.shop.search.sort_by')</label>
 							<select class="ui dropdown" name="sort_by" id="sort_by">
+								<option value="">@lang('site.shop.search.select_sort')</option>
 								@foreach(trans('site.shop.search.sort_list') as $key => $value)
 									<option value="{{ $key }}" {{ request('sort_by') === $key ? 'selected' : '' }}>{!! $value !!}</option>
 								@endforeach
@@ -56,6 +58,7 @@
 						</div>
 					</div>
 					<button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('site.shop.search.submit')</button>
+					<button id="reset_form" class="ui orange right floated right labeled icon button"><i class="remove icon"></i>@lang('site.shop.search.clear_form')</button>
 				</form>
 			</section>
 

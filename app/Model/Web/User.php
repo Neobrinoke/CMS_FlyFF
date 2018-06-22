@@ -15,6 +15,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string name
  * @property string password
  * @property string remember_token
+ * @property int cash_point
+ * @property int vote_point
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at

@@ -33,10 +33,10 @@
 				<form class="ui form" action="{{ route('shop.cart.store', [$item]) }}" method="POST">
 					@csrf
 					<div class="field">
-						<label for="qte">Quantité</label>
-						<input type="number" name="qte" id="qte" value="1">
+						<label for="quantity">@lang('site.shop.quantity')</label>
+						<input type="number" name="quantity" id="quantity" value="1">
 					</div>
-					<button class="ui fluid primary button" type="submit">Ajouter au panié</button>
+					<button class="ui fluid primary button" type="submit">@lang('site.shop.add_to_cart')</button>
 				</form>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 
 @section('js')
 	<script>
-		var swiper = new Swiper('.swiper-container', {
+		new Swiper('.swiper-container', {
 			slidesPerView: 1,
 			spaceBetween: 30,
 			loop: true,

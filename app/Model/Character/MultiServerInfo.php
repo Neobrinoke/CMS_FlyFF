@@ -2,7 +2,6 @@
 
 namespace App\Model\Character;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,13 +21,6 @@ class MultiServerInfo extends Model
 
 	/** @var string */
 	protected $table = 'tblMultiServerInfo';
-
-	/** @var array */
-	protected $fillable = [
-		'serverindex',
-		'm_idPlayer',
-		'MultiServer'
-	];
 
 	/**
 	 * Retrieve all connected players.
