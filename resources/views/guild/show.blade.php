@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.guild_detail', ['name' => $guild->m_szGuild]))
+@section('title', __('trans/title.guild_detail', ['name' => $guild->m_szGuild]))
 
 @section('content')
 	<div class="box">
@@ -8,53 +8,53 @@
 			<h1 class="header">@yield('title')</h1>
 		</div>
 		<div class="ui attached fluid clearing segment">
-			<h4 class="ui dividing header">@lang('site.guild.info_divider')</h4>
+			<h4 class="ui dividing header">@lang('trans/guild.info_divider')</h4>
 			<div class="ui segments">
 				<div class="ui horizontal segments">
 					<div class="ui segment">
 						@if($guild->hasLogo())
 							<img class="ui image guild_logo" src="{{ $guild->getLogo() }}"/>
 						@endif
-						<span>@lang('site.guild.leader') {{ $guild->leader->m_szName }}</span>
+						<span>@lang('trans/guild.leader') {{ $guild->leader->m_szName }}</span>
 					</div>
 					<div class="ui segment">
-						<span>@lang('site.guild.penya') {{ $guild->m_nGuildGold }}</span>
+						<span>@lang('trans/guild.penya') {{ $guild->m_nGuildGold }}</span>
 					</div>
 					<div class="ui segment">
-						<span>@lang('site.guild.lvl') {{ $guild->m_nLevel }}</span>
+						<span>@lang('trans/guild.lvl') {{ $guild->m_nLevel }}</span>
 					</div>
 				</div>
 			</div>
 
-			<h4 class="ui dividing header">@lang('site.guild.gvg_divider')</h4>
+			<h4 class="ui dividing header">@lang('trans/guild.gvg_divider')</h4>
 			<div class="ui segments">
 				<div class="ui horizontal segments">
 					<div class="ui segment">
-						<span>@lang('site.guild.gvg_point') {{ $guild->m_nWinPoint }}</span>
+						<span>@lang('trans/guild.gvg_point') {{ $guild->m_nWinPoint }}</span>
 					</div>
 					<div class="ui segment">
-						<span>@lang('site.guild.gvg_win') {{ $guild->m_nWin }}</span>
+						<span>@lang('trans/guild.gvg_win') {{ $guild->m_nWin }}</span>
 					</div>
 					<div class="ui segment">
-						<span>@lang('site.guild.gvg_lose') {{ $guild->m_nLose }}</span>
+						<span>@lang('trans/guild.gvg_lose') {{ $guild->m_nLose }}</span>
 					</div>
 					<div class="ui segment">
-						<span>@lang('site.guild.gvg_surrender') {{ $guild->m_nSurrender }}</span>
+						<span>@lang('trans/guild.gvg_surrender') {{ $guild->m_nSurrender }}</span>
 					</div>
 				</div>
 			</div>
 
-			<h4 class="ui dividing header">@lang('site.guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->getMaxMembersCount() }})</h4>
+			<h4 class="ui dividing header">@lang('trans/guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->getMaxMembersCount() }})</h4>
 			<table class="ui single line compact selectable table">
 				<thead>
 					<tr>
-						<th>@lang('site.guild.member_ranking.name')</th>
-						<th>@lang('site.guild.member_ranking.job')</th>
-						<th>@lang('site.guild.member_ranking.lvl')</th>
-						<th>@lang('site.guild.member_ranking.gender')</th>
-						<th>@lang('site.guild.member_ranking.rank')</th>
-						<th>@lang('site.guild.member_ranking.member_since')</th>
-						<th>@lang('site.guild.member_ranking.status')</th>
+						<th>@lang('trans/guild.member_ranking.name')</th>
+						<th>@lang('trans/guild.member_ranking.job')</th>
+						<th>@lang('trans/guild.member_ranking.lvl')</th>
+						<th>@lang('trans/guild.member_ranking.gender')</th>
+						<th>@lang('trans/guild.member_ranking.rank')</th>
+						<th>@lang('trans/guild.member_ranking.member_since')</th>
+						<th>@lang('trans/guild.member_ranking.status')</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -72,9 +72,9 @@
 							<td>{{ \Carbon\Carbon::createFromTimeString($member->CreateTime)->format('d/m/Y') }}</td>
 							<td>
 								@if($member->player->onlineInfo->isOnline())
-									<div class="ui olive label">@lang('site.online_status.online')</div>
+									<div class="ui olive label">@lang('trans/online_status.online')</div>
 								@else
-									<div class="ui red label">@lang('site.online_status.offline')</div>
+									<div class="ui red label">@lang('trans/online_status.offline')</div>
 								@endif
 							</td>
 						</tr>

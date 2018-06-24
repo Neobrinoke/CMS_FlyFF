@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.password_reset'))
+@section('title', __('trans/title.password_reset'))
 
 @section('content')
 	<div class="box">
@@ -13,11 +13,11 @@
 				<div class="field {{ $errors->has('email') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="email" class="ui primary label"><i class="envelope icon"></i></label>
-						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('site.password_reset.email')">
+						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('trans/password_reset.email')">
 					</div>
 				</div>
 				<div class="field">
-					<button class="ui right floated primary button" type="submit">@lang('site.password_reset.submit_request')</button>
+					<button class="ui right floated primary button" type="submit">@lang('trans/password_reset.submit_request')</button>
 				</div>
 			</form>
 		</div>

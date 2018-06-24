@@ -18,11 +18,23 @@
 		<main class="ui container">
 			@include('include.aside')
 			<section class="content">
-				@if($errors->any())
-					@include('messages.error')
-				@endif
 				@if (session('status'))
-					@include('messages.success')
+					@component('message.success')
+						{{ session('status') }}
+					@endcomponent
+				@endif
+				@if (session('success'))
+					@component('message.success')
+						{{ session('success') }}
+					@endcomponent
+				@endif
+				@if($errors->any())
+					@include('message.errors')
+				@endif
+				@if (session('error'))
+					@component('message.error')
+						{{ session('error') }}
+					@endcomponent
 				@endif
 				@yield('content')
 			</section>

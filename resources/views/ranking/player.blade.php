@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.player_ranking'))
+@section('title', __('trans/title.player_ranking'))
 
 @section('content')
 	<div class="box">
@@ -12,12 +12,12 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>@lang('site.ranking.player.name')</th>
-						<th>@lang('site.ranking.player.job')</th>
-						<th>@lang('site.ranking.player.lvl')</th>
-						<th>@lang('site.ranking.player.gender')</th>
-						<th>@lang('site.ranking.player.played_time')</th>
-						<th>@lang('site.ranking.player.status')</th>
+						<th>@lang('trans/ranking.player.name')</th>
+						<th>@lang('trans/ranking.player.job')</th>
+						<th>@lang('trans/ranking.player.lvl')</th>
+						<th>@lang('trans/ranking.player.gender')</th>
+						<th>@lang('trans/ranking.player.played_time')</th>
+						<th>@lang('trans/ranking.player.status')</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,9 +31,9 @@
 							<td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
 							<td>
 								@if($character->onlineInfo->isOnline())
-									<div class="ui olive label">@lang('site.online_status.online')</div>
+									<div class="ui olive label">@lang('trans/online_status.online')</div>
 								@else
-									<div class="ui red label">@lang('site.online_status.offline')</div>
+									<div class="ui red label">@lang('trans/online_status.offline')</div>
 								@endif
 							</td>
 						</tr>

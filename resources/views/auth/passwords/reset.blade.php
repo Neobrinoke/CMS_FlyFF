@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.password_reset'))
+@section('title', __('trans/title.password_reset'))
 
 @section('content')
 	<div class="box">
@@ -14,23 +14,23 @@
 				<div class="field {{ $errors->has('email') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="email" class="ui primary label"><i class="envelope icon"></i></label>
-						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('site.password_reset.email')">
+						<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('trans/password_reset.email')">
 					</div>
 				</div>
 				<div class="field {{ $errors->has('password') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="password" class="ui primary label"><i class="envelope icon"></i></label>
-						<input type="password" id="password" name="password" value="{{ old('password') }}" placeholder="@lang('site.password_reset.password')">
+						<input type="password" id="password" name="password" value="{{ old('password') }}" placeholder="@lang('trans/password_reset.password')">
 					</div>
 				</div>
 				<div class="field {{ $errors->has('password') ? 'error'  : '' }}">
 					<div class="ui labeled input">
 						<label for="password_confirmation" class="ui primary label"><i class="envelope icon"></i></label>
-						<input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="@lang('site.password_reset.password_confirmation')">
+						<input type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="@lang('trans/password_reset.password_confirmation')">
 					</div>
 				</div>
 				<div class="field">
-					<button class="ui right floated primary button" type="submit">@lang('site.password_reset.submit_reset')</button>
+					<button class="ui right floated primary button" type="submit">@lang('trans/password_reset.submit_reset')</button>
 				</div>
 			</form>
 		</div>

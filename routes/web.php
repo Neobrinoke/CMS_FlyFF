@@ -44,6 +44,13 @@ Route::post('/shop/cart/{item}/update', 'ShopController@cartUpdate')->name('shop
 Route::post('/shop/cart/{item}/remove', 'ShopController@cartDestroy')->name('shop.cart.destroy');
 
 Route::group(['middleware' => 'auth'], function () {
+	// Shop cart URL
+	Route::get('/shop/cart', 'ShopController@cartShow')->name('shop.cart');
+	Route::post('/shop/cart/buy', 'ShopController@cartBuy')->name('shop.cart.buy');
+	Route::post('/shop/cart/{item}/add', 'ShopController@cartStore')->name('shop.cart.store');
+	Route::post('/shop/cart/{item}/update', 'ShopController@cartUpdate')->name('shop.cart.update');
+	Route::post('/shop/cart/{item}/remove', 'ShopController@cartDestroy')->name('shop.cart.destroy');
+
 	// Article comment URL
 	Route::post('/article/{article}/comment', 'ArticleCommentController@store')->name('article.comment.store');
 	Route::post('/article/{article}/comment/{articleComment}/update', 'ArticleCommentController@update')->name('article.comment.update');

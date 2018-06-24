@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.nav.home'))
+@section('title', __('trans/nav.home'))
 
 @section('content')
 	<div class="box">
@@ -27,14 +27,14 @@
 								@if($article->authorized_comment)
 									<span class="ui teal label"><i class="comment outline icon"></i>{{ $article->comment_count }}</span>
 								@endif
-								<a class="ui right floated primary button" href="{{ route('article.show', [$article, $article->slug]) }}">@lang('site.article.show_more')<i class="right chevron icon"></i></a>
+								<a class="ui right floated primary button" href="{{ route('article.show', [$article, $article->slug]) }}">@lang('trans/article.show_more')<i class="right chevron icon"></i></a>
 							</div>
 						</div>
 					</article>
 				@endforeach
 			</section>
 			<div class="ui divider"></div>
-			<a class="ui right floated button green basic" href="{{ route('article.index') }}">@lang('site.article.show_all')<i class="right chevron icon"></i></a>
+			<a class="ui right floated button green basic" href="{{ route('article.index') }}">@lang('trans/article.show_all')<i class="right chevron icon"></i></a>
 		</div>
 	</div>
 @endsection

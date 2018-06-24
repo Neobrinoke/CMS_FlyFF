@@ -112,7 +112,7 @@ class Article extends Model
 		$name = $this->author->name;
 		$date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
 		$time = Carbon::createFromTimeString($this->created_at)->format('H:i');
-		return trans('site.article.detail', [
+		return trans('trans/article.detail', [
 			'name' => $name,
 			'date' => $date,
 			'time' => $time

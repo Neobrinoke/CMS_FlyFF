@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.shop_item_detail', ['name' => $item->title]))
+@section('title', __('trans/title.shop_item_detail', ['name' => $item->title]))
 
 @section('content')
 	<div class="box">
@@ -27,17 +27,23 @@
 			<div class="ui left floated">
 				<p>{{ $item->description }} </p>
 				<p>
-					<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
+					<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('trans/shop.sale_types')[$item->sale_type] }}">
 					<span>{{ $item->price }}</span>
 				</p>
-				<form class="ui form" action="{{ route('shop.cart.store', [$item]) }}" method="POST">
-					@csrf
-					<div class="field">
-						<label for="quantity">@lang('site.shop.quantity')</label>
-						<input type="number" name="quantity" id="quantity" value="1">
-					</div>
-					<button class="ui fluid primary button" type="submit">@lang('site.shop.add_to_cart')</button>
-				</form>
+				@auth
+					<form class="ui form" action="{{ route('shop.cart.store', [$item]) }}" method="POST">
+						@csrf
+						<div class="field">
+							<label for="quantity">@lang('trans/shop.quantity')</label>
+							<input type="number" name="quantity" id="quantity" value="1">
+						</div>
+						<button class="ui fluid primary button" type="submit">@lang('trans/shop.add_to_cart')</button>
+					</form>
+				@else
+					@component('message.error')
+						@lang('trans/shop.cart.need_login')
+					@endcomponent
+				@endauth
 			</div>
 		</div>
 	</div>
