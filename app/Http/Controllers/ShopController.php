@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Cart;
+use App\Model\Character\Character;
 use App\Model\Web\Shop;
 use App\Model\Web\ShopCategory;
 use App\Model\Web\ShopItem;
+use App\Model\Web\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 
 class ShopController extends Controller
 {
@@ -110,7 +113,7 @@ class ShopController extends Controller
 	 * @param Cart $cart
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function cart(Cart $cart)
+	public function cartShow(Cart $cart)
 	{
 		return view('shop.cart.show', [
 			'cart' => $cart
@@ -162,6 +165,47 @@ class ShopController extends Controller
 	public function cartDestroy(ShopItem $item, Cart $cart)
 	{
 		$cart->removeItem($item);
+
+		return redirect()->route('shop.cart');
+	}
+
+	/**
+	 * Destroy item from cart.
+	 *
+	 * @param Request $request
+	 * @param Cart $cart
+	 * @return Response
+	 */
+	public function cartBuy(Request $request, Cart $cart)
+	{
+		/** @var User $user */
+		$user = auth()->user();
+
+		if ($cart->isNotEmpty()) {
+			/** @var Character $character */
+			$character = Character::query()->find($request->input('character'));
+			if ($character) {
+				if ($user->vote_point >= $cart->getTotalTtlVotePrice() && $user->cash_point >= $cart->getTotalTtlCsPrice()) {
+					$cart->items->each(function (ShopItem $item) use ($character) {
+						$character->sendItem($item->item_id, $item->quantity, true);
+					});
+
+					$user->vote_point -= $cart->getTotalTtlVotePrice();
+					$user->cash_point -= $cart->getTotalTtlCsPrice();
+					$user->save();
+
+					$cart->clear();
+
+					$request->session()->flash('success', trans('trans/shop.cart.success', ['name' => $character->m_szName]));
+				} else {
+					$request->session()->flash('error', trans('trans/shop.cart.error.insufficient_balance'));
+				}
+			} else {
+				$request->session()->flash('error', trans('trans/shop.cart.error.char_not_found'));
+			}
+		} else {
+			$request->session()->flash('error', trans('trans/shop.cart.error.empty_cart'));
+		}
 
 		return redirect()->route('shop.cart');
 	}

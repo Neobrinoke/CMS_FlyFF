@@ -51,6 +51,9 @@ class Guild extends Model
 	/** @var string */
 	protected $table = 'GUILD_TBL';
 
+	/** @var bool */
+	public $timestamps = false;
+
 	/** @var array */
 	protected $dates = [
 		'CreateTime'

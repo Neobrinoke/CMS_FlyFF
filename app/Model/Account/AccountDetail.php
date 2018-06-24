@@ -29,6 +29,9 @@ class AccountDetail extends Model
 	/** @var string */
 	protected $table = 'ACCOUNT_TBL_DETAIL';
 
+	/** @var bool */
+	public $timestamps = false;
+
 	/** @var array */
 	protected $dates = [
 		'secession',

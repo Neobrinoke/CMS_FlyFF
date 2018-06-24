@@ -128,6 +128,9 @@ class Character extends Model
 	/** @var string */
 	protected $table = 'CHARACTER_TBL';
 
+	/** @var bool */
+	public $timestamps = false;
+
 	/** @var array */
 	protected $dates = [
 		'CreateTime',
@@ -196,6 +199,24 @@ class Character extends Model
 	}
 
 	/**
+	 * Send item to this player.
+	 *
+	 * @param int $id
+	 * @param int $count
+	 * @param bool $charged
+	 */
+	public function sendItem(int $id, int $count, bool $charged)
+	{
+		ItemSend::query()->create([
+			'm_idPlayer' => $this->m_idPlayer,
+			'serverindex' => $this->serverindex,
+			'Item_Name' => $id,
+			'Item_count' => $count,
+			'm_bCharged' => $charged
+		]);
+	}
+
+	/**
 	 * Return HTML icon gender for this character.
 	 *
 	 * @return string
@@ -217,9 +238,9 @@ class Character extends Model
 	public function getSexTitle(): string
 	{
 		if ((int)$this->m_dwSex === 0) {
-			return trans('site.sex.boy');
+			return trans('trans/sex.boy');
 		} else {
-			return trans('site.sex.girl');
+			return trans('trans/sex.girl');
 		}
 	}
 

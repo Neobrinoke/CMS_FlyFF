@@ -39,6 +39,28 @@ class ShopsTableSeeder extends Seeder
 			'https://www.crystal-flyff.fr/img/boutique/changementnom.png'
 		];
 
+		$itemIds = [
+			'35000',
+			'35001',
+			'35002',
+			'35003',
+			'35004',
+			'35005',
+			'35006',
+			'35007',
+			'35008',
+			'35009',
+			'35010',
+			'35011',
+			'35012',
+			'35013',
+			'35014',
+			'35015',
+			'35016',
+			'35017',
+			'35018'
+		];
+
 		$shops = [];
 
 		$shops[] = Shop::query()->create([
@@ -86,6 +108,7 @@ class ShopsTableSeeder extends Seeder
 					$item = ShopItem::query()->create([
 						'category_id' => $category->id,
 						'shop_id' => $shop->id,
+						'item_id' => 21,
 						'sale_type' => $shopType,
 						'title' => $faker->text(15),
 						'description' => $faker->text(50),
@@ -96,7 +119,7 @@ class ShopsTableSeeder extends Seeder
 					for ($j = 0; $j < rand(0, 5); $j++) {
 						ShopImage::query()->create([
 							'item_id' => $item->id,
-							'image' => $image
+							'image' => $itemImages[array_rand($itemImages)]
 						]);
 					}
 				}

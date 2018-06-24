@@ -22,6 +22,9 @@ class MultiServerInfo extends Model
 	/** @var string */
 	protected $table = 'tblMultiServerInfo';
 
+	/** @var bool */
+	public $timestamps = false;
+
 	/**
 	 * Retrieve all connected players.
 	 *

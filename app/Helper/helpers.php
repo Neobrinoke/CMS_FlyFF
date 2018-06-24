@@ -18,47 +18,47 @@ if (!function_exists('sec_to_ydhm')) {
 	{
 		$years = intval(intval($sec) / 31104000);
 		if ($years > 1) {
-			return trans('site.time.years', [
+			return trans('trans/time.years', [
 				'years' => $years
 			]);
 		} else if ($years > 0) {
-			return trans('site.time.year');
+			return trans('trans/time.year');
 		}
 
 		$days = intval(intval($sec) / 86400);
 		if ($days > 1) {
-			return trans('site.time.days', [
+			return trans('trans/time.days', [
 				'days' => $days
 			]);
 		} else if ($days > 0) {
-			return trans('site.time.day');
+			return trans('trans/time.day');
 		}
 
 		$hours = intval(intval($sec) / 3600);
 		if ($hours > 1) {
-			return trans('site.time.hours', [
+			return trans('trans/time.hours', [
 				'hours' => $hours
 			]);
 		} else if ($hours > 0) {
-			return trans('site.time.hour');
+			return trans('trans/time.hour');
 		}
 
 		$minutes = intval(($sec / 60) % 60);
 		if ($minutes > 1) {
-			return trans('site.time.minutes', [
+			return trans('trans/time.minutes', [
 				'minutes' => $minutes
 			]);
 		} else if ($minutes > 0) {
-			return trans('site.time.minute');
+			return trans('trans/time.minute');
 		}
 
 		$seconds = intval(($sec) % 60);
 		if ($seconds > 1) {
-			return trans('site.time.seconds', [
+			return trans('trans/time.seconds', [
 				'seconds' => $seconds
 			]);
 		} else if ($seconds >= 0) {
-			return trans('site.time.second');
+			return trans('trans/time.second');
 		}
 
 		return null;

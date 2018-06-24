@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @property int id
  * @property int category_id
  * @property int shop_id
+ * @property int item_id
  * @property int sale_type
  * @property string title
  * @property string description
@@ -42,6 +43,7 @@ class ShopItem extends Model
 	protected $fillable = [
 		'category_id',
 		'shop_id',
+		'item_id',
 		'sale_type',
 		'title',
 		'description',

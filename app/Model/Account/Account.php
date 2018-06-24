@@ -29,6 +29,9 @@ class Account extends Model
 	/** @var string */
 	protected $table = 'ACCOUNT_TBL';
 
+	/** @var bool */
+	public $timestamps = false;
+
 	/**
 	 * Return the detail for this account.
 	 *

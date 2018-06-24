@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.shop_detail', ['name' => $shop->label]))
+@section('title', __('trans/title.shop_detail', ['name' => $shop->label]))
 
 @section('content')
 	<div class="box">
@@ -9,15 +9,15 @@
 		</div>
 		<div class="ui attached fluid clearing segment">
 			<section class="ui clearing segment">
-				<h3 class="ui dividing header">@lang('site.shop.search.header')</h3>
+				<h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
 				<form id="search_shop_form" class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
 					<div class="fields">
 						<div class="six wide field">
-							<label for="title">@lang('site.shop.search.title')</label>
+							<label for="title">@lang('trans/shop.search.title')</label>
 							<input type="text" name="title" id="title" value="{{ request('title') }}">
 						</div>
 						<div class="ten wide field">
-							<label for="price_start">Tranche de prix (5 - 50) remplissez celui de gauche pour un résultat strict</label>
+							<label for="price_start">@lang('trans/shop.search.price')</label>
 							<div class="two fields">
 								<div class="field">
 									<input type="number" name="price_start" id="price_start" placeholder="0" value="{{ request('price_start') }}">
@@ -30,41 +30,41 @@
 					</div>
 					<div class="three fields">
 						<div class="field">
-							<label for="category_id">@lang('site.shop.search.category')</label>
+							<label for="category_id">@lang('trans/shop.search.category')</label>
 							<select multiple="" class="ui dropdown" name="category_id[]" id="category_id">
-								<option value="">@lang('site.shop.search.select_categories')</option>
+								<option value="">@lang('trans/shop.search.select_categories')</option>
 								@foreach($categories as $category)
 									<option value="{{ $category->id }}" {{ collect(request('category_id'))->contains($category->id) ? 'selected' : '' }}>{{ $category->label }}</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="field">
-							<label for="sale_type">@lang('site.shop.search.devise')</label>
+							<label for="sale_type">@lang('trans/shop.search.devise')</label>
 							<select class="ui dropdown" name="sale_type" id="sale_type">
-								<option value="">@lang('site.shop.search.select_devises')</option>
-								@foreach(trans('site.shop.sale_types') as $key => $value)
+								<option value="">@lang('trans/shop.search.select_devises')</option>
+								@foreach(trans('trans/shop.sale_types') as $key => $value)
 									<option value="{{ $key }}" {{ intval(request('sale_type')) === $key ? 'selected' : '' }}>{{ $value }}</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="field">
-							<label for="sort_by">@lang('site.shop.search.sort_by')</label>
+							<label for="sort_by">@lang('trans/shop.search.sort_by')</label>
 							<select class="ui dropdown" name="sort_by" id="sort_by">
-								<option value="">@lang('site.shop.search.select_sort')</option>
-								@foreach(trans('site.shop.search.sort_list') as $key => $value)
+								<option value="">@lang('trans/shop.search.select_sort')</option>
+								@foreach(trans('trans/shop.search.sort_list') as $key => $value)
 									<option value="{{ $key }}" {{ request('sort_by') === $key ? 'selected' : '' }}>{!! $value !!}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
-					<button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('site.shop.search.submit')</button>
-					<button id="reset_form" class="ui orange right floated right labeled icon button"><i class="remove icon"></i>@lang('site.shop.search.clear_form')</button>
+					<button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('trans/shop.search.submit')</button>
+					<button id="reset_form" class="ui orange right floated right labeled icon button"><i class="remove icon"></i>@lang('trans/shop.search.clear_form')</button>
 				</form>
 			</section>
 
 
 			@if($canNotFind)
-				<div class="ui error message">@lang('site.shop.search.can_not_find')</div>
+				<div class="ui error message">@lang('trans/shop.search.can_not_find')</div>
 			@endif
 
 			<section class="ui three stackable cards">
@@ -75,12 +75,12 @@
 							<p class="right aligned header">{{ $item->title }} {{ $item->category->label }}</p>
 							<div class="right aligned meta">
 								<span>{{ $item->price }}</span>
-								<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('site.shop.sale_types')[$item->sale_type] }}">
+								<img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('trans/shop.sale_types')[$item->sale_type] }}">
 							</div>
 							<div class="meta">
 							</div>
 						</div>
-						<a class="ui compact bottom attached primary right labeled icon button" href="{{ route('shop.item', [$shop, $item, $item->slug]) }}" target="_blank"><i class="right arrow icon"></i>@lang('site.shop.show_item_details')</a>
+						<a class="ui compact bottom attached primary right labeled icon button" href="{{ route('shop.item', [$shop, $item, $item->slug]) }}"><i class="right arrow icon"></i>@lang('trans/shop.show_item_details')</a>
 					</div>
 				@endforeach
 			</section>

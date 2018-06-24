@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.guild_ranking'))
+@section('title', __('trans/title.guild_ranking'))
 
 @section('content')
 	<div class="box">
@@ -12,12 +12,12 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>@lang('site.ranking.guild.name')</th>
-						<th>@lang('site.ranking.guild.lvl')</th>
-						<th>@lang('site.ranking.guild.members')</th>
-						<th>@lang('site.ranking.guild.leader')</th>
-						<th>@lang('site.ranking.guild.logo')</th>
-						<th>@lang('site.ranking.guild.created_at')</th>
+						<th>@lang('trans/ranking.guild.name')</th>
+						<th>@lang('trans/ranking.guild.lvl')</th>
+						<th>@lang('trans/ranking.guild.members')</th>
+						<th>@lang('trans/ranking.guild.leader')</th>
+						<th>@lang('trans/ranking.guild.logo')</th>
+						<th>@lang('trans/ranking.guild.created_at')</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,7 +40,7 @@
 									-
 								@endif
 							</td>
-							<td>{{ \Carbon\Carbon::createFromTimeString($guild->CreateTime)->format('d/m/Y') }}</td>
+							<td>{{ $guild->CreateTime->format('d/m/Y') }}</td>
 						</tr>
 					@endforeach
 				</tbody>

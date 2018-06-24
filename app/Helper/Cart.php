@@ -72,6 +72,36 @@ class Cart
 	}
 
 	/**
+	 * Clear current cart.
+	 */
+	public function clear()
+	{
+		$this->items = new Collection();
+
+		$this->save();
+	}
+
+	/**
+	 * Return true if cart is empty, false else if he's not empty.
+	 *
+	 * @return bool
+	 */
+	public function isEmpty(): bool
+	{
+		return $this->items->isEmpty();
+	}
+
+	/**
+	 * Return true if cart is not empty, false else if he's empty.
+	 *
+	 * @return bool
+	 */
+	public function isNotEmpty(): bool
+	{
+		return $this->items->isNotEmpty();
+	}
+
+	/**
 	 * Return total unit price for cs type.
 	 *
 	 * @return int

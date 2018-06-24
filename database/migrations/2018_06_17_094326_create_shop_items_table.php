@@ -17,6 +17,7 @@ class CreateShopItemsTable extends Migration
 			$table->increments('id');
 			$table->unsignedInteger('category_id')->index();
 			$table->unsignedInteger('shop_id')->index();
+			$table->integer('item_id');
 			$table->integer('sale_type');
 			$table->string('title');
 			$table->longText('description')->nullable();

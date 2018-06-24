@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', __('site.title.article', ['title' => $article->title]))
+@section('title', __('trans/title.article', ['title' => $article->title]))
 
 @section('content')
 	<div class="box">
@@ -21,19 +21,19 @@
 
 		@if($article->authorized_comment)
 			<section class="ui fluid clearing segment">
-				<h3 class="ui dividing header">@lang('site.article.comment.read')</h3>
+				<h3 class="ui dividing header">@lang('trans/article.comment.read')</h3>
 				@include('article.include.comments', ['comments' => $article->comments, 'parentId' => null])
 			</section>
 			@auth
 				<section class="ui fluid clearing segment">
-					<h3 class="ui dividing header">@lang('site.article.comment.post')</h3>
+					<h3 class="ui dividing header">@lang('trans/article.comment.post')</h3>
 					<form class="ui form {{ $errors->any() ? 'error' : '' }}" action="{{ route('article.comment.store', [$article]) }}" method="POST">
 						@csrf
 						<div class="required field {{ $errors->has('content') ? 'error'  : '' }}">
-							<label for="content">@lang('site.article.comment.comment')</label>
+							<label for="content">@lang('trans/article.comment.comment')</label>
 							<textarea name="content" id="content" cols="30" rows="5" maxlength="250">{{ old('content') }}</textarea>
 						</div>
-						<button class="ui right floated primary button" type="submit">@lang('site.article.comment.submit')</button>
+						<button class="ui right floated primary button" type="submit">@lang('trans/article.comment.submit')</button>
 					</form>
 				</section>
 			@endauth
