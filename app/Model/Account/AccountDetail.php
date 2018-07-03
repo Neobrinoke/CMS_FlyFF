@@ -23,18 +23,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AccountDetail extends Model
 {
-	/** @var string */
-	protected $connection = 'account';
+    /** @var string */
+    protected $connection = 'account';
 
-	/** @var string */
-	protected $table = 'ACCOUNT_TBL_DETAIL';
+    /** @var string */
+    protected $table = 'ACCOUNT_TBL_DETAIL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/** @var array */
-	protected $dates = [
-		'secession',
-		'regdate'
-	];
+    /** @var array */
+    protected $dates = [
+        'secession',
+        'regdate'
+    ];
 }

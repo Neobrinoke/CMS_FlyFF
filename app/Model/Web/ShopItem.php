@@ -34,89 +34,89 @@ use Illuminate\Support\Collection;
  */
 class ShopItem extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	const SALE_CS_TYPE = 1;
-	const SALE_VOTE_TYPE = 2;
+    const SALE_CS_TYPE = 1;
+    const SALE_VOTE_TYPE = 2;
 
-	/** @var array */
-	protected $fillable = [
-		'category_id',
-		'shop_id',
-		'item_id',
-		'sale_type',
-		'title',
-		'description',
-		'price',
-		'image_thumbnail'
-	];
+    /** @var array */
+    protected $fillable = [
+        'category_id',
+        'shop_id',
+        'item_id',
+        'sale_type',
+        'title',
+        'description',
+        'price',
+        'image_thumbnail'
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	/**
-	 * Return shop for this item.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function shop()
-	{
-		return $this->belongsTo(Shop::class);
-	}
+    /**
+     * Return shop for this item.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 
-	/**
-	 * Return category for this item.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function category()
-	{
-		return $this->belongsTo(ShopCategory::class);
-	}
+    /**
+     * Return category for this item.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(ShopCategory::class);
+    }
 
-	/**
-	 * Return all image for this item.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function images()
-	{
-		return $this->hasMany(ShopImage::class, 'item_id', 'id');
-	}
+    /**
+     * Return all image for this item.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(ShopImage::class, 'item_id', 'id');
+    }
 
-	/**
-	 * Return slug for this item.
-	 *
-	 * @return string
-	 */
-	public function getSlugAttribute(): string
-	{
-		return str_slug($this->title);
-	}
+    /**
+     * Return slug for this item.
+     *
+     * @return string
+     */
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->title);
+    }
 
-	/**
-	 * Return sale image for this item.
-	 *
-	 * @return string
-	 */
-	public function getSaleImageAttribute(): string
-	{
-		$type = intval($this->sale_type) === self::SALE_VOTE_TYPE ? 'vote' : 'cs';
+    /**
+     * Return sale image for this item.
+     *
+     * @return string
+     */
+    public function getSaleImageAttribute(): string
+    {
+        $type = intval($this->sale_type) === self::SALE_VOTE_TYPE ? 'vote' : 'cs';
 
-		return asset(sprintf("/img/sale_%s_image.png", $type));
-	}
+        return asset(sprintf("/img/sale_%s_image.png", $type));
+    }
 
-	/**
-	 * Return total price for this item.
-	 *
-	 * @return int
-	 */
-	public function getTotalPriceAttribute(): int
-	{
-		return $this->price * ($this->quantity ?? 1);
-	}
+    /**
+     * Return total price for this item.
+     *
+     * @return int
+     */
+    public function getTotalPriceAttribute(): int
+    {
+        return $this->price * ($this->quantity ?? 1);
+    }
 }

@@ -33,99 +33,100 @@ use Illuminate\Support\Collection;
  */
 class Article extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/** @var array */
-	protected $fillable = [
-		'title',
-		'content',
-		'category_id',
-		'author_id',
-		'image_thumbnail',
-		'image_header',
-	];
+    /** @var array */
+    protected $fillable = [
+        'title',
+        'content',
+        'category_id',
+        'author_id',
+        'image_thumbnail',
+        'image_header',
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	/**
-	 * Return author for this article.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function author()
-	{
-		return $this->hasOne(User::class, 'id', 'author_id');
-	}
+    /**
+     * Return author for this article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function author()
+    {
+        return $this->hasOne(User::class, 'id', 'author_id');
+    }
 
-	/**
-	 * Return category for this article.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function category()
-	{
-		return $this->belongsTo(ArticleCategory::class);
-	}
+    /**
+     * Return category for this article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(ArticleCategory::class);
+    }
 
-	/**
-	 * Return all comments for this article.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function comments()
-	{
-		return $this->hasMany(ArticleComment::class)->whereNull('comment_id')->orderByDesc('created_at');
-	}
+    /**
+     * Return all comments for this article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(ArticleComment::class)->whereNull('comment_id')->orderByDesc('created_at');
+    }
 
-	/**
-	 * Return all responses for this article.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function responses()
-	{
-		return $this->hasMany(ArticleComment::class)->whereNotNull('comment_id')->orderByDesc('created_at');
-	}
+    /**
+     * Return all responses for this article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function responses()
+    {
+        return $this->hasMany(ArticleComment::class)->whereNotNull('comment_id')->orderByDesc('created_at');
+    }
 
-	/**
-	 * Return all response and comment count for this article.
-	 *
-	 * @return int
-	 */
-	public function getCommentCountAttribute(): int
-	{
-		return $this->comments->count() + $this->responses->count();
-	}
+    /**
+     * Return all response and comment count for this article.
+     *
+     * @return int
+     */
+    public function getCommentCountAttribute(): int
+    {
+        return $this->comments->count() + $this->responses->count();
+    }
 
-	/**
-	 * Return creator name, date and time for this article.
-	 *
-	 * @return array|\Illuminate\Contracts\Translation\Translator|null|string
-	 */
-	public function getDetailInfoAttribute(): string
-	{
-		$name = $this->author->name;
-		$date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
-		$time = Carbon::createFromTimeString($this->created_at)->format('H:i');
-		return trans('trans/article.detail', [
-			'name' => $name,
-			'date' => $date,
-			'time' => $time
-		]);
-	}
+    /**
+     * Return creator name, date and time for this article.
+     *
+     * @return array|\Illuminate\Contracts\Translation\Translator|null|string
+     */
+    public function getDetailInfoAttribute(): string
+    {
+        $name = $this->author->name;
+        $date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
+        $time = Carbon::createFromTimeString($this->created_at)->format('H:i');
 
-	/**
-	 * Return slug for this article.
-	 *
-	 * @return string
-	 */
-	public function getSlugAttribute(): string
-	{
-		return str_slug($this->title);
-	}
+        return trans('trans/article.detail', [
+            'name' => $name,
+            'date' => $date,
+            'time' => $time
+        ]);
+    }
+
+    /**
+     * Return slug for this article.
+     *
+     * @return string
+     */
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->title);
+    }
 }

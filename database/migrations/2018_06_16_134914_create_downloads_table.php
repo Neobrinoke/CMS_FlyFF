@@ -15,12 +15,12 @@ class CreateDownloadsTable extends Migration
     {
         Schema::create('downloads', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('type');
-			$table->string('size');
-			$table->string('image');
-			$table->string('link');
-			$table->timestamps(1);
-			$table->softDeletes('deleted_at', 1);
+            $table->integer('type');
+            $table->string('size');
+            $table->string('image');
+            $table->string('link');
+            $table->timestamps(1);
+            $table->softDeletes('deleted_at', 1);
         });
     }
 

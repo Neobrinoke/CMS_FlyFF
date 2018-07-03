@@ -23,38 +23,38 @@ use Illuminate\Support\Collection;
  */
 class ShopCategory extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/** @var array */
-	protected $fillable = [
-		'label',
-		'color'
-	];
+    /** @var array */
+    protected $fillable = [
+        'label',
+        'color'
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	/**
-	 * Return all items for this category
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function items()
-	{
-		return $this->hasMany(ShopItem::class);
-	}
+    /**
+     * Return all items for this category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function items()
+    {
+        return $this->hasMany(ShopItem::class);
+    }
 
-	/**
-	 * Return slug for this category.
-	 *
-	 * @return string
-	 */
-	public function getSlugAttribute(): string
-	{
-		return str_slug($this->label);
-	}
+    /**
+     * Return slug for this category.
+     *
+     * @return string
+     */
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->label);
+    }
 }

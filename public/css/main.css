@@ -1,170 +1,170 @@
 /* BASE CSS (Semantic UI) */
 * {
-	border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .right.menu:last-child {
-	border-right: 1px solid rgba(34, 36, 38, 0.1);
+    border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 
 .ui.footer.segment {
-	margin: 5em 0 0;
-	padding: 5em 0;
+    margin: 5em 0 0;
+    padding: 5em 0;
 }
 
 .ui.labeled.input .ui.label .icon {
-	margin: 0;
+    margin: 0;
 }
 
 body ::-webkit-scrollbar-thumb {
-	border-radius: 0;
+    border-radius: 0;
 }
 
 .ui.progress:last-child {
-	margin: 0;
+    margin: 0;
 }
 
 tr[onclick] {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .ui.accordion {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .ui.accordion:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .ui.items:last-of-type {
-	margin: 0;
+    margin: 0;
 }
 
 .ui.right.floated {
-	float: right;
+    float: right;
 }
 
 .ui.left.floated {
-	float: left;
+    float: left;
 }
 
 .ui.comments {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 .ui.comments .comment .comments {
-	padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .ui.cards > .card > .buttons, .ui.card > .buttons, .ui.cards > .card > .button, .ui.card > .button {
-	margin: 0;
-	width: 100%;
+    margin: 0;
+    width: 100%;
 }
 
 .ui.cards > .card > :last-child, .ui.card > :last-child {
-	border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .card img.ui.floated.image {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* THEME CSS (CMS FlyFF) */
 * {
-	--primary-color: #27a4ca;
-	--primary-color-hover: #2386a5;
+    --primary-color: #27a4ca;
+    --primary-color-hover: #2386a5;
 }
 
 body {
-	background: url('/img/background.jpg') no-repeat #ffffff;
-	background-size: cover;
+    background: url('/img/background.jpg') no-repeat #ffffff;
+    background-size: cover;
 }
 
 section.logo {
-	margin: 50px 0;
-	text-align: center;
+    margin: 50px 0;
+    text-align: center;
 }
 
 main.ui.container {
-	display: flex;
+    display: flex;
 }
 
 main.ui.container aside {
-	width: 250px;
-	margin-right: 15px;
+    width: 250px;
+    margin-right: 15px;
 }
 
 main section.content {
-	flex: 1;
-	max-width: calc(100% - 250px);
+    flex: 1;
+    max-width: calc(100% - 250px);
 }
 
 .box .ui.attached.message, .ui.labeled.input .ui.label {
-	color: white;
-	padding: 1em 1em;
+    color: white;
+    padding: 1em 1em;
 }
 
 .ui.menu.stackable .ui.container a.active {
-	background-color: white;
+    background-color: white;
 }
 
 .ui.menu .item.active::after, .ui.menu .item:hover::after {
-	content: "";
-	border-bottom: 4px solid var(--primary-color);
-	bottom: -1px;
-	left: 0;
-	right: 0;
-	position: absolute;
-	width: 100%;
+    content: "";
+    border-bottom: 4px solid var(--primary-color);
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
 }
 
 .box {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .ui.primary {
-	background-color: var(--primary-color) !important;
+    background-color: var(--primary-color) !important;
 }
 
 a.ui.primary:hover,
 button.ui.primary:hover,
 input[type='submit'].ui.primary:hover {
-	background-color: var(--primary-color-hover) !important;
+    background-color: var(--primary-color-hover) !important;
 }
 
 .ui.image.guild_logo {
-	margin-right: 0.25em;
-	display: inline-block;
-	height: 24px;
-	width: 24px;
+    margin-right: 0.25em;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
 }
 
 @media screen and (max-width: 991px) {
 
-	#my_account {
-		display: none;
-	}
+    #my_account {
+        display: none;
+    }
 
-	main.ui.container aside {
-		width: 100%;
-		margin-right: 0;
-	}
+    main.ui.container aside {
+        width: 100%;
+        margin-right: 0;
+    }
 
-	main.ui.container {
-		display: block;
-	}
+    main.ui.container {
+        display: block;
+    }
 
-	main section.content {
-		max-width: 100%;
-	}
+    main section.content {
+        max-width: 100%;
+    }
 }
 
 @media only screen and (max-width: 767px) {
-	.ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
-		display: none !important;
-	}
+    .ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
+        display: none !important;
+    }
 
-	.ui.items > .item > .image + .content {
-		padding-left: 0;
-	}
+    .ui.items > .item > .image + .content {
+        padding-left: 0;
+    }
 }

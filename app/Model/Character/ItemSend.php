@@ -46,59 +46,59 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ItemSend extends Model
 {
-	/** @var string */
-	protected $primaryKey = 'm_nNo';
+    /** @var string */
+    protected $primaryKey = 'm_nNo';
 
-	/** @var string */
-	protected $connection = 'character';
+    /** @var string */
+    protected $connection = 'character';
 
-	/** @var string */
-	protected $table = 'ITEM_SEND_TBL';
+    /** @var string */
+    protected $table = 'ITEM_SEND_TBL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/** @var array */
+    /** @var array */
     protected $fillable = [
-    	'm_idPlayer',
-    	'serverindex',
-    	'Item_Name',
-    	'Item_count',
-    	'm_nAbilityOption',
-    	'm_nNo',
-    	'End_Time',
-    	'm_bItemResist',
-    	'm_nResistAbilityOption',
-    	'm_bCharged',
-    	'idSender',
-    	'nPiercedSize',
-    	'adwItemId0',
-    	'adwItemId1',
-    	'adwItemId2',
-    	'adwItemId3',
-    	'm_dwKeepTime',
-    	'ItemFlag',
-    	'ReceiveDt',
-    	'ProvideDt',
-    	'nRandomOptItemId',
-    	'ItemBillingNo',
-    	'adwItemId4',
-    	'adwItemId5',
-    	'adwItemId6',
-    	'adwItemId7',
-    	'adwItemId8',
-    	'adwItemId9',
-    	'nUMPiercedSize',
-    	'adwUMItemId0',
-    	'adwUMItemId1',
-    	'adwUMItemId2',
-    	'adwUMItemId3',
-    	'adwUMItemId4'
-	];
+        'm_idPlayer',
+        'serverindex',
+        'Item_Name',
+        'Item_count',
+        'm_nAbilityOption',
+        'm_nNo',
+        'End_Time',
+        'm_bItemResist',
+        'm_nResistAbilityOption',
+        'm_bCharged',
+        'idSender',
+        'nPiercedSize',
+        'adwItemId0',
+        'adwItemId1',
+        'adwItemId2',
+        'adwItemId3',
+        'm_dwKeepTime',
+        'ItemFlag',
+        'ReceiveDt',
+        'ProvideDt',
+        'nRandomOptItemId',
+        'ItemBillingNo',
+        'adwItemId4',
+        'adwItemId5',
+        'adwItemId6',
+        'adwItemId7',
+        'adwItemId8',
+        'adwItemId9',
+        'nUMPiercedSize',
+        'adwUMItemId0',
+        'adwUMItemId1',
+        'adwUMItemId2',
+        'adwUMItemId3',
+        'adwUMItemId4'
+    ];
 
     /** @var array */
     protected $dates = [
-    	'ReceiveDt',
-    	'ProvideDt'
-	];
+        'ReceiveDt',
+        'ProvideDt'
+    ];
 }

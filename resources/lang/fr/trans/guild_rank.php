@@ -2,10 +2,10 @@
 
 return [
 
-	'master' => 'Maître',
-	'general' => 'Général',
-	'officer' => 'Officier',
-	'veteran' => 'Vétéran',
-	'member' => 'Novice'
+    'master' => 'Maître',
+    'general' => 'Général',
+    'officer' => 'Officier',
+    'veteran' => 'Vétéran',
+    'member' => 'Novice'
 
 ];

@@ -39,88 +39,89 @@ use Illuminate\Support\Collection;
  */
 class Guild extends Model
 {
-	/** @var string */
-	protected $primaryKey = 'm_idGuild';
+    /** @var string */
+    protected $primaryKey = 'm_idGuild';
 
-	/** @var bool */
-	public $incrementing = false;
+    /** @var bool */
+    public $incrementing = false;
 
-	/** @var string */
-	protected $connection = 'character';
+    /** @var string */
+    protected $connection = 'character';
 
-	/** @var string */
-	protected $table = 'GUILD_TBL';
+    /** @var string */
+    protected $table = 'GUILD_TBL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/** @var array */
-	protected $dates = [
-		'CreateTime'
-	];
+    /** @var array */
+    protected $dates = [
+        'CreateTime'
+    ];
 
+    /**
+     * Return all guilds order by specified column.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function getForRanking()
+    {
+        return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('CreateTime', 'ASC');
+    }
 
-	/**
-	 * Return all guilds order by specified column.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Builder
-	 */
-	public static function getForRanking()
-	{
-		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('CreateTime', 'ASC');
-	}
+    /**
+     * Return members for this guild.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function members()
+    {
+        return $this->hasMany(GuildMember::class, 'm_idGuild', 'm_idGuild')
+            ->orderBy('m_nMemberLv')
+            ->orderBy('m_nClass', 'DESC')
+            ->orderBy('m_nGivePxp', 'DESC')
+            ->orderBy('m_nGiveGold', 'DESC')
+            ->orderBy('CreateTime');
+    }
 
-	/**
-	 * Return members for this guild.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function members()
-	{
-		return $this->hasMany(GuildMember::class, 'm_idGuild', 'm_idGuild')
-			->orderBy('m_nMemberLv')
-			->orderBy('m_nClass', 'DESC')
-			->orderBy('m_nGivePxp', 'DESC')
-			->orderBy('m_nGiveGold', 'DESC')
-			->orderBy('CreateTime');
-	}
+    /**
+     * Return leader for this guild.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function leader()
+    {
+        return $this->members()->where('m_nClass', '=', 0)->get()->first()->player();
+    }
 
-	/**
-	 * Return leader for this guild.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function leader()
-	{
-		return $this->members()->where('m_nClass', '=', 0)->get()->first()->player();
-	}
+    public function hasLogo()
+    {
+        $this->m_dwLogo = 11;
 
-	public function hasLogo()
-	{
-		$this->m_dwLogo = 11;
-		return (int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27;
-	}
+        return (int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27;
+    }
 
-	/**
-	 * Return formatted logo, or - if she doesn't have logo, for this guild.
-	 *
-	 * @return string
-	 */
-	public function getLogo()
-	{
-		if ($this->m_dwLogo < 10) {
-			$this->m_dwLogo = '0' . $this->m_dwLogo;
-		}
-		return asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
-	}
+    /**
+     * Return formatted logo, or - if she doesn't have logo, for this guild.
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        if ($this->m_dwLogo < 10) {
+            $this->m_dwLogo = '0' . $this->m_dwLogo;
+        }
 
-	/**
-	 * Return max members count for this guild.
-	 *
-	 * @return \Illuminate\Config\Repository|mixed
-	 */
-	public function getMaxMembersCount()
-	{
-		return config(sprintf("resources.guild.maxMembersCount.%d", $this->m_nLevel));
-	}
+        return asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
+    }
+
+    /**
+     * Return max members count for this guild.
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function getMaxMembersCount()
+    {
+        return config(sprintf("resources.guild.maxMembersCount.%d", $this->m_nLevel));
+    }
 }

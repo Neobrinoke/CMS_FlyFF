@@ -1,3 +1,3 @@
 <div class="ui success message">
-	<p>{{ $slot }}</p>
+    <p>{{ $slot }}</p>
 </div>

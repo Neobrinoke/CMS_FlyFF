@@ -2,10 +2,10 @@
 
 return [
 
-	'aside' => [
-		'my_account' => [
-			'logout' => 'Deconnexion'
-		]
-	]
+    'aside' => [
+        'my_account' => [
+            'logout' => 'Deconnexion'
+        ]
+    ]
 
 ];
