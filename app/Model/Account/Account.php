@@ -23,32 +23,32 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Account extends Model
 {
-	/** @var string */
-	protected $connection = 'account';
+    /** @var string */
+    protected $connection = 'account';
 
-	/** @var string */
-	protected $table = 'ACCOUNT_TBL';
+    /** @var string */
+    protected $table = 'ACCOUNT_TBL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/**
-	 * Return the detail for this account.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function detail()
-	{
-		return $this->hasOne(AccountDetail::class, 'account', 'account');
-	}
+    /**
+     * Return the detail for this account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function detail()
+    {
+        return $this->hasOne(AccountDetail::class, 'account', 'account');
+    }
 
-	/**
-	 * Return all characters for this account.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function characters()
-	{
-		return $this->hasMany(Character::class, 'account', 'account');
-	}
+    /**
+     * Return all characters for this account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function characters()
+    {
+        return $this->hasMany(Character::class, 'account', 'account');
+    }
 }

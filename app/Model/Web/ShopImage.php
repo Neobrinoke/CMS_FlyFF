@@ -21,28 +21,28 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ShopImage extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/** @var array */
-	protected $fillable = [
-		'item_id',
-		'image'
-	];
+    /** @var array */
+    protected $fillable = [
+        'item_id',
+        'image'
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	/**
-	 * Return item for this image.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function item()
-	{
-		return $this->belongsTo(ShopItem::class);
-	}
+    /**
+     * Return item for this image.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function item()
+    {
+        return $this->belongsTo(ShopItem::class);
+    }
 }

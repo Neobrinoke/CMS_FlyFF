@@ -23,43 +23,49 @@ use Illuminate\Support\Collection;
  */
 class Shop extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/** @var array */
-	protected $fillable = [
-		'label',
-		'image_thumbnail'
-	];
+    /** @var array */
+    protected $fillable = [
+        'label',
+        'image_thumbnail'
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	public static function all($columns = ['*'])
-	{
-		return self::query()->whereHas('items')->get();
-	}
+    /**
+     * Return all not empty shops.
+     *
+     * @param array $columns
+     * @return Collection
+     */
+    public static function all($columns = ['*']): Collection
+    {
+        return self::query()->select($columns)->whereHas('items')->get();
+    }
 
-	/**
-	 * Return all items for this shop.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function items()
-	{
-		return $this->hasMany(ShopItem::class);
-	}
+    /**
+     * Return all items for this shop.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function items()
+    {
+        return $this->hasMany(ShopItem::class);
+    }
 
-	/**
-	 * Return slug for this shop.
-	 *
-	 * @return string
-	 */
-	public function getSlugAttribute(): string
-	{
-		return str_slug($this->label);
-	}
+    /**
+     * Return slug for this shop.
+     *
+     * @return string
+     */
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->label);
+    }
 }

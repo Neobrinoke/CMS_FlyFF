@@ -1,3 +1,3 @@
 <div class="ui error message">
-	<p>{{ $slot }}</p>
+    <p>{{ $slot }}</p>
 </div>

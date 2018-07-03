@@ -2,7 +2,7 @@
 
 return [
 
-	'boy' => 'Garçon',
-	'girl' => 'Fille'
+    'boy' => 'Garçon',
+    'girl' => 'Fille'
 
 ];

@@ -7,17 +7,17 @@ use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
-	/**
-	 * Show the home page.
-	 *
-	 * @return Response
-	 */
-	public function home()
-	{
-		$articles = Article::all()->take(3);
+    /**
+     * Show the home page.
+     *
+     * @return Response
+     */
+    public function home()
+    {
+        $articles = Article::all()->take(3);
 
-		return view('home', [
-			'articles' => $articles
-		]);
-	}
+        return view('home', [
+            'articles' => $articles
+        ]);
+    }
 }

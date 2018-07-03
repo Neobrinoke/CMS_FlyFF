@@ -30,76 +30,75 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GuildMember extends Model
 {
-	public const RANK_MASTER = 0;
-	public const RANK_GENERAL = 1;
-	public const RANK_OFFICER = 2;
-	public const RANK_VETERAN = 3;
-	public const RANK_MEMBER = 4;
+    public const RANK_MASTER = 0;
+    public const RANK_GENERAL = 1;
+    public const RANK_OFFICER = 2;
+    public const RANK_VETERAN = 3;
+    public const RANK_MEMBER = 4;
 
-	public const RANKS = [
-		self::RANK_MASTER => 'master',
-		self::RANK_GENERAL => 'general',
-		self::RANK_OFFICER => 'officer',
-		self::RANK_VETERAN => 'veteran',
-		self::RANK_MEMBER => 'member',
-	];
+    public const RANKS = [
+        self::RANK_MASTER => 'master',
+        self::RANK_GENERAL => 'general',
+        self::RANK_OFFICER => 'officer',
+        self::RANK_VETERAN => 'veteran',
+        self::RANK_MEMBER => 'member',
+    ];
 
-	/** @var string */
-	protected $connection = 'character';
+    /** @var string */
+    protected $connection = 'character';
 
-	/** @var string */
-	protected $table = 'GUILD_MEMBER_TBL';
+    /** @var string */
+    protected $table = 'GUILD_MEMBER_TBL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/** @var array */
-	protected $dates = [
-		'CreateTime'
-	];
+    /** @var array */
+    protected $dates = [
+        'CreateTime'
+    ];
 
+    /**
+     * Return guild for this guild member.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function guild()
+    {
+        return $this->belongsTo(Guild::class, 'm_idGuild', 'm_idGuild');
+    }
 
-	/**
-	 * Return guild for this guild member.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function guild()
-	{
-		return $this->belongsTo(Guild::class, 'm_idGuild', 'm_idGuild');
-	}
+    /**
+     * Return player for this guild member.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function player()
+    {
+        return $this->belongsTo(Character::class, 'm_idPlayer', 'm_idPlayer');
+    }
 
-	/**
-	 * Return player for this guild member.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function player()
-	{
-		return $this->belongsTo(Character::class, 'm_idPlayer', 'm_idPlayer');
-	}
+    /**
+     * Return name of logo for his rank or null (it's not supposed to happen).
+     *
+     * @return null|string
+     */
+    public function getRankLogo(): ?string
+    {
+        $name = ucfirst(self::RANKS[$this->m_nMemberLv]);
 
-	/**
-	 * Return name of logo for his rank or null (it's not supposed to happen).
-	 *
-	 * @return null|string
-	 */
-	public function getRankLogo(): ?string
-	{
-		$name = ucfirst(self::RANKS[$this->m_nMemberLv]);
+        return asset(sprintf("/img/guilds/%s.png", $name));
+    }
 
-		return asset(sprintf("/img/guilds/%s.png", $name));
-	}
+    /**
+     * Return name of logo for his rank or null (it's not supposed to happen).
+     *
+     * @return null|string
+     */
+    public function getRankTitle(): ?string
+    {
+        $name = self::RANKS[$this->m_nMemberLv];
 
-	/**
-	 * Return name of logo for his rank or null (it's not supposed to happen).
-	 *
-	 * @return null|string
-	 */
-	public function getRankTitle(): ?string
-	{
-		$name = self::RANKS[$this->m_nMemberLv];
-
-		return trans(sprintf("site.guild_rank.%s", $name));
-	}
+        return trans(sprintf("site.guild_rank.%s", $name));
+    }
 }

@@ -116,164 +116,166 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Character extends Model
 {
-	/** @var string */
-	protected $primaryKey = 'm_idPlayer';
+    /** @var string */
+    protected $primaryKey = 'm_idPlayer';
 
-	/** @var bool */
-	public $incrementing = false;
+    /** @var bool */
+    public $incrementing = false;
 
-	/** @var string */
-	protected $connection = 'character';
+    /** @var string */
+    protected $connection = 'character';
 
-	/** @var string */
-	protected $table = 'CHARACTER_TBL';
+    /** @var string */
+    protected $table = 'CHARACTER_TBL';
 
-	/** @var bool */
-	public $timestamps = false;
+    /** @var bool */
+    public $timestamps = false;
 
-	/** @var array */
-	protected $dates = [
-		'CreateTime',
-		'FinalLevelDt'
-	];
+    /** @var array */
+    protected $dates = [
+        'CreateTime',
+        'FinalLevelDt'
+    ];
 
-	/**
-	 * Return all players order by specified column.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Builder
-	 */
-	public static function getForRanking()
-	{
-		return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
-	}
+    /**
+     * Return all players order by specified column.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function getForRanking()
+    {
+        return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+    }
 
-	/**
-	 * Return the account for this character.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function account()
-	{
-		return $this->belongsTo(Account::class, 'account', 'account');
-	}
+    /**
+     * Return the account for this character.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'account', 'account');
+    }
 
-	/**
-	 * Return the guild for this character.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function guild()
-	{
-		return $this->guild_member->guild();
-	}
+    /**
+     * Return the guild for this character.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function guild()
+    {
+        return $this->guild_member->guild();
+    }
 
-	/**
-	 * Return the guild member for this character.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function guildMember()
-	{
-		return $this->hasOne(GuildMember::class, 'm_idPlayer', 'm_idPlayer');
-	}
+    /**
+     * Return the guild member for this character.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function guildMember()
+    {
+        return $this->hasOne(GuildMember::class, 'm_idPlayer', 'm_idPlayer');
+    }
 
-	/**
-	 * Return online info for this character.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function onlineInfo()
-	{
-		return $this->hasOne(MultiServerInfo::class, 'm_idPlayer', 'm_idPlayer');
-	}
+    /**
+     * Return online info for this character.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function onlineInfo()
+    {
+        return $this->hasOne(MultiServerInfo::class, 'm_idPlayer', 'm_idPlayer');
+    }
 
-	/**
-	 * Return jobs info for this character.
-	 *
-	 * @return PropJob
-	 * @throws \Exception
-	 */
-	public function getJob(): PropJob
-	{
-		return PropJob::find($this->m_nJob);
-	}
+    /**
+     * Return jobs info for this character.
+     *
+     * @return PropJob
+     * @throws \Exception
+     */
+    public function getJob(): PropJob
+    {
+        return PropJob::find($this->m_nJob);
+    }
 
-	/**
-	 * Send item to this player.
-	 *
-	 * @param int $id
-	 * @param int $count
-	 * @param bool $charged
-	 */
-	public function sendItem(int $id, int $count, bool $charged)
-	{
-		ItemSend::query()->create([
-			'm_idPlayer' => $this->m_idPlayer,
-			'serverindex' => $this->serverindex,
-			'Item_Name' => $id,
-			'Item_count' => $count,
-			'm_bCharged' => $charged
-		]);
-	}
+    /**
+     * Send item to this player in game.
+     *
+     * @param int $id
+     * @param int $count
+     * @param bool $charged
+     */
+    public function sendItem(int $id, int $count, bool $charged)
+    {
+        ItemSend::query()->create([
+            'm_idPlayer' => $this->m_idPlayer,
+            'serverindex' => $this->serverindex,
+            'Item_Name' => $id,
+            'Item_count' => $count,
+            'm_bCharged' => $charged
+        ]);
+    }
 
-	/**
-	 * Return HTML icon gender for this character.
-	 *
-	 * @return string
-	 */
-	public function getSexIcon(): string
-	{
-		if ((int)$this->m_dwSex === 0) {
-			return 'mars';
-		} else {
-			return 'venus';
-		}
-	}
+    /**
+     * Return HTML icon gender for this character.
+     *
+     * @return string
+     */
+    public function getSexIcon(): string
+    {
+        if ((int)$this->m_dwSex === 0) {
+            return 'mars';
+        } else {
+            return 'venus';
+        }
+    }
 
-	/**
-	 * Return HTML icon gender for this character.
-	 *
-	 * @return string
-	 */
-	public function getSexTitle(): string
-	{
-		if ((int)$this->m_dwSex === 0) {
-			return trans('trans/sex.boy');
-		} else {
-			return trans('trans/sex.girl');
-		}
-	}
+    /**
+     * Return HTML icon gender for this character.
+     *
+     * @return string
+     */
+    public function getSexTitle(): string
+    {
+        if ((int)$this->m_dwSex === 0) {
+            return trans('trans/sex.boy');
+        } else {
+            return trans('trans/sex.girl');
+        }
+    }
 
-	/**
-	 * @return bool
-	 */
-	public function hasMasterRank(): bool
-	{
-		return !is_null($this->getMasterRank());
-	}
+    /**
+     * Determine if this character have a master rank.
+     *
+     * @return bool
+     */
+    public function hasMasterRank(): bool
+    {
+        return !is_null($this->getMasterRank());
+    }
 
-	/**
-	 * Return number of master rank for this character.
-	 *
-	 * @return int|null
-	 */
-	public function getMasterRank(): ?int
-	{
-		if ($this->m_nJob > 16 && $this->m_nJob < 24) {
-			if ($this->m_nLevel >= 110) {
-				return 6;
-			} else if ($this->m_nLevel >= 100) {
-				return 5;
-			} else if ($this->m_nLevel >= 100) {
-				return 4;
-			} else if ($this->m_nLevel >= 100) {
-				return 3;
-			} else if ($this->m_nLevel >= 100) {
-				return 2;
-			} else if ($this->m_nLevel >= 60) {
-				return 1;
-			}
-		}
-		return null;
-	}
+    /**
+     * Return number of master rank for this character.
+     *
+     * @return int|null
+     */
+    public function getMasterRank(): ?int
+    {
+        if ($this->m_nJob > 16 && $this->m_nJob < 24) {
+            if ($this->m_nLevel >= 110) {
+                return 6;
+            } elseif ($this->m_nLevel >= 100) {
+                return 5;
+            } elseif ($this->m_nLevel >= 100) {
+                return 4;
+            } elseif ($this->m_nLevel >= 100) {
+                return 3;
+            } elseif ($this->m_nLevel >= 100) {
+                return 2;
+            } elseif ($this->m_nLevel >= 60) {
+                return 1;
+            }
+        }
+        return null;
+    }
 }

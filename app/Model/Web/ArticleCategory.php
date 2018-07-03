@@ -22,38 +22,38 @@ use Illuminate\Support\Collection;
  */
 class ArticleCategory extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	/** @var array */
-	protected $fillable = [
-		'label',
-		'color'
-	];
+    /** @var array */
+    protected $fillable = [
+        'label',
+        'color'
+    ];
 
-	/** @var array */
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at'
-	];
+    /** @var array */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
-	/**
-	 * Return all articles for this category.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function articles()
-	{
-		return $this->hasMany(Article::class, 'category_id', 'id');
-	}
+    /**
+     * Return all articles for this category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'category_id', 'id');
+    }
 
-	/**
-	 * Return slug for this category.
-	 *
-	 * @return string
-	 */
-	public function getSlugAttribute()
-	{
-		return str_slug($this->label);
-	}
+    /**
+     * Return slug for this category.
+     *
+     * @return string
+     */
+    public function getSlugAttribute()
+    {
+        return str_slug($this->label);
+    }
 }

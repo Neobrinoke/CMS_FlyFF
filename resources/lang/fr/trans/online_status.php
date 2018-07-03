@@ -2,7 +2,7 @@
 
 return [
 
-	'online' => 'En ligne',
-	'offline' => 'Hors ligne'
+    'online' => 'En ligne',
+    'offline' => 'Hors ligne'
 
 ];
