@@ -99,6 +99,6 @@ class GuildMember extends Model
     {
         $name = self::RANKS[$this->m_nMemberLv];
 
-        return trans(sprintf("site.guild_rank.%s", $name));
+        return trans(sprintf("trans/guild_rank.%s", $name));
     }
 }

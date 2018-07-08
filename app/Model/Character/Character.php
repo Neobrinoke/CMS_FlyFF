@@ -110,9 +110,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon FinalLevelDt
  *
  * @property Account account
- * @property GuildMember guild_member
+ * @property GuildMember guildMember
  * @property Guild guild
- * @property MultiServerInfo online
+ * @property MultiServerInfo onlineInfo
  */
 class Character extends Model
 {
@@ -164,7 +164,7 @@ class Character extends Model
      */
     public function guild()
     {
-        return $this->guild_member->guild();
+        return $this->guildMember->guild();
     }
 
     /**

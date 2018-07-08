@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Helper\ServerStatus;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +19,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('include.pagination');
 
-        View::composer('*', function (\Illuminate\View\View $view) {
+        ViewFacade::composer('*', function (View $view) {
             $view->with('loggedUser', auth()->user());
+        });
+
+        ViewFacade::composer('include.aside', function (View $view) {
+            $view->with('serverStatus', app(ServerStatus::class));
         });
     }
 

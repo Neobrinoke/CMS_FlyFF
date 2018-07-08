@@ -52,4 +52,3 @@
 @endsection
 
 <?php /** @var \App\Model\Character\Character $character */ ?>
-<?php /** @var \App\Model\Character\MultiServerInfo $character ->onlineInfo */ ?>

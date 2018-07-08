@@ -69,7 +69,7 @@
                                     <img src="{{ $member->getRankLogo() }}" title="{{ $member->getRankTitle() }}">
                                 @endfor
                             </td>
-                            <td>{{ \Carbon\Carbon::createFromTimeString($member->CreateTime)->format('d/m/Y') }}</td>
+                            <td>{{ $member->CreateTime->format('d/m/Y') }}</td>
                             <td>
                                 @if($member->player->onlineInfo->isOnline())
                                     <div class="ui olive label">@lang('trans/online_status.online')</div>
@@ -87,4 +87,3 @@
 
 <?php /** @var \App\Model\Character\Guild $guild */ ?>
 <?php /** @var \App\Model\Character\GuildMember $member */ ?>
-<?php /** @var \App\Model\Character\Character $member ->player */ ?>
