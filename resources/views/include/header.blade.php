@@ -22,7 +22,7 @@
                         <a href="{{ route('password.request') }}" class="item">@lang('trans/nav.support')</a>
                         <div class="divider"></div>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="item">
-                            <i class="sign out icon"></i>@lang('trans/home.aside.my_account.logout')
+                            <i class="sign out icon"></i>@lang('trans/aside.my_account.logout')
                         </a>
                     </div>
                 </div>

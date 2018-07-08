@@ -8,6 +8,7 @@ return [
     'article' => ':title',
     'my_account' => 'Mon compte',
     'server_info' => 'Informations du serveur',
+    'hall_of_fame' => 'Temple de la renommée',
     'password_reset' => 'Réinitialisation du mot de passe',
     'player_ranking' => 'Classement des joueurs',
     'guild_ranking' => 'Classement des guildes',
