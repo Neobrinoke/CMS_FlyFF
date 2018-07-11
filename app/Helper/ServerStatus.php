@@ -2,8 +2,10 @@
 
 namespace App\Helper;
 
+use App\Model\Account\Account;
 use App\Model\Character\Character;
 use App\Model\Character\CombatInfo;
+use App\Model\Character\Lord;
 use App\Model\Character\MultiServerInfo;
 use App\Model\Logging\UserCount;
 use App\Model\Web\Setting;
@@ -59,6 +61,8 @@ class ServerStatus
             $this->status = trans('trans/aside.server_status.status_off');
         }
 
+        $this->accounts_number = Account::query()->count();
+        $this->players_number = Character::query()->count();
         $this->connected_number = MultiServerInfo::allConnected()->count();
         $this->max_connected_number = UserCount::getMaxConnectedNumber();
 
@@ -75,13 +79,9 @@ class ServerStatus
         }
 
         $this->mvp_info = CombatInfo::getLastOnePlayed()->joinPlayer->player->m_szName ?? '-';
-
-        // TODO: implment this info
-        $this->accounts_number = 5;
-        $this->players_number = 5;
-        $this->gs_info = 'Neobrinoke';
-        $this->lord_info = 'Neobrinoke';
-        $this->event_info = 'Neobrinoke';
+        $this->gs_info = CombatInfo::getLastOnePlayed()->joinGuild->guild->m_szGuild ?? '-';
+        $this->lord_info = Lord::getCurrent()->player->m_szName ?? '-';
+        $this->event_info = 'Neobrinoke'; // TODO: implement this info
     }
 
     /**
@@ -91,6 +91,6 @@ class ServerStatus
      */
     public function isOnline(): bool
     {
-        return @fsockopen(env('SERVER_IP'), env('SERVER_PORT'), $errno, $errstr, 0);
+        return @fsockopen(env('SERVER_IP'), env('SERVER_PORT'), $errno, $errstr, 0) ? true : false;
     }
 }

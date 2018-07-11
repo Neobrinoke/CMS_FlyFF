@@ -61,7 +61,7 @@ class UserCount extends Model
     public static function getMaxConnectedNumber(): int
     {
         /** @var self $userCount */
-        $userCount = self::query()->orderByDesc('number')->take(1)->first();
+        $userCount = self::query()->orderByDesc('number')->first();
 
         return $userCount->number;
     }
