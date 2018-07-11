@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon EndDt
  *
  * @property CombatJoinPlayer joinPlayer
+ * @property CombatJoinGuild joinGuild
  */
 class CombatInfo extends Model
 {
@@ -59,7 +60,16 @@ class CombatInfo extends Model
      */
     public function joinPlayer()
     {
-        // TODO: changer en hasMany si c'est du hasMany (réponse sur discord LYD)
-        return $this->hasOne(CombatJoinPlayer::class, 'CombatID', 'CombatID');
+        return $this->hasOne(CombatJoinPlayer::class, 'CombatID', 'CombatID')->orderByDesc('CombatID');
+    }
+
+    /**
+     * Return joinPlayer relation for this GS.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function joinGuild()
+    {
+        return $this->hasOne(CombatJoinGuild::class, 'CombatID', 'CombatID')->orderByDesc('CombatID');
     }
 }

@@ -6,21 +6,26 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class CombatInfo
+ * Class CombatJoinGuild
  * @package App\Model\Character
  *
  * @property int CombatID
  * @property string serverindex
  * @property string GuildID
- * @property string PlayerID
  * @property string Status
- * @property int Point
+ * @property int CombatFee
+ * @property int ReturnCombatFee
  * @property int Reward
+ * @property int Point
+ * @property int StraightWin
+ * @property int SEQ
  * @property Carbon RewardDt
+ * @property Carbon CancelDt
+ * @property Carbon ApplyDt
  *
- * @property Character player
+ * @property Guild guild
  */
-class CombatJoinPlayer extends Model
+class CombatJoinGuild extends Model
 {
     /** @var string */
     protected $primaryKey = 'CombatID';
@@ -32,23 +37,25 @@ class CombatJoinPlayer extends Model
     protected $connection = 'character';
 
     /** @var string */
-    protected $table = 'tblCombatJoinPlayer';
+    protected $table = 'tblCombatJoinGuild';
 
     /** @var bool */
     public $timestamps = false;
 
     /** @var array */
     protected $dates = [
-        'RewardDt'
+        'RewardDt',
+        'CancelDt',
+        'ApplyDt'
     ];
 
     /**
-     * Return player for this combat join player.
+     * Return guild for this combat join guild.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function player()
+    public function guild()
     {
-        return $this->hasOne(Character::class, 'm_idPlayer', 'PlayerID');
+        return $this->hasOne(Guild::class, 'm_idGuild', 'GuildID');
     }
 }
