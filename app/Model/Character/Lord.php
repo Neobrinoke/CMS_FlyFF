@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string formattedIdLord
  * @property Carbon s_date
  *
+ * @property string lord_id
  * @property Character player
  */
 class Lord extends Model
@@ -53,7 +54,7 @@ class Lord extends Model
      */
     public function player()
     {
-        return $this->hasOne(Character::class, 'm_idPlayer', 'formattedIdLord');
+        return $this->hasOne(Character::class, 'm_idPlayer', 'lord_id');
     }
 
     /**
@@ -61,7 +62,7 @@ class Lord extends Model
      *
      * @return string
      */
-    public function getFormattedIdLordAttribute(): string
+    public function getLordIdAttribute(): string
     {
         return substr('0000000', 0, 7 - strlen($this->idLord)) . $this->idLord;
     }

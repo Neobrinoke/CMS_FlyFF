@@ -74,8 +74,13 @@
                     <div class="middle aligned content">{{ $serverStatus->lord_info }}</div>
                 </div>
                 <div class="item">
-                    <img class="ui image" src="{{ asset('img/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')">
-                    <div class="middle aligned content">{{ $serverStatus->event_info }}</div>
+                    @if($serverStatus->event_info)
+                        <img class="ui image popup_element" src="{{ asset('img/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')" data-html="{!! nl2br($serverStatus->event_info->details) !!}">
+                        <div class="middle aligned content">{{ $serverStatus->event_info->message }}</div>
+                    @else
+                        <img class="ui image" src="{{ asset('img/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')">
+                        <div class="middle aligned content">@lang('trans/aside.hall_of_fame.no_event_currently')</div>
+                    @endif
                 </div>
             </div>
         </div>

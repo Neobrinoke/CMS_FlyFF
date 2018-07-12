@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('.ui.dropdown').dropdown();
     $('.ui.checkbox').checkbox();
     $('.ui.progress').progress();
+    $('.ui.popup_element').popup();
     $('.ui.progress.ratio').progress({
         label: 'ratio',
         text: {

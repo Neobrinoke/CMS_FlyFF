@@ -22,6 +22,8 @@ return [
         'gs' => 'GS',
         'souv' => 'Souverain',
         'event' => 'Evenement',
+        'event_time_remaining' => ':time Minutes restantes',
+        'no_event_currently' => 'Aucun event actuellement'
     ]
 
 ];

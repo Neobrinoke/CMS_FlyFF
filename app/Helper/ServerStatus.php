@@ -6,6 +6,7 @@ use App\Model\Account\Account;
 use App\Model\Character\Character;
 use App\Model\Character\CombatInfo;
 use App\Model\Character\Lord;
+use App\Model\Character\LordEvent;
 use App\Model\Character\MultiServerInfo;
 use App\Model\Logging\UserCount;
 use App\Model\Web\Setting;
@@ -81,7 +82,7 @@ class ServerStatus
         $this->mvp_info = CombatInfo::getLastOnePlayed()->joinPlayer->player->m_szName ?? '-';
         $this->gs_info = CombatInfo::getLastOnePlayed()->joinGuild->guild->m_szGuild ?? '-';
         $this->lord_info = Lord::getCurrent()->player->m_szName ?? '-';
-        $this->event_info = 'Neobrinoke'; // TODO: implement this info
+        $this->event_info = LordEvent::getCurrent();
     }
 
     /**
