@@ -10,6 +10,7 @@
     <div class="ui stackable grid">
         <div class="four wide column">
             <img class="ui small image left floated" src="https://semantic-ui.com/images/wireframe/text-image.png">
+            <?php // TODO: implement avatar image ?>
         </div>
         <div class="twelve wide column">
             <table class="ui very basic compact table right floated">

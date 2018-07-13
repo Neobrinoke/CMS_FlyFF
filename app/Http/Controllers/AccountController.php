@@ -30,13 +30,19 @@ class AccountController extends Controller
         return view('account.edit');
     }
 
+    /**
+     * Update user information.
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function update(Request $request)
     {
         $userId = Auth::id();
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
+            'email' => 'required|string|email|max:255|unique:website.users,email,' . $userId,
             'password' => 'required|string|min:6|confirmed'
         ]);
 
