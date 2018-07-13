@@ -105,18 +105,16 @@ class Article extends Model
     /**
      * Return creator name, date and time for this article.
      *
-     * @return array|\Illuminate\Contracts\Translation\Translator|null|string
+     * @return string
      */
     public function getDetailInfoAttribute(): string
     {
         $name = $this->author->name;
-        $date = Carbon::createFromTimeString($this->created_at)->format('d/m/Y');
-        $time = Carbon::createFromTimeString($this->created_at)->format('H:i');
+        $ago = $this->created_at->diffForHumans();
 
         return trans('trans/article.detail', [
             'name' => $name,
-            'date' => $date,
-            'time' => $time
+            'ago' => $ago
         ]);
     }
 

@@ -17,6 +17,6 @@ return [
     'shop' => 'Boutique',
     'cart' => 'Mon panier',
     'shop_detail' => 'Boutique [:name]',
-    'shop_item_detail' => 'Détails de l\'objet [:name]'
+    'shop_item_detail' => 'Détails de l\'objet [:name]',
 
 ];

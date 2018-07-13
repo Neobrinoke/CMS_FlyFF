@@ -27,7 +27,7 @@
                             <td>{{ $guild->m_szGuild }}</td>
                             <td>{{ $guild->m_nLevel }}</td>
                             <td>
-                                <div class="ui teal progress" data-value="{{ $guild->members->count() }}" data-total="65">
+                                <div class="ui teal progress" data-value="{{ $guild->members->count() }}" data-total="{{ $guild->getMaxMembersCount() }}">
                                     <div class="bar">
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                     -
                                 @endif
                             </td>
-                            <td>{{ $guild->CreateTime->format('d/m/Y') }}</td>
+                            <td>{{ $guild->CreateTime->toDateString() }}</td>
                         </tr>
                     @endforeach
                 </tbody>

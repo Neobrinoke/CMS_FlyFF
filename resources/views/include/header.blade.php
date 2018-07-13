@@ -17,7 +17,7 @@
                 <div class="ui dropdown icon item">
                     <span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>
                     <div class="menu">
-                        <div class="item">My account</div>
+                        <a href="{{ route('account.general') }}" class="item">@lang('trans/nav.my_account')</a>
                         <div class="divider"></div>
                         <a href="{{ route('password.request') }}" class="item">@lang('trans/nav.support')</a>
                         <div class="divider"></div>

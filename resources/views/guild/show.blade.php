@@ -69,7 +69,7 @@
                                     <img src="{{ $member->getRankLogo() }}" title="{{ $member->getRankTitle() }}">
                                 @endfor
                             </td>
-                            <td>{{ $member->CreateTime->format('d/m/Y') }}</td>
+                            <td>{{ $member->CreateTime->toDateString() }}</td>
                             <td>
                                 @if($member->player->onlineInfo->isOnline())
                                     <div class="ui olive label">@lang('trans/online_status.online')</div>

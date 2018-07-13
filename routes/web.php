@@ -56,4 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/article/{article}/comment/{articleComment}/update', 'ArticleCommentController@update')->name('article.comment.update');
     Route::post('/article/{article}/comment/{articleComment}/destroy', 'ArticleCommentController@destroy')->name('article.comment.destroy');
     Route::post('/article/{article}/comment/{articleComment}/response', 'ArticleCommentController@storeResponse')->name('article.comment.response.store');
+
+    // Profile URL
+    Route::get('/account', 'AccountController@general')->name('account.general');
 });

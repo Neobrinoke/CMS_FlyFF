@@ -14,6 +14,7 @@ return [
     'shop' => 'Boutique',
     'cart' => 'Panier (:number)',
     'login' => 'Connexion',
-    'register' => 'S\'inscrire'
+    'register' => 'S\'inscrire',
+    'my_account' => 'Mon compte'
 
 ];

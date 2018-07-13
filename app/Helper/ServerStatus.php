@@ -86,7 +86,7 @@ class ServerStatus
     }
 
     /**
-     * Determine if server if online.
+     * Determine if server is online.
      *
      * @return bool
      */

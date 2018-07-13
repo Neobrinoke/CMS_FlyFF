@@ -4,7 +4,7 @@ return [
 
     'show_all' => 'Voir plus d\'articles',
     'show_more' => 'Voir plus sur l\'article',
-    'detail' => 'Par :name, le :date à :time',
+    'detail' => 'Par :name, :ago',
     'comment' => [
         'post' => 'Postez votre commentaire',
         'read' => 'Commentaires',

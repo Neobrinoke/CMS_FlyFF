@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helper\ServerStatus;
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
         ViewFacade::composer('include.aside', function (View $view) {
             $view->with('serverStatus', app(ServerStatus::class));
         });
+
+        Carbon::setLocale(config('app.locale'));
     }
 
     /**
