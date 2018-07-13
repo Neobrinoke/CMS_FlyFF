@@ -39,7 +39,7 @@
                         <div class="ui toggle checkbox">
                             <input type="checkbox" id="rules" name="rules" tabindex="0" value="{{ old('rules') }}" class="hidden">
                             <label for="rules">@lang('trans/register.rules', ['url' => '#'])</label>
-                            @php(//@todo mettre ici le bon lien des rules)
+                            <?php //@todo mettre ici le bon lien des rules ?>
                         </div>
                     </div>
                 </div>

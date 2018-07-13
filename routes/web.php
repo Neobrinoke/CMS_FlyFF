@@ -59,4 +59,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile URL
     Route::get('/account', 'AccountController@general')->name('account.general');
+    Route::get('/account/edit', 'AccountController@edit')->name('account.edit');
+    Route::post('/account/edit', 'AccountController@update')->name('account.update');
 });

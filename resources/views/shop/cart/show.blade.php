@@ -5,7 +5,7 @@
 @section('content')
     <div class="box">
         <div class="ui primary attached message">
-            <h1 class="header">@yield('title')</h1>
+            <h1 class="header"><i class="shopping basket icon"></i>@yield('title')</h1>
         </div>
         <div class="ui attached fluid clearing segment">
             <h3 class="ui dividing header">@lang('trans/shop.cart.cart_summary')</h3>
@@ -72,7 +72,7 @@
             </table>
             @if($cart->isNotEmpty())
                 <h3 class="ui dividing header">@lang('trans/shop.cart.buy_summary')</h3>
-                <section class="ui grid">
+                <section class="ui stackable grid">
                     <div class="four wide column">
                         <p>@lang('trans/shop.cart.you_have')</p>
                         <p>{{ $loggedUser->cash_point }} <img src="{{ asset('img/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></p>

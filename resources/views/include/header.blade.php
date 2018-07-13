@@ -13,7 +13,7 @@
         <a href="{{ route('shop.index') }}" class="item"><i class="shopping cart icon"></i>@lang('trans/nav.shop')</a>
         <div class="right menu">
             @auth
-                <a href="{{ route('shop.cart') }}" class="item">@lang('trans/nav.cart', ['number' => count(session('cart.items') ?? [])])</a>
+                <a href="{{ route('shop.cart') }}" class="item"><i class="shopping basket icon"></i>@lang('trans/nav.cart', ['number' => count(session('cart.items') ?? [])])</a>
                 <div class="ui dropdown icon item">
                     <span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>
                     <div class="menu">
