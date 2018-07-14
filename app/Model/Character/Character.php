@@ -166,7 +166,7 @@ class Character extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account()
+    public function account() // TODO: cette fonction peux pas être appeler à cause de l'attribut account
     {
         return $this->belongsTo(Account::class, 'account', 'account');
     }

@@ -48,7 +48,7 @@ class Account extends Model
         'reload',
         'OldPassword',
         'TempPassword',
-        'user_id',
+        'user_id'
     ];
 
     /**

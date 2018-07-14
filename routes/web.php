@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings', 'SettingsController@generalIndex')->name('settings.general.index');
     Route::get('/settings/edit', 'SettingsController@generalEdit')->name('settings.general.edit');
     Route::post('/settings/edit', 'SettingsController@generalUpdate')->name('settings.general.update');
-    Route::get('/settings/game/account', 'SettingsController@gameAccountIndex')->name('settings.game.account.index');
+    Route::get('/settings/game/accounts', 'SettingsController@gameAccountIndex')->name('settings.game.account.index');
     Route::get('/settings/game/account/create', 'SettingsController@gameAccountCreate')->name('settings.game.account.create');
     Route::post('/settings/game/account/create', 'SettingsController@gameAccountStore')->name('settings.game.account.store');
     Route::get('/settings/game/account/edit', 'SettingsController@gameAccountEdit')->name('settings.game.account.edit');

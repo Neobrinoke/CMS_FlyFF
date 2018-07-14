@@ -44,7 +44,7 @@ class AccountDetail extends Model
         'isuse',
         'email',
         'secession',
-        'regdate',
+        'regdate'
     ];
 
     /** @var array */
