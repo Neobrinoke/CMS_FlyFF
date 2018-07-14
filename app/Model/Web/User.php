@@ -2,10 +2,12 @@
 
 namespace App\Model\Web;
 
+use App\Model\Account\Account;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Collection;
 
 /**
  * Class User
@@ -21,6 +23,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property Collection accounts
+ * @property Collection characters
  */
 class User extends Authenticatable
 {
@@ -46,4 +51,30 @@ class User extends Authenticatable
         'updated_at',
         'deleted_at'
     ];
+
+    /**
+     * Return all game accounts for this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    /**
+     * Return all characters for this user.
+     *
+     * @return Collection
+     */
+    public function getCharactersAttribute(): Collection
+    {
+        $characters = new Collection();
+
+        $this->accounts->each(function (Account $account) use (&$characters) {
+            $characters = $characters->merge($account->characters);
+        });
+
+        return $characters;
+    }
 }

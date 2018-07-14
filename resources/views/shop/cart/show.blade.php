@@ -89,8 +89,7 @@
                             <div class="field">
                                 <select class="ui dropdown" name="character">
                                     <option value="">@lang('trans/shop.cart.select_char')</option>
-                                    <?php // TODO: mettre ici la liste des personnages pour le loggedUser ?>
-                                    @foreach(\App\Model\Character\Character::all() as $character)
+                                    @foreach($loggedUser->characters as $character)
                                         <option value="{{ $character->m_idPlayer }}">{{ $character->m_szName }}</option>
                                     @endforeach
                                 </select>

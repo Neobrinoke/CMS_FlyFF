@@ -33,6 +33,21 @@ class AccountDetail extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $fillable = [
+        'account',
+        'gamecode',
+        'tester',
+        'm_chLoginAuthority',
+        'BlockTime',
+        'EndTime',
+        'WebTime',
+        'isuse',
+        'email',
+        'secession',
+        'regdate',
+    ];
+
+    /** @var array */
     protected $dates = [
         'secession',
         'regdate'

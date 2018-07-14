@@ -1,5 +1,5 @@
 /* BASE CSS (Semantic UI) */
-* {
+*:not(.circular) {
     border-radius: 0 !important;
 }
 

@@ -6,6 +6,7 @@ return [
     'register' => 'S\'inscrire',
     'news' => 'Actualités',
     'article' => ':title',
+    'player_settings' => 'Paramètres',
     'my_account' => 'Mon compte',
     'server_info' => 'Informations du serveur',
     'hall_of_fame' => 'Temple de la renommée',

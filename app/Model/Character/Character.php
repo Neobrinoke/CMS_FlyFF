@@ -5,6 +5,7 @@ namespace App\Model\Character;
 use App\Model\Account\Account;
 use App\Model\Resource\PropJob;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -113,6 +114,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property GuildMember guildMember
  * @property Guild guild
  * @property MultiServerInfo onlineInfo
+ *
+ * @method valid()
  */
 class Character extends Model
 {
@@ -144,7 +147,18 @@ class Character extends Model
      */
     public static function getForRanking()
     {
-        return self::query()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+        return self::query()->valid()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+    }
+
+    /**
+     * Return all valid
+     *
+     * @param Builder $builder
+     * @return Builder
+     */
+    public function scopeValid(Builder $builder)
+    {
+        return $builder->where('isblock', '=', 'F');
     }
 
     /**

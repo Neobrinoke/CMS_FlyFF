@@ -15,6 +15,6 @@ return [
     'cart' => 'Panier (:number)',
     'login' => 'Connexion',
     'register' => 'S\'inscrire',
-    'my_account' => 'Mon compte'
+    'player_settings' => 'Paramètres'
 
 ];

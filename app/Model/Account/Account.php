@@ -4,6 +4,7 @@ namespace App\Model\Account;
 
 use App\Model\Character\Character;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class Account
@@ -19,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string reload
  * @property string OldPassword
  * @property string TempPassword
+ * @property int user_id
+ *
+ * @property Collection characters
  * @property AccountDetail detail
  */
 class Account extends Model
@@ -31,6 +35,21 @@ class Account extends Model
 
     /** @var bool */
     public $timestamps = false;
+
+    /** @var array */
+    protected $fillable = [
+        'account',
+        'password',
+        'isuse',
+        'member',
+        'id_no1',
+        'id_no2',
+        'realname',
+        'reload',
+        'OldPassword',
+        'TempPassword',
+        'user_id',
+    ];
 
     /**
      * Return the detail for this account.
@@ -49,6 +68,6 @@ class Account extends Model
      */
     public function characters()
     {
-        return $this->hasMany(Character::class, 'account', 'account');
+        return $this->hasMany(Character::class, 'account', 'account')->valid();
     }
 }

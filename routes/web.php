@@ -57,8 +57,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/article/{article}/comment/{articleComment}/destroy', 'ArticleCommentController@destroy')->name('article.comment.destroy');
     Route::post('/article/{article}/comment/{articleComment}/response', 'ArticleCommentController@storeResponse')->name('article.comment.response.store');
 
-    // Profile URL
-    Route::get('/account', 'AccountController@general')->name('account.general');
-    Route::get('/account/edit', 'AccountController@edit')->name('account.edit');
-    Route::post('/account/edit', 'AccountController@update')->name('account.update');
+    // Account URL
+    Route::get('/settings', 'SettingsController@generalIndex')->name('settings.general.index');
+    Route::get('/settings/edit', 'SettingsController@generalEdit')->name('settings.general.edit');
+    Route::post('/settings/edit', 'SettingsController@generalUpdate')->name('settings.general.update');
+    Route::get('/settings/game/account', 'SettingsController@gameAccountIndex')->name('settings.game.account.index');
+    Route::get('/settings/game/account/create', 'SettingsController@gameAccountCreate')->name('settings.game.account.create');
+    Route::post('/settings/game/account/create', 'SettingsController@gameAccountStore')->name('settings.game.account.store');
+    Route::get('/settings/game/account/edit', 'SettingsController@gameAccountEdit')->name('settings.game.account.edit');
+    Route::post('/settings/game/account/edit', 'SettingsController@gameAccountUpdate')->name('settings.game.account.update');
 });
