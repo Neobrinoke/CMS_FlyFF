@@ -91,7 +91,7 @@ class SettingsController extends Controller
         $user = auth()->user();
 
         $validatedData = $request->validate([
-            'login' => 'required|string|min:4|max:32|unique:account.ACCOUNT_TBL,account|unique:account.ACCOUNT_TBL_DETAIL,account|regex:/(^[a-z0-9 ]+$)+/',
+            'login' => 'required|string|alpha_num|min:4|max:32|unique:account.ACCOUNT_TBL,account|unique:account.ACCOUNT_TBL_DETAIL,account',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
@@ -112,7 +112,7 @@ class SettingsController extends Controller
             'gamecode' => 'A000',
             'tester' => '2',
             'm_chLoginAuthority' => 'F',
-            'regdate' => Carbon::now(), // TODO: trouver une solution pour les date SQL SERVER
+            'regdate' => Carbon::now(),
             'BlockTime' => '0',
             'EndTime' => '0',
             'WebTime' => '0',
