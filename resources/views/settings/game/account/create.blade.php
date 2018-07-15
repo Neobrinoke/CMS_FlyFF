@@ -8,8 +8,8 @@
         @csrf
         <div class="field">
             <div class="field">
-                <label for="login">@lang('trans/settings.game.account.create.login')</label>
-                <input type="text" name="login" id="login" value="{{ old('login') }}">
+                <label for="account">@lang('trans/settings.game.account.create.account')</label>
+                <input type="text" name="account" id="account" value="{{ old('account') }}">
             </div>
             <div class="two fields">
                 <div class="field">

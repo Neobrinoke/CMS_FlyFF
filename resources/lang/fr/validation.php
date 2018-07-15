@@ -146,6 +146,8 @@ return [
         'email' => 'adresse courriel',
         'first_name' => 'prénom',
         'last_name' => 'nom',
+        'new_password' => 'nouveau mot de passe',
+        'new_password_confirmation' => 'confirmation du nouveau mot de passe',
         'password' => 'mot de passe',
         'password_confirmation' => 'confirmation du mot de passe',
         'city' => 'ville',

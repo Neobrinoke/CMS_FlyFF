@@ -19,13 +19,20 @@
             </div>
             <div class="two fields">
                 <div class="field">
-                    <label for="password">@lang('trans/settings.general.edit.password')</label>
-                    <input type="password" name="password" id="password">
+                    <label for="new_password">@lang('trans/settings.general.edit.new_password')</label>
+                    <input type="password" name="new_password" id="new_password">
                 </div>
                 <div class="field">
-                    <label for="password_confirmation">@lang('trans/settings.general.edit.password_confirmation')</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation">
+                    <label for="new_password_confirmation">@lang('trans/settings.general.edit.new_password_confirmation')</label>
+                    <input type="password" name="new_password_confirmation" id="new_password_confirmation">
                 </div>
+            </div>
+            <div class="field">
+                <label for="password">@lang('trans/settings.general.edit.password')</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="field">
+                <div class="ui red label">@lang('trans/settings.general.edit.messages.new_password')</div>
             </div>
             <div class="field">
                 <button class="ui primary button right floated" type="submit">@lang('trans/settings.general.edit.submit')</button>

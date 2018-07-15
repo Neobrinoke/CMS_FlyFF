@@ -43,13 +43,26 @@ class SettingsController extends Controller
         /** @var User $user */
         $user = auth()->user();
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:website.users,email,' . $user->id,
-            'password' => 'required|string|min:6|confirmed'
-        ]);
+        if (!Hash::check($request->input('password'), $user->password)) {
+            session()->flash('error', trans('trans/settings.general.edit.messages.password_error'));
+            return redirect()->back();
+        }
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedRules = [
+            'name' => 'required|string|max:255',
+            'email' => "required|string|email|max:255|unique:website.users,email,{$user->id}"
+        ];
+
+        if ($request->input('new_password')) {
+            $validatedRules['new_password'] = 'required|string|min:6|confirmed';
+        }
+
+        $validatedData = $request->validate($validatedRules);
+
+        if ($request->input('new_password')) {
+            $validatedData['password'] = Hash::make($validatedData['new_password']);
+            unset($validatedData['new_password']);
+        }
 
         $user->fill($validatedData);
         $user->save();
@@ -91,14 +104,14 @@ class SettingsController extends Controller
         $user = auth()->user();
 
         $validatedData = $request->validate([
-            'login' => 'required|string|alpha_num|min:4|max:32|unique:account.ACCOUNT_TBL,account|unique:account.ACCOUNT_TBL_DETAIL,account',
+            'account' => 'required|string|alpha_num|min:4|max:32|unique:account.ACCOUNT_TBL,account|unique:account.ACCOUNT_TBL_DETAIL,account',
             'password' => 'required|string|min:6|confirmed'
         ]);
 
         $validatedData['password'] = md5(env('MD5_HASH_KEY') . $validatedData['password']);
 
         Account::query()->create([
-            'account' => $validatedData['login'],
+            'account' => $validatedData['account'],
             'password' => $validatedData['password'],
             'isuse' => 'T',
             'member' => 'A',
@@ -108,7 +121,7 @@ class SettingsController extends Controller
         ]);
 
         AccountDetail::query()->create([
-            'account' => $validatedData['login'],
+            'account' => $validatedData['account'],
             'gamecode' => 'A000',
             'tester' => '2',
             'm_chLoginAuthority' => 'F',
@@ -120,7 +133,55 @@ class SettingsController extends Controller
             'email' => ''
         ]);
 
-        session()->flash('success', trans('trans/settings.game.account.create.messages.success', ['login' => $validatedData['login']]));
+        session()->flash('success', trans('trans/settings.game.account.create.messages.success', ['account' => $validatedData['account']]));
+
+        return redirect()->route('settings.game.account.index');
+    }
+
+    /**
+     * Show game account edit view.
+     *
+     * @param Account $account
+     * @return Response
+     */
+    public function gameAccountEdit(Account $account)
+    {
+        if (!$account->is_mine) {
+            abort(404);
+        }
+
+        return view('settings.game.account.edit', [
+            'account' => $account
+        ]);
+    }
+
+    /**
+     * Update given account.
+     *
+     * @param Request $request
+     * @param Account $account
+     * @return Response
+     */
+    public function gameAccountUpdate(Request $request, Account $account)
+    {
+        if (!$account->is_mine) {
+            abort(404);
+        }
+
+        if (md5(env('MD5_HASH_KEY') . $request->input('password')) !== $account->password) {
+            session()->flash('error', trans('trans/settings.game.account.edit.messages.password_error'));
+            return redirect()->back();
+        }
+
+        $validatedData = $request->validate([
+            'new_password' => 'required|string|min:6|confirmed'
+        ]);
+
+        $account->fill([
+            'password' => md5(env('MD5_HASH_KEY') . $validatedData['new_password'])
+        ])->save();
+
+        session()->flash('success', trans('trans/settings.game.account.edit.messages.success', ['account' => $account->account]));
 
         return redirect()->route('settings.game.account.index');
     }

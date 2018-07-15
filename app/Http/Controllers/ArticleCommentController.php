@@ -29,7 +29,7 @@ class ArticleCommentController extends Controller
 
             ArticleComment::query()->create($validatedData);
 
-            $request->session()->flash('status', trans('trans/article.comment.submit_comment.comment.create'));
+            session()->flash('status', trans('trans/article.comment.submit_comment.comment.create'));
         }
 
         return redirect()->route('article.show', [$article, $article->slug]);
@@ -53,7 +53,7 @@ class ArticleCommentController extends Controller
             $articleComment->fill($validatedData);
             $articleComment->save();
 
-            $request->session()->flash('status', trans('trans/article.comment.submit_comment.comment.edit'));
+            session()->flash('status', trans('trans/article.comment.submit_comment.comment.edit'));
         }
 
         return redirect()->route('article.show', [$article, $article->slug]);
@@ -72,7 +72,7 @@ class ArticleCommentController extends Controller
         if ($article->authorized_comment && $articleComment->is_mine) {
             $articleComment->forceDelete();
 
-            $request->session()->flash('status', trans('trans/article.comment.submit_comment.comment.delete'));
+            session()->flash('status', trans('trans/article.comment.submit_comment.comment.delete'));
         }
 
         return redirect()->route('article.show', [$article, $article->slug]);
@@ -99,7 +99,7 @@ class ArticleCommentController extends Controller
 
             ArticleComment::query()->create($validatedData);
 
-            $request->session()->flash('status', trans('trans/article.comment.submit_comment.response.create'));
+            session()->flash('status', trans('trans/article.comment.submit_comment.response.create'));
         }
 
         return redirect()->route('article.show', [$article, $article->slug]);

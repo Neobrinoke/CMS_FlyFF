@@ -24,6 +24,12 @@ use Illuminate\Database\Eloquent\Model;
 class AccountDetail extends Model
 {
     /** @var string */
+    protected $primaryKey = 'account';
+
+    /** @var bool */
+    public $incrementing = false;
+
+    /** @var string */
     protected $connection = 'account';
 
     /** @var string */

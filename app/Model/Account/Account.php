@@ -22,11 +22,18 @@ use Illuminate\Support\Collection;
  * @property string TempPassword
  * @property int user_id
  *
+ * @property bool is_mine
  * @property Collection characters
  * @property AccountDetail detail
  */
 class Account extends Model
 {
+    /** @var string */
+    protected $primaryKey = 'account';
+
+    /** @var bool */
+    public $incrementing = false;
+
     /** @var string */
     protected $connection = 'account';
 
@@ -69,5 +76,15 @@ class Account extends Model
     public function characters()
     {
         return $this->hasMany(Character::class, 'account', 'account')->valid();
+    }
+
+    /**
+     * Return true if is an account of current logged user.
+     *
+     * @return bool
+     */
+    public function getIsMineAttribute(): bool
+    {
+        return (int)$this->user_id === (int)auth()->id();
     }
 }
