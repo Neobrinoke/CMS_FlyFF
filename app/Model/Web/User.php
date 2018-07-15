@@ -72,7 +72,9 @@ class User extends Authenticatable
         $characters = new Collection();
 
         $this->accounts->each(function (Account $account) use (&$characters) {
-            $characters = $characters->merge($account->characters);
+            if (!$account->is_banned) {
+                $characters = $characters->merge($account->characters);
+            }
         });
 
         return $characters;

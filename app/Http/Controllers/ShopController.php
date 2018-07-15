@@ -184,7 +184,7 @@ class ShopController extends Controller
         if ($cart->isNotEmpty()) {
             /** @var Character $character */
             $character = Character::query()->find($request->input('character'));
-            if ($character) {
+            if ($character && $character->is_valid) {
                 if ($user->vote_point >= $cart->getTotalTtlVotePrice() && $user->cash_point >= $cart->getTotalTtlCsPrice()) {
                     $cart->items->each(function (ShopItem $item) use ($character) {
                         $character->sendItem($item->item_id, $item->quantity, true);

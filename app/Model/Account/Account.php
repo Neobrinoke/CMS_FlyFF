@@ -3,6 +3,7 @@
 namespace App\Model\Account;
 
 use App\Model\Character\Character;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -23,6 +24,8 @@ use Illuminate\Support\Collection;
  * @property int user_id
  *
  * @property bool is_mine
+ * @property bool is_banned
+ * @property string status
  * @property Collection characters
  * @property AccountDetail detail
  */
@@ -86,5 +89,25 @@ class Account extends Model
     public function getIsMineAttribute(): bool
     {
         return (int)$this->user_id === (int)auth()->id();
+    }
+
+    /**
+     * Determine if this account is banned or not.
+     *
+     * @return bool
+     */
+    public function getIsBannedAttribute(): bool
+    {
+        return (int)$this->detail->BlockTime >= (int)Carbon::now()->format('Ymd');
+    }
+
+    /**
+     * Return current status for this account.
+     *
+     * @return string
+     */
+    public function getStatusAttribute(): string
+    {
+        return $this->is_banned ? trans('trans/settings.general.index.statuses.banned') : trans('trans/settings.general.index.statuses.valid');
     }
 }

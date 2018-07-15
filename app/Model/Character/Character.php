@@ -110,6 +110,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon CreateTime
  * @property Carbon FinalLevelDt
  *
+ * @property bool is_valid
  * @property Account account
  * @property GuildMember guildMember
  * @property Guild guild
@@ -291,5 +292,16 @@ class Character extends Model
             }
         }
         return null;
+    }
+
+    /**
+     * Determine if this character is valid.
+     *
+     * @return bool
+     */
+    public function getIsValidAttribute(): bool
+    {
+        // TODO: verifier si le character appartien bien à l'utilisateur, que le compte n'est pas banni et que le personnage est valid (isblock = 'F')
+        return true;
     }
 }

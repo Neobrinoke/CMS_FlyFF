@@ -60,6 +60,7 @@ class CombatInfo extends Model
      */
     public function joinPlayer()
     {
+        // TODO: passer en HasMany si c'est du One to Many
         return $this->hasOne(CombatJoinPlayer::class, 'CombatID', 'CombatID')->orderByDesc('CombatID');
     }
 
@@ -70,6 +71,7 @@ class CombatInfo extends Model
      */
     public function joinGuild()
     {
+        // TODO: passer en HasMany si c'est du One to Many
         return $this->hasOne(CombatJoinGuild::class, 'CombatID', 'CombatID')->orderByDesc('CombatID');
     }
 }

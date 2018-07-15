@@ -90,7 +90,7 @@
                                 <select class="ui dropdown" name="character">
                                     <option value="">@lang('trans/shop.cart.select_char')</option>
                                     @foreach($loggedUser->characters as $character)
-                                        <option value="{{ $character->m_idPlayer }}">{{ $character->m_szName }}</option>
+                                        <option value="{{ $character->m_idPlayer }}">{{ $character->account }} - {{ $character->m_szName }}</option>
                                     @endforeach
                                 </select>
                             </div>

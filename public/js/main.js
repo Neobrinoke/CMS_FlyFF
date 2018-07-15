@@ -7,8 +7,8 @@ $(document).ready(function () {
     $('.ui.progress.ratio').progress({
         label: 'ratio',
         text: {
-            ratio: '{value} / {total}'
-        }
+            ratio: '{value} / {total}',
+        },
     });
 
     $('.message .close').click(function () {
@@ -56,5 +56,14 @@ $(document).ready(function () {
     $('#reset_form').click(function (e) {
         e.preventDefault();
         $(this).parent().form('clear');
+    });
+
+    $('a.activable[href]').each(function () {
+        let currentHref = window.location.href;
+        let linkHref = $(this).attr('href');
+
+        if (currentHref === linkHref) {
+            $(this).addClass('active');
+        }
     });
 });
