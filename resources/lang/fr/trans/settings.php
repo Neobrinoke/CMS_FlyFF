@@ -36,6 +36,11 @@ return [
         'account' => [
             'index' => [
                 'title' => 'Mes comptes de jeu',
+                'account' => 'Identifiant',
+                'char_count' => 'Personnages',
+                'creation_date' => 'Date de création',
+                'status' => 'Statut',
+                'action' => 'Action',
                 'buttons' => [
                     'add' => 'Ajouter'
                 ]

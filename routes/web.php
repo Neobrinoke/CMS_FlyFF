@@ -66,4 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/settings/game/account/create', 'SettingsController@gameAccountStore')->name('settings.game.account.store');
     Route::get('/settings/game/account/{account}/edit', 'SettingsController@gameAccountEdit')->name('settings.game.account.edit');
     Route::post('/settings/game/account/{account}/edit', 'SettingsController@gameAccountUpdate')->name('settings.game.account.update');
+
+    // Ticket URL
+    Route::get('/tickets', 'TicketController@index')->name('ticket.index');
 });

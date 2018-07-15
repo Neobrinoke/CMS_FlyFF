@@ -10,9 +10,9 @@ return [
         'guilds' => 'Guildes',
     ],
     'download' => 'Téléchargements',
-    'support' => 'Support',
     'shop' => 'Boutique',
-    'cart' => 'Panier (:number)',
+    'cart' => 'Panier',
+    'ticket' => 'Ticket',
     'login' => 'Connexion',
     'register' => 'S\'inscrire',
     'player_settings' => 'Paramètres'

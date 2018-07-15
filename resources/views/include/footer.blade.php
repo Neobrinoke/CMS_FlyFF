@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui header">@lang('trans/nav.support')</h4>
+                <h4 class="ui header">@lang('trans/nav.ticket')</h4>
                 <div class="ui link list">
-                    <a href="#" class="item">Liste</a>
+                    <a href="{{ route('ticket.index') }}" class="item">Liste</a>
                     <a href="#" class="item">Créer</a>
                 </div>
             </div>

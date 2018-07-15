@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  *
  * @property Collection accounts
  * @property Collection characters
+ * @property Collection tickets
  */
 class User extends Authenticatable
 {
@@ -78,5 +79,15 @@ class User extends Authenticatable
         });
 
         return $characters;
+    }
+
+    /**
+     * Return all tickets for this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'author_id', 'id');
     }
 }

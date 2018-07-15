@@ -10,7 +10,7 @@
         <div class="ui attached fluid clearing segment">
             <section class="ui clearing segment">
                 <h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
-                <form id="search_shop_form" class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
+                <form class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
                     <div class="three fields">
                         <div class="field">
                             <label for="title">@lang('trans/shop.search.title')</label>

@@ -13,7 +13,12 @@
         <a href="{{ route('shop.index') }}" class="item activable"><i class="shopping cart icon"></i>@lang('trans/nav.shop')</a>
         <div class="right menu">
             @auth
-                <a href="{{ route('shop.cart') }}" class="item"><i class="shopping basket icon"></i>@lang('trans/nav.cart', ['number' => count(session('cart.items') ?? [])])</a>
+                <a href="{{ route('shop.cart') }}" class="item activable">
+                    <i class="shopping basket icon"></i>@lang('trans/nav.cart')<span class="ui blue circular label">{{ count(session('cart.items') ?? []) }}</span>
+                </a>
+                <a href="{{ route('ticket.index') }}" class="item activable">
+                    <i class="ticket icon"></i>@lang('trans/nav.ticket')<span class="ui green circular label">{{ $loggedUser->tickets->count() }}</span>
+                </a>
                 <div class="ui dropdown icon item">
                     <span><i class="user circle icon"></i>{{ auth()->user()->name }}</span>
                     <div class="menu">
@@ -26,8 +31,8 @@
                 </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
             @else
-                <a href="{{ route('login') }}" class="item">@lang('trans/nav.login')</a>
-                <a href="{{ route('register') }}" class="item">@lang('trans/nav.register')</a>
+                <a href="{{ route('login') }}" class="item activable">@lang('trans/nav.login')</a>
+                <a href="{{ route('register') }}" class="item activable">@lang('trans/nav.register')</a>
             @endauth
         </div>
     </div>
@@ -37,3 +42,5 @@
         <img src="http://eu-uimg-wgp.webzen.com/788253779/Banner/07072014_111943_flyff-logo-new_407839.png" alt="logo">
     </section>
 </header>
+
+<?php /** @var \App\Model\Web\User $loggedUser */ ?>

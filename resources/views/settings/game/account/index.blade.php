@@ -10,11 +10,11 @@
     <table class="ui very basic compact table">
         <thead>
             <tr>
-                <th>Identifiant</th>
-                <th>Personnages</th>
-                <th>Date de création</th>
-                <th>Etat</th>
-                <th>Action</th>
+                <th>@lang('trans/settings.game.account.index.account')</th>
+                <th>@lang('trans/settings.game.account.index.char_count')</th>
+                <th>@lang('trans/settings.game.account.index.creation_date')</th>
+                <th>@lang('trans/settings.game.account.index.status')</th>
+                <th>@lang('trans/settings.game.account.index.action')</th>
             </tr>
         </thead>
         <tbody>
