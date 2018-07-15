@@ -10,7 +10,6 @@ use App\Model\Web\ShopItem;
 use App\Model\Web\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
 
 class ShopController extends Controller
 {
@@ -45,19 +44,17 @@ class ShopController extends Controller
         $categories = ShopCategory::all();
         $itemQuery = $shop->items();
         $canNotFind = false;
+        $sortList = Shop::SORT_LIST;
+        $saleTypes = Shop::SALE_TYPES;
 
         if ($request->input('title')) {
             $itemQuery->where('title', 'like', '%' . $request->input('title') . '%');
         }
 
-        if ($request->input('price_start') && $request->input('price_end')) {
-            $itemQuery->whereBetween('price', [
-                $request->input('price_start'),
-                $request->input('price_end')
-            ]);
-        } elseif ($request->input('price_start')) {
-            $itemQuery->where('price', $request->input('price_start'));
-        }
+        $itemQuery->whereBetween('price', [
+            $request->input('price_start') ?? 0,
+            $request->input('price_end') ?? PHP_INT_MAX
+        ]);
 
         if ($request->input('category_id')) {
             $itemQuery->whereIn('category_id', $request->input('category_id'));
@@ -83,7 +80,9 @@ class ShopController extends Controller
             'shop' => $shop,
             'items' => $items,
             'categories' => $categories,
-            'canNotFind' => $canNotFind
+            'canNotFind' => $canNotFind,
+            'sortList' => $sortList,
+            'saleTypes' => $saleTypes
         ]);
     }
 

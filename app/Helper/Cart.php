@@ -2,6 +2,7 @@
 
 namespace App\Helper;
 
+use App\Model\Web\Shop;
 use App\Model\Web\ShopItem;
 use Illuminate\Support\Collection;
 
@@ -111,7 +112,7 @@ class Cart
         $total = 0;
 
         $this->items->each(function (ShopItem $item) use (&$total) {
-            if ($item->sale_type == ShopItem::SALE_CS_TYPE) {
+            if ($item->sale_type == Shop::SALE_CS_TYPE) {
                 $total += $item->price;
             }
         });
@@ -129,7 +130,7 @@ class Cart
         $total = 0;
 
         $this->items->each(function (ShopItem $item) use (&$total) {
-            if ($item->sale_type == ShopItem::SALE_CS_TYPE) {
+            if ($item->sale_type == Shop::SALE_CS_TYPE) {
                 $total += $item->total_price;
             }
         });
@@ -147,7 +148,7 @@ class Cart
         $total = 0;
 
         $this->items->each(function (ShopItem $item) use (&$total) {
-            if ($item->sale_type == ShopItem::SALE_VOTE_TYPE) {
+            if ($item->sale_type == Shop::SALE_VOTE_TYPE) {
                 $total += $item->price;
             }
         });
@@ -165,7 +166,7 @@ class Cart
         $total = 0;
 
         $this->items->each(function (ShopItem $item) use (&$total) {
-            if ($item->sale_type == ShopItem::SALE_VOTE_TYPE) {
+            if ($item->sale_type == Shop::SALE_VOTE_TYPE) {
                 $total += $item->total_price;
             }
         });

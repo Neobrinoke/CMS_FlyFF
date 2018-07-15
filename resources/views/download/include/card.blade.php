@@ -5,15 +5,15 @@
             <span>@lang('trans/download.size')</span>
             <span>{{ $download->size }}</span>
         </div>
-        @if(!$download->has_updated)
+        @if(!$download->is_updated)
             <div class="right aligned meta">
                 <span>@lang('trans/download.created_at')</span>
-                <span>{{ $download->created_ago }}</span>
+                <span>{{ $download->created_at->diffForHumans() }}</span>
             </div>
         @else
             <div class="right aligned meta">
                 <span>@lang('trans/download.updated_at')</span>
-                <span>{{ $download->updated_ago }}</span>
+                <span>{{ $download->updated_at->diffForHumans() }}</span>
             </div>
         @endif
     </div>

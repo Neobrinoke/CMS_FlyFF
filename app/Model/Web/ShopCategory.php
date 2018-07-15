@@ -14,10 +14,11 @@ use Illuminate\Support\Collection;
  * @property int id
  * @property string label
  * @property string color
- * @property string slug
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property string slug
  *
  * @property Collection items
  */

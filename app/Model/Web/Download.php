@@ -17,12 +17,11 @@ use Illuminate\Support\Collection;
  * @property string size
  * @property string link
  * @property string image
- * @property bool has_updated
- * @property string created_ago
- * @property string updated_ago
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property bool is_updated
  */
 class Download extends Model
 {
@@ -71,28 +70,8 @@ class Download extends Model
      *
      * @return bool
      */
-    public function getHasUpdatedAttribute(): bool
+    public function getIsUpdatedAttribute(): bool
     {
         return $this->created_at->notEqualTo($this->updated_at);
-    }
-
-    /**
-     * Return created_at with time ago syntax.
-     *
-     * @return string
-     */
-    public function getCreatedAgoAttribute(): string
-    {
-        return sec_to_ydhm($this->created_at->diffInRealSeconds());
-    }
-
-    /**
-     * Return updated_at with time ago syntax.
-     *
-     * @return string
-     */
-    public function getUpdatedAgoAttribute(): string
-    {
-        return sec_to_ydhm($this->updated_at->diffInRealSeconds());
     }
 }

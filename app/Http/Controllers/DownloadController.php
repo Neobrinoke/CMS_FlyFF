@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Model\Web\Download;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DownloadController extends Controller

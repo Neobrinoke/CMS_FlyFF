@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Web\ShopItem;
+use App\Model\Web\Shop;
 
 return [
 
@@ -9,7 +9,8 @@ return [
     'search' => [
         'header' => 'Section de recherche',
         'title' => 'Titre',
-        'price' => 'Tranche de prix (5 - 50) remplissez celui de gauche pour un résultat strict',
+        'price_min' => 'Prix min',
+        'price_max' => 'Prix max',
         'category' => 'Catégorie',
         'devise' => 'Devise',
         'sort_by' => 'Trié par',
@@ -20,9 +21,7 @@ return [
         'clear_form' => 'Vider la recherche',
         'can_not_find' => 'Aucun article ne correspond exactement à vos critères.',
         'sort_list' => [
-            /**
-             * These keys need to be formatted like that (column-direction). That's important!
-             */
+            // /!\ These keys must be matched with const SORTS in Shop class /!\
             'price-asc' => 'Prix ↑',
             'price-desc' => 'Prix ↓',
             'title-asc' => 'Nom ↑',
@@ -32,8 +31,8 @@ return [
     'quantity' => 'Quantité',
     'add_to_cart' => 'Ajouter au panier',
     'sale_types' => [
-        ShopItem::SALE_CS_TYPE => 'GPotato Point',
-        ShopItem::SALE_VOTE_TYPE => 'Vote Point'
+        Shop::SALE_CS_TYPE => 'GPotato Point',
+        Shop::SALE_VOTE_TYPE => 'Vote Point'
     ],
     'cart' => [
         'cart_summary' => 'Récapitulatif de votre panier',

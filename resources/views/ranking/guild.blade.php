@@ -27,15 +27,15 @@
                             <td>{{ $guild->m_szGuild }}</td>
                             <td>{{ $guild->m_nLevel }}</td>
                             <td>
-                                <div class="ui teal progress" data-value="{{ $guild->members->count() }}" data-total="{{ $guild->getMaxMembersCount() }}">
+                                <div class="ui teal progress" data-value="{{ $guild->members->count() }}" data-total="{{ $guild->max_members_count }}">
                                     <div class="bar">
                                     </div>
                                 </div>
                             </td>
                             <td>{{ $guild->leader->m_szName }}</td>
                             <td>
-                                @if($guild->hasLogo())
-                                    <img class="ui image" src="{{ $guild->getLogo() }}"/>
+                                @if($guild->has_logo)
+                                    <img class="ui image" src="{{ $guild->logo }}"/>
                                 @else
                                     -
                                 @endif

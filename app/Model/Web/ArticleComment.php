@@ -18,12 +18,13 @@ use function PHPSTORM_META\type;
  * @property int author_id
  * @property int|null comment_id
  * @property string content
- * @property bool is_mine
- * @property bool has_responses
- * @property bool is_response
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property bool is_mine
+ * @property bool has_responses
+ * @property bool is_response
  *
  * @property Article article
  * @property User author

@@ -110,13 +110,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon CreateTime
  * @property Carbon FinalLevelDt
  *
+ * @property PropJob job
+ * @property string sex_icon
+ * @property string sex_title
+ * @property int master_rank
+ * @property bool has_master_rank
  * @property bool is_valid
+ * @property string total_time_played
+ *
  * @property Account account
  * @property GuildMember guildMember
  * @property Guild guild
  * @property MultiServerInfo onlineInfo
  *
- * @method valid()
+ * @method static Builder valid()
  */
 class Character extends Model
 {
@@ -148,7 +155,7 @@ class Character extends Model
      */
     public static function getForRanking()
     {
-        return self::query()->valid()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
+        return self::valid()->orderBy('m_nLevel', 'DESC')->orderBy('TotalPlayTime', 'DESC');
     }
 
     /**
@@ -203,17 +210,6 @@ class Character extends Model
     }
 
     /**
-     * Return jobs info for this character.
-     *
-     * @return PropJob
-     * @throws \Exception
-     */
-    public function getJob(): PropJob
-    {
-        return PropJob::find($this->m_nJob);
-    }
-
-    /**
      * Send item to this player in game.
      *
      * @param int $id
@@ -232,17 +228,14 @@ class Character extends Model
     }
 
     /**
-     * Return HTML icon gender for this character.
+     * Return jobs info for this character.
      *
-     * @return string
+     * @return PropJob
+     * @throws \Exception
      */
-    public function getSexIcon(): string
+    public function getJobAttribute(): PropJob
     {
-        if ((int)$this->m_dwSex === 0) {
-            return 'mars';
-        } else {
-            return 'venus';
-        }
+        return PropJob::find($this->m_nJob);
     }
 
     /**
@@ -250,23 +243,19 @@ class Character extends Model
      *
      * @return string
      */
-    public function getSexTitle(): string
+    public function getSexIconAttribute(): string
     {
-        if ((int)$this->m_dwSex === 0) {
-            return trans('trans/sex.boy');
-        } else {
-            return trans('trans/sex.girl');
-        }
+        return (int)$this->m_dwSex === 0 ? 'mars' : 'venus';
     }
 
     /**
-     * Determine if this character have a master rank.
+     * Return HTML icon gender for this character.
      *
-     * @return bool
+     * @return string
      */
-    public function hasMasterRank(): bool
+    public function getSexTitleAttribute(): string
     {
-        return !is_null($this->getMasterRank());
+        return (int)$this->m_dwSex === 0 ? trans('trans/sex.boy') : trans('trans/sex.girl');
     }
 
     /**
@@ -274,7 +263,7 @@ class Character extends Model
      *
      * @return int|null
      */
-    public function getMasterRank(): ?int
+    public function getMasterRankAttribute(): ?int
     {
         if ($this->m_nJob > 16 && $this->m_nJob < 24) {
             if ($this->m_nLevel >= 110) {
@@ -295,6 +284,16 @@ class Character extends Model
     }
 
     /**
+     * Determine if this character have a master rank.
+     *
+     * @return bool
+     */
+    public function getHasMasterRankAttribute(): bool
+    {
+        return !is_null($this->master_rank);
+    }
+
+    /**
      * Determine if this character is valid.
      *
      * @return bool
@@ -303,5 +302,15 @@ class Character extends Model
     {
         // TODO: verifier si le character appartien bien à l'utilisateur, que le compte n'est pas banni et que le personnage est valid (isblock = 'F')
         return true;
+    }
+
+    /**
+     * Return formatted total time played for this character.
+     *
+     * @return string
+     */
+    public function getTotalTimePlayedAttribute(): string
+    {
+        return Carbon::now()->subSeconds($this->TotalPlayTime)->diffForHumans(null, true);
     }
 }

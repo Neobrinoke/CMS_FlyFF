@@ -62,12 +62,11 @@ class ArticleCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Request $request
      * @param Article $article
      * @param ArticleComment $articleComment
      * @return Response
      */
-    public function destroy(Request $request, Article $article, ArticleComment $articleComment)
+    public function destroy(Article $article, ArticleComment $articleComment)
     {
         if ($article->authorized_comment && $articleComment->is_mine) {
             $articleComment->forceDelete();

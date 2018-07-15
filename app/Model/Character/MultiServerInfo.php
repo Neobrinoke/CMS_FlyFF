@@ -2,6 +2,7 @@
 
 namespace App\Model\Character;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,7 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string m_idPlayer
  * @property int MultiServer
  *
+ * @property bool is_online
+ * @property string status
+ *
  * @property Character player
+ *
+ * @method static Builder connected()
  */
 class MultiServerInfo extends Model
 {
@@ -28,11 +34,32 @@ class MultiServerInfo extends Model
     /**
      * Retrieve all connected players.
      *
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public static function allConnected()
     {
-        return self::query()->where('MultiServer', '>', 0)->get();
+        return self::connected()->get();
+    }
+
+    /**
+     * Get count of connected players.
+     *
+     * @return int
+     */
+    public static function getConnectedCount()
+    {
+        return self::connected()->count();
+    }
+
+    /**
+     * Only connected players.
+     *
+     * @param Builder $builder
+     * @return Builder
+     */
+    public function scopeConnected(Builder $builder): Builder
+    {
+        return $builder->where('MultiServer', '>', 0);
     }
 
     /**
@@ -50,8 +77,18 @@ class MultiServerInfo extends Model
      *
      * @return bool
      */
-    public function isOnline(): bool
+    public function getIsOnlineAttribute(): bool
     {
         return $this->MultiServer > 0;
+    }
+
+    /**
+     * Return online status.
+     *
+     * @return string
+     */
+    public function getStatusAttribute(): string
+    {
+        return $this->is_online ? trans('trans/online_status.online') : trans('trans/online_status.offline');
     }
 }

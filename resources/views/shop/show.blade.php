@@ -11,21 +11,18 @@
             <section class="ui clearing segment">
                 <h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
                 <form id="search_shop_form" class="ui form" action="{{ route('shop.show', [$shop, $shop->slug]) }}" method="GET">
-                    <div class="fields">
-                        <div class="six wide field">
+                    <div class="three fields">
+                        <div class="field">
                             <label for="title">@lang('trans/shop.search.title')</label>
                             <input type="text" name="title" id="title" value="{{ request('title') }}">
                         </div>
-                        <div class="ten wide field">
-                            <label for="price_start">@lang('trans/shop.search.price')</label>
-                            <div class="two fields">
-                                <div class="field">
-                                    <input type="number" name="price_start" id="price_start" placeholder="0" value="{{ request('price_start') }}">
-                                </div>
-                                <div class="field">
-                                    <input type="number" name="price_end" id="price_end" placeholder="500" value="{{ request('price_end') }}">
-                                </div>
-                            </div>
+                        <div class="field">
+                            <label for="price_start">@lang('trans/shop.search.price_min')</label>
+                            <input type="number" name="price_start" id="price_start" placeholder="0" value="{{ request('price_start') }}">
+                        </div>
+                        <div class="field">
+                            <label for="price_start">@lang('trans/shop.search.price_max')</label>
+                            <input type="number" name="price_end" id="price_end" placeholder="500" value="{{ request('price_end') }}">
                         </div>
                     </div>
                     <div class="three fields">
@@ -42,8 +39,8 @@
                             <label for="sale_type">@lang('trans/shop.search.devise')</label>
                             <select class="ui dropdown" name="sale_type" id="sale_type">
                                 <option value="">@lang('trans/shop.search.select_devises')</option>
-                                @foreach(trans('trans/shop.sale_types') as $key => $value)
-                                    <option value="{{ $key }}" {{ intval(request('sale_type')) === $key ? 'selected' : '' }}>{{ $value }}</option>
+                                @foreach($saleTypes as $saleType)
+                                    <option value="{{ $saleType }}" {{ (int)request('sale_type') === $saleType ? 'selected' : '' }}>@lang('trans/shop.sale_types.' . $saleType)</option>
                                 @endforeach
                             </select>
                         </div>
@@ -51,8 +48,8 @@
                             <label for="sort_by">@lang('trans/shop.search.sort_by')</label>
                             <select class="ui dropdown" name="sort_by" id="sort_by">
                                 <option value="">@lang('trans/shop.search.select_sort')</option>
-                                @foreach(trans('trans/shop.search.sort_list') as $key => $value)
-                                    <option value="{{ $key }}" {{ request('sort_by') === $key ? 'selected' : '' }}>{!! $value !!}</option>
+                                @foreach($sortList as $sort)
+                                    <option value="{{ $sort }}" {{ request('sort_by') === $sort ? 'selected' : '' }}>@lang('trans/shop.search.sort_list.' . $sort)</option>
                                 @endforeach
                             </select>
                         </div>

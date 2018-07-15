@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string player_id
  * @property string message
  * @property string details
+ *
  * @property Character player
  */
 class LordEvent extends Model

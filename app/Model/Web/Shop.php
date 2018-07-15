@@ -14,16 +14,32 @@ use Illuminate\Support\Collection;
  * @property int id
  * @property string label
  * @property string|null image_thumbnail
- * @property string slug
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property string slug
  *
  * @property Collection items
  */
 class Shop extends Model
 {
     use SoftDeletes;
+
+    public const SALE_CS_TYPE = 1;
+    public const SALE_VOTE_TYPE = 2;
+
+    public const SALE_TYPES = [
+        self::SALE_CS_TYPE,
+        self::SALE_VOTE_TYPE
+    ];
+
+    public const SORT_LIST = [
+        'price-asc',
+        'price-desc',
+        'title-asc',
+        'title-desc'
+    ];
 
     /** @var array */
     protected $fillable = [

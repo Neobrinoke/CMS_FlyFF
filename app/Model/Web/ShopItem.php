@@ -20,13 +20,14 @@ use Illuminate\Support\Collection;
  * @property string description
  * @property int price
  * @property string image_thumbnail
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ * @property Carbon deleted_at
+ *
  * @property string slug
  * @property string sale_image
  * @property int quantity
  * @property int total_price
- * @property Carbon created_at
- * @property Carbon updated_at
- * @property Carbon deleted_at
  *
  * @property Shop shop
  * @property ShopCategory category
@@ -35,9 +36,6 @@ use Illuminate\Support\Collection;
 class ShopItem extends Model
 {
     use SoftDeletes;
-
-    const SALE_CS_TYPE = 1;
-    const SALE_VOTE_TYPE = 2;
 
     /** @var array */
     protected $fillable = [
@@ -105,7 +103,7 @@ class ShopItem extends Model
      */
     public function getSaleImageAttribute(): string
     {
-        $type = intval($this->sale_type) === self::SALE_VOTE_TYPE ? 'vote' : 'cs';
+        $type = (int)$this->sale_type === Shop::SALE_VOTE_TYPE ? 'vote' : 'cs';
 
         return asset(sprintf("/img/sale_%s_image.png", $type));
     }
@@ -117,6 +115,16 @@ class ShopItem extends Model
      */
     public function getTotalPriceAttribute(): int
     {
-        return $this->price * ($this->quantity ?? 1);
+        return $this->price * $this->quantity;
+    }
+
+    /**
+     * Return quantity of current item.
+     *
+     * @return int
+     */
+    public function getQuantityAttribute(): int
+    {
+        return $this->quantity ?? 1;
     }
 }

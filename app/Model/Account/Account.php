@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property bool is_mine
  * @property bool is_banned
  * @property string status
+ *
  * @property Collection characters
  * @property AccountDetail detail
  */

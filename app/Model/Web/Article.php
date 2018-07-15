@@ -19,12 +19,13 @@ use Illuminate\Support\Collection;
  * @property string image_thumbnail
  * @property string image_header
  * @property bool authorized_comment
- * @property int comment_count
- * @property string detail_info
- * @property string slug
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property int comment_count
+ * @property string detail_info
+ * @property string slug
  *
  * @property User author
  * @property ArticleCategory category

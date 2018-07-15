@@ -102,7 +102,7 @@ class ShopsTableSeeder extends Seeder
                 for ($i = 0; $i < 20; $i++) {
 
                     $image = $itemImages[array_rand($itemImages)];
-                    $shopType = rand(0, 1) === 1 ? ShopItem::SALE_CS_TYPE : ShopItem::SALE_VOTE_TYPE;
+                    $shopType = rand(0, 1) === 1 ? Shop::SALE_CS_TYPE : Shop::SALE_VOTE_TYPE;
 
                     /** @var ShopItem $item */
                     $item = ShopItem::query()->create([

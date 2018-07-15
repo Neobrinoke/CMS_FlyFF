@@ -12,8 +12,8 @@
             <div class="ui segments">
                 <div class="ui horizontal segments">
                     <div class="ui segment">
-                        @if($guild->hasLogo())
-                            <img class="ui image guild_logo" src="{{ $guild->getLogo() }}"/>
+                        @if($guild->has_logo)
+                            <img class="ui image guild_logo" src="{{ $guild->logo }}"/>
                         @endif
                         <span>@lang('trans/guild.leader') {{ $guild->leader->m_szName }}</span>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <h4 class="ui dividing header">@lang('trans/guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->getMaxMembersCount() }})</h4>
+            <h4 class="ui dividing header">@lang('trans/guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->max_members_count }})</h4>
             <table class="ui single line compact selectable table">
                 <thead>
                     <tr>
@@ -61,21 +61,17 @@
                     @foreach($guild->members as $member)
                         <tr>
                             <td>{{ $member->player->m_szName }}</td>
-                            <td><img src="{{ $member->player->getJob()->getImageJob() }}" height="26" title="{{ $member->player->getJob()->getName() }}"></td>
+                            <td><img src="{{ $member->player->job->getImageJob() }}" height="26" title="{{ $member->player->job->getName() }}"></td>
                             <td>{{ $member->player->m_nLevel }}</td>
-                            <td><i class="{{ $member->player->getSexIcon() }} icon" title="{{ $member->player->getSexTitle() }}" style="font-size: 1.5em;"></i></td>
+                            <td><i class="{{ $member->player->sex_icon }} icon" title="{{ $member->player->sex_title }}" style="font-size: 1.5em;"></i></td>
                             <td>
                                 @for($i = 0; $i <= (int)$member->m_nClass; $i++)
-                                    <img src="{{ $member->getRankLogo() }}" title="{{ $member->getRankTitle() }}">
+                                    <img src="{{ $member->rank_logo }}" title="{{ $member->rank_title }}">
                                 @endfor
                             </td>
                             <td>{{ $member->CreateTime->toDateString() }}</td>
                             <td>
-                                @if($member->player->onlineInfo->isOnline())
-                                    <div class="ui olive label">@lang('trans/online_status.online')</div>
-                                @else
-                                    <div class="ui red label">@lang('trans/online_status.offline')</div>
-                                @endif
+                                <div class="ui {{ $member->player->onlineInfo->is_online ? 'olive' : 'red' }} label">{{ $member->player->onlineInfo->status }}</div>
                             </td>
                         </tr>
                     @endforeach

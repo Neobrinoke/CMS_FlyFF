@@ -25,16 +25,12 @@
                         <tr>
                             <td>{{ current_iteration($characters, $loop) }}</td>
                             <td>{{ $character->m_szName }}</td>
-                            <td><img src="{{ $character->getJob()->getImageJob() }}" height="26" title="{{ $character->getJob()->getName() }}"></td>
+                            <td><img src="{{ $character->job->getImageJob() }}" height="26" title="{{ $character->job->getName() }}"></td>
                             <td>{{ $character->m_nLevel }}</td>
-                            <td><i class="{{ $character->getSexIcon() }} icon" title="{{ $character->getSexTitle() }}" style="font-size: 1.5em;"></i></td>
-                            <td>{{ sec_to_ydhm($character->TotalPlayTime) }}</td>
+                            <td><i class="{{ $character->sex_icon }} icon" title="{{ $character->sex_title }}" style="font-size: 1.5em;"></i></td>
+                            <td>{{ $character->total_time_played }}</td>
                             <td>
-                                @if($character->onlineInfo->isOnline())
-                                    <div class="ui olive label">@lang('trans/online_status.online')</div>
-                                @else
-                                    <div class="ui red label">@lang('trans/online_status.offline')</div>
-                                @endif
+                                <div class="ui {{ $character->onlineInfo->is_online ? 'olive' : 'red' }} label">{{ $character->onlineInfo->status }}</div>
                             </td>
                         </tr>
                     @endforeach

@@ -34,6 +34,10 @@ use Illuminate\Support\Collection;
  * @property string isuse
  * @property Carbon CreateTime
  *
+ * @property bool has_logo
+ * @property string logo
+ * @property int max_members_count
+ *
  * @property Character leader
  * @property Collection members
  */
@@ -94,7 +98,12 @@ class Guild extends Model
         return $this->members()->where('m_nClass', '=', 0)->get()->first()->player();
     }
 
-    public function hasLogo()
+    /**
+     * Determine if this guild has a logo.
+     *
+     * @return bool
+     */
+    public function getHasLogoAttribute(): bool
     {
         $this->m_dwLogo = 11;
 
@@ -106,7 +115,7 @@ class Guild extends Model
      *
      * @return string
      */
-    public function getLogo()
+    public function getLogoAttribute(): string
     {
         if ($this->m_dwLogo < 10) {
             $this->m_dwLogo = '0' . $this->m_dwLogo;
@@ -120,7 +129,7 @@ class Guild extends Model
      *
      * @return \Illuminate\Config\Repository|mixed
      */
-    public function getMaxMembersCount()
+    public function getMaxMembersCountAttribute(): int
     {
         return config(sprintf("resources.guild.maxMembersCount.%d", $this->m_nLevel));
     }

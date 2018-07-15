@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon s_date
  *
  * @property string lord_id
+ *
  * @property Character player
  */
 class Lord extends Model

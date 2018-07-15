@@ -64,8 +64,8 @@ class ServerStatus
 
         $this->accounts_number = Account::query()->count();
         $this->players_number = Character::query()->count();
-        $this->connected_number = MultiServerInfo::allConnected()->count();
-        $this->max_connected_number = UserCount::getMaxConnectedNumber();
+        $this->connected_number = MultiServerInfo::getConnectedCount();
+        $this->max_connected_number = UserCount::find()->number;
 
         if ($settings->exp_rate) {
             $this->exp_rate = $settings->exp_rate;

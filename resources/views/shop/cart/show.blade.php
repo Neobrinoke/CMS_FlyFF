@@ -43,7 +43,7 @@
                                     <button class="ui mini basic vertical icon button" type="submit" name="direction" value="up"><i class="plus icon"></i></button>
                                 </form>
                             </td>
-                            @if(intval($item->sale_type) === \App\Model\Web\ShopItem::SALE_CS_TYPE)
+                            @if((int)$item->sale_type === \App\Model\Web\Shop::SALE_CS_TYPE)
                                 <td class="right aligned">{{ $item->price }} <img src="{{ asset('img/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></td>
                                 <td class="right aligned">0 <img src="{{ asset('img/sale_vote_image.png') }}" title="@lang('trans/shop.sale_types.2')"></td>
                                 <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('img/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></td>

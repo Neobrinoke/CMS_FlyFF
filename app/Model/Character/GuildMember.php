@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int m_nClass
  * @property Carbon CreateTime
  *
+ * @property string rank_logo
+ * @property string rank_title
+ *
  * @property Guild guild
  * @property Character player
  */
@@ -83,7 +86,7 @@ class GuildMember extends Model
      *
      * @return null|string
      */
-    public function getRankLogo(): ?string
+    public function getRankLogoAttribute(): ?string
     {
         $name = ucfirst(self::RANKS[$this->m_nMemberLv]);
 
@@ -95,7 +98,7 @@ class GuildMember extends Model
      *
      * @return null|string
      */
-    public function getRankTitle(): ?string
+    public function getRankTitleAttribute(): ?string
     {
         $name = self::RANKS[$this->m_nMemberLv];
 
