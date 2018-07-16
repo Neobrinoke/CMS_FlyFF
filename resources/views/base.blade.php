@@ -8,9 +8,7 @@
 
         <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
-        <link href="{{ asset('css/semantic.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         @yield('css')
     </head>
     <body>
@@ -41,10 +39,7 @@
         </main>
         @include('include.footer')
 
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/semantic.js') }}"></script>
-        <script src="{{ asset('js/swiper.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         @yield('js')
     </body>
 </html>

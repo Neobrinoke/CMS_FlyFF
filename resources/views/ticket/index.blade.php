@@ -10,7 +10,7 @@
         <div class="ui attached fluid clearing segment">
             <section class="ui clearing segment">
                 <h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
-                <form class="ui form" method="GET">
+                <form class="ui form" action="{{ route('ticket.index') }}" method="GET">
                     <div class="two fields">
                         <div class="field">
                             <label for="title">@lang('trans/ticket.index.search_section.title')</label>
@@ -20,11 +20,21 @@
                             <div class="two fields">
                                 <div class="field">
                                     <label for="creation_date_min">@lang('trans/ticket.index.search_section.creation_date_min')</label>
-                                    <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}">
+                                    <div class="ui calendar date-picker">
+                                        <div class="ui input left icon">
+                                            <i class="time icon"></i>
+                                            <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="field">
                                     <label for="creation_date_max">@lang('trans/ticket.index.search_section.creation_date_max')</label>
-                                    <input type="number" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}">
+                                    <div class="ui calendar date-picker">
+                                        <div class="ui input left icon">
+                                            <i class="time icon"></i>
+                                            <input type="text" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -34,12 +44,18 @@
                             <label for="categories">@lang('trans/ticket.index.search_section.categories')</label>
                             <select multiple="" class="ui dropdown" name="categories[]" id="categories">
                                 <option value="">@lang('trans/ticket.index.search_section.select_categories')</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ collect(request('categories'))->contains($category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="field">
                             <label for="statuses">@lang('trans/ticket.index.search_section.statuses')</label>
                             <select multiple="" class="ui dropdown" name="statuses[]" id="statuses">
                                 <option value="">@lang('trans/ticket.index.search_section.select_statuses')</option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status }}" {{ collect(request('statuses'))->contains($status) ? 'selected' : '' }}>@lang('trans/ticket.statuses.' . $status)</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

@@ -12,3 +12,9 @@ npm-debug.log
 yarn-error.log
 .env
 composer.lock
+public/fonts/vendor
+public/images/vendor
+public/mix-manifest.json
+public/css/app.css
+public/js/app.js
+package-lock.json

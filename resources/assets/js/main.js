@@ -66,4 +66,75 @@ $(document).ready(function () {
             $(this).addClass('active');
         }
     });
+
+    $('.datetime-picker').calendar({
+        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
+        text: calendarTextForLocale('fr'),
+    });
+
+    $('.date-picker').calendar({
+        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
+        text: calendarTextForLocale('fr'),
+        type: 'date',
+        formatter: {
+            date: calendarDateFormatter(),
+        },
+    });
+
+    $('.time-picker').calendar({
+        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
+        text: calendarTextForLocale('fr'),
+        ampm: false,
+        type: 'time',
+    });
 });
+
+function calendarDateFormatter()
+{
+    return function (date, settings) {
+        if (!date) {
+            return '';
+        }
+
+        let year = date.getFullYear();
+        let month = (date.getMonth() + 1);
+        month = month >= 10 ? month : '0' + month;
+        let day = date.getDate();
+
+        return year + '-' + month + '-' + day;
+    };
+}
+
+function calendarDayOfWeekForLocal(local)
+{
+    if (local === 'fr') {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function calendarTextForLocale(local)
+{
+    if (local === 'fr') {
+        return {
+            days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            monthsShort: ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin', 'Juill', 'Août', 'Sept', 'Oct', 'Nov', 'Dec'],
+            today: 'Aujourd\'hui',
+            now: 'Maintenant',
+            am: 'AM',
+            pm: 'PM',
+        };
+    } else {
+        return {
+            days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            today: 'Today',
+            now: 'Now',
+            am: 'AM',
+            pm: 'PM',
+        };
+    }
+}

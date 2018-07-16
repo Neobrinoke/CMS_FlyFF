@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Web\Ticket;
+use App\Model\Web\TicketCategory;
 use App\Model\Web\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,16 +14,41 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
 
-        $tickets = $user->tickets()->paginate(5);
+        $categories = TicketCategory::all();
+        $statuses = Ticket::STATUSES;
+
+        $ticketQuery = $user->tickets();
+
+        if ($request->input('title')) {
+            $ticketQuery->where('title', 'LIKE', '%' . $request->input('title'). '%');
+        }
+
+        $ticketQuery->whereBetween('created_at', [
+            $request->input('creation_date_min') ?? Carbon::minValue()->toDateTimeString(),
+            $request->input('creation_date_max') ?? Carbon::maxValue()->toDateTimeString()
+        ]);
+
+        if ($request->input('categories')) {
+            $ticketQuery->whereIn('category_id', $request->input('categories'));
+        }
+
+        if ($request->input('statuses')) {
+            $ticketQuery->whereIn('status', $request->input('statuses'));
+        }
+
+        $tickets = $ticketQuery->paginate(5);
 
         return view('ticket.index', [
+            'categories' => $categories,
+            'statuses' => $statuses,
             'tickets' => $tickets
         ]);
     }
