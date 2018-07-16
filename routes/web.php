@@ -69,4 +69,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Ticket URL
     Route::get('/tickets', 'TicketController@index')->name('ticket.index');
+    Route::get('/ticket/create', 'TicketController@create')->name('ticket.create');
+    Route::post('/ticket/create', 'TicketController@store')->name('ticket.store');
 });

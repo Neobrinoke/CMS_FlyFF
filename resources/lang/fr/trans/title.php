@@ -2,7 +2,7 @@
 
 return [
 
-    'connect' => 'Connexion',
+    'login' => 'Connexion',
     'register' => 'S\'inscrire',
     'news' => 'Actualités',
     'article' => ':title',

@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.register'))
+@section('title', trans('trans/title.login'))
 
 @section('content')
     <div class="box">

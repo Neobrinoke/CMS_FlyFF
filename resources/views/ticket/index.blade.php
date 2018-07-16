@@ -11,30 +11,26 @@
             <section class="ui clearing segment">
                 <h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
                 <form class="ui form" action="{{ route('ticket.index') }}" method="GET">
-                    <div class="two fields">
+                    <div class="three fields">
                         <div class="field">
                             <label for="title">@lang('trans/ticket.index.search_section.title')</label>
                             <input type="text" name="title" id="title" value="{{ request('title') }}">
                         </div>
                         <div class="field">
-                            <div class="two fields">
-                                <div class="field">
-                                    <label for="creation_date_min">@lang('trans/ticket.index.search_section.creation_date_min')</label>
-                                    <div class="ui calendar date-picker">
-                                        <div class="ui input left icon">
-                                            <i class="time icon"></i>
-                                            <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}">
-                                        </div>
-                                    </div>
+                            <label for="creation_date_min">@lang('trans/ticket.index.search_section.creation_date_min')</label>
+                            <div class="ui calendar date-picker">
+                                <div class="ui input left icon">
+                                    <i class="time icon"></i>
+                                    <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}">
                                 </div>
-                                <div class="field">
-                                    <label for="creation_date_max">@lang('trans/ticket.index.search_section.creation_date_max')</label>
-                                    <div class="ui calendar date-picker">
-                                        <div class="ui input left icon">
-                                            <i class="time icon"></i>
-                                            <input type="text" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}">
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="creation_date_max">@lang('trans/ticket.index.search_section.creation_date_max')</label>
+                            <div class="ui calendar date-picker">
+                                <div class="ui input left icon">
+                                    <i class="time icon"></i>
+                                    <input type="text" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}">
                                 </div>
                             </div>
                         </div>

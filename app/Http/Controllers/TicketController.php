@@ -7,6 +7,7 @@ use App\Model\Web\TicketCategory;
 use App\Model\Web\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
@@ -15,7 +16,7 @@ class TicketController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -56,29 +57,40 @@ class TicketController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        $categories = TicketCategory::all();
+
+        return view('ticket.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'category_id' => 'required|int',
+            'content' => 'required|min:20'
+        ]);
+
+        dd($validatedData);
+        // TODO: finir cette fonction
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Model\Web\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Ticket $ticket)
     {
@@ -89,7 +101,7 @@ class TicketController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Model\Web\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Ticket $ticket)
     {
@@ -101,7 +113,7 @@ class TicketController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Model\Web\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Ticket $ticket)
     {
@@ -112,7 +124,7 @@ class TicketController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Model\Web\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Ticket $ticket)
     {
