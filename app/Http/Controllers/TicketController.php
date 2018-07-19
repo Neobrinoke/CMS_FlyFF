@@ -81,7 +81,7 @@ class TicketController extends Controller
             'category_id' => 'required|int',
             'title' => 'required|max:255',
             'content' => 'required|max:2000',
-            'attachments' => 'mimes:jpg,jpeg,png,bmp|max:20000|upload_count:5'
+            'attachments' => 'mimes:jpg,jpeg,png,bmp|max:20000|upload_count:5' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
         ]);
 
         $validatedData['author_id'] = auth()->id();
