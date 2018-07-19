@@ -62,7 +62,7 @@
 
             <h3 class="ui dividing header">
                 @lang('trans/ticket.index.ticket_list')
-                <a href="{{ route('settings.game.account.create') }}" class="ui label right floated">
+                <a href="{{ route('ticket.create') }}" class="ui label right floated">
                     <i class="add icon"></i>@lang('trans/ticket.index.create_ticket')
                 </a>
             </h3>

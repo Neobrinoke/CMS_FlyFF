@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Helper\ServerStatus;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -29,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Carbon::setLocale(config('app.locale'));
+
+        Validator::extend('upload_count', function ($attribute, $value, $parameters, $validator) {
+            return count($value) >= intval($parameters[0]);
+        });
     }
 
     /**

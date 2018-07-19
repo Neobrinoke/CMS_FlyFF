@@ -28,6 +28,18 @@ return [
         'creation_date' => 'Date de création',
         'action' => 'Action',
         'create_ticket' => 'Créer un nouveau ticket'
+    ],
+    'create' => [
+        'form' => [
+            'title' => 'Titre',
+            'category' => 'Catégorie',
+            'select_category' => 'Sélectionnez une catégorie',
+            'content' => 'Contenu',
+            'submit' => 'Envoyer'
+        ],
+        'messages' => [
+            'success' => 'Votre ticket a bien été crée'
+        ]
     ]
 
 ];

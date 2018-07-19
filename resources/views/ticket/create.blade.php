@@ -8,17 +8,17 @@
             <h1 class="header"><i class="ticket icon"></i>@yield('title')</h1>
         </div>
         <div class="ui attached fluid clearing segment">
-            <form class="ui form" action="{{ route('ticket.store') }}" method="POST">
+            <form class="ui form" action="{{ route('ticket.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="two fields">
                     <div class="field">
-                        <label for="title">Titre</label>
+                        <label for="title">@lang('trans/ticket.create.form.title')</label>
                         <input type="text" name="title" id="title">
                     </div>
                     <div class="field">
-                        <label for="category_id">Catégorie</label>
+                        <label for="category_id">@lang('trans/ticket.create.form.category')</label>
                         <select class="ui dropdown" name="category_id" id="category_id">
-                            <option value="">Sélectionnez une catégorie</option>
+                            <option value="">@lang('trans/ticket.create.form.select_category')</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -26,11 +26,15 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="content">Description de votre problème</label>
+                    <label for="content">@lang('trans/ticket.create.form.content')</label>
                     <textarea name="content" id="content"></textarea>
                 </div>
                 <div class="field">
-                    <button class="ui primary right floated button" type="submit">Envoyer</button>
+                    <label for="attachments">Sélectionnez un ou plusieurs fichier(s) à attacher(s) au ticket</label>
+                    <input type="file" name="attachments[]" id="attachments" multiple>
+                </div>
+                <div class="field">
+                    <button class="ui primary right floated button" type="submit">@lang('trans/ticket.create.form.submit')</button>
                 </div>
             </form>
         </div>
