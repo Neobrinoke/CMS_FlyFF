@@ -102,7 +102,7 @@ class ArticleComment extends Model
      */
     public function getIsMineAttribute(): bool
     {
-        return $this->author_id === Auth::id();
+        return $this->author_id === auth()->id();
     }
 
     /**

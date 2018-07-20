@@ -30,10 +30,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Carbon::setLocale(config('app.locale'));
-
-        Validator::extend('upload_count', function ($attribute, $value, $parameters, $validator) {
-            return count($value) >= intval($parameters[0]);
-        });
     }
 
     /**

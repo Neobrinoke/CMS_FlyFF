@@ -3,6 +3,7 @@
 use App\Model\Web\Ticket;
 use App\Model\Web\TicketCategory;
 use App\Model\Web\TicketResponse;
+use App\Model\Web\TicketAttachment;
 use App\Model\Web\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -49,7 +50,7 @@ class TicketsTableSeeder extends Seeder
         /** @var User $user */
         $user = User::query()->find(11);
 
-        for ($i = 0; $i < rand(0, 10); $i++) {
+        for ($i = 0; $i < rand(5, 10); $i++) {
             /** @var TicketCategory $ticketCategory */
             foreach ($ticketCategories as $ticketCategory) {
                 $status = Ticket::STATUSES[array_rand(Ticket::STATUSES)];
@@ -62,7 +63,6 @@ class TicketsTableSeeder extends Seeder
                 /** @var Ticket $ticket */
                 $ticket = Ticket::query()->create([
                     'author_id' => $user->id,
-                    'assigned_to' => null,
                     'category_id' => $ticketCategory->id,
                     'title' => $faker->text(15),
                     'content' => $faker->text(255),
@@ -70,28 +70,35 @@ class TicketsTableSeeder extends Seeder
                     'closed_at' => $closedAt
                 ]);
 
-                $ticketResponses = [];
-                for ($j = 0; $j < rand(0, 10); $j++) {
-                    $ticketResponses[] = TicketResponse::query()->create([
-                        'ticket_id' => $ticket->id,
-                        'author_id' => $user->id,
-                        'content' => $faker->text(255)
-                    ]);
-                }
-                $ticket->responses()->saveMany($ticketResponses);
-
-                $ticketAttachments = [];
-                for ($j = 0; $j < rand(0, 10); $j++) {
+                for ($j = 0; $j < rand(0, 5); $j++) {
                     $url = $urls[array_rand($urls)];
 
-                    $ticketAttachments[] = \App\Model\Web\TicketAttachment::query()->create([
+                    TicketAttachment::query()->create([
                         'ticket_id' => $ticket->id,
-                        'author_id' => $user->id,
                         'name' => $faker->text(9),
                         'url' => $url
                     ]);
                 }
-                $ticket->attachments()->saveMany($ticketAttachments);
+
+                for ($j = 0; $j < rand(2, 10); $j++) {
+                    /** @var TicketResponse $ticketResponse */
+                    $ticketResponse = TicketResponse::query()->create([
+                        'ticket_id' => $ticket->id,
+                        'author_id' => $user->id,
+                        'content' => $faker->text(255)
+                    ]);
+
+                    for ($k = 0; $k < rand(0, 5); $k++) {
+                        $url = $urls[array_rand($urls)];
+
+                        TicketAttachment::query()->create([
+                            'ticket_id' => $ticket->id,
+                            'response_id' => $ticketResponse->id,
+                            'name' => $faker->text(9),
+                            'url' => $url
+                        ]);
+                    }
+                }
             }
         }
     }

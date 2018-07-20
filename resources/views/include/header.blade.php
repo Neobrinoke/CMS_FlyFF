@@ -20,7 +20,7 @@
                     <i class="ticket icon"></i>@lang('trans/nav.ticket')<span class="ui green circular label">{{ $loggedUser->tickets->count() }}</span>
                 </a>
                 <div class="ui dropdown icon item">
-                    <span><i class="user circle icon"></i>{{ $loggedUser->name }}</span>
+                    <img class="ui avatar image" src="{{ $loggedUser->avatar_image }}"><span>{{ $loggedUser->name }}</span>
                     <div class="menu">
                         <a href="{{ route('settings.general.index') }}" class="item"><i class="cog icon"></i>@lang('trans/nav.player_settings')</a>
                         <div class="divider"></div>

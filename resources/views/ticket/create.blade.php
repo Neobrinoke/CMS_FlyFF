@@ -13,24 +13,24 @@
                 <div class="two fields">
                     <div class="field">
                         <label for="title">@lang('trans/ticket.create.form.title')</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" value="{{ old('title') }}">
                     </div>
                     <div class="field">
                         <label for="category_id">@lang('trans/ticket.create.form.category')</label>
                         <select class="ui dropdown" name="category_id" id="category_id">
                             <option value="">@lang('trans/ticket.create.form.select_category')</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ old('category_id') === $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="field">
                     <label for="content">@lang('trans/ticket.create.form.content')</label>
-                    <textarea name="content" id="content"></textarea>
+                    <textarea name="content" id="content">{{ old('content') }}</textarea>
                 </div>
                 <div class="field">
-                    <label for="attachments">Sélectionnez un ou plusieurs fichier(s) à attacher(s) au ticket</label>
+                    <label for="attachments">@lang('trans/ticket.create.form.attachments')</label>
                     <input type="file" name="attachments[]" id="attachments" multiple>
                 </div>
                 <div class="field">

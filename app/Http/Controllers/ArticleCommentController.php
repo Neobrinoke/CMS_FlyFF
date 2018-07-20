@@ -25,7 +25,7 @@ class ArticleCommentController extends Controller
             ]);
 
             $validatedData['article_id'] = $article->id;
-            $validatedData['author_id'] = Auth::id();
+            $validatedData['author_id'] = auth()->id();
 
             ArticleComment::query()->create($validatedData);
 
@@ -93,7 +93,7 @@ class ArticleCommentController extends Controller
             ]);
 
             $validatedData['article_id'] = $article->id;
-            $validatedData['author_id'] = Auth::id();
+            $validatedData['author_id'] = auth()->id();
             $validatedData['comment_id'] = $articleComment->id;
 
             ArticleComment::query()->create($validatedData);

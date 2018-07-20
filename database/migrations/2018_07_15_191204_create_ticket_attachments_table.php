@@ -16,7 +16,7 @@ class CreateTicketAttachmentsTable extends Migration
         Schema::create('ticket_attachments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('ticket_id')->index();
-            $table->unsignedInteger('author_id')->index();
+            $table->unsignedInteger('response_id')->nullable()->index();
             $table->string('name');
             $table->text('url');
             $table->timestamps(1);

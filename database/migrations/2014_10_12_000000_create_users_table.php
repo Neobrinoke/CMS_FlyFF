@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('cash_point')->default(0);
             $table->integer('vote_point')->default(0);
+            $table->string('avatar_url', 512)->nullable();
             $table->rememberToken();
             $table->timestamps(1);
             $table->softDeletes('deleted_at', 1);

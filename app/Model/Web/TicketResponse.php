@@ -5,6 +5,7 @@ namespace App\Model\Web;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 /**
  * Class TicketResponse
@@ -18,7 +19,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon updated_at
  * @property Carbon deleted_at
  *
+ * @property bool has_attachments
+ *
  * @property Ticket ticket
+ * @property Collection attachments
+ * @property User author
  */
 class TicketResponse extends Model
 {
@@ -49,6 +54,16 @@ class TicketResponse extends Model
     }
 
     /**
+     * Return all attachments for this ticket.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attachments()
+    {
+        return $this->hasMany(TicketAttachment::class, 'response_id', 'id');
+    }
+
+    /**
      * Return ticket for this response.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -56,5 +71,15 @@ class TicketResponse extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id', 'id');
+    }
+
+    /**
+     * Determine if this response has attachments.
+     *
+     * @return bool
+     */
+    public function getHasAttachmentsAttribute(): bool
+    {
+        return $this->attachments->isNotEmpty();
     }
 }

@@ -84,7 +84,7 @@
                             <td>{{ $ticket->status_label }}</td>
                             <td>{{ $ticket->created_at->toDateString() }} ({{ $ticket->created_at->diffForHumans() }})</td>
                             <td>
-                                <a class="ui primary compact button icon"><i class="eye icon"></i></a>
+                                <a href="{{ route('ticket.show', [$ticket]) }}" class="ui primary compact button icon"><i class="eye icon"></i></a>
                             </td>
                         </tr>
                     @endforeach

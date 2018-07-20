@@ -35,10 +35,28 @@ return [
             'category' => 'Catégorie',
             'select_category' => 'Sélectionnez une catégorie',
             'content' => 'Contenu',
+            'attachments' => 'Sélectionnez un ou plusieurs fichier(s) à attacher(s) au ticket',
             'submit' => 'Envoyer'
         ],
         'messages' => [
             'success' => 'Votre ticket a bien été crée'
+        ]
+    ],
+    'show' => [
+        'info_block' => [
+            'category' => 'Catégorie:',
+            'created_ago' => 'Crée:',
+            'status' => 'Statut:'
+        ],
+        'response' => [
+            'form' => [
+                'content' => 'Ecrivez votre réponse',
+                'attachments' => 'Sélectionnez un ou plusieurs fichier(s) à attacher(s) à la réponse',
+                'submit' => 'Répondre'
+            ],
+            'messages' => [
+                'success' => 'Votre réponse a bien été crée'
+            ]
         ]
     ]
 

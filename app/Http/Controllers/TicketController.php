@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Model\Web\Ticket;
 use App\Model\Web\TicketAttachment;
 use App\Model\Web\TicketCategory;
+use App\Model\Web\TicketResponse;
 use App\Model\Web\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
@@ -72,7 +75,7 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -81,7 +84,7 @@ class TicketController extends Controller
             'category_id' => 'required|int',
             'title' => 'required|max:255',
             'content' => 'required|max:2000',
-            'attachments' => 'mimes:jpg,jpeg,png,bmp|max:20000|upload_count:5' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
+            'attachments.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
         ]);
 
         $validatedData['author_id'] = auth()->id();
@@ -93,11 +96,10 @@ class TicketController extends Controller
         if ($request->file('attachments')) {
             /** @var UploadedFile $attachment */
             foreach ($request->file('attachments') as $attachment) {
-                $file = $attachment->store('TicketAttachments');
+                $file = $attachment->store(Ticket::UPLOAD_PATH);
 
                 TicketAttachment::query()->create([
                     'ticket_id' => $ticket->id,
-                    'author_id' => auth()->id(),
                     'name' => $attachment->getClientOriginalName(),
                     'url' => $file
                 ]);
@@ -110,47 +112,75 @@ class TicketController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @param Ticket $ticket
+     * @return Response
+     */
+    public function storeResponse(Request $request, Ticket $ticket)
+    {
+        $validatedData = $request->validate([
+            'content' => 'required|max:2000',
+            'attachments.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
+        ]);
+
+        $validatedData['ticket_id'] = $ticket->id;
+        $validatedData['author_id'] = auth()->id();
+
+        /** @var TicketResponse $ticketResponse */
+        $ticketResponse = TicketResponse::query()->create($validatedData);
+
+        if ($request->file('attachments')) {
+            /** @var UploadedFile $attachment */
+            foreach ($request->file('attachments') as $attachment) {
+                $file = $attachment->store(Ticket::UPLOAD_PATH);
+
+                TicketAttachment::query()->create([
+                    'ticket_id' => $ticket->id,
+                    'response_id' => $ticketResponse->id,
+                    'name' => $attachment->getClientOriginalName(),
+                    'url' => $file
+                ]);
+            }
+        }
+
+        session()->flash('success', trans('trans/ticket.show.response.messages.success'));
+
+        return redirect()->route('ticket.show', [$ticket]);
+    }
+
+    /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Web\Ticket $ticket
+     * @param Ticket $ticket
      * @return Response
      */
     public function show(Ticket $ticket)
     {
-        //
+        if ($ticket->is_open && $ticket->status !== Ticket::STATUS_READ_BY_USER) {
+            $ticket->status = Ticket::STATUS_READ_BY_USER;
+            $ticket->save();
+        }
+
+        return view('ticket.show', [
+            'ticket' => $ticket
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Download given attachment.
      *
-     * @param  \App\Model\Web\Ticket $ticket
+     * @param Ticket $ticket
+     * @param TicketAttachment $ticketAttachment
      * @return Response
      */
-    public function edit(Ticket $ticket)
+    public function download(Ticket $ticket, TicketAttachment $ticketAttachment)
     {
-        //
-    }
+        if (!$ticket->is_mine || !$ticketAttachment->file_exists) {
+            abort(404);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Model\Web\Ticket $ticket
-     * @return Response
-     */
-    public function update(Request $request, Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Web\Ticket $ticket
-     * @return Response
-     */
-    public function destroy(Ticket $ticket)
-    {
-        //
+        return Storage::disk('local')->download($ticketAttachment->url, $ticketAttachment->name);
     }
 }

@@ -20,12 +20,15 @@ use Illuminate\Support\Collection;
  * @property string remember_token
  * @property int cash_point
  * @property int vote_point
+ * @property string avatar_url
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
  *
- * @property Collection accounts
+ * @property string avatar_image
  * @property Collection characters
+ *
+ * @property Collection accounts
  * @property Collection tickets
  */
 class User extends Authenticatable
@@ -64,6 +67,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Return all tickets for this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'author_id', 'id');
+    }
+
+    /**
      * Return all characters for this user.
      *
      * @return Collection
@@ -82,12 +95,12 @@ class User extends Authenticatable
     }
 
     /**
-     * Return all tickets for this user.
+     * Return avatar image for this user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return string
      */
-    public function tickets()
+    public function getAvatarImageAttribute(): string
     {
-        return $this->hasMany(Ticket::class, 'author_id', 'id');
+        return $this->avatar_url;
     }
 }

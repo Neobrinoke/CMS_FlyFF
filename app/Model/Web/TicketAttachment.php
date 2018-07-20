@@ -5,6 +5,7 @@ namespace App\Model\Web;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class TicketAttachment
@@ -12,12 +13,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property int id
  * @property int ticket_id
+ * @property int response_id
  * @property int author_id
  * @property string name
  * @property string url
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
+ *
+ * @property string download_url
+ * @property bool file_exists
+ *
+ * @property Ticket ticket
+ * @property TicketResponse response
  */
 class TicketAttachment extends Model
 {
@@ -26,7 +34,7 @@ class TicketAttachment extends Model
     /** @var array */
     protected $fillable = [
         'ticket_id',
-        'author_id',
+        'response_id',
         'name',
         'url'
     ];
@@ -49,12 +57,32 @@ class TicketAttachment extends Model
     }
 
     /**
-     * Return ticket for this attachment.
+     * Return response for this attachment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author()
+    public function response()
     {
-        return $this->belongsTo(User::class, 'author_id', 'id');
+        return $this->belongsTo(TicketResponse::class);
+    }
+
+    /**
+     * Return complete url for this attachment.
+     *
+     * @return string
+     */
+    public function getDownloadUrlAttribute(): string
+    {
+        return route('ticket.download', [$this->ticket, $this]);
+    }
+
+    /**
+     * Determine if this attachment exists.
+     *
+     * @return bool
+     */
+    public function getFileExistsAttribute(): bool
+    {
+        return Storage::disk('local')->exists($this->url);
     }
 }
