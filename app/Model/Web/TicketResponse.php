@@ -80,6 +80,17 @@ class TicketResponse extends Model
      */
     public function getHasAttachmentsAttribute(): bool
     {
-        return $this->attachments->isNotEmpty();
+        if ($this->attachments->isEmpty()) {
+            return false;
+        }
+
+        /** @var TicketAttachment $attachment */
+        foreach ($this->attachments as $attachment) {
+            if ($attachment->file_exists) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

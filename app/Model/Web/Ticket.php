@@ -40,7 +40,7 @@ class Ticket extends Model
 {
     use SoftDeletes;
 
-    public const UPLOAD_PATH = 'Ticket/Attachments';
+    public const UPLOAD_PATH = 'ticket/attachments';
 
     public const STATUS_OPEN = 1;
     public const STATUS_CLOSED = 2;
@@ -156,7 +156,18 @@ class Ticket extends Model
      */
     public function getHasAttachmentsAttribute(): bool
     {
-        return $this->attachments->isNotEmpty();
+        if ($this->attachments->isEmpty()) {
+            return false;
+        }
+
+        /** @var TicketAttachment $attachment */
+        foreach ($this->attachments as $attachment) {
+            if ($attachment->file_exists) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

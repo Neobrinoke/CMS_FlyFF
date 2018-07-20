@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Helper\ServerStatus;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
