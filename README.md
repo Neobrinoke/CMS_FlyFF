@@ -22,12 +22,14 @@ This project has been created for challenge and purpose a CMS with latest conven
     - `ACCOUNT_TBL_DETAIL` Need column modify `[regdate] [datetime] -> [datetime2(1)]`
 
 ## How to setup CMS FlyFF (from `develop` branch)
-1. Download or Clone the `develop` branch
-2. Copy `.env.exemple` to `.env` (.env information can be set in your system environment variables)
-3. Config your `.env` (only comments parts are needed)
-4. Storage & bootstrap folder should be writable by your web server or Laravel will not run
-5. Install dependency with `composer install`
-6. Generate Application Key with `php artisan key:generate`
+- Download or Clone the `develop` branch
+- Copy `.env.exemple` to `.env` (.env information can be set in your system environment variables)
+- Config your `.env` (only comments parts are needed)
+- storage & bootstrap folder should be writable recursively by your web server or Laravel will not run
+- Install PHP dependency with `composer install`
+- Install ASSET dependency with `npm install & npm run development`
+- Generate Application Key with `php artisan key:generate`
+- Start CMS with `php artisan serve`
 
 ## Information
 - Email configuration are needed for password recovery system.
