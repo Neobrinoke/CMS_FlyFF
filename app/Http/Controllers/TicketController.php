@@ -84,7 +84,8 @@ class TicketController extends Controller
             'category_id' => 'required|int',
             'title' => 'required|max:255',
             'content' => 'required|max:2000',
-            'attachments.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
+            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:4096',
+            'attachments' => 'files_count:5'
         ]);
 
         $validatedData['author_id'] = auth()->id();
@@ -122,7 +123,8 @@ class TicketController extends Controller
     {
         $validatedData = $request->validate([
             'content' => 'required|max:2000',
-            'attachments.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // TODO: trouver un solution pour gérer tous les fichiers d'un coup sans le (.*)
+            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:4096',
+            'attachments' => 'files_count:5'
         ]);
 
         $validatedData['ticket_id'] = $ticket->id;

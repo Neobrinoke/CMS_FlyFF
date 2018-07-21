@@ -111,7 +111,7 @@ return [
     'unique' => 'La valeur du champ :attribute est déjà utilisée.',
     'uploaded' => "Le fichier du champ :attribute n'a pu être téléversé.",
     'url' => "Le format de l'URL de :attribute n'est pas valide.",
-    'upload_count' => "Le nombres de fichier upload doit être inférieur à :value.",
+    'files_count' => 'Le nombre de fichiers attachés doit-être inférieur ou égale à :max_count.',
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +174,7 @@ return [
         'available' => 'disponible',
         'size' => 'taille',
         'login' => 'identifiant',
-        'category_id' => 'catégorie'
+        'category_id' => 'catégorie',
+        'attachments.*' => 'fichiers attachés'
     ],
 ];
