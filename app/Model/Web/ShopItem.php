@@ -105,7 +105,7 @@ class ShopItem extends Model
     {
         $type = (int)$this->sale_type === Shop::SALE_VOTE_TYPE ? 'vote' : 'cs';
 
-        return asset(sprintf("/img/sale_%s_image.png", $type));
+        return asset(sprintf("/images/sale_%s_image.png", $type));
     }
 
     /**

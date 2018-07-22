@@ -24,6 +24,7 @@ return [
             'password_confirmation' => 'Mot de passe (confirmation)',
             'new_password' => 'Nouveau mot de passe *',
             'new_password_confirmation' => 'Nouveau mot de passe (confirmation)',
+            'profile_img' => 'Nouvelle photo de profil',
             'submit' => 'Éditer',
             'messages' => [
                 'success' => 'Vos informations on bien été édité',

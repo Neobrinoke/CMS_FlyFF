@@ -121,7 +121,7 @@ class Guild extends Model
             $this->m_dwLogo = '0' . $this->m_dwLogo;
         }
 
-        return asset(sprintf("/img/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
+        return asset(sprintf("/images/guilds/Icon_CloakSLogo%d.jpg", $this->m_dwLogo));
     }
 
     /**

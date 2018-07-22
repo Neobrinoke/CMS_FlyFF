@@ -84,7 +84,7 @@ class TicketController extends Controller
             'category_id' => 'required|int',
             'title' => 'required|max:255',
             'content' => 'required|max:2000',
-            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:4096',
+            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:10000',
             'attachments' => 'files_count:5'
         ]);
 
@@ -123,7 +123,7 @@ class TicketController extends Controller
     {
         $validatedData = $request->validate([
             'content' => 'required|max:2000',
-            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:4096',
+            'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:10000',
             'attachments' => 'files_count:5'
         ]);
 

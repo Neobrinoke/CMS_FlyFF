@@ -4,7 +4,7 @@
     <h2 class="ui dividing header">
         @lang('trans/settings.general.edit.title')
     </h2>
-    <form class="ui form" action="{{ route('settings.general.update') }}" method="POST">
+    <form class="ui form" action="{{ route('settings.general.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="field">
             <div class="two fields">
@@ -16,6 +16,10 @@
                     <label for="email">@lang('trans/settings.general.edit.email')</label>
                     <input type="email" name="email" id="email" value="{{ $loggedUser->email }}">
                 </div>
+            </div>
+            <div class="field">
+                <label for="profile_img">@lang('trans/settings.general.edit.profile_img')</label>
+                <input type="file" name="profile_img" id="profile_img">
             </div>
             <div class="two fields">
                 <div class="field">

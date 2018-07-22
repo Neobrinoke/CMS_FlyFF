@@ -62,23 +62,23 @@
         <div class="ui attached fluid segment">
             <div class="ui middle aligned list">
                 <div class="item">
-                    <img class="ui image" src="{{ asset('img/MVP.png') }}" title="@lang('trans/aside.hall_of_fame.mvp')">
+                    <img class="ui image" src="{{ asset('images/MVP.png') }}" title="@lang('trans/aside.hall_of_fame.mvp')">
                     <div class="middle aligned content">{{ $serverStatus->mvp_info }}</div>
                 </div>
                 <div class="item">
-                    <img class="ui image" src="{{ asset('img/GS.png') }}" title="@lang('trans/aside.hall_of_fame.gs')">
+                    <img class="ui image" src="{{ asset('images/GS.png') }}" title="@lang('trans/aside.hall_of_fame.gs')">
                     <div class="middle aligned content">{{ $serverStatus->gs_info }}</div>
                 </div>
                 <div class="item">
-                    <img class="ui image" src="{{ asset('img/souv.png') }}" title="@lang('trans/aside.hall_of_fame.souv')">
+                    <img class="ui image" src="{{ asset('images/souv.png') }}" title="@lang('trans/aside.hall_of_fame.souv')">
                     <div class="middle aligned content">{{ $serverStatus->lord_info }}</div>
                 </div>
                 <div class="item">
                     @if($serverStatus->event_info)
-                        <img class="ui image popup_element" src="{{ asset('img/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')" data-html="{!! nl2br($serverStatus->event_info->details) !!}">
+                        <img class="ui image popup_element" src="{{ asset('images/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')" data-html="{!! nl2br($serverStatus->event_info->details) !!}">
                         <div class="middle aligned content">{{ $serverStatus->event_info->message }}</div>
                     @else
-                        <img class="ui image" src="{{ asset('img/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')">
+                        <img class="ui image" src="{{ asset('images/event.png') }}" title="@lang('trans/aside.hall_of_fame.event')">
                         <div class="middle aligned content">@lang('trans/aside.hall_of_fame.no_event_currently')</div>
                     @endif
                 </div>

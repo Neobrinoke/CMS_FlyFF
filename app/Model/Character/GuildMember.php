@@ -90,7 +90,7 @@ class GuildMember extends Model
     {
         $name = ucfirst(self::RANKS[$this->m_nMemberLv]);
 
-        return asset(sprintf("/img/guilds/%s.png", $name));
+        return asset(sprintf("/images/guilds/%s.png", $name));
     }
 
     /**

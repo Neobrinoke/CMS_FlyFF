@@ -80,7 +80,7 @@ tr[onclick] {
 }
 
 body {
-    background: url('/img/background.jpg') no-repeat #ffffff;
+    background: url('/images/background.jpg') no-repeat #ffffff;
     background-size: cover;
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Model\Web\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,7 +53,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:website.users',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:6|confirmed',
+            'rules' => 'required|boolean',
+            'profile_img' => 'image|max:10000'
         ]);
     }
 
@@ -64,10 +67,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data): Model
     {
-        return User::query()->create([
+        $values = [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ];
+
+        if (isset($data['profile_img'])) {
+            /** @var UploadedFile $image */
+            $image = $data['profile_img'];
+
+            $values['avatar_url'] = '/uploads/' . $image->store('user/avatars', [
+                'disk' => 'public'
+            ]);
+        } else {
+            $values['avatar_url'] = '/images/default_avatar.png';
+        }
+
+        return User::query()->create($values);
     }
 }

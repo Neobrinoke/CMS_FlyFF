@@ -175,6 +175,7 @@ return [
         'size' => 'taille',
         'login' => 'identifiant',
         'category_id' => 'catégorie',
-        'attachments.*' => 'fichiers attachés'
+        'attachments.*' => 'fichiers attachés',
+        'profile_img' => 'photo de profil'
     ],
 ];

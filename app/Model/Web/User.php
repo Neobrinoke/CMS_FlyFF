@@ -40,7 +40,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'cash_point',
+        'vote_point',
+        'avatar_url'
     ];
 
     /** @var array */
@@ -97,9 +100,9 @@ class User extends Authenticatable
     /**
      * Return avatar image for this user.
      *
-     * @return string
+     * @return null|string
      */
-    public function getAvatarImageAttribute(): string
+    public function getAvatarImageAttribute(): ?string
     {
         return $this->avatar_url;
     }

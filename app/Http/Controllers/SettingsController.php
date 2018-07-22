@@ -50,7 +50,8 @@ class SettingsController extends Controller
 
         $validatedRules = [
             'name' => 'required|string|max:255',
-            'email' => "required|string|email|max:255|unique:website.users,email,{$user->id}"
+            'email' => "required|string|email|max:255|unique:website.users,email,{$user->id}",
+            'profile_img' => 'image|max:10000'
         ];
 
         if ($request->input('new_password')) {
@@ -58,6 +59,12 @@ class SettingsController extends Controller
         }
 
         $validatedData = $request->validate($validatedRules);
+
+        if ($request->file('profile_img')) {
+            $validatedData['avatar_url'] = '/uploads/' . $request->file('profile_img')->store('user/avatars', [
+                'disk' => 'public'
+            ]);
+        }
 
         if ($request->input('new_password')) {
             $validatedData['password'] = Hash::make($validatedData['new_password']);
