@@ -45,4 +45,4 @@ If you discover a bug or security vulnerability, please open an issue. All secur
 - [Trello](https://trello.com/b/ImR9LrjH/cmsflyff)
 
 ## License
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+CMS-FlyFF is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
