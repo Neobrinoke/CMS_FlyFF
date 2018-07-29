@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="ui section divider"></div>
-        <img src="http://simg.gpotato.eu/common/icon/flyff.png" class="ui centered mini image">
+        <img src="{{ asset('images/footer_logo.png') }}" class="ui centered mini image">
         <div class="ui horizontal small divided link list">
             <a class="item" href="#">Site Map</a>
             <a class="item" href="#">Contact Us</a>

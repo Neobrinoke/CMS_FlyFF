@@ -1,6 +1,6 @@
 <nav class="ui menu stackable">
     <div class="ui container">
-        <a href="{{ route('home') }}" class="header item"><img class="logo" src="http://simg.gpotato.eu/common/icon/flyff.png"></a>
+        <a href="{{ route('home') }}" class="header item"><img class="logo" src="{{ asset('images/nav_logo.png') }}"></a>
         <a href="{{ route('article.index') }}" class="item activable"><i class="newspaper outline icon"></i>@lang('trans/nav.news')</a>
         <div class="ui dropdown item">
             <i class="sort amount up icon"></i>@lang('trans/nav.ranking.header')
@@ -39,7 +39,7 @@
 </nav>
 <header class="ui container">
     <section class="logo">
-        <img src="http://eu-uimg-wgp.webzen.com/788253779/Banner/07072014_111943_flyff-logo-new_407839.png" alt="logo">
+        <img src="{{ asset('images/header_logo.png') }}" alt="logo">
     </section>
 </header>
 

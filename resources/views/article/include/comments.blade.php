@@ -1,7 +1,7 @@
 <div class="ui comments" @if(!is_null($parentId)) id="comment_{{ $parentId }}_responses" @endif>
     @foreach($comments as $comment)
         <div class="comment">
-            <a class="avatar" href="#"><img src="https://semantic-ui.com/images/avatar/small/matt.jpg"></a>
+            <a class="avatar" href="#"><img src="{{ $comment->author->avatar_image }}"></a>
             <div class="content">
                 <a class="author" href="#">{{ $comment->author->name }}</a>
                 <div class="metadata">
