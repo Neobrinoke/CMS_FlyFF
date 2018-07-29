@@ -143,6 +143,87 @@ class Character extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'playerslot' => 'int',
+        'dwWorldID' => 'int',
+        'm_dwIndex' => 'int',
+        'm_vScale_x' => 'float',
+        'm_dwMotion' => 'int',
+        'm_vPos_x' => 'float',
+        'm_vPos_y' => 'float',
+        'm_vPos_z' => 'float',
+        'm_fAngle' => 'float',
+        'm_nHitPoint' => 'int',
+        'm_nManaPoint' => 'int',
+        'm_nFatiguePoint' => 'int',
+        'm_nFuel' => 'int',
+        'm_dwSkinSet' => 'int',
+        'm_dwHairMesh' => 'int',
+        'm_dwHairColor' => 'int',
+        'm_dwHeadMesh' => 'int',
+        'm_dwSex' => 'int',
+        'm_dwRideItemIdx' => 'int',
+        'm_dwGold' => 'int',
+        'm_nJob' => 'int',
+        'm_nStr' => 'int',
+        'm_nSta' => 'int',
+        'm_nDex' => 'int',
+        'm_nInt' => 'int',
+        'm_nLevel' => 'int',
+        'm_nMaximumLevel' => 'int',
+        'm_nExp1' => 'int',
+        'm_nExp2' => 'int',
+        'm_dwExpertLv' => 'int',
+        'm_idMarkingWorld' => 'int',
+        'm_vMarkingPos_x' => 'float',
+        'm_vMarkingPos_y' => 'float',
+        'm_vMarkingPos_z' => 'float',
+        'm_nRemainGP' => 'int',
+        'm_nRemainLP' => 'int',
+        'm_nFlightLv' => 'int',
+        'm_nFxp' => 'int',
+        'm_nTxp' => 'int',
+        'm_dwMode' => 'int',
+        'm_idparty' => 'int',
+        'm_idMuerderer' => 'int',
+        'm_nFame' => 'int',
+        'm_nDeathExp' => 'int',
+        'm_nDeathLevel' => 'int',
+        'm_dwFlyTime' => 'int',
+        'm_nMessengerState' => 'int',
+        'TotalPlayTime' => 'int',
+        'm_tmAccFuel' => 'int',
+        'm_dwSkillPoint' => 'int',
+        'm_dwReturnWorldID' => 'int',
+        'm_vReturnPos_x' => 'float',
+        'm_vReturnPos_y' => 'float',
+        'm_vReturnPos_z' => 'float',
+        'MultiServer' => 'int',
+        'm_SkillPoint' => 'int',
+        'm_SkillLv' => 'int',
+        'm_SkillExp' => 'int',
+        'dwEventFlag' => 'int',
+        'dwEventTime' => 'int',
+        'dwEventElapsed' => 'int',
+        'PKValue' => 'int',
+        'PKPropensity' => 'int',
+        'PKExp' => 'int',
+        'AngelExp' => 'int',
+        'AngelLevel' => 'int',
+        'm_dwPetId' => 'int',
+        'm_nExpLog' => 'int',
+        'm_nAngelExpLog' => 'int',
+        'm_nCoupon' => 'int',
+        'm_nHonor' => 'int',
+        'm_nLayer' => 'int',
+        'm_nCampusPoint' => 'int',
+        'idCampus' => 'int',
+        'tKeepTime' => 'int',
+        'm_dwMadrigalGiftExp' => 'int',
+        'm_tmLogout' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'CreateTime',
         'FinalLevelDt'
@@ -245,7 +326,7 @@ class Character extends Model
      */
     public function getSexIconAttribute(): string
     {
-        return (int)$this->m_dwSex === 0 ? 'mars' : 'venus';
+        return $this->m_dwSex === 0 ? 'mars' : 'venus';
     }
 
     /**
@@ -255,7 +336,7 @@ class Character extends Model
      */
     public function getSexTitleAttribute(): string
     {
-        return (int)$this->m_dwSex === 0 ? trans('trans/sex.boy') : trans('trans/sex.girl');
+        return $this->m_dwSex === 0 ? trans('trans/sex.boy') : trans('trans/sex.girl');
     }
 
     /**

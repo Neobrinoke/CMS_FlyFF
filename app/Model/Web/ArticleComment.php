@@ -44,15 +44,17 @@ class ArticleComment extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'article_id' => 'int',
+        'author_id' => 'int',
+        'comment_id' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'
-    ];
-
-    /** @var array */
-    protected $casts = [
-        'author_id' => 'int'
     ];
 
     /**
@@ -102,7 +104,7 @@ class ArticleComment extends Model
      */
     public function getIsMineAttribute(): bool
     {
-        return $this->author_id === auth()->id();
+        return $this->author_id === (int)auth()->id();
     }
 
     /**

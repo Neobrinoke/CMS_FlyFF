@@ -12,7 +12,7 @@
             </div>
             <div class="content">
                 <div class="transition hidden">
-                    @if((int)$history->action === \App\Model\Web\Log::ACTION_TYPE_BUY_SHOP)
+                    @if($history->action === \App\Model\Web\Log::ACTION_TYPE_BUY_SHOP)
                         @include('settings.history.include.buy_shop', ['cart' => unserialize($history->value)])
                     @endif
                 </div>

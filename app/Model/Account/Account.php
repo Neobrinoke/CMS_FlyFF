@@ -62,6 +62,11 @@ class Account extends Model
         'user_id'
     ];
 
+    /** @var array */
+    protected $casts = [
+        'user_id' => 'int'
+    ];
+
     /**
      * Return the detail for this account.
      *
@@ -89,7 +94,7 @@ class Account extends Model
      */
     public function getIsMineAttribute(): bool
     {
-        return (int)$this->user_id === (int)auth()->id();
+        return $this->user_id === (int)auth()->id();
     }
 
     /**

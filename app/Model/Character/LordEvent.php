@@ -37,6 +37,15 @@ class LordEvent extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'nServer' => 'int',
+        'idPlayer' => 'int',
+        'nTick' => 'int',
+        'fEFactor' => 'float',
+        'fIFactor' => 'float'
+    ];
+
+    /** @var array */
     protected $dates = [
         's_date'
     ];

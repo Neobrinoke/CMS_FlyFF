@@ -50,6 +50,16 @@ class ShopItem extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'id' => 'int',
+        'category_id' => 'int',
+        'shop_id' => 'int',
+        'item_id' => 'int',
+        'sale_type' => 'int',
+        'price' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
@@ -106,7 +116,7 @@ class ShopItem extends Model
      */
     public function getSaleImageAttribute(): string
     {
-        $type = (int)$this->sale_type === Shop::SALE_VOTE_TYPE ? 'vote' : 'cs';
+        $type = $this->sale_type === Shop::SALE_VOTE_TYPE ? 'vote' : 'cs';
 
         return asset(sprintf("/images/sale_%s_image.png", $type));
     }

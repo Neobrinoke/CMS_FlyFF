@@ -39,6 +39,12 @@ class Download extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'author_id' => 'int',
+        'type' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',

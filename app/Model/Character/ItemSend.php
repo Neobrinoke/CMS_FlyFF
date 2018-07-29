@@ -97,6 +97,36 @@ class ItemSend extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'm_nNo' => 'int',
+        'Item_count' => 'int',
+        'm_nAbilityOption' => 'int',
+        'm_bItemResist' => 'int',
+        'm_nResistAbilityOption' => 'int',
+        'm_bCharged' => 'int',
+        'nPiercedSize' => 'int',
+        'adwItemId0' => 'int',
+        'adwItemId1' => 'int',
+        'adwItemId2' => 'int',
+        'adwItemId3' => 'int',
+        'm_dwKeepTime' => 'int',
+        'ItemFlag' => 'int',
+        'nRandomOptItemId' => 'int',
+        'adwItemId4' => 'int',
+        'adwItemId5' => 'int',
+        'adwItemId6' => 'int',
+        'adwItemId7' => 'int',
+        'adwItemId8' => 'int',
+        'adwItemId9' => 'int',
+        'nUMPiercedSize' => 'int',
+        'adwUMItemId0' => 'int',
+        'adwUMItemId1' => 'int',
+        'adwUMItemId2' => 'int',
+        'adwUMItemId3' => 'int',
+        'adwUMItemId4' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'ReceiveDt',
         'ProvideDt'

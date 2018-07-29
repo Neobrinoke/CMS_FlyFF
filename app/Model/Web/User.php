@@ -54,6 +54,13 @@ class User extends Authenticatable
     ];
 
     /** @var array */
+    protected $casts = [
+        'cash_point' => 'int',
+        'vote_point' => 'int'
+    ];
+
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',

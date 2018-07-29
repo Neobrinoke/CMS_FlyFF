@@ -70,7 +70,6 @@ class Ticket extends Model
 
     /** @var array */
     protected $casts = [
-        'id' => 'int',
         'author_id' => 'int',
         'assigned_to' => 'int',
         'category_id' => 'int',
@@ -177,6 +176,6 @@ class Ticket extends Model
      */
     public function getIsMineAttribute(): bool
     {
-        return $this->author_id === auth()->id();
+        return $this->author_id === (int)auth()->id();
     }
 }

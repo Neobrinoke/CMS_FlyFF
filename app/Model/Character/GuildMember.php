@@ -57,6 +57,19 @@ class GuildMember extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'm_nWin' => 'int',
+        'm_nLose' => 'int',
+        'm_nSurrender' => 'int',
+        'm_nMemberLv' => 'int',
+        'm_nGiveGold' => 'int',
+        'm_nGivePxp' => 'int',
+        'm_idWar' => 'int',
+        'm_idVote' => 'int',
+        'm_nClass' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'CreateTime'
     ];

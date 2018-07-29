@@ -38,6 +38,12 @@ class CombatInfo extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'CombatID' => 'int',
+        'SEQ' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'StartDt',
         'EndDt'

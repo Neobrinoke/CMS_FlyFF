@@ -49,6 +49,32 @@ class UserCount extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'number' => 'int',
+        'm_01' => 'int',
+        'm_02' => 'int',
+        'm_03' => 'int',
+        'm_04' => 'int',
+        'm_05' => 'int',
+        'm_06' => 'int',
+        'm_07' => 'int',
+        'm_08' => 'int',
+        'm_09' => 'int',
+        'm_10' => 'int',
+        'm_11' => 'int',
+        'm_12' => 'int',
+        'm_13' => 'int',
+        'm_14' => 'int',
+        'm_15' => 'int',
+        'm_16' => 'int',
+        'm_17' => 'int',
+        'm_18' => 'int',
+        'm_19' => 'int',
+        'm_20' => 'int',
+        'm_channel' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         's_date'
     ];

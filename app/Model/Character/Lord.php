@@ -34,6 +34,13 @@ class Lord extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'nServer' => 'int',
+        'idElection' => 'int',
+        'idLord' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         's_date'
     ];

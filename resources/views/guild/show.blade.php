@@ -65,7 +65,7 @@
                             <td>{{ $member->player->m_nLevel }}</td>
                             <td><i class="{{ $member->player->sex_icon }} icon" title="{{ $member->player->sex_title }}" style="font-size: 1.5em;"></i></td>
                             <td>
-                                @for($i = 0; $i <= (int)$member->m_nClass; $i++)
+                                @for($i = 0; $i <= $member->m_nClass; $i++)
                                     <img src="{{ $member->rank_logo }}" title="{{ $member->rank_title }}">
                                 @endfor
                             </td>

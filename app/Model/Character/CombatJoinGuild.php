@@ -43,6 +43,17 @@ class CombatJoinGuild extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'CombatID' => 'int',
+        'CombatFee' => 'int',
+        'ReturnCombatFee' => 'int',
+        'Reward' => 'int',
+        'Point' => 'int',
+        'StraightWin' => 'int',
+        'SEQ' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'RewardDt',
         'CancelDt',

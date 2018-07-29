@@ -60,6 +60,27 @@ class Guild extends Model
     public $timestamps = false;
 
     /** @var array */
+    protected $casts = [
+        'Lv_1' => 'int',
+        'Lv_2' => 'int',
+        'Lv_3' => 'int',
+        'Lv_4' => 'int',
+        'Pay_0' => 'int',
+        'Pay_1' => 'int',
+        'Pay_2' => 'int',
+        'Pay_3' => 'int',
+        'Pay_4' => 'int',
+        'm_nLevel' => 'int',
+        'm_nGuildGold' => 'int',
+        'm_nGuildPxp' => 'int',
+        'm_nWin' => 'int',
+        'm_nLose' => 'int',
+        'm_nSurrender' => 'int',
+        'm_nWinPoint' => 'int',
+        'm_dwLogo' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'CreateTime'
     ];
@@ -106,7 +127,7 @@ class Guild extends Model
      */
     public function getHasLogoAttribute(): bool
     {
-        return (int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27;
+        return $this->m_dwLogo >= 1 && $this->m_dwLogo <= 27;
     }
 
     /**

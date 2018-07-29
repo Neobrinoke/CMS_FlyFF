@@ -47,6 +47,13 @@ class Article extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'category_id' => 'int',
+        'author_id' => 'int',
+        'authorized_comment' => 'bool'
+    ];
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',

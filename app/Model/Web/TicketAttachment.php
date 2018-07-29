@@ -40,6 +40,13 @@ class TicketAttachment extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'ticket_id' => 'int',
+        'response_id' => 'int',
+        'author_id' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',

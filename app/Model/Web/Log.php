@@ -36,19 +36,15 @@ class Log extends Model
     ];
 
     /** @var array */
+    protected $casts = [
+        'user_id' => 'int',
+        'action' => 'int'
+    ];
+
+    /** @var array */
     protected $dates = [
         'performed_at'
     ];
-
-    /**
-     * Return user for this log.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     /**
      * Create a log for buy shop action.
@@ -76,5 +72,15 @@ class Log extends Model
             'value' => serialize($value),
             'performed_at' => Carbon::now()
         ]);
+    }
+
+    /**
+     * Return user for this log.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

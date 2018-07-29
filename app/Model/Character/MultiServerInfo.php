@@ -31,6 +31,11 @@ class MultiServerInfo extends Model
     /** @var bool */
     public $timestamps = false;
 
+    /** @var array */
+    protected $casts = [
+        'MultiServer' => 'int'
+    ];
+
     /**
      * Retrieve all connected players.
      *
