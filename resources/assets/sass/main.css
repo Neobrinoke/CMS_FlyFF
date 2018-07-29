@@ -122,6 +122,13 @@ main section.content {
     width: 100%;
 }
 
+.ui.vertical.menu .item.active::after, .ui.vertical.menu .item.activable:hover::after {
+    border-left: 4px solid var(--primary-color);
+    border-bottom: none;
+    bottom: 0;
+    top: 0;
+}
+
 .box {
     margin-bottom: 15px;
 }

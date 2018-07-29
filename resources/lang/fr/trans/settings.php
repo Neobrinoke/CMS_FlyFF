@@ -69,6 +69,24 @@ return [
                 ]
             ]
         ]
+    ],
+    'history' => [
+        'title' => 'Historiques',
+        'titles' => [
+            '1' => 'Achat boutique',
+            '2' => '',
+            '3' => '',
+            '4' => '',
+            '5' => '',
+            '6' => '',
+        ],
+        'cart' => [
+            'image' => 'Image',
+            'name' => 'Nom',
+            'quantity' => 'Qte',
+            'unit_price' => 'Prix Unit.',
+            'ttl_price' => 'Prix Ttl.'
+        ]
     ]
 
 ];
