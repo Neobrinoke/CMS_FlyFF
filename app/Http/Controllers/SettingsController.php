@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Md5Helper;
 use App\Model\Account\Account;
 use App\Model\Account\AccountDetail;
 use App\Model\Web\User;
@@ -115,7 +116,7 @@ class SettingsController extends Controller
             'password' => 'required|string|min:6|confirmed'
         ]);
 
-        $validatedData['password'] = md5(env('MD5_HASH_KEY') . $validatedData['password']);
+        $validatedData['password'] = Md5Helper::md5Hash($validatedData['password']);
 
         Account::query()->create([
             'account' => $validatedData['account'],
@@ -153,7 +154,7 @@ class SettingsController extends Controller
      */
     public function gameAccountEdit(Account $account)
     {
-        if (!$account->is_mine) {
+        if (!$account->is_mine || $account->is_banned) {
             abort(404);
         }
 
@@ -171,11 +172,11 @@ class SettingsController extends Controller
      */
     public function gameAccountUpdate(Request $request, Account $account)
     {
-        if (!$account->is_mine) {
+        if (!$account->is_mine || $account->is_banned) {
             abort(404);
         }
 
-        if (md5(env('MD5_HASH_KEY') . $request->input('password')) !== $account->password) {
+        if (Md5Helper::md5Hash($request->input('password')) !== $account->password) {
             session()->flash('error', trans('trans/settings.game.account.edit.messages.password_error'));
             return redirect()->back();
         }
@@ -185,7 +186,7 @@ class SettingsController extends Controller
         ]);
 
         $account->fill([
-            'password' => md5(env('MD5_HASH_KEY') . $validatedData['new_password'])
+            'password' => Md5Helper::md5Hash($validatedData['new_password'])
         ])->save();
 
         session()->flash('success', trans('trans/settings.game.account.edit.messages.success', ['account' => $account->account]));

@@ -18,7 +18,7 @@
                         <span>@lang('trans/guild.leader') {{ $guild->leader->m_szName }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.penya') {{ $guild->m_nGuildGold }}</span>
+                        <span>@lang('trans/guild.penya') {{ $guild->penyas }}</span>
                     </div>
                     <div class="ui segment">
                         <span>@lang('trans/guild.lvl') {{ $guild->m_nLevel }}</span>

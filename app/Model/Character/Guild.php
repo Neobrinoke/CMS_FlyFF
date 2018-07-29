@@ -37,6 +37,7 @@ use Illuminate\Support\Collection;
  * @property bool has_logo
  * @property string logo
  * @property int max_members_count
+ * @property string penyas
  *
  * @property Character leader
  * @property Collection members
@@ -105,8 +106,6 @@ class Guild extends Model
      */
     public function getHasLogoAttribute(): bool
     {
-        $this->m_dwLogo = 11;
-
         return (int)$this->m_dwLogo >= 1 && (int)$this->m_dwLogo <= 27;
     }
 
@@ -132,5 +131,15 @@ class Guild extends Model
     public function getMaxMembersCountAttribute(): int
     {
         return config(sprintf("resources.guild.maxMembersCount.%d", $this->m_nLevel));
+    }
+
+    /**
+     * Return  formatted penyas count string.
+     *
+     * @return string
+     */
+    public function getPenyasAttribute(): string
+    {
+        return number_format($this->m_nGuildGold, 0, '.', ' ');
     }
 }

@@ -5,7 +5,7 @@
             <div class="content">
                 <a class="author" href="#">{{ $comment->author->name }}</a>
                 <div class="metadata">
-                    <span class="date">{{ $comment->created_at }}</span>
+                    <span class="ui date popup_element" data-content="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span>
                 </div>
                 <div class="text">{{ $comment->content }}</div>
                 @auth

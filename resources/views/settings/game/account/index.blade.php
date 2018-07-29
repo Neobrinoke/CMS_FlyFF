@@ -27,7 +27,9 @@
                         <div class="ui {{ $account->is_banned ? 'red' : 'olive' }} label">{{ $account->status }}</div>
                     </td>
                     <td>
-                        <a href="{{ route('settings.game.account.edit', [$account]) }}" class="ui green compact icon button"><i class="edit icon"></i></a>
+                        @if(!$account->is_banned)
+                            <a href="{{ route('settings.game.account.edit', [$account]) }}" class="ui green compact icon button"><i class="edit icon"></i></a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
