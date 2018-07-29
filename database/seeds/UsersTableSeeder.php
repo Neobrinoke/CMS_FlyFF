@@ -22,6 +22,15 @@ class UsersTableSeeder extends Seeder
             'https://semantic-ui.com/images/avatar/large/steve.jpg'
         ];
 
+        User::query()->create([
+            'name' => 'admin',
+            'email' => 'admin@email.fr',
+            'password' => bcrypt('admin'),
+            'cash_point' => 987654321,
+            'vote_point' => 987654321,
+            'avatar_url' => $avatars[array_rand($avatars)]
+        ]);
+
         for ($i = 0; $i < 10; $i++) {
             $avatar_url = $avatars[array_rand($avatars)];
 
@@ -34,14 +43,5 @@ class UsersTableSeeder extends Seeder
                 'avatar_url' => $avatar_url
             ]);
         }
-
-        User::query()->create([
-            'name' => 'admin',
-            'email' => 'admin@email.fr',
-            'password' => bcrypt('admin'),
-            'cash_point' => 987654321,
-            'vote_point' => 987654321,
-            'avatar_url' => $avatars[array_rand($avatars)]
-        ]);
     }
 }

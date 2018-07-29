@@ -1,11 +1,11 @@
 <table class="ui single line compact selectable table">
     <thead>
         <tr>
-            <th>@lang('trans/settings.history.cart.image')</th>
-            <th>@lang('trans/settings.history.cart.name')</th>
-            <th>@lang('trans/settings.history.cart.quantity')</th>
-            <th class="right aligned">@lang('trans/settings.history.cart.unit_price')</th>
-            <th class="right aligned">@lang('trans/settings.history.cart.ttl_price')</th>
+            <th>@lang('trans/settings.history.buy_shop.cart.image')</th>
+            <th>@lang('trans/settings.history.buy_shop.cart.name')</th>
+            <th>@lang('trans/settings.history.buy_shop.cart.quantity')</th>
+            <th class="right aligned">@lang('trans/settings.history.buy_shop.cart.unit_price')</th>
+            <th class="right aligned">@lang('trans/settings.history.buy_shop.cart.ttl_price')</th>
         </tr>
     </thead>
     <tbody>

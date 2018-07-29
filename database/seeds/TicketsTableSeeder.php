@@ -17,6 +17,12 @@ class TicketsTableSeeder extends Seeder
      */
     public function run()
     {
+        /** @var User $user */
+        $user = User::query()->find(1);
+        if (is_null($user)) {
+            return;
+        }
+
         $faker = Factory::create();
 
         $urls = [
@@ -46,9 +52,6 @@ class TicketsTableSeeder extends Seeder
             'name' => 'Site',
             'color' => 'purple'
         ]);
-
-        /** @var User $user */
-        $user = User::query()->find(11);
 
         for ($i = 0; $i < rand(5, 10); $i++) {
             /** @var TicketCategory $ticketCategory */

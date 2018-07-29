@@ -72,32 +72,38 @@
             </table>
             @if($cart->isNotEmpty())
                 <h3 class="ui dividing header">@lang('trans/shop.cart.buy_summary')</h3>
-                <section class="ui stackable grid">
-                    <div class="four wide column">
-                        <p>@lang('trans/shop.cart.you_have')</p>
-                        <p>{{ $loggedUser->cash_point }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></p>
-                        <p>{{ $loggedUser->vote_point }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('trans/shop.sale_types.2')"></p>
+                @if($loggedUser->characters->isNotEmpty())
+                    <section class="ui stackable grid">
+                        <div class="four wide column">
+                            <p>@lang('trans/shop.cart.you_have')</p>
+                            <p>{{ $loggedUser->cash_point }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></p>
+                            <p>{{ $loggedUser->vote_point }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('trans/shop.sale_types.2')"></p>
+                        </div>
+                        <div class="four wide column">
+                            <p>@lang('trans/shop.cart.you_will_have')</p>
+                            <p>{{ $loggedUser->cash_point - $cart->getTotalTtlCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></p>
+                            <p>{{ $loggedUser->vote_point - $cart->getTotalTtlVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('trans/shop.sale_types.2')"></p>
+                        </div>
+                        <div class="height wide column">
+                            <form class="ui form" action="{{ route('shop.cart.buy') }}" method="POST">
+                                @csrf
+                                <div class="field">
+                                    <select class="ui dropdown" name="character">
+                                        <option value="">@lang('trans/shop.cart.select_char')</option>
+                                        @foreach($loggedUser->characters as $character)
+                                            <option value="{{ $character->m_idPlayer }}">{{ $character->account }} - {{ $character->m_szName }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="ui fluid primary button">@lang('trans/shop.cart.buy')</button>
+                            </form>
+                        </div>
+                    </section>
+                @else
+                    <div class="ui error message">
+                        <p>@lang('trans/shop.cart.no_chars')</p>
                     </div>
-                    <div class="four wide column">
-                        <p>@lang('trans/shop.cart.you_will_have')</p>
-                        <p>{{ $loggedUser->cash_point - $cart->getTotalTtlCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></p>
-                        <p>{{ $loggedUser->vote_point - $cart->getTotalTtlVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('trans/shop.sale_types.2')"></p>
-                    </div>
-                    <div class="height wide column">
-                        <form class="ui form" action="{{ route('shop.cart.buy') }}" method="POST">
-                            @csrf
-                            <div class="field">
-                                <select class="ui dropdown" name="character">
-                                    <option value="">@lang('trans/shop.cart.select_char')</option>
-                                    @foreach($loggedUser->characters as $character)
-                                        <option value="{{ $character->m_idPlayer }}">{{ $character->account }} - {{ $character->m_szName }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="ui fluid primary button">@lang('trans/shop.cart.buy')</button>
-                        </form>
-                    </div>
-                </section>
+                @endif
             @endif
         </div>
     </div>

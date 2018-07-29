@@ -94,7 +94,7 @@ class User extends Authenticatable
      */
     public function logs()
     {
-        return $this->hasMany(Log::class)->orderByDesc('performed_at');
+        return $this->hasMany(UserLog::class)->orderByDesc('performed_at');
     }
 
     /**

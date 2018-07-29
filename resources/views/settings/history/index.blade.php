@@ -12,8 +12,10 @@
             </div>
             <div class="content">
                 <div class="transition hidden">
-                    @if($history->action === \App\Model\Web\Log::ACTION_TYPE_BUY_SHOP)
-                        @include('settings.history.include.buy_shop', ['cart' => unserialize($history->value)])
+                    @if($history->action === \App\Model\Web\UserLog::ACTION_TYPE_BUY_SHOP)
+                        @include('settings.history.include.buy_shop', ['cart' => $history->value])
+                    @elseif($history->action === \App\Model\Web\UserLog::ACTION_TYPE_LOGIN)
+                        <p>@lang('trans/settings.history.login.message', ['ip' => $history->ip_address])</p>
                     @endif
                 </div>
             </div>
@@ -21,4 +23,4 @@
     </div>
 @endsection
 
-<?php /** @var \App\Model\Web\Log $history */ ?>
+<?php /** @var \App\Model\Web\UserLog $history */ ?>

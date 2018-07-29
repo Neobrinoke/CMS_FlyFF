@@ -47,6 +47,7 @@ return [
         'select_char' => 'Sélectionnez le personnage qui recevera l\'objet',
         'buy' => 'Acheter le panier',
         'need_login' => 'Vous devez être connecté pour ajouter cet objet à votre panier',
+        'no_chars' => 'Aucun personnages disponible',
         'error' => [
             'empty_cart' => 'Votre panier est vide',
             'char_not_found' => 'Personnage introuvable',

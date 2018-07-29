@@ -16,10 +16,13 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-
         /** @var User $user */
-        $user = User::query()->where('name', '=', 'Neobrinoke')->get()->first();
+        $user = User::query()->find(1);
+        if (is_null($user)) {
+            return;
+        }
+
+        $faker = Factory::create();
 
         $images = [
             'http://eu-uimg-wgp.webzen.com/1220129452/News/31052018_144440_fr-170x127_530808.jpg',

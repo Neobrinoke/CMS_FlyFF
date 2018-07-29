@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Cart;
 use App\Model\Character\Character;
-use App\Model\Web\Log;
+use App\Model\Web\UserLog;
 use App\Model\Web\Shop;
 use App\Model\Web\ShopCategory;
 use App\Model\Web\ShopItem;
@@ -181,28 +181,32 @@ class ShopController extends Controller
         $user = auth()->user();
 
         if ($cart->isNotEmpty()) {
-            /** @var Character $character */
-            $character = Character::query()->find($request->input('character'));
-            if ($character && $character->is_valid) {
-                if ($user->vote_point >= $cart->getTotalTtlVotePrice() && $user->cash_point >= $cart->getTotalTtlCsPrice()) {
-                    $cart->items->each(function (ShopItem $item) use ($character) {
-                        $character->sendItem($item->item_id, $item->quantity, true);
-                    });
+            if ($user->characters->isNotEmpty()) {
+                /** @var Character $character */
+                $character = Character::query()->find($request->input('character'));
+                if ($character && $character->is_valid) {
+                    if ($user->vote_point >= $cart->getTotalTtlVotePrice() && $user->cash_point >= $cart->getTotalTtlCsPrice()) {
+                        $cart->items->each(function (ShopItem $item) use ($character) {
+                            $character->sendItem($item->item_id, $item->quantity, true);
+                        });
 
-                    Log::buyShop($cart);
+                        $user->vote_point -= $cart->getTotalTtlVotePrice();
+                        $user->cash_point -= $cart->getTotalTtlCsPrice();
+                        $user->save();
 
-                    $user->vote_point -= $cart->getTotalTtlVotePrice();
-                    $user->cash_point -= $cart->getTotalTtlCsPrice();
-                    $user->save();
+                        UserLog::buyShop($request, $cart);
 
-                    $cart->clear();
+                        $cart->clear();
 
-                    session()->flash('success', trans('trans/shop.cart.success', ['name' => $character->m_szName]));
+                        session()->flash('success', trans('trans/shop.cart.success', ['name' => $character->m_szName]));
+                    } else {
+                        session()->flash('error', trans('trans/shop.cart.error.insufficient_balance'));
+                    }
                 } else {
-                    session()->flash('error', trans('trans/shop.cart.error.insufficient_balance'));
+                    session()->flash('error', trans('trans/shop.cart.error.char_not_found'));
                 }
             } else {
-                session()->flash('error', trans('trans/shop.cart.error.char_not_found'));
+                session()->flash('error', trans('trans/shop.cart.no_chars'));
             }
         } else {
             session()->flash('error', trans('trans/shop.cart.error.empty_cart'));

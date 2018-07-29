@@ -74,18 +74,21 @@ return [
         'title' => 'Historiques',
         'titles' => [
             '1' => 'Achat boutique',
-            '2' => '',
-            '3' => '',
-            '4' => '',
-            '5' => '',
-            '6' => '',
+            '2' => 'Rechargement',
+            '3' => 'Connexion',
+            '4' => 'Vote'
         ],
-        'cart' => [
-            'image' => 'Image',
-            'name' => 'Nom',
-            'quantity' => 'Qte',
-            'unit_price' => 'Prix Unit.',
-            'ttl_price' => 'Prix Ttl.'
+        'buy_shop' => [
+            'cart' => [
+                'image' => 'Image',
+                'name' => 'Nom',
+                'quantity' => 'Qte',
+                'unit_price' => 'Prix Unit.',
+                'ttl_price' => 'Prix Ttl.'
+            ]
+        ],
+        'login' => [
+            'message' => 'Connexion depuis l\'adresse IP: :ip'
         ]
     ]
 

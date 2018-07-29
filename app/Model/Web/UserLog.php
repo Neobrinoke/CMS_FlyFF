@@ -4,6 +4,7 @@ namespace App\Model\Web;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * Class Log
@@ -12,12 +13,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property int id
  * @property int user_id
  * @property int action
- * @property string value
+ * @property string ip_address
+ * @property string value_string
  * @property Carbon performed_at
+ *
+ * @property mixed value
  *
  * @property User user
  */
-class Log extends Model
+class UserLog extends Model
 {
     public const ACTION_TYPE_BUY_SHOP = 1;
     public const ACTION_TYPE_PAYMENT = 2;
@@ -31,7 +35,8 @@ class Log extends Model
     protected $fillable = [
         'user_id',
         'action',
-        'value',
+        'ip_address',
+        'value_string',
         'performed_at'
     ];
 
@@ -49,27 +54,42 @@ class Log extends Model
     /**
      * Create a log for buy shop action.
      *
+     * @param Request $request
      * @param mixed $value
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public static function buyShop($value): Model
+    public static function buyShop(Request $request, $value): Model
     {
-        return self::create(self::ACTION_TYPE_BUY_SHOP, $value);
+        return self::create($request, self::ACTION_TYPE_BUY_SHOP, $value);
+    }
+
+    /**
+     * Create a log for buy shop action.
+     *
+     * @param Request $request
+     * @param mixed $value
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public static function login(Request $request, $value): Model
+    {
+        return self::create($request, self::ACTION_TYPE_LOGIN, $value);
     }
 
     /**
      * Create a log for given type & value.
      *
+     * @param Request $request
      * @param int $type
      * @param $value
      * @return Model
      */
-    public static function create(int $type, $value): Model
+    public static function create(Request $request, int $type, $value): Model
     {
         return self::query()->create([
             'user_id' => auth()->id(),
             'action' => $type,
-            'value' => serialize($value),
+            'ip_address' => $request->ip(),
+            'value_string' => serialize($value),
             'performed_at' => Carbon::now()
         ]);
     }
@@ -82,5 +102,15 @@ class Log extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Return unserialized value.
+     *
+     * @return mixed
+     */
+    public function getValueAttribute()
+    {
+        return unserialize($this->value_string);
     }
 }
