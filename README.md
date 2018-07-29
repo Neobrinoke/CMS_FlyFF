@@ -33,7 +33,7 @@ This project has been created for challenge and purpose a CMS with latest conven
 - Execute migrations for sql table generation with `php artisan migrate`
 - Execute seeder for generate some fakes data with `php artisan db:seed`
 - Start CMS with `php artisan serve`
-- Login with `johnx@doe.fr` & `0000` where `x` is an int between `0 - 9` (check `UsersTableSeeder.php` file in `database` folder for more information)
+- Login with `admin@email.fr` & `admin`
 
 ## Information
 - Email configuration are needed for password recovery system.
