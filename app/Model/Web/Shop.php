@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @property int id
  * @property string label
  * @property string|null image_thumbnail
+ * @property bool is_active
  * @property Carbon created_at
  * @property Carbon updated_at
  * @property Carbon deleted_at
@@ -44,7 +45,13 @@ class Shop extends Model
     /** @var array */
     protected $fillable = [
         'label',
-        'image_thumbnail'
+        'image_thumbnail',
+        'is_active'
+    ];
+
+    /** @var array */
+    protected $casts = [
+        'is_active' => 'bool'
     ];
 
     /** @var array */
@@ -62,7 +69,7 @@ class Shop extends Model
      */
     public static function all($columns = ['*']): Collection
     {
-        return self::query()->select($columns)->whereHas('items')->get();
+        return self::query()->select($columns)->where('is_active', '=' , true)->whereHas('items')->get();
     }
 
     /**

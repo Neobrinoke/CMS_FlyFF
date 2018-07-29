@@ -53,9 +53,9 @@ class Cart
             if ($this->items->get($item->id)->quantity <= 0) {
                 $this->removeItem($item);
             }
-        }
 
-        $this->save();
+            $this->save();
+        }
     }
 
     /**
@@ -67,9 +67,9 @@ class Cart
     {
         if ($this->items->has($item->id)) {
             $this->items->offsetUnset($item->id);
-        }
 
-        $this->save();
+            $this->save();
+        }
     }
 
     /**

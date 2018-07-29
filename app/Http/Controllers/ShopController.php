@@ -38,6 +38,10 @@ class ShopController extends Controller
      */
     public function show(Request $request, Shop $shop, string $slug)
     {
+        if (!$shop->is_active) {
+            abort(404);
+        }
+
         if ($slug !== $shop->slug) {
             return redirect()->route('shop.show', [$shop, $shop->slug]);
         }
@@ -97,6 +101,10 @@ class ShopController extends Controller
      */
     public function item(Shop $shop, ShopItem $item, string $slug)
     {
+        if (!$shop->is_active) {
+            abort(404);
+        }
+
         if ($slug !== $item->slug) {
             return redirect()->route('shop.item', [$item, $item->slug]);
         }
@@ -130,6 +138,10 @@ class ShopController extends Controller
      */
     public function cartStore(Request $request, ShopItem $item, Cart $cart)
     {
+        if (!$item->shop->is_active) {
+            abort(404);
+        }
+
         if ($request->input('quantity') > 1) {
             $item->quantity = $request->input('quantity');
         }

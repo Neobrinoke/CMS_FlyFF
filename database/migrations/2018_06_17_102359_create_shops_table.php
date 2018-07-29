@@ -17,6 +17,7 @@ class CreateShopsTable extends Migration
             $table->increments('id');
             $table->string('label');
             $table->string('image_thumbnail')->nullable();
+            $table->boolean('is_active');
             $table->timestamps(1);
             $table->softDeletes('deleted_at', 1);
         });

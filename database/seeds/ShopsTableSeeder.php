@@ -65,22 +65,26 @@ class ShopsTableSeeder extends Seeder
 
         $shops[] = Shop::query()->create([
             'label' => 'Cash Shop',
-            'image_thumbnail' => $shopImages[array_rand($shopImages)]
+            'image_thumbnail' => $shopImages[array_rand($shopImages)],
+            'is_active' => true
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Vote point',
-            'image_thumbnail' => $shopImages[array_rand($shopImages)]
+            'image_thumbnail' => $shopImages[array_rand($shopImages)],
+            'is_active' => true
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Evenement',
-            'image_thumbnail' => $shopImages[array_rand($shopImages)]
+            'image_thumbnail' => $shopImages[array_rand($shopImages)],
+            'is_active' => true
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Halloween',
-            'image_thumbnail' => $shopImages[array_rand($shopImages)]
+            'image_thumbnail' => $shopImages[array_rand($shopImages)],
+            'is_active' => true
         ]);
 
         $categories = [];
