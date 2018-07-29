@@ -29,7 +29,10 @@ This project has been created for challenge and purpose a CMS with latest conven
 - Install PHP dependency with `composer install`
 - Install ASSET dependency with `npm install & npm run development`
 - Generate Application Key with `php artisan key:generate`
+- Execute migrations for sql table generation with `php artisan migrate`
+- Execute seeder for generate some fakes data with `php artisan db:seed`
 - Start CMS with `php artisan serve`
+- Login with `johnx@doe.fr` & `0000` where `x` is an int between `0 - 9` (check `UsersTableSeeder.php` file in `database` folder for more information)
 
 ## Information
 - Email configuration are needed for password recovery system.
@@ -38,7 +41,8 @@ This project has been created for challenge and purpose a CMS with latest conven
 If you discover a bug or security vulnerability, please open an issue. All security vulnerabilities will be promptly addressed.
 
 ## Helpful links
-Trello : https://trello.com/b/ImR9LrjH/cmsflyff
+- [Laravel doc](https://laravel.com/)
+- [Trello](https://trello.com/b/ImR9LrjH/cmsflyff)
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
