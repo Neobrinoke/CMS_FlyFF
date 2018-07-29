@@ -147,6 +147,9 @@ class TicketController extends Controller
             }
         }
 
+        $ticket->status = Ticket::STATUS_READ_BY_USER;
+        $ticket->save();
+
         session()->flash('success', trans('trans/ticket.show.response.messages.success'));
 
         return redirect()->route('ticket.show', [$ticket]);
@@ -160,7 +163,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        if ($ticket->is_open && $ticket->status !== Ticket::STATUS_READ_BY_USER) {
+        if ($ticket->is_open && $ticket->status !== Ticket::STATUS_READ_BY_USER && $ticket->status !== Ticket::STATUS_READ_BY_BOTH) {
             $ticket->status = Ticket::STATUS_READ_BY_USER;
             $ticket->save();
         }

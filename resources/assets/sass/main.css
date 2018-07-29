@@ -112,7 +112,7 @@ main section.content {
     background-color: white;
 }
 
-.ui.menu .item.active::after, .ui.menu .item:hover::after {
+.ui.menu .item.active::after, .ui.menu .item.activable:hover::after {
     content: "";
     border-bottom: 4px solid var(--primary-color);
     bottom: -1px;
