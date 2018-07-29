@@ -39,7 +39,7 @@
                                     -
                                 @endif
                             </td>
-                            <td>{{ $guild->CreateTime->toDateString() }}</td>
+                            <td><time datetime="{{ $guild->CreateTime }}">{{ $guild->CreateTime }}</time></td>
                         </tr>
                     @endforeach
                 </tbody>

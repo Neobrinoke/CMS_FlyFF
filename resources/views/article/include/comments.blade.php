@@ -5,16 +5,12 @@
             <div class="content">
                 <a class="author" href="#">{{ $comment->author->name }}</a>
                 <div class="metadata">
-                    <span class="ui date popup_element" data-content="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span>
+                    <time datetime="{{ $comment->created_at }}">{{ $comment->created_at }}</time>
                 </div>
                 <div class="text">{{ $comment->content }}</div>
                 @auth
                     <div class="actions">
-                        @if($comment->is_response)
-                            <a data-show="#comment_{{ $comment->parent->id }}_reply_section"><i class="reply icon"></i>@lang('trans/comment.reply')</a>
-                        @else
-                            <a data-show="#comment_{{ $comment->id }}_reply_section"><i class="reply icon"></i>@lang('trans/comment.reply')</a>
-                        @endif
+                        <a data-show="#comment_{{ $comment->is_response ? $comment->parent->id : $comment->id }}_reply_section"><i class="reply icon"></i>@lang('trans/comment.reply')</a>
                         @if($comment->is_mine)
                             <a data-modal="#comment_{{ $comment->id }}_edit_modal"><i class="edit icon"></i>@lang('trans/comment.edit')</a>
                             <a data-modal="#comment_{{ $comment->id }}_destroy_modal"><i class="trash icon"></i>@lang('trans/comment.delete')</a>

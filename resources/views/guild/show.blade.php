@@ -69,7 +69,7 @@
                                     <img src="{{ $member->rank_logo }}" title="{{ $member->rank_title }}">
                                 @endfor
                             </td>
-                            <td>{{ $member->CreateTime->toDateString() }}</td>
+                            <td><time datetime="{{ $member->CreateTime }}">{{ $member->CreateTime }}</time></td>
                             <td>
                                 <div class="ui {{ $member->player->onlineInfo->is_online ? 'olive' : 'red' }} label">{{ $member->player->onlineInfo->status }}</div>
                             </td>

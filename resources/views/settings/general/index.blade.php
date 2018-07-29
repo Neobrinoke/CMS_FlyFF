@@ -20,11 +20,11 @@
                     </tr>
                     <tr>
                         <td>@lang('trans/settings.general.index.register_date')</td>
-                        <td>{{ $loggedUser->created_at->toDateString() }}</td>
+                        <td><time datetime="{{ $loggedUser->created_at }}">{{ $loggedUser->created_at }}</time></td>
                     </tr>
                     <tr>
                         <td>@lang('trans/settings.general.index.update_date')</td>
-                        <td>{{ $loggedUser->updated_at->toDateString() }}</td>
+                        <td><time datetime="{{ $loggedUser->updated_at }}">{{ $loggedUser->updated_at }}</time></td>
                     </tr>
                     <tr>
                         <td><img src="{{ asset('images/sale_cs_image.png') }}"> @lang('trans/shop.sale_types.1')</td>

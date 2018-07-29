@@ -82,7 +82,7 @@
                             <td>{{ $ticket->title }}</td>
                             <td>{{ $ticket->category->name }}</td>
                             <td>{{ $ticket->status_label }}</td>
-                            <td>{{ $ticket->created_at->toDateString() }} ({{ $ticket->created_at->diffForHumans() }})</td>
+                            <td><time datetime="{{ $ticket->created_at }}">{{ $ticket->created_at }}</time></td>
                             <td>
                                 <a href="{{ route('ticket.show', [$ticket]) }}" class="ui primary compact button icon"><i class="eye icon"></i></a>
                             </td>

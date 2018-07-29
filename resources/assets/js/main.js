@@ -87,6 +87,8 @@ $(document).ready(function () {
         ampm: false,
         type: 'time',
     });
+
+    $('time').timeago();
 });
 
 function calendarDateFormatter()

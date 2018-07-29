@@ -8,7 +8,7 @@
         @foreach($histories as $history)
             <div class="title">
                 <i class="dropdown icon"></i>@lang('trans/settings.history.titles.' . $history->action)
-                <span class="ui right floated">{{ $history->performed_at }}</span>
+                <span class="ui right floated"><time datetime="{{ $history->performed_at }}">{{ $history->performed_at }}</time></span>
             </div>
             <div class="content">
                 <div class="transition hidden">

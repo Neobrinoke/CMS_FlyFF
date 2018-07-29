@@ -8,12 +8,12 @@
         @if(!$download->is_updated)
             <div class="right aligned meta">
                 <span>@lang('trans/download.created_at')</span>
-                <span>{{ $download->created_at->diffForHumans() }}</span>
+                <time datetime="{{ $download->created_at }}">{{ $download->created_at }}</time>
             </div>
         @else
             <div class="right aligned meta">
                 <span>@lang('trans/download.updated_at')</span>
-                <span>{{ $download->updated_at->diffForHumans() }}</span>
+                <time datetime="{{ $download->updated_at }}">{{ $download->updated_at }}</time>
             </div>
         @endif
     </div>

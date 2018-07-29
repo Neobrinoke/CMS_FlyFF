@@ -16,6 +16,7 @@
         "laravel-mix": "^2.1.11",
         "semantic-ui-calendar": "0.0.8",
         "semantic-ui-css": "^2.3.3",
-        "swiper": "^4.3.3"
+        "swiper": "^4.3.3",
+        "timeago": "^1.6.3"
     }
 }

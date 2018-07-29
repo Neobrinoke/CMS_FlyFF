@@ -4,5 +4,7 @@ try {
 
     require('semantic-ui-css/semantic');
     require('semantic-ui-calendar/dist/calendar');
+    require('timeago/jquery.timeago');
+    require('timeago/locales/jquery.timeago.fr');
     require('./main');
 } catch (e) {}

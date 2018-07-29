@@ -18,7 +18,7 @@
                             <div class="content">
                                 <a class="author">{{ $ticket->author->name }}</a>
                                 <div class="metadata">
-                                    <div class="ui date popup_element" data-content="{{ $ticket->created_at }}">{{ $ticket->created_at->diffForHumans() }}</div>
+                                    <div class="date"><time datetime="{{ $ticket->created_at }}">{{ $ticket->created_at }}</time></div>
                                 </div>
                                 <div class="text">{!! nl2br($ticket->content) !!}</div>
                                 @if($ticket->has_attachments)
@@ -45,7 +45,7 @@
                                 <div class="content">
                                     <a class="author">{{ $response->author->name }}</a>
                                     <div class="metadata">
-                                        <div class="ui date popup_element" data-content="{{ $response->created_at }}">{{ $response->created_at->diffForHumans() }}</div>
+                                        <div class="date"><time datetime="{{ $response->created_at }}">{{ $response->created_at }}</time></div>
                                     </div>
                                     <div class="text">{!! nl2br($response->content) !!}</div>
                                     @if($response->has_attachments)
@@ -86,8 +86,8 @@
                 </div>
                 <div class="five wide column">
                     <div class="ui message">
-                        <p class="ui popup_element" data-content="{{ $ticket->created_at }}">
-                            <strong>@lang('trans/ticket.show.info_block.created_ago')</strong> {{ $ticket->created_at->diffForHumans() }}
+                        <p>
+                            <strong>@lang('trans/ticket.show.info_block.created_ago')</strong> <time datetime="{{ $ticket->created_at }}">{{ $ticket->created_at }}</time>
                         </p>
                         <p>
                             <strong>@lang('trans/ticket.show.info_block.category')</strong> {{ $ticket->category->name }}
