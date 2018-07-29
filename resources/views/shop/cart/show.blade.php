@@ -28,7 +28,7 @@
                             <td class="collapsing">
                                 <form action="{{ route('shop.cart.destroy', [$item]) }}" method="POST">
                                     @csrf
-                                    <button class="ui red basic icon button" type="submit"><i class="remove icon"></i></button>
+                                    <button class="ui red basic compact icon button" type="submit"><i class="remove icon"></i></button>
                                 </form>
                             </td>
                             <td><img src="{{ $item->image_thumbnail }}" alt="" width="32" height="32"></td>

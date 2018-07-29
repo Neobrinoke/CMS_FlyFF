@@ -12,7 +12,7 @@
         @foreach($cart->items as $item)
             <tr>
                 <td><img src="{{ $item->image_thumbnail }}" alt="" width="32" height="32"></td>
-                <td><a href="{{ route('shop.item', [$item->shop, $item, $item->slug]) }}">{{ $item->title }}</a></td>
+                <td>{{ $item->title }}</td>
                 <td>{{ $item->quantity }}</td>
                 @if($item->sale_type === \App\Model\Web\Shop::SALE_CS_TYPE)
                     <td class="right aligned">{{ $item->price }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('trans/shop.sale_types.1')"></td>
