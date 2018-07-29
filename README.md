@@ -7,7 +7,8 @@ This project has been created for challenge and purpose a CMS with latest conven
 - Language: `PHP`
 - Framework: `Laravel` 5.6
 - Database: `MsSQL` (possible to change DB connection with laravel)
-- Dependency Manager:  `Composer`
+- PHP dependency manager:  `composer`
+- ASSET dependency manager:  `npm (need NodeJS)`
 - Server Requirments:
     - `PHP >= 7.1.3`
     - `OpenSSL PHP Extension`
