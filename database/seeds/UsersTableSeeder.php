@@ -36,9 +36,9 @@ class UsersTableSeeder extends Seeder
         }
 
         User::query()->create([
-            'name' => 'Neobrinoke',
-            'email' => 'neobrinoke@gmail.com',
-            'password' => bcrypt('neobrinoke'),
+            'name' => 'admin',
+            'email' => 'admin@email.fr',
+            'password' => bcrypt('admin'),
             'cash_point' => 987654321,
             'vote_point' => 987654321,
             'avatar_url' => $avatars[array_rand($avatars)]
