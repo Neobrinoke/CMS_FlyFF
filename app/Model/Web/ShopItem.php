@@ -56,6 +56,9 @@ class ShopItem extends Model
         'deleted_at'
     ];
 
+    /** @var int */
+    public $quantity = 1;
+
     /**
      * Return shop for this item.
      *
@@ -116,15 +119,5 @@ class ShopItem extends Model
     public function getTotalPriceAttribute(): int
     {
         return $this->price * $this->quantity;
-    }
-
-    /**
-     * Return quantity of current item.
-     *
-     * @return int
-     */
-    public function getQuantityAttribute(): int
-    {
-        return $this->quantity ?? 1;
     }
 }
