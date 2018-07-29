@@ -27,8 +27,8 @@ class Download extends Model
 {
     use SoftDeletes;
 
-    const TYPE_CLIENT = 1;
-    const TYPE_PATCHER = 2;
+    public const TYPE_CLIENT = 1;
+    public const TYPE_PATCHER = 2;
 
     /** @var array */
     protected $fillable = [

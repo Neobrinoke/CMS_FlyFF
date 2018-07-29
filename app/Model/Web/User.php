@@ -30,6 +30,7 @@ use Illuminate\Support\Collection;
  *
  * @property Collection accounts
  * @property Collection tickets
+ * @property Collection logs
  */
 class User extends Authenticatable
 {
@@ -77,6 +78,16 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Ticket::class, 'author_id', 'id');
+    }
+
+    /**
+     * Return all logs for this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function logs()
+    {
+        return $this->hasMany(Log::class)->orderByDesc('performed_at');
     }
 
     /**

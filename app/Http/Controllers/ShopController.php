@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Cart;
 use App\Model\Character\Character;
+use App\Model\Web\Log;
 use App\Model\Web\Shop;
 use App\Model\Web\ShopCategory;
 use App\Model\Web\ShopItem;
@@ -129,7 +130,6 @@ class ShopController extends Controller
      */
     public function cartStore(Request $request, ShopItem $item, Cart $cart)
     {
-        $item->quantity = 1;
         if ($request->input('quantity') > 1) {
             $item->quantity = $request->input('quantity');
         }
@@ -188,6 +188,8 @@ class ShopController extends Controller
                     $cart->items->each(function (ShopItem $item) use ($character) {
                         $character->sendItem($item->item_id, $item->quantity, true);
                     });
+
+                    Log::buyShop($cart);
 
                     $user->vote_point -= $cart->getTotalTtlVotePrice();
                     $user->cash_point -= $cart->getTotalTtlCsPrice();

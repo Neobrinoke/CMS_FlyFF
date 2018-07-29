@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/article/{article}/comment/{articleComment}/destroy', 'ArticleCommentController@destroy')->name('article.comment.destroy');
     Route::post('/article/{article}/comment/{articleComment}/response', 'ArticleCommentController@storeResponse')->name('article.comment.response.store');
 
-    // Account URL
+    // Settings URL
     Route::get('/settings', 'SettingsController@generalIndex')->name('settings.general.index');
     Route::get('/settings/edit', 'SettingsController@generalEdit')->name('settings.general.edit');
     Route::post('/settings/edit', 'SettingsController@generalUpdate')->name('settings.general.update');
@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/settings/game/account/create', 'SettingsController@gameAccountStore')->name('settings.game.account.store');
     Route::get('/settings/game/account/{account}/edit', 'SettingsController@gameAccountEdit')->name('settings.game.account.edit');
     Route::post('/settings/game/account/{account}/edit', 'SettingsController@gameAccountUpdate')->name('settings.game.account.update');
+    Route::get('/settings/histories', 'SettingsController@historyIndex')->name('settings.history.index');
 
     // Ticket URL
     Route::get('/tickets', 'TicketController@index')->name('ticket.index');

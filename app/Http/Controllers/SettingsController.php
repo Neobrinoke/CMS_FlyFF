@@ -195,4 +195,14 @@ class SettingsController extends Controller
 
         return redirect()->route('settings.game.account.index');
     }
+
+    public function historyIndex()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        return view('settings.history.index', [
+            'histories' => $user->logs
+        ]);
+    }
 }

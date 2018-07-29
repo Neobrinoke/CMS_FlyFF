@@ -11,12 +11,9 @@
             <div class="ui stackable grid">
                 <div class="five wide column">
                     <div class="ui vertical menu">
-                        <a href="{{ route('settings.general.index') }}" class="item activable">
-                            @lang('trans/settings.general.index.title')
-                        </a>
-                        <a href="{{ route('settings.game.account.index') }}" class="item activable">
-                            @lang('trans/settings.game.account.index.title')
-                        </a>
+                        <a href="{{ route('settings.general.index') }}" class="item activable">@lang('trans/settings.general.index.title')</a>
+                        <a href="{{ route('settings.game.account.index') }}" class="item activable">@lang('trans/settings.game.account.index.title')</a>
+                        <a href="{{ route('settings.history.index') }}" class="item activable">@lang('trans/settings.game.account.index.title')</a>
                     </div>
                 </div>
                 <div class="eleven wide column">
