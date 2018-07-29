@@ -62,9 +62,11 @@ class SettingsController extends Controller
         $validatedData = $request->validate($validatedRules);
 
         if ($request->file('profile_img')) {
-            $validatedData['avatar_url'] = '/uploads/' . $request->file('profile_img')->store('user/avatars', [
+            $file = $request->file('profile_img')->store('user/avatars', [
                 'disk' => 'public'
             ]);
+
+            $validatedData['avatar_url'] = '/uploads/' . $file;
         }
 
         if ($request->input('new_password')) {
