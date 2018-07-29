@@ -17,7 +17,7 @@
                         <div class="content">
                             <div class="header">{{ str_limit($article->title, 50) }}...</div>
                             <div class="meta">
-                                <span class="detail">{{ $article->detail_info }}</span>
+                                <span class="detail">{!! $article->detail_info !!}</span>
                             </div>
                             <div class="description">
                                 <p>{!! str_limit($article->content, 150) !!}...</p>

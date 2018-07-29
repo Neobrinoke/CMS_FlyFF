@@ -117,12 +117,9 @@ class Article extends Model
      */
     public function getDetailInfoAttribute(): string
     {
-        $name = $this->author->name;
-        $ago = $this->created_at->diffForHumans();
-
         return trans('trans/article.detail', [
-            'name' => $name,
-            'ago' => $ago
+            'author' => $this->author->name,
+            'created_at' => $this->created_at
         ]);
     }
 

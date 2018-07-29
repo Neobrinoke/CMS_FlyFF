@@ -13,7 +13,7 @@
             @endif
             <p>{!! $article->content !!}</p>
             <div class="ui divider"></div>
-            <span>{{ $article->detail_info }}</span>
+            <span>{!! $article->detail_info !!}</span>
             @if($article->authorized_comment)
                 <span class="ui right floated teal label"><i class="comment outline icon"></i>{{ $article->comment_count }}</span>
             @endif
