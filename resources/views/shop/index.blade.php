@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.shop'))
+@section('title', trans('title.shop'))
 
 @section('content')
     <div class="box">
@@ -8,7 +8,7 @@
             <h1 class="header"><i class="shopping cart icon"></i>@yield('title')</h1>
         </div>
         <div class="ui attached fluid clearing segment">
-            <h2 class="ui dividing center aligned header">@lang('trans/shop.choose_shop')</h2>
+            <h2 class="ui dividing center aligned header">@lang('shop.choose_shop')</h2>
             <div class="ui link three centered stackable cards">
                 @foreach($shops as $shop)
                     <div class="card">

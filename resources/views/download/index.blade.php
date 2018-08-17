@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.download'))
+@section('title', trans('title.download'))
 
 @section('content')
     <div class="box">
@@ -8,13 +8,13 @@
             <h1 class="header"><i class="download icon"></i>@yield('title')</h1>
         </div>
         <div class="ui attached fluid clearing segment">
-            <h2 class="ui dividing header">@lang('trans/download.clients_links')</h2>
+            <h2 class="ui dividing header">@lang('download.clients_links')</h2>
             <div class="ui three stackable cards">
                 @foreach($clients as $download)
                     @include('download.include.card')
                 @endforeach
             </div>
-            <h2 class="ui dividing header">@lang('trans/download.patcher_links')</h2>
+            <h2 class="ui dividing header">@lang('download.patcher_links')</h2>
             <div class="ui three stackable cards">
                 @foreach($patchers as $download)
                     @include('download.include.card')

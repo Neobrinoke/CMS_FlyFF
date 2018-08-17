@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.ticket'))
+@section('title', trans('title.ticket'))
 
 @section('content')
     <div class="box">
@@ -12,13 +12,13 @@
                 @csrf
                 <div class="two fields">
                     <div class="field">
-                        <label for="title">@lang('trans/ticket.create.form.title')</label>
+                        <label for="title">@lang('ticket.create.form.title')</label>
                         <input type="text" name="title" id="title" value="{{ old('title') }}">
                     </div>
                     <div class="field">
-                        <label for="category_id">@lang('trans/ticket.create.form.category')</label>
+                        <label for="category_id">@lang('ticket.create.form.category')</label>
                         <select class="ui dropdown" name="category_id" id="category_id">
-                            <option value="">@lang('trans/ticket.create.form.select_category')</option>
+                            <option value="">@lang('ticket.create.form.select_category')</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ old('category_id') === $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
@@ -26,15 +26,15 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="content">@lang('trans/ticket.create.form.content')</label>
+                    <label for="content">@lang('ticket.create.form.content')</label>
                     <textarea name="content" id="content">{{ old('content') }}</textarea>
                 </div>
                 <div class="field">
-                    <label for="attachments">@lang('trans/ticket.create.form.attachments')</label>
+                    <label for="attachments">@lang('ticket.create.form.attachments')</label>
                     <input type="file" name="attachments[]" id="attachments" multiple>
                 </div>
                 <div class="field">
-                    <button class="ui primary right floated button" type="submit">@lang('trans/ticket.create.form.submit')</button>
+                    <button class="ui primary right floated button" type="submit">@lang('ticket.create.form.submit')</button>
                 </div>
             </form>
         </div>

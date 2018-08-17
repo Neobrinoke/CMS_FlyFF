@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.guild_ranking'))
+@section('title', trans('title.guild_ranking'))
 
 @section('content')
     <div class="box">
@@ -12,12 +12,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('trans/ranking.guild.name')</th>
-                        <th>@lang('trans/ranking.guild.lvl')</th>
-                        <th>@lang('trans/ranking.guild.members')</th>
-                        <th>@lang('trans/ranking.guild.leader')</th>
-                        <th>@lang('trans/ranking.guild.logo')</th>
-                        <th>@lang('trans/ranking.guild.created_at')</th>
+                        <th>@lang('ranking.guild.name')</th>
+                        <th>@lang('ranking.guild.lvl')</th>
+                        <th>@lang('ranking.guild.members')</th>
+                        <th>@lang('ranking.guild.leader')</th>
+                        <th>@lang('ranking.guild.logo')</th>
+                        <th>@lang('ranking.guild.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>

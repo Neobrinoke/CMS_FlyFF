@@ -107,7 +107,7 @@ class TicketController extends Controller
             }
         }
 
-        session()->flash('success', trans('trans/ticket.create.messages.success'));
+        session()->flash('success', trans('ticket.create.messages.success'));
 
         return redirect()->route('ticket.index');
     }
@@ -150,7 +150,7 @@ class TicketController extends Controller
         $ticket->status = Ticket::STATUS_READ_BY_USER;
         $ticket->save();
 
-        session()->flash('success', trans('trans/ticket.show.response.messages.success'));
+        session()->flash('success', trans('ticket.show.response.messages.success'));
 
         return redirect()->route('ticket.show', [$ticket]);
     }

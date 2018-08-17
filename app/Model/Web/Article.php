@@ -117,7 +117,7 @@ class Article extends Model
      */
     public function getDetailInfoAttribute(): string
     {
-        return trans('trans/article.detail', [
+        return trans('article.detail', [
             'author' => $this->author->name,
             'created_at' => $this->created_at
         ]);

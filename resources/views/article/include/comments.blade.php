@@ -10,13 +10,13 @@
                 <div class="text">{{ $comment->content }}</div>
                 @auth
                     <div class="actions">
-                        <a data-show="#comment_{{ $comment->is_response ? $comment->parent->id : $comment->id }}_reply_section"><i class="reply icon"></i>@lang('trans/comment.reply')</a>
+                        <a data-show="#comment_{{ $comment->is_response ? $comment->parent->id : $comment->id }}_reply_section"><i class="reply icon"></i>@lang('comment.reply')</a>
                         @if($comment->is_mine)
-                            <a data-modal="#comment_{{ $comment->id }}_edit_modal"><i class="edit icon"></i>@lang('trans/comment.edit')</a>
-                            <a data-modal="#comment_{{ $comment->id }}_destroy_modal"><i class="trash icon"></i>@lang('trans/comment.delete')</a>
+                            <a data-modal="#comment_{{ $comment->id }}_edit_modal"><i class="edit icon"></i>@lang('comment.edit')</a>
+                            <a data-modal="#comment_{{ $comment->id }}_destroy_modal"><i class="trash icon"></i>@lang('comment.delete')</a>
                         @endif
                         @if($comment->has_responses)
-                            <a data-toggle="#comment_{{ $comment->id }}_responses" data-hideMessage="<i class='eye icon'></i>@lang('trans/comment.hide')" data-showMessage="<i class='eye icon'></i>@lang('trans/comment.show')"><i class='eye icon'></i>@lang('trans/comment.hide')</a>
+                            <a data-toggle="#comment_{{ $comment->id }}_responses" data-hideMessage="<i class='eye icon'></i>@lang('comment.hide')" data-showMessage="<i class='eye icon'></i>@lang('comment.show')"><i class='eye icon'></i>@lang('comment.hide')</a>
                         @endif
                     </div>
                 @endauth
@@ -30,11 +30,11 @@
                         <form class="ui form {{ $errors->any() ? 'error' : '' }}" action="{{ route('article.comment.response.store', [$article, $comment]) }}" method="POST">
                             @csrf
                             <div class="required field {{ $errors->has('content') ? 'error'  : '' }}">
-                                <label for="content">@lang('trans/article.comment.comment')</label>
+                                <label for="content">@lang('article.comment.comment')</label>
                                 <textarea name="content" id="content" cols="30" rows="2" maxlength="250">{{ old('content') }}</textarea>
                             </div>
-                            <div class="ui red cancel labeled icon button" data-hide="#comment_{{ $comment->id }}_reply_section"><i class="remove icon"></i>@lang('trans/comment.edit_modal.cancel')</div>
-                            <button class="ui primary right labeled icon button" type="submit"><i class="checkmark icon"></i>@lang('trans/article.comment.submit')</button>
+                            <div class="ui red cancel labeled icon button" data-hide="#comment_{{ $comment->id }}_reply_section"><i class="remove icon"></i>@lang('comment.edit_modal.cancel')</div>
+                            <button class="ui primary right labeled icon button" type="submit"><i class="checkmark icon"></i>@lang('article.comment.submit')</button>
                         </form>
                     </section>
                 @endif
@@ -47,31 +47,31 @@
     @auth
         @if($comment->is_mine)
             <div class="ui modal" id="comment_{{ $comment->id }}_edit_modal">
-                <div class="header">@lang('trans/comment.edit_modal.header')</div>
+                <div class="header">@lang('comment.edit_modal.header')</div>
                 <div class="content">
                     <form class="ui form" action="{{ route('article.comment.update', [$article, $comment]) }}" method="POST" id="comment_{{ $comment->id }}_edit_form">
                         @csrf
                         <div class="required field">
-                            <label for="content">@lang('trans/article.comment.comment')</label>
+                            <label for="content">@lang('article.comment.comment')</label>
                             <textarea name="content" id="content" cols="30" rows="5" maxlength="250">{{ old('content') ?: $comment->content }}</textarea>
                         </div>
                     </form>
                 </div>
                 <div class="actions">
-                    <div class="ui red cancel labeled icon button"><i class="remove icon"></i>@lang('trans/comment.edit_modal.cancel')</div>
-                    <div class="ui green ok right labeled icon button" data-submit="#comment_{{ $comment->id }}_edit_form"><i class="checkmark icon"></i>@lang('trans/comment.edit_modal.submit')</div>
+                    <div class="ui red cancel labeled icon button"><i class="remove icon"></i>@lang('comment.edit_modal.cancel')</div>
+                    <div class="ui green ok right labeled icon button" data-submit="#comment_{{ $comment->id }}_edit_form"><i class="checkmark icon"></i>@lang('comment.edit_modal.submit')</div>
                 </div>
             </div>
             <div class="ui modal" id="comment_{{ $comment->id }}_destroy_modal">
-                <div class="header">@lang('trans/comment.delete_modal.header')</div>
+                <div class="header">@lang('comment.delete_modal.header')</div>
                 <div class="content">
-                    @foreach(trans('trans/comment.delete_modal.messages') as $message)
+                    @foreach(trans('comment.delete_modal.messages') as $message)
                         <p>{{ $message }}</p>
                     @endforeach
                 </div>
                 <div class="actions">
-                    <div class="ui red cancel labeled icon button"><i class="remove icon"></i>@lang('trans/comment.delete_modal.no')</div>
-                    <div class="ui green ok right labeled icon button" data-submit="#comment_{{ $comment->id }}_destroy_form"><i class="checkmark icon"></i>@lang('trans/comment.delete_modal.yes')</div>
+                    <div class="ui red cancel labeled icon button"><i class="remove icon"></i>@lang('comment.delete_modal.no')</div>
+                    <div class="ui green ok right labeled icon button" data-submit="#comment_{{ $comment->id }}_destroy_form"><i class="checkmark icon"></i>@lang('comment.delete_modal.yes')</div>
                     <form action="{{ route('article.comment.destroy', [$article, $comment]) }}" method="POST" id="comment_{{ $comment->id }}_destroy_form" style="display: none;">@csrf</form>
                 </div>
             </div>

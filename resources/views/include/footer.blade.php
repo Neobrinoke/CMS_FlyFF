@@ -2,24 +2,37 @@
     <div class="ui center aligned container">
         <div class="ui stackable divided grid">
             <div class="three wide column">
-                <h4 class="ui header">@lang('trans/nav.download')</h4>
+                <h4 class="ui header">@lang('nav.download')</h4>
                 <div class="ui link list">
                     <a href="#" class="item">Client</a>
                     <a href="#" class="item">Patcher</a>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui header">@lang('trans/nav.shop')</h4>
+                <h4 class="ui header">@lang('nav.shop')</h4>
                 <div class="ui link list">
                     <a href="#" class="item">Cash point</a>
                     <a href="#" class="item">Vote point</a>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui header">@lang('trans/nav.ticket')</h4>
-                <div class="ui link list">
-                    <a href="{{ route('ticket.index') }}" class="item">Liste</a>
-                    <a href="#" class="item">Créer</a>
+                <h4 class="ui header">@lang('nav.ticket')</h4>
+                <div class="ui bottom left pointing dropdown">
+                    <input type="hidden" name="filters">
+                    <span class="text"><i class="{{ $currentLocale['flag'] }} flag"></i>{{ $currentLocale['native'] }}</span>
+                    <div class="menu">
+                        <div class="ui icon search input">
+                            <i class="search icon"></i>
+                            <input type="text" placeholder="@lang('footer.lang.search')">
+                        </div>
+                        <div class="scrolling menu">
+                            @foreach($locales as $localeCode => $properties)
+                                <a class="item" data-value="important" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    <i class="{{ $properties['flag'] }} flag"></i>{{ $properties['native'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="seven wide column">

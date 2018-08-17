@@ -210,18 +210,18 @@ class ShopController extends Controller
 
                         $cart->clear();
 
-                        session()->flash('success', trans('trans/shop.cart.success', ['name' => $character->m_szName]));
+                        session()->flash('success', trans('shop.cart.success', ['name' => $character->m_szName]));
                     } else {
-                        session()->flash('error', trans('trans/shop.cart.error.insufficient_balance'));
+                        session()->flash('error', trans('shop.cart.error.insufficient_balance'));
                     }
                 } else {
-                    session()->flash('error', trans('trans/shop.cart.error.char_not_found'));
+                    session()->flash('error', trans('shop.cart.error.char_not_found'));
                 }
             } else {
-                session()->flash('error', trans('trans/shop.cart.no_chars'));
+                session()->flash('error', trans('shop.cart.no_chars'));
             }
         } else {
-            session()->flash('error', trans('trans/shop.cart.error.empty_cart'));
+            session()->flash('error', trans('shop.cart.error.empty_cart'));
         }
 
         return redirect()->route('shop.cart');

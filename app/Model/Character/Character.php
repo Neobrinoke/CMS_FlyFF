@@ -336,7 +336,7 @@ class Character extends Model
      */
     public function getSexTitleAttribute(): string
     {
-        return $this->m_dwSex === 0 ? trans('trans/sex.boy') : trans('trans/sex.girl');
+        return $this->m_dwSex === 0 ? trans('sex.boy') : trans('sex.girl');
     }
 
     /**

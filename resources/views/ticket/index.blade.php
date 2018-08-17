@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.ticket'))
+@section('title', trans('title.ticket'))
 
 @section('content')
     <div class="box">
@@ -9,15 +9,15 @@
         </div>
         <div class="ui attached fluid clearing segment">
             <section class="ui clearing segment">
-                <h3 class="ui dividing header">@lang('trans/shop.search.header')</h3>
+                <h3 class="ui dividing header">@lang('shop.search.header')</h3>
                 <form class="ui form" action="{{ route('ticket.index') }}" method="GET">
                     <div class="three fields">
                         <div class="field">
-                            <label for="title">@lang('trans/ticket.index.search_section.title')</label>
+                            <label for="title">@lang('ticket.index.search_section.title')</label>
                             <input type="text" name="title" id="title" value="{{ request('title') }}">
                         </div>
                         <div class="field">
-                            <label for="creation_date_min">@lang('trans/ticket.index.search_section.creation_date_min')</label>
+                            <label for="creation_date_min">@lang('ticket.index.search_section.creation_date_min')</label>
                             <div class="ui calendar date-picker">
                                 <div class="ui input left icon">
                                     <i class="time icon"></i>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label for="creation_date_max">@lang('trans/ticket.index.search_section.creation_date_max')</label>
+                            <label for="creation_date_max">@lang('ticket.index.search_section.creation_date_max')</label>
                             <div class="ui calendar date-picker">
                                 <div class="ui input left icon">
                                     <i class="time icon"></i>
@@ -37,43 +37,43 @@
                     </div>
                     <div class="two fields">
                         <div class="field">
-                            <label for="categories">@lang('trans/ticket.index.search_section.categories')</label>
+                            <label for="categories">@lang('ticket.index.search_section.categories')</label>
                             <select multiple="" class="ui dropdown" name="categories[]" id="categories">
-                                <option value="">@lang('trans/ticket.index.search_section.select_categories')</option>
+                                <option value="">@lang('ticket.index.search_section.select_categories')</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ collect(request('categories'))->contains($category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="field">
-                            <label for="statuses">@lang('trans/ticket.index.search_section.statuses')</label>
+                            <label for="statuses">@lang('ticket.index.search_section.statuses')</label>
                             <select multiple="" class="ui dropdown" name="statuses[]" id="statuses">
-                                <option value="">@lang('trans/ticket.index.search_section.select_statuses')</option>
+                                <option value="">@lang('ticket.index.search_section.select_statuses')</option>
                                 @foreach($statuses as $status)
-                                    <option value="{{ $status }}" {{ collect(request('statuses'))->contains($status) ? 'selected' : '' }}>@lang('trans/ticket.statuses.' . $status)</option>
+                                    <option value="{{ $status }}" {{ collect(request('statuses'))->contains($status) ? 'selected' : '' }}>@lang('ticket.statuses.' . $status)</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('trans/shop.search.submit')</button>
-                    <button id="reset_form" class="ui orange right floated right labeled icon button"><i class="remove icon"></i>@lang('trans/shop.search.clear_form')</button>
+                    <button class="ui primary right floated right labeled icon button" type="submit"><i class="right arrow icon"></i>@lang('shop.search.submit')</button>
+                    <button id="reset_form" class="ui orange right floated right labeled icon button"><i class="remove icon"></i>@lang('shop.search.clear_form')</button>
                 </form>
             </section>
 
             <h3 class="ui dividing header">
-                @lang('trans/ticket.index.ticket_list')
+                @lang('ticket.index.ticket_list')
                 <a href="{{ route('ticket.create') }}" class="ui label right floated">
-                    <i class="add icon"></i>@lang('trans/ticket.index.create_ticket')
+                    <i class="add icon"></i>@lang('ticket.index.create_ticket')
                 </a>
             </h3>
             <table class="ui single line compact selectable table">
                 <thead>
                     <tr>
-                        <th>@lang('trans/ticket.index.title')</th>
-                        <th>@lang('trans/ticket.index.category')</th>
-                        <th>@lang('trans/ticket.index.status')</th>
-                        <th>@lang('trans/ticket.index.creation_date')</th>
-                        <th>@lang('trans/ticket.index.action')</th>
+                        <th>@lang('ticket.index.title')</th>
+                        <th>@lang('ticket.index.category')</th>
+                        <th>@lang('ticket.index.status')</th>
+                        <th>@lang('ticket.index.creation_date')</th>
+                        <th>@lang('ticket.index.action')</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -45,7 +45,7 @@ class SettingsController extends Controller
         $user = auth()->user();
 
         if (!Hash::check($request->input('password'), $user->password)) {
-            session()->flash('error', trans('trans/settings.general.edit.messages.password_error'));
+            session()->flash('error', trans('settings.general.edit.messages.password_error'));
             return redirect()->back();
         }
 
@@ -77,7 +77,7 @@ class SettingsController extends Controller
         $user->fill($validatedData);
         $user->save();
 
-        session()->flash('success', trans('trans/settings.general.edit.messages.success'));
+        session()->flash('success', trans('settings.general.edit.messages.success'));
 
         return redirect()->route('settings.general.index');
     }
@@ -143,7 +143,7 @@ class SettingsController extends Controller
             'email' => ''
         ]);
 
-        session()->flash('success', trans('trans/settings.game.account.create.messages.success', ['account' => $validatedData['account']]));
+        session()->flash('success', trans('settings.game.account.create.messages.success', ['account' => $validatedData['account']]));
 
         return redirect()->route('settings.game.account.index');
     }
@@ -179,7 +179,7 @@ class SettingsController extends Controller
         }
 
         if (Md5Helper::md5Hash($request->input('password')) !== $account->password) {
-            session()->flash('error', trans('trans/settings.game.account.edit.messages.password_error'));
+            session()->flash('error', trans('settings.game.account.edit.messages.password_error'));
             return redirect()->back();
         }
 
@@ -191,7 +191,7 @@ class SettingsController extends Controller
             'password' => Md5Helper::md5Hash($validatedData['new_password'])
         ])->save();
 
-        session()->flash('success', trans('trans/settings.game.account.edit.messages.success', ['account' => $account->account]));
+        session()->flash('success', trans('settings.game.account.edit.messages.success', ['account' => $account->account]));
 
         return redirect()->route('settings.game.account.index');
     }

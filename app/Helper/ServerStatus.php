@@ -57,9 +57,9 @@ class ServerStatus
         $settings = Setting::getSettings();
 
         if ($this->isOnline()) {
-            $this->status = trans('trans/aside.server_status.status_on');
+            $this->status = trans('aside.server_status.status_on');
         } else {
-            $this->status = trans('trans/aside.server_status.status_off');
+            $this->status = trans('aside.server_status.status_off');
         }
 
         $this->accounts_number = Account::query()->count();

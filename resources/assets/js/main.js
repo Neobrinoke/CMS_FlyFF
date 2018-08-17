@@ -68,13 +68,13 @@ $(document).ready(function () {
     });
 
     $('.datetime-picker').calendar({
-        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
-        text: calendarTextForLocale('fr'),
-    });
+        firstDayOfWeek: calendarDayOfWeek(),
+        text: calendarText(),
+});
 
     $('.date-picker').calendar({
-        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
-        text: calendarTextForLocale('fr'),
+        firstDayOfWeek: calendarDayOfWeek(),
+        text: calendarText(),
         type: 'date',
         formatter: {
             date: calendarDateFormatter(),
@@ -82,8 +82,8 @@ $(document).ready(function () {
     });
 
     $('.time-picker').calendar({
-        firstDayOfWeek: calendarDayOfWeekForLocal('fr'),
-        text: calendarTextForLocale('fr'),
+        firstDayOfWeek: calendarDayOfWeek(),
+        text: calendarText(),
         ampm: false,
         type: 'time',
     });
@@ -107,18 +107,18 @@ function calendarDateFormatter()
     };
 }
 
-function calendarDayOfWeekForLocal(local)
+function calendarDayOfWeek()
 {
-    if (local === 'fr') {
+    if (window.locale === 'fr') {
         return 1;
     } else {
         return 0;
     }
 }
 
-function calendarTextForLocale(local)
+function calendarText()
 {
-    if (local === 'fr') {
+    if (window.locale === 'fr') {
         return {
             days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
             months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],

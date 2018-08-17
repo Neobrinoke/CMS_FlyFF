@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.player_ranking'))
+@section('title', trans('title.player_ranking'))
 
 @section('content')
     <div class="box">
@@ -12,12 +12,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('trans/ranking.player.name')</th>
-                        <th>@lang('trans/ranking.player.job')</th>
-                        <th>@lang('trans/ranking.player.lvl')</th>
-                        <th>@lang('trans/ranking.player.gender')</th>
-                        <th>@lang('trans/ranking.player.played_time')</th>
-                        <th>@lang('trans/ranking.player.status')</th>
+                        <th>@lang('ranking.player.name')</th>
+                        <th>@lang('ranking.player.job')</th>
+                        <th>@lang('ranking.player.lvl')</th>
+                        <th>@lang('ranking.player.gender')</th>
+                        <th>@lang('ranking.player.played_time')</th>
+                        <th>@lang('ranking.player.status')</th>
                     </tr>
                 </thead>
                 <tbody>

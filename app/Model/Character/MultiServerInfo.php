@@ -94,6 +94,6 @@ class MultiServerInfo extends Model
      */
     public function getStatusAttribute(): string
     {
-        return $this->is_online ? trans('trans/online_status.online') : trans('trans/online_status.offline');
+        return $this->is_online ? trans('online_status.online') : trans('online_status.offline');
     }
 }

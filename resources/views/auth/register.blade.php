@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.register'))
+@section('title', trans('title.register'))
 
 @section('content')
     <div class="box">
@@ -13,11 +13,11 @@
                 <div class="field">
                     <div class="two fields">
                         <div class="field {{ $errors->has('name') ? 'error' : '' }}">
-                            <label for="name">@lang('trans/register.name')</label>
+                            <label for="name">@lang('register.name')</label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="John Doe">
                         </div>
                         <div class="field {{ $errors->has('email') ? 'error' : '' }}">
-                            <label for="email">@lang('trans/register.email')</label>
+                            <label for="email">@lang('register.email')</label>
                             <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="john01@doe.fr">
                         </div>
                     </div>
@@ -25,30 +25,30 @@
                 <div class="field">
                     <div class="two fields">
                         <div class="field {{ $errors->has('password') ? 'error' : '' }}">
-                            <label for="password">@lang('trans/register.password')</label>
+                            <label for="password">@lang('register.password')</label>
                             <input type="password" id="password" name="password" placeholder="*****">
                         </div>
                         <div class="field {{ $errors->has('password') ? 'error' : '' }}">
-                            <label for="password_confirmation">@lang('trans/register.password_confirmation')</label>
+                            <label for="password_confirmation">@lang('register.password_confirmation')</label>
                             <input type="password" id="password_confirmation" name="password_confirmation" placeholder="*****">
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="profile_img">@lang('trans/register.profile_img')</label>
+                    <label for="profile_img">@lang('register.profile_img')</label>
                     <input type="file" name="profile_img" id="profile_img">
                 </div>
                 <div class="field {{ $errors->has('rules') ? 'error' : '' }}">
                     <div class="ui segment">
                         <div class="ui toggle checkbox">
                             <input type="checkbox" id="rules" name="rules" value="1">
-                            <label for="rules">@lang('trans/register.rules', ['url' => '#'])</label>
+                            <label for="rules">@lang('register.rules', ['url' => '#'])</label>
                             <?php //@todo mettre ici le bon lien des rules ?>
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <button class="ui right floated primary button" type="submit">@lang('trans/register.submit')</button>
+                    <button class="ui right floated primary button" type="submit">@lang('register.submit')</button>
                 </div>
             </form>
         </div>

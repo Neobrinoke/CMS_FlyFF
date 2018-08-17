@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.ticket_show', ['title' => $ticket->title]))
+@section('title', trans('title.ticket_show', ['title' => $ticket->title]))
 
 @section('content')
     <div class="box">
@@ -70,15 +70,15 @@
                             <form class="ui form" action="{{ route('ticket.response.store', [$ticket]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="field">
-                                    <label for="content">@lang('trans/ticket.show.response.form.content')</label>
+                                    <label for="content">@lang('ticket.show.response.form.content')</label>
                                     <textarea name="content" id="content">{{ old('content') }}</textarea>
                                 </div>
                                 <div class="field">
-                                    <label for="attachments">@lang('trans/ticket.show.response.form.attachments')</label>
+                                    <label for="attachments">@lang('ticket.show.response.form.attachments')</label>
                                     <input type="file" name="attachments[]" id="attachments" multiple>
                                 </div>
                                 <div class="field">
-                                    <button class="ui primary right floated button" type="submit">@lang('trans/ticket.show.response.form.submit')</button>
+                                    <button class="ui primary right floated button" type="submit">@lang('ticket.show.response.form.submit')</button>
                                 </div>
                             </form>
                         @endif
@@ -87,13 +87,13 @@
                 <div class="five wide column">
                     <div class="ui message">
                         <p>
-                            <strong>@lang('trans/ticket.show.info_block.created_ago')</strong> <time datetime="{{ $ticket->created_at }}">{{ $ticket->created_at }}</time>
+                            <strong>@lang('ticket.show.info_block.created_ago')</strong> <time datetime="{{ $ticket->created_at }}">{{ $ticket->created_at }}</time>
                         </p>
                         <p>
-                            <strong>@lang('trans/ticket.show.info_block.category')</strong> {{ $ticket->category->name }}
+                            <strong>@lang('ticket.show.info_block.category')</strong> {{ $ticket->category->name }}
                         </p>
                         <p>
-                            <strong>@lang('trans/ticket.show.info_block.status')</strong> {{ $ticket->status_label }}
+                            <strong>@lang('ticket.show.info_block.status')</strong> {{ $ticket->status_label }}
                         </p>
                     </div>
                 </div>

@@ -90,7 +90,7 @@ class LordEvent extends Model
      */
     public function getMessageAttribute(): string
     {
-        return trans('trans/aside.hall_of_fame.event_time_remaining', ['time' => $this->nTick]);
+        return trans('aside.hall_of_fame.event_time_remaining', ['time' => $this->nTick]);
     }
 
     /**

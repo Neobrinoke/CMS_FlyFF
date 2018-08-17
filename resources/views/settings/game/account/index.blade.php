@@ -2,19 +2,19 @@
 
 @section('settings_content')
     <h2 class="ui dividing header">
-        @lang('trans/settings.game.account.index.title')
+        @lang('settings.game.account.index.title')
         <a href="{{ route('settings.game.account.create') }}" class="ui label right floated" style="margin-top: 3px;">
-            <i class="add icon"></i>@lang('trans/settings.game.account.index.buttons.add')
+            <i class="add icon"></i>@lang('settings.game.account.index.buttons.add')
         </a>
     </h2>
     <table class="ui very basic compact table">
         <thead>
             <tr>
-                <th>@lang('trans/settings.game.account.index.account')</th>
-                <th>@lang('trans/settings.game.account.index.char_count')</th>
-                <th>@lang('trans/settings.game.account.index.creation_date')</th>
-                <th>@lang('trans/settings.game.account.index.status')</th>
-                <th>@lang('trans/settings.game.account.index.action')</th>
+                <th>@lang('settings.game.account.index.account')</th>
+                <th>@lang('settings.game.account.index.char_count')</th>
+                <th>@lang('settings.game.account.index.creation_date')</th>
+                <th>@lang('settings.game.account.index.status')</th>
+                <th>@lang('settings.game.account.index.action')</th>
             </tr>
         </thead>
         <tbody>

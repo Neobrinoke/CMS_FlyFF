@@ -114,6 +114,6 @@ class Account extends Model
      */
     public function getStatusAttribute(): string
     {
-        return $this->is_banned ? trans('trans/settings.general.index.statuses.banned') : trans('trans/settings.general.index.statuses.valid');
+        return $this->is_banned ? trans('settings.general.index.statuses.banned') : trans('settings.general.index.statuses.valid');
     }
 }

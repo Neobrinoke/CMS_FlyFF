@@ -8,6 +8,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with('serverStatus', app(ServerStatus::class));
         });
 
-        Carbon::setLocale(config('app.locale'));
+        ViewFacade::composer('include.footer', function (View $view) {
+            $locales = LaravelLocalization::getSupportedLocales();
+
+            $view->with('locales', $locales);
+            $view->with('currentLocale', $locales[LaravelLocalization::getCurrentLocale()]);
+        });
+
+        $locale = LaravelLocalization::setLocale();
+
+        Carbon::setLocale($locale);
     }
 
     /**

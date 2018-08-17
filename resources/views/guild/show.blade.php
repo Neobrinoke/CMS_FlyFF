@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.guild_detail', ['name' => $guild->m_szGuild]))
+@section('title', trans('title.guild_detail', ['name' => $guild->m_szGuild]))
 
 @section('content')
     <div class="box">
@@ -8,53 +8,53 @@
             <h1 class="header">@yield('title')</h1>
         </div>
         <div class="ui attached fluid clearing segment">
-            <h4 class="ui dividing header">@lang('trans/guild.info_divider')</h4>
+            <h4 class="ui dividing header">@lang('guild.info_divider')</h4>
             <div class="ui segments">
                 <div class="ui horizontal segments">
                     <div class="ui segment">
                         @if($guild->has_logo)
                             <img class="ui image guild_logo" src="{{ $guild->logo }}"/>
                         @endif
-                        <span>@lang('trans/guild.leader') {{ $guild->leader->m_szName }}</span>
+                        <span>@lang('guild.leader') {{ $guild->leader->m_szName }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.penya') {{ $guild->penyas }}</span>
+                        <span>@lang('guild.penya') {{ $guild->penyas }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.lvl') {{ $guild->m_nLevel }}</span>
+                        <span>@lang('guild.lvl') {{ $guild->m_nLevel }}</span>
                     </div>
                 </div>
             </div>
 
-            <h4 class="ui dividing header">@lang('trans/guild.gvg_divider')</h4>
+            <h4 class="ui dividing header">@lang('guild.gvg_divider')</h4>
             <div class="ui segments">
                 <div class="ui horizontal segments">
                     <div class="ui segment">
-                        <span>@lang('trans/guild.gvg_point') {{ $guild->m_nWinPoint }}</span>
+                        <span>@lang('guild.gvg_point') {{ $guild->m_nWinPoint }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.gvg_win') {{ $guild->m_nWin }}</span>
+                        <span>@lang('guild.gvg_win') {{ $guild->m_nWin }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.gvg_lose') {{ $guild->m_nLose }}</span>
+                        <span>@lang('guild.gvg_lose') {{ $guild->m_nLose }}</span>
                     </div>
                     <div class="ui segment">
-                        <span>@lang('trans/guild.gvg_surrender') {{ $guild->m_nSurrender }}</span>
+                        <span>@lang('guild.gvg_surrender') {{ $guild->m_nSurrender }}</span>
                     </div>
                 </div>
             </div>
 
-            <h4 class="ui dividing header">@lang('trans/guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->max_members_count }})</h4>
+            <h4 class="ui dividing header">@lang('guild.member_divider') ({{ $guild->members->count() }} / {{ $guild->max_members_count }})</h4>
             <table class="ui single line compact selectable table">
                 <thead>
                     <tr>
-                        <th>@lang('trans/guild.member_ranking.name')</th>
-                        <th>@lang('trans/guild.member_ranking.job')</th>
-                        <th>@lang('trans/guild.member_ranking.lvl')</th>
-                        <th>@lang('trans/guild.member_ranking.gender')</th>
-                        <th>@lang('trans/guild.member_ranking.rank')</th>
-                        <th>@lang('trans/guild.member_ranking.member_since')</th>
-                        <th>@lang('trans/guild.member_ranking.status')</th>
+                        <th>@lang('guild.member_ranking.name')</th>
+                        <th>@lang('guild.member_ranking.job')</th>
+                        <th>@lang('guild.member_ranking.lvl')</th>
+                        <th>@lang('guild.member_ranking.gender')</th>
+                        <th>@lang('guild.member_ranking.rank')</th>
+                        <th>@lang('guild.member_ranking.member_since')</th>
+                        <th>@lang('guild.member_ranking.status')</th>
                     </tr>
                 </thead>
                 <tbody>

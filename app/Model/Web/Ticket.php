@@ -132,7 +132,7 @@ class Ticket extends Model
      */
     public function getStatusLabelAttribute(): string
     {
-        return trans('trans/ticket.statuses.' . $this->status);
+        return trans('ticket.statuses.' . $this->status);
     }
 
     /**

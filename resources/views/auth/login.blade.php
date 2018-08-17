@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', trans('trans/title.login'))
+@section('title', trans('title.login'))
 
 @section('content')
     <div class="box">
@@ -15,20 +15,20 @@
                         <div class="field {{ $errors->has('email') ? 'error'  : '' }}">
                             <div class="ui labeled input">
                                 <label for="email" class="ui primary label"><i class="envelope icon"></i></label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('trans/login.email')">
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('login.email')">
                             </div>
                         </div>
                         <div class="field {{ $errors->has('password') ? 'error'  : '' }}">
                             <div class="ui labeled input">
                                 <label for="password" class="ui primary label"><i class="key icon"></i></label>
-                                <input type="password" id="password" name="password" placeholder="@lang('trans/login.password')">
+                                <input type="password" id="password" name="password" placeholder="@lang('login.password')">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="field">
-                    <a href="{{ route('password.request') }}" class="ui left floated red basic button">@lang('trans/login.password_lost')</a>
-                    <button class="ui right floated primary button" type="submit">@lang('trans/login.submit')</button>
+                    <a href="{{ route('password.request') }}" class="ui left floated red basic button">@lang('login.password_lost')</a>
+                    <button class="ui right floated primary button" type="submit">@lang('login.submit')</button>
                 </div>
             </form>
         </div>
