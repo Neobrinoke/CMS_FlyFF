@@ -13,8 +13,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::prefix(app()->getLocale())->middleware(['localeSessionRedirect', 'localizationRedirect'])->group(function () {
+Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedirect', 'localizationRedirect'])->group(function () {
     // Auth URL
     Auth::routes();
 

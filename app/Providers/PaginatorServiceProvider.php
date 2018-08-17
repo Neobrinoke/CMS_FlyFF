@@ -2,18 +2,19 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class PaginatorServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap paginator services.
      *
      * @return void
      */
     public function boot()
     {
-        //
+        Paginator::defaultView('include.pagination');
     }
 
     /**
