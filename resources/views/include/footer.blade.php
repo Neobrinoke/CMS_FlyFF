@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui header">@lang('nav.ticket')</h4>
+                <h4 class="ui header">@lang('footer.lang.title')</h4>
                 <div class="ui bottom left pointing dropdown">
                     <input type="hidden" name="filters">
                     <span class="text"><i class="{{ $currentLocale['flag'] }} flag"></i>{{ $currentLocale['native'] }}</span>
