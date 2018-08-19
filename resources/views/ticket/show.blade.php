@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layout')
 
 @section('title', trans('title.ticket_show', ['title' => $ticket->title]))
 

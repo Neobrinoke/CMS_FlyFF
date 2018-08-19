@@ -11,16 +11,23 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedirect', 'localizationRedirect'])->group(function () {
-    // Auth URL
-    Auth::routes();
-
     // Home URL
     Route::get('/', 'HomeController@home')->name('home');
+
+    // Auth URL
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
+    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'ResetPasswordController@reset');
 
     // Article URL
     Route::get('/articles', 'ArticleController@index')->name('article.index');
@@ -79,5 +86,16 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
         Route::post('/ticket/{ticket}', 'TicketController@update')->name('ticket.update');
         Route::post('/ticket/{ticket}/response', 'TicketController@storeResponse')->name('ticket.response.store');
         Route::get('/ticket/{ticket}/download/{ticketAttachment}', 'TicketController@download')->name('ticket.download');
+    });
+
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+        // Auth URL
+        Route::get('login', 'LoginController@showLoginForm')->name('login');
+        Route::post('login', 'LoginController@login');
+
+        Route::middleware(['auth'])->group(function () {
+            // Home URL
+            Route::get('/', 'HomeController@home')->name('home');
+        });
     });
 });

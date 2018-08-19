@@ -1,4 +1,83 @@
 @import "~semantic-ui-css/semantic.css";
 @import "~semantic-ui-calendar/dist/calendar.css";
 @import "~swiper/dist/css/swiper.css";
-@import "./main.css";
+
+/* BASE CSS (Semantic UI) */
+*:not(.circular) {
+    border-radius: 0 !important;
+}
+
+.right.menu:last-child {
+    border-right: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+.ui.footer.segment {
+    margin: 5em 0 0;
+    padding: 5em 0;
+}
+
+.ui.labeled.input .ui.label .icon {
+    margin: 0;
+}
+
+body ::-webkit-scrollbar-thumb {
+    border-radius: 0;
+}
+
+.ui.progress:last-child {
+    margin: 0;
+}
+
+tr[onclick] {
+    cursor: pointer;
+}
+
+.ui.accordion {
+    margin-bottom: 15px;
+}
+
+.ui.accordion:last-child {
+    margin-bottom: 0;
+}
+
+.ui.items:last-of-type {
+    margin: 0;
+}
+
+.ui.right.floated {
+    float: right;
+}
+
+.ui.left.floated {
+    float: left;
+}
+
+.ui.comments {
+    max-width: 100%;
+}
+
+.ui.comments .comment .comments {
+    padding-bottom: 0;
+}
+
+.ui.cards > .card > .buttons, .ui.card > .buttons, .ui.cards > .card > .button, .ui.card > .button {
+    margin: 0;
+    width: 100%;
+}
+
+.ui.cards > .card > :last-child, .ui.card > :last-child {
+    border-radius: 0 !important;
+}
+
+.card img.ui.floated.image {
+    margin-bottom: 0;
+}
+
+.ui.vertical.menu {
+    width: auto;
+}
+
+.ui.vertical.menu .item.left.icon > i.icon {
+    float: none;
+    margin: 0 0.5em 0 0;
+}

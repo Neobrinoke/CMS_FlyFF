@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layout')
 
 @section('title', trans('title.guild_ranking'))
 
