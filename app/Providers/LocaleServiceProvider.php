@@ -21,7 +21,7 @@ class LocaleServiceProvider extends ServiceProvider
 
         Carbon::setLocale($locale);
 
-        ViewFacade::composer('include.footer', function (View $view) use ($locale) {
+        ViewFacade::composer(['layout', 'admin.layout'], function (View $view) use ($locale) {
             $locales = LaravelLocalization::getSupportedLocales();
 
             $view->with('locales', $locales);

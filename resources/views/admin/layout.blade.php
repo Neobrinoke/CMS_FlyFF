@@ -7,23 +7,48 @@
 @section('layout')
     <header class="ui menu">
         <div class="item header">
-            <img src="{{ asset('images/header_logo.png') }}" alt=""><span>CMS FlyFF</span>
+            <img src="{{ asset('images/header_logo.png') }}" alt=""><span>{{ config('app.name') }}</span>
         </div>
-        <div class="right item">
-            <div class="ui action input">
-                <input type="text" placeholder="Navigate to...">
-                <div class="ui button">Go</div>
+        @yield('nav-buttons')
+        <div class="right menu">
+            <div class="ui top right pointing dropdown icon item">
+                <span class="text"><i class="{{ $currentLocale['flag'] }} flag"></i>{{ $currentLocale['native'] }}</span>
+                <div class="menu">
+                    <div class="ui icon search input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="@lang('footer.lang.search')">
+                    </div>
+                    <div class="scrolling menu">
+                        @foreach($locales as $localeCode => $properties)
+                            <a class="item" data-value="important" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <i class="{{ $properties['flag'] }} flag"></i>{{ $properties['native'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
+            <div class="ui top right pointing dropdown icon item">
+                <img class="ui avatar image" src="{{ $loggedUser->avatar_image }}"><span>{{ $loggedUser->name }}</span>
+                <div class="menu">
+                    <a href="{{ route('home') }}" class="item"><i class="home icon"></i>@lang('admin/nav.back_to_site')</a>
+                    <a href="{{ route('settings.general.index') }}" class="item"><i class="cog icon"></i>@lang('nav.player_settings')</a>
+                    <div class="divider"></div>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="item">
+                        <i class="sign out icon"></i>@lang('nav.logout')
+                    </a>
+                </div>
+            </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
         </div>
     </header>
     <section class="container">
         <nav class="ui vertical menu">
-            <a class="item activable" href="{{ route('admin.home') }}">@lang('admin/nav.home')</a>
+            <a class="item activable" href="{{ route('admin.home') }}"><i class="dashboard icon"></i>@lang('admin/nav.home')</a>
             <div class="item">
-                Boutique
+                <i class="shop icon"></i>@lang('admin/nav.shop.title')
                 <div class="menu">
-                    <a class="item activable left icon"><i class="plus icon"></i>Ajouter</a>
-                    <a class="item activable left icon"><i class="list icon"></i>Parcourir</a>
+                    <a class="item activable left icon" href="{{ route('admin.shop.index') }}"><i class="list icon"></i>@lang('admin/nav.shop.browse')</a>
+                    <a class="item activable left icon" href="{{ route('admin.shop.create') }}"><i class="plus icon"></i>@lang('admin/nav.shop.add')</a>
                 </div>
             </div>
             <a class="item"><i class="grid layout icon"></i> Browse</a>

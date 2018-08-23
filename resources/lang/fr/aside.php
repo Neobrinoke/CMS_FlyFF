@@ -2,9 +2,6 @@
 
 return [
 
-    'my_account' => [
-        'logout' => 'Deconnexion'
-    ],
     'server_status' => [
         'status' => 'Statut',
         'status_on' => 'ON',

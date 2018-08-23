@@ -96,6 +96,15 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
         Route::middleware(['auth'])->group(function () {
             // Home URL
             Route::get('/', 'HomeController@home')->name('home');
+
+            // Shop URL
+            Route::get('/shops', 'ShopController@index')->name('shop.index');
+            Route::get('/shop/create', 'ShopController@create')->name('shop.create');
+            Route::post('/shop/create', 'ShopController@store')->name('shop.store');
+            Route::get('/shop/{shop}', 'ShopController@show')->name('shop.show');
+            Route::get('/shop/{shop}/edit', 'ShopController@edit')->name('shop.edit');
+            Route::post('/shop/{shop}/edit', 'ShopController@update')->name('shop.update');
+            Route::post('/shop/{shop}/destroy', 'ShopController@destroy')->name('shop.destroy');
         });
     });
 });

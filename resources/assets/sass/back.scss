@@ -17,7 +17,7 @@ header.ui.menu {
 
 section.container {
     display: flex;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 56px);
 
     nav.ui.vertical.menu {
         overflow-x: auto;
@@ -29,7 +29,6 @@ section.container {
 
     main {
         flex: 1;
-        height: calc(100vh - 50px);
         overflow-x: auto;
 
         h1 {

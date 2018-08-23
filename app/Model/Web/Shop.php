@@ -20,6 +20,7 @@ use Illuminate\Support\Collection;
  * @property Carbon deleted_at
  *
  * @property string slug
+ * @property string status
  *
  * @property Collection items
  */
@@ -90,5 +91,15 @@ class Shop extends Model
     public function getSlugAttribute(): string
     {
         return str_slug($this->label);
+    }
+
+    /**
+     * Return status for this shop.
+     *
+     * @return string
+     */
+    public function getStatusAttribute(): string
+    {
+        return $this->is_active ? trans('admin/shop.index.table.statuses.on') : trans('admin/shop.index.table.statuses.off');
     }
 }

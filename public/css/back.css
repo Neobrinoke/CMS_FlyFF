@@ -20,7 +20,7 @@ section.container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 56px);
 }
 
 section.container nav.ui.vertical.menu {
@@ -36,7 +36,6 @@ section.container main {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  height: calc(100vh - 50px);
   overflow-x: auto;
 }
 

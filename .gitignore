@@ -15,7 +15,7 @@ composer.lock
 public/fonts/vendor
 public/images/vendor
 public/mix-manifest.json
-public/css/app.css
-public/js/app.js
+public/css/*.css
+public/js/*.js
 package-lock.json
 public/uploads

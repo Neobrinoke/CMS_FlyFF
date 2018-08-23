@@ -15,6 +15,8 @@ return [
     'ticket' => 'Ticket',
     'login' => 'Connexion',
     'register' => 'S\'inscrire',
-    'player_settings' => 'Paramètres'
+    'logout' => 'Déconnexion',
+    'player_settings' => 'Mon compte',
+    'back_office' => 'Administration'
 
 ];

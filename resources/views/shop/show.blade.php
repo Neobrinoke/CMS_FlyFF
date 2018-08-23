@@ -59,7 +59,6 @@
                 </form>
             </section>
 
-
             @if($canNotFind)
                 <div class="ui error message">@lang('shop.search.can_not_find')</div>
             @endif
@@ -69,7 +68,7 @@
                     <div class="ui card">
                         <div class="content">
                             <img class="ui mini left floated image" src="{{ $item->image_thumbnail }}">
-                            <p class="right aligned header">{{ $item->title }} {{ $item->category->label }}</p>
+                            <p class="right aligned header">{{ $item->title }}</p>
                             <div class="right aligned meta">
                                 <span>{{ $item->price }}</span>
                                 <img class="ui middle aligned image" src="{{ $item->sale_image }}" title="{{ trans('shop.sale_types')[$item->sale_type] }}">

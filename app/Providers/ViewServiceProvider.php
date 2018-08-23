@@ -20,7 +20,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('loggedUser', auth()->user());
         });
 
-        ViewFacade::composer('include.aside', function (View $view) {
+        ViewFacade::composer('layout', function (View $view) {
             $view->with('serverStatus', app(ServerStatus::class));
         });
     }

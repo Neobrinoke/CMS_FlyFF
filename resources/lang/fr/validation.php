@@ -176,7 +176,8 @@ return [
         'login' => 'identifiant',
         'category_id' => 'catégorie',
         'attachments.*' => 'fichiers attachés',
-        'profile_img' => 'photo de profil'
+        'profile_img' => 'photo de profil',
+        'image_thumbnail' => 'image de couverture'
     ],
 
 ];

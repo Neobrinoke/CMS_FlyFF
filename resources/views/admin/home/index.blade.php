@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
-@section('title', trans('admin/nav.home'))
+@section('title', trans('admin/title.home'))
 
 @section('header')
     <i class="dashboard icon"></i> - <span>@yield('title')</span>
     <div class="ui breadcrumb right floated">
-        <span>Home</span>
+        <span>@yield('title')</span>
     </div>
 @endsection
 
