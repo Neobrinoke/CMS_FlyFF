@@ -25,7 +25,7 @@ return [
             'label' => 'Label',
             'image_thumbnail' => 'Image de couverture',
             'is_active' => 'Activation',
-            'active_details' => '(La boutique sera dans tous les cas désactivée si elle ne possède aucun objet)',
+            'active_details' => '(La boutique sera dans tous les cas invisible si elle possède aucun objet)',
             'submit' => 'Envoyer',
             'messages' => [
                 'success' => 'La boutique a bien été ajoutée'
@@ -37,7 +37,7 @@ return [
             'label' => 'Label',
             'image_thumbnail' => 'Image de couverture',
             'is_active' => 'Activation',
-            'active_details' => '(La boutique sera dans tous les cas désactivée si elle ne possède aucun objet)',
+            'active_details' => '(La boutique sera dans tous les cas invisible si elle possède aucun objet)',
             'submit' => 'Envoyer',
             'messages' => [
                 'success' => 'La boutique a bien été éditée'
