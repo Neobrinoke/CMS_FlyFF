@@ -77,4 +77,48 @@ class ShopController extends AdminController
             'items' => $items
         ]);
     }
+
+    /**
+     * Show edit form for shop.
+     *
+     * @param Shop $shop
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Shop $shop)
+    {
+        return view('admin.shop.edit', [
+            'shop' => $shop
+        ]);
+    }
+
+    /**
+     * Update specific shop.
+     *
+     * @param Request $request
+     * @param Shop $shop
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, Shop $shop)
+    {
+        $validatedData = $request->validate([
+            'label' => 'required|max:50',
+            'image_thumbnail' => 'image'
+        ]);
+
+        if ($request->file('image_thumbnail')) {
+            $file = $request->file('image_thumbnail')->store('shop/thumbnails', [
+                'disk' => 'public'
+            ]);
+
+            $validatedData['image_thumbnail'] = '/uploads/' . $file;
+        }
+
+        $validatedData['is_active'] = $request->input('is_active') ? true : false;
+
+        $shop->update($validatedData);
+
+        $request->session()->flash('success', trans('admin/shop.edit.form.messages.success'));
+
+        return redirect()->route('admin.shop.show', [$shop]);
+    }
 }
