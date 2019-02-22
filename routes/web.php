@@ -48,10 +48,6 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
     Route::get('/shops', 'ShopController@index')->name('shop.index');
     Route::get('/shop/{shop}-{slug}', 'ShopController@show')->name('shop.show');
     Route::get('/shop/{shop}/{item}-{slug}', 'ShopController@item')->name('shop.item');
-    Route::get('/shop/cart', 'ShopController@cart')->name('shop.cart');
-    Route::post('/shop/cart/{item}/add', 'ShopController@cartStore')->name('shop.cart.store');
-    Route::post('/shop/cart/{item}/update', 'ShopController@cartUpdate')->name('shop.cart.update');
-    Route::post('/shop/cart/{item}/remove', 'ShopController@cartDestroy')->name('shop.cart.destroy');
 
     Route::middleware(['auth'])->group(function () {
         // Shop cart URL

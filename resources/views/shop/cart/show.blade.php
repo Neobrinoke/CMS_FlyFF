@@ -36,11 +36,11 @@
                             <td>
                                 <form class="ui form" action="{{ route('shop.cart.update', [$item]) }}" method="POST">
                                     @csrf
-                                    <button class="ui mini basic vertical icon button" type="submit" name="direction" value="down"><i class="minus icon"></i></button>
+                                    <button class="ui mini basic vertical icon button" type="submit" name="direction" value="{{ \App\Helper\Cart::DIRECTION_DOWN }}"><i class="minus icon"></i></button>
                                     <div class="ui mini input">
-                                        <input style="max-width: 100px; max-height: 28.28px; margin-right: 3px;" class="mini center aligned" type="text" value="{{ $item->quantity }}" readonly>
+                                        <input style="max-width: 100px; max-height: 28px; margin-right: 3px;" class="mini center aligned" type="text" value="{{ $item->quantity }}" title="quantity" readonly>
                                     </div>
-                                    <button class="ui mini basic vertical icon button" type="submit" name="direction" value="up"><i class="plus icon"></i></button>
+                                    <button class="ui mini basic vertical icon button" type="submit" name="direction" value="{{ \App\Helper\Cart::DIRECTION_UP }}"><i class="plus icon"></i></button>
                                 </form>
                             </td>
                             @if($item->sale_type === \App\Model\Web\Shop::SALE_CS_TYPE)
@@ -88,7 +88,7 @@
                             <form class="ui form" action="{{ route('shop.cart.buy') }}" method="POST">
                                 @csrf
                                 <div class="field">
-                                    <select class="ui dropdown" name="character">
+                                    <select class="ui dropdown" name="character" title="character">
                                         <option value="">@lang('shop.cart.select_char')</option>
                                         @foreach($loggedUser->characters as $character)
                                             <option value="{{ $character->m_idPlayer }}">{{ $character->account }} - {{ $character->m_szName }}</option>

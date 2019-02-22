@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class Cart
 {
+    public const DIRECTION_UP = 'up';
+    public const DIRECTION_DOWN = 'down';
+
     /** @var Collection */
     public $items = null;
 
@@ -44,7 +47,7 @@ class Cart
     public function updateQuantity(ShopItem $item, string $direction)
     {
         if ($this->items->has($item->id)) {
-            if ($direction === 'up') {
+            if ($direction === self::DIRECTION_UP) {
                 $this->items->get($item->id)->quantity++;
             } else {
                 $this->items->get($item->id)->quantity--;
