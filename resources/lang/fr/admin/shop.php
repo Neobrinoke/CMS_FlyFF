@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'index' => [
         'table' => [
             'id' => 'Id',
@@ -12,14 +13,15 @@ return [
             'actions' => [
                 'show' => 'Voir',
                 'edit' => 'Editer',
-                'delete' => 'Supprimer'
+                'delete' => 'Supprimer',
             ],
             'statuses' => [
                 'on' => 'Activée',
-                'off' => 'Désactivée'
-            ]
-        ]
+                'off' => 'Désactivée',
+            ],
+        ],
     ],
+
     'create' => [
         'form' => [
             'label' => 'Label',
@@ -28,10 +30,11 @@ return [
             'active_details' => '(La boutique sera dans tous les cas invisible si elle possède aucun objet)',
             'submit' => 'Envoyer',
             'messages' => [
-                'success' => 'La boutique a bien été ajoutée'
-            ]
-        ]
+                'success' => 'La boutique a bien été ajoutée',
+            ],
+        ],
     ],
+
     'edit' => [
         'form' => [
             'label' => 'Label',
@@ -40,19 +43,21 @@ return [
             'active_details' => '(La boutique sera dans tous les cas invisible si elle possède aucun objet)',
             'submit' => 'Envoyer',
             'messages' => [
-                'success' => 'La boutique a bien été éditée'
-            ]
-        ]
+                'success' => 'La boutique a bien été éditée',
+            ],
+        ],
     ],
+
     'modal' => [
         'delete' => [
             'header' => 'Suppression de la boutique [:name]',
             'messages' => [
                 'Voulez-vous vraiment supprimer cette boutique ?',
-                'Tous les objet lié à cette boutique ne seront plus disponible'
+                'Tous les objet lié à cette boutique ne seront plus disponible',
             ],
             'no' => 'Non, surtout pas !',
-            'yes' => 'Oui, j\'en suis sûr !'
-        ]
-    ]
+            'yes' => 'Oui, j\'en suis sûr !',
+        ],
+    ],
+
 ];

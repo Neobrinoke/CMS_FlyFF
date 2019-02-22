@@ -15,9 +15,9 @@ class ValidatorServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('files_count', function ($attribute, $value, $parameters, $validator) {
-            $count = count($value);
             $maxCount = $parameters[0];
-            return $count <= $maxCount;
+
+            return count($value) <= $maxCount;
         });
 
         Validator::replacer('files_count', function($message, $attribute, $rule, $parameters){

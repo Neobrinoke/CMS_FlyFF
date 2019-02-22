@@ -71,12 +71,12 @@ class UserCount extends Model
         'm_18' => 'int',
         'm_19' => 'int',
         'm_20' => 'int',
-        'm_channel' => 'int'
+        'm_channel' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        's_date'
+        's_date',
     ];
 
     /**

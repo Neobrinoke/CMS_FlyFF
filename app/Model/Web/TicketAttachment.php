@@ -36,21 +36,21 @@ class TicketAttachment extends Model
         'ticket_id',
         'response_id',
         'name',
-        'url'
+        'url',
     ];
 
     /** @var array */
     protected $casts = [
         'ticket_id' => 'int',
         'response_id' => 'int',
-        'author_id' => 'int'
+        'author_id' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

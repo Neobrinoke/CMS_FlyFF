@@ -18,7 +18,7 @@ class ArticleController extends Controller
         $articles = Article::query()->paginate(5);
 
         return view('article.index', [
-            'articles' => $articles
+            'articles' => $articles,
         ]);
     }
 
@@ -36,7 +36,7 @@ class ArticleController extends Controller
         }
 
         return view('article.index', [
-            'articles' => $category->articles()->paginate(5)
+            'articles' => $category->articles()->paginate(5),
         ]);
     }
 
@@ -54,7 +54,7 @@ class ArticleController extends Controller
         }
 
         return view('article.show', [
-            'article' => $article
+            'article' => $article,
         ]);
     }
 }

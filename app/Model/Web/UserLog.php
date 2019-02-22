@@ -37,18 +37,18 @@ class UserLog extends Model
         'action',
         'ip_address',
         'value_string',
-        'performed_at'
+        'performed_at',
     ];
 
     /** @var array */
     protected $casts = [
         'user_id' => 'int',
-        'action' => 'int'
+        'action' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        'performed_at'
+        'performed_at',
     ];
 
     /**
@@ -90,7 +90,7 @@ class UserLog extends Model
             'action' => $type,
             'ip_address' => $request->ip(),
             'value_string' => serialize($value),
-            'performed_at' => Carbon::now()
+            'performed_at' => Carbon::now(),
         ]);
     }
 

@@ -40,26 +40,26 @@ class Shop extends Model
         'price-asc',
         'price-desc',
         'title-asc',
-        'title-desc'
+        'title-desc',
     ];
 
     /** @var array */
     protected $fillable = [
         'label',
         'image_thumbnail',
-        'is_active'
+        'is_active',
     ];
 
     /** @var array */
     protected $casts = [
-        'is_active' => 'bool'
+        'is_active' => 'bool',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

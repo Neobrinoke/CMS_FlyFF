@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     0 => ['name' => 'jobs.vagrant', 'rank' => null, 'minLvl' => 1, 'maxLvl' => 15, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => null],
     1 => ['name' => 'jobs.mercenary', 'rank' => null, 'minLvl' => 15, 'maxLvl' => 60, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => null],
     2 => ['name' => 'jobs.acrobat', 'rank' => null, 'minLvl' => 15, 'maxLvl' => 60, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => null],
@@ -38,4 +39,5 @@ return [
     37 => ['name' => 'jobs.force_master', 'rank' => 'Legend', 'minLvl' => 130, 'maxLvl' => 150, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => '/images/jobs/icon_Legend.png'],
     38 => ['name' => 'jobs.mentalist', 'rank' => 'Legend', 'minLvl' => 130, 'maxLvl' => 150, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => '/images/jobs/icon_Legend.png'],
     39 => ['name' => 'jobs.arcanist', 'rank' => 'Legend', 'minLvl' => 130, 'maxLvl' => 150, 'imageJob' => '/images/jobs/%d.png', 'imageLvl' => '/images/jobs/icon_Legend.png'],
+
 ];

@@ -42,12 +42,12 @@ class LordEvent extends Model
         'idPlayer' => 'int',
         'nTick' => 'int',
         'fEFactor' => 'float',
-        'fIFactor' => 'float'
+        'fIFactor' => 'float',
     ];
 
     /** @var array */
     protected $dates = [
-        's_date'
+        's_date',
     ];
 
     /**
@@ -60,7 +60,8 @@ class LordEvent extends Model
         return self::query()
             ->where('nTick', '>', '0')
             ->orderByDesc('s_date')
-            ->get()->first();
+            ->get()
+            ->first();
     }
 
     /**

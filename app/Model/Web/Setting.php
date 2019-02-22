@@ -26,14 +26,14 @@ class Setting extends Model
     protected $fillable = [
         'exp_rate',
         'drop_rate',
-        'penyas_rate'
+        'penyas_rate',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

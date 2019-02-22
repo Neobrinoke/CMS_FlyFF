@@ -27,14 +27,14 @@ class TicketCategory extends Model
     /** @var array */
     protected $fillable = [
         'name',
-        'color'
+        'color',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

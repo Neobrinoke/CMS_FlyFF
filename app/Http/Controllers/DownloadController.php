@@ -19,7 +19,7 @@ class DownloadController extends Controller
 
         return view('download.index', [
             'clients' => $clients,
-            'patchers' => $patchers
+            'patchers' => $patchers,
         ]);
     }
 }

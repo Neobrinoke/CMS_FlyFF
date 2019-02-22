@@ -41,12 +41,12 @@ class CombatJoinPlayer extends Model
     protected $casts = [
         'CombatID' => 'int',
         'Point' => 'int',
-        'Reward' => 'int'
+        'Reward' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        'RewardDt'
+        'RewardDt',
     ];
 
     /**

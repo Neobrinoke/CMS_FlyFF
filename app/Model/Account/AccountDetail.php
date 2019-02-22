@@ -50,12 +50,12 @@ class AccountDetail extends Model
         'isuse',
         'email',
         'secession',
-        'regdate'
+        'regdate',
     ];
 
     /** @var array */
     protected $dates = [
         'secession',
-        'regdate'
+        'regdate',
     ];
 }

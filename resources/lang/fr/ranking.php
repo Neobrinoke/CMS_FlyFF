@@ -8,15 +8,16 @@ return [
         'lvl' => 'Niveau',
         'gender' => 'Genre',
         'played_time' => 'Temps',
-        'status' => 'Statut'
+        'status' => 'Statut',
     ],
+
     'guild' => [
         'name' => 'Nom',
         'lvl' => 'Niveau',
         'members' => 'Membres',
         'leader' => 'Chef',
         'logo' => 'Logo',
-        'created_at' => 'Création'
-    ]
+        'created_at' => 'Création',
+    ],
 
 ];

@@ -40,21 +40,21 @@ class ArticleComment extends Model
         'article_id',
         'author_id',
         'comment_id',
-        'content'
+        'content',
     ];
 
     /** @var array */
     protected $casts = [
         'article_id' => 'int',
         'author_id' => 'int',
-        'comment_id' => 'int'
+        'comment_id' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

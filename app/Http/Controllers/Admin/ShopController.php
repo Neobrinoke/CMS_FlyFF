@@ -18,7 +18,7 @@ class ShopController extends AdminController
         $shops = Shop::query()->paginate(10);
 
         return view('admin.shop.index', [
-            'shops' => $shops
+            'shops' => $shops,
         ]);
     }
 
@@ -47,7 +47,7 @@ class ShopController extends AdminController
 
         if ($request->file('image_thumbnail')) {
             $file = $request->file('image_thumbnail')->store('shop/thumbnails', [
-                'disk' => 'public'
+                'disk' => 'public',
             ]);
 
             $validatedData['image_thumbnail'] = '/uploads/' . $file;
@@ -74,7 +74,7 @@ class ShopController extends AdminController
 
         return view('admin.shop.show', [
             'shop' => $shop,
-            'items' => $items
+            'items' => $items,
         ]);
     }
 
@@ -87,7 +87,7 @@ class ShopController extends AdminController
     public function edit(Shop $shop)
     {
         return view('admin.shop.edit', [
-            'shop' => $shop
+            'shop' => $shop,
         ]);
     }
 
@@ -102,12 +102,12 @@ class ShopController extends AdminController
     {
         $validatedData = $request->validate([
             'label' => 'required|max:50',
-            'image_thumbnail' => 'image'
+            'image_thumbnail' => 'image',
         ]);
 
         if ($request->file('image_thumbnail')) {
             $file = $request->file('image_thumbnail')->store('shop/thumbnails', [
-                'disk' => 'public'
+                'disk' => 'public',
             ]);
 
             $validatedData['image_thumbnail'] = '/uploads/' . $file;

@@ -18,7 +18,7 @@ class RankingController extends Controller
         $characters = Character::getForRanking()->paginate(20);
 
         return view('ranking.player', [
-            'characters' => $characters
+            'characters' => $characters,
         ]);
     }
 
@@ -32,7 +32,7 @@ class RankingController extends Controller
         $guilds = Guild::getForRanking()->paginate(20);
 
         return view('ranking.guild', [
-            'guilds' => $guilds
+            'guilds' => $guilds,
         ]);
     }
 }

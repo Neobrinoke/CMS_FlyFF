@@ -38,12 +38,12 @@ class ArticlesTableSeeder extends Seeder
 
         $categories[] = ArticleCategory::query()->create([
             'label' => 'Mise à jour',
-            'color' => 'orange'
+            'color' => 'orange',
         ]);
 
         $categories[] = ArticleCategory::query()->create([
             'label' => 'Nouveauté',
-            'color' => 'purple'
+            'color' => 'purple',
         ]);
 
         /** @var ArticleCategory $category */
@@ -61,7 +61,7 @@ class ArticlesTableSeeder extends Seeder
                     'image_thumbnail' => $image,
                     'image_header' => ($i % 2) == 0 ? 'http://eu-uimg-wgp.webzen.com/1220129452/HtmlEdit/10112017_113105_fr-500x175_414659.jpg' : null,
                     'category_id' => $category->id,
-                    'authorized_comment' => $isCommentable
+                    'authorized_comment' => $isCommentable,
                 ]);
 
                 if ($isCommentable) {
@@ -69,7 +69,7 @@ class ArticlesTableSeeder extends Seeder
                         ArticleComment::query()->create([
                             'author_id' => $user->id,
                             'article_id' => $article->id,
-                            'content' => $faker->text(50)
+                            'content' => $faker->text(50),
                         ]);
                     }
                 }

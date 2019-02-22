@@ -21,7 +21,7 @@ class ArticleCommentController extends Controller
     {
         if ($article->authorized_comment) {
             $validatedData = $request->validate([
-                'content' => 'required|max:250'
+                'content' => 'required|max:250',
             ]);
 
             $validatedData['article_id'] = $article->id;
@@ -47,7 +47,7 @@ class ArticleCommentController extends Controller
     {
         if ($article->authorized_comment && $articleComment->is_mine) {
             $validatedData = $request->validate([
-                'content' => 'required|max:250'
+                'content' => 'required|max:250',
             ]);
 
             $articleComment->fill($validatedData);
@@ -89,7 +89,7 @@ class ArticleCommentController extends Controller
     {
         if ($article->authorized_comment && !$articleComment->is_response) {
             $validatedData = $request->validate([
-                'content' => 'required|max:250'
+                'content' => 'required|max:250',
             ]);
 
             $validatedData['article_id'] = $article->id;

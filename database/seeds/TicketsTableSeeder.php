@@ -40,17 +40,17 @@ class TicketsTableSeeder extends Seeder
         $ticketCategories = [];
         $ticketCategories[] = TicketCategory::query()->create([
             'name' => 'Boutique',
-            'color' => 'black'
+            'color' => 'black',
         ]);
 
         $ticketCategories[] = TicketCategory::query()->create([
             'name' => 'En jeu',
-            'color' => 'orange'
+            'color' => 'orange',
         ]);
 
         $ticketCategories[] = TicketCategory::query()->create([
             'name' => 'Site',
-            'color' => 'purple'
+            'color' => 'purple',
         ]);
 
         for ($i = 0; $i < rand(5, 10); $i++) {
@@ -70,7 +70,7 @@ class TicketsTableSeeder extends Seeder
                     'title' => $faker->text(15),
                     'content' => $faker->text(255),
                     'status' => $status,
-                    'closed_at' => $closedAt
+                    'closed_at' => $closedAt,
                 ]);
 
                 for ($j = 0; $j < rand(0, 5); $j++) {
@@ -79,7 +79,7 @@ class TicketsTableSeeder extends Seeder
                     TicketAttachment::query()->create([
                         'ticket_id' => $ticket->id,
                         'name' => $faker->text(9),
-                        'url' => $url
+                        'url' => $url,
                     ]);
                 }
 
@@ -88,7 +88,7 @@ class TicketsTableSeeder extends Seeder
                     $ticketResponse = TicketResponse::query()->create([
                         'ticket_id' => $ticket->id,
                         'author_id' => $user->id,
-                        'content' => $faker->text(255)
+                        'content' => $faker->text(255),
                     ]);
 
                     for ($k = 0; $k < rand(0, 5); $k++) {
@@ -98,7 +98,7 @@ class TicketsTableSeeder extends Seeder
                             'ticket_id' => $ticket->id,
                             'response_id' => $ticketResponse->id,
                             'name' => $faker->text(9),
-                            'url' => $url
+                            'url' => $url,
                         ]);
                     }
                 }

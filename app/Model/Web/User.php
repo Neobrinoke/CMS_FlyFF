@@ -44,19 +44,19 @@ class User extends Authenticatable
         'password',
         'cash_point',
         'vote_point',
-        'avatar_url'
+        'avatar_url',
     ];
 
     /** @var array */
     protected $hidden = [
         'password',
-        'remember_token'
+        'remember_token',
     ];
 
     /** @var array */
     protected $casts = [
         'cash_point' => 'int',
-        'vote_point' => 'int'
+        'vote_point' => 'int',
     ];
 
 
@@ -64,7 +64,7 @@ class User extends Authenticatable
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

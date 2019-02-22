@@ -220,13 +220,13 @@ class Character extends Model
         'idCampus' => 'int',
         'tKeepTime' => 'int',
         'm_dwMadrigalGiftExp' => 'int',
-        'm_tmLogout' => 'int'
+        'm_tmLogout' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'CreateTime',
-        'FinalLevelDt'
+        'FinalLevelDt',
     ];
 
     /**
@@ -304,7 +304,7 @@ class Character extends Model
             'serverindex' => $this->serverindex,
             'Item_Name' => $id,
             'Item_count' => $count,
-            'm_bCharged' => $charged
+            'm_bCharged' => $charged,
         ]);
     }
 

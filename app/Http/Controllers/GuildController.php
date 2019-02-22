@@ -16,7 +16,7 @@ class GuildController extends Controller
     public function show(Guild $guild)
     {
         return view('guild.show', [
-            'guild' => $guild
+            'guild' => $guild,
         ]);
     }
 }

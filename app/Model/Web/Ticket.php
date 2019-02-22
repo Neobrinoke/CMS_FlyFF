@@ -55,7 +55,7 @@ class Ticket extends Model
         self::STATUS_REJECTED,
         self::STATUS_READ_BY_USER,
         self::STATUS_READ_BY_STAFF,
-        self::STATUS_READ_BY_BOTH
+        self::STATUS_READ_BY_BOTH,
     ];
 
     /** @var array */
@@ -65,7 +65,7 @@ class Ticket extends Model
         'category_id',
         'title',
         'content',
-        'status'
+        'status',
     ];
 
     /** @var array */
@@ -74,7 +74,7 @@ class Ticket extends Model
         'assigned_to' => 'int',
         'category_id' => 'int',
         'status' => 'int',
-        'read_status' => 'int'
+        'read_status' => 'int',
     ];
 
     /** @var array */
@@ -82,7 +82,7 @@ class Ticket extends Model
         'closed_at',
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**
@@ -144,7 +144,7 @@ class Ticket extends Model
     {
         return !in_array($this->status, [
             self::STATUS_CLOSED,
-            self::STATUS_REJECTED
+            self::STATUS_REJECTED,
         ]);
     }
 

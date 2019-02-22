@@ -34,7 +34,7 @@ class DownloadsTableSeeder extends Seeder
                 'size' => rand(1, 8) . ' Go',
                 'image' => $randImg,
                 'link' => $randImg,
-                'type' => $randType
+                'type' => $randType,
             ]);
         }
     }

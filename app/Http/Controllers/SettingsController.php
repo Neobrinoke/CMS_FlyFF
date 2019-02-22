@@ -52,7 +52,7 @@ class SettingsController extends Controller
         $validatedRules = [
             'name' => 'required|string|max:255',
             'email' => "required|string|email|max:255|unique:website.users,email,{$user->id}",
-            'profile_img' => 'image|max:10000'
+            'profile_img' => 'image|max:10000',
         ];
 
         if ($request->input('new_password')) {
@@ -115,7 +115,7 @@ class SettingsController extends Controller
 
         $validatedData = $request->validate([
             'account' => 'required|string|alpha_num|min:4|max:32|unique:account.ACCOUNT_TBL,account|unique:account.ACCOUNT_TBL_DETAIL,account',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
         $validatedData['password'] = Md5Helper::md5Hash($validatedData['password']);
@@ -127,7 +127,7 @@ class SettingsController extends Controller
             'member' => 'A',
             'id_no2' => $validatedData['password'],
             'realname' => '',
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
 
         AccountDetail::query()->create([
@@ -140,7 +140,7 @@ class SettingsController extends Controller
             'EndTime' => '0',
             'WebTime' => '0',
             'isuse' => 'O',
-            'email' => ''
+            'email' => '',
         ]);
 
         session()->flash('success', trans('settings.game.account.create.messages.success', ['account' => $validatedData['account']]));
@@ -161,7 +161,7 @@ class SettingsController extends Controller
         }
 
         return view('settings.game.account.edit', [
-            'account' => $account
+            'account' => $account,
         ]);
     }
 
@@ -184,11 +184,11 @@ class SettingsController extends Controller
         }
 
         $validatedData = $request->validate([
-            'new_password' => 'required|string|min:6|confirmed'
+            'new_password' => 'required|string|min:6|confirmed',
         ]);
 
         $account->fill([
-            'password' => Md5Helper::md5Hash($validatedData['new_password'])
+            'password' => Md5Helper::md5Hash($validatedData['new_password']),
         ])->save();
 
         session()->flash('success', trans('settings.game.account.edit.messages.success', ['account' => $account->account]));
@@ -202,7 +202,7 @@ class SettingsController extends Controller
         $user = auth()->user();
 
         return view('settings.history.index', [
-            'histories' => $user->logs
+            'histories' => $user->logs,
         ]);
     }
 }

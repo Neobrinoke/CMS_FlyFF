@@ -3,6 +3,6 @@
 return [
 
     'boy' => 'Garçon',
-    'girl' => 'Fille'
+    'girl' => 'Fille',
 
 ];

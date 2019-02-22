@@ -33,7 +33,7 @@ class MultiServerInfo extends Model
 
     /** @var array */
     protected $casts = [
-        'MultiServer' => 'int'
+        'MultiServer' => 'int',
     ];
 
     /**

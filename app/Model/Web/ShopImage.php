@@ -26,19 +26,19 @@ class ShopImage extends Model
     /** @var array */
     protected $fillable = [
         'item_id',
-        'image'
+        'image',
     ];
 
     /** @var array */
     protected $casts = [
-        'item_id' => 'int'
+        'item_id' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

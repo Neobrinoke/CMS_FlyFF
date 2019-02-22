@@ -54,7 +54,7 @@ class TicketController extends Controller
         return view('ticket.index', [
             'categories' => $categories,
             'statuses' => $statuses,
-            'tickets' => $tickets
+            'tickets' => $tickets,
         ]);
     }
 
@@ -68,7 +68,7 @@ class TicketController extends Controller
         $categories = TicketCategory::all();
 
         return view('ticket.create', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -85,7 +85,7 @@ class TicketController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:2000',
             'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:10000',
-            'attachments' => 'files_count:5'
+            'attachments' => 'files_count:5',
         ]);
 
         $validatedData['author_id'] = auth()->id();
@@ -102,7 +102,7 @@ class TicketController extends Controller
                 TicketAttachment::query()->create([
                     'ticket_id' => $ticket->id,
                     'name' => $attachment->getClientOriginalName(),
-                    'url' => $file
+                    'url' => $file,
                 ]);
             }
         }
@@ -124,7 +124,7 @@ class TicketController extends Controller
         $validatedData = $request->validate([
             'content' => 'required|max:2000',
             'attachments.*' => 'mimes:jpeg,png,jpg,bmp,txt,error,log|max:10000',
-            'attachments' => 'files_count:5'
+            'attachments' => 'files_count:5',
         ]);
 
         $validatedData['ticket_id'] = $ticket->id;
@@ -142,7 +142,7 @@ class TicketController extends Controller
                     'ticket_id' => $ticket->id,
                     'response_id' => $ticketResponse->id,
                     'name' => $attachment->getClientOriginalName(),
-                    'url' => $file
+                    'url' => $file,
                 ]);
             }
         }
@@ -169,7 +169,7 @@ class TicketController extends Controller
         }
 
         return view('ticket.show', [
-            'ticket' => $ticket
+            'ticket' => $ticket,
         ]);
     }
 

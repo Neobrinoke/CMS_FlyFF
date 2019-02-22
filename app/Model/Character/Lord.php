@@ -37,12 +37,12 @@ class Lord extends Model
     protected $casts = [
         'nServer' => 'int',
         'idElection' => 'int',
-        'idLord' => 'int'
+        'idLord' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        's_date'
+        's_date',
     ];
 
     /**

@@ -20,6 +20,6 @@ return [
     'shop_detail' => 'Boutique [:name]',
     'shop_item_detail' => 'Détails de l\'objet [:name]',
     'ticket' => 'Ticket support',
-    'ticket_show' => 'Ticket [:title]'
+    'ticket_show' => 'Ticket [:title]',
 
 ];

@@ -8,8 +8,9 @@ return [
         '3' => 'Rejeté',
         '4' => 'En attente',
         '5' => 'Réponse de l\'équipe',
-        '6' => 'En attente (lu)'
+        '6' => 'En attente (lu)',
     ],
+
     'index' => [
         'search_section' => [
             'header' => 'Section de recherche',
@@ -19,7 +20,7 @@ return [
             'creation_date_min' => 'Date de création (de)',
             'creation_date_max' => 'Date de création (à)',
             'select_categories' => 'Sélectionnez une/des catégorie(s)',
-            'select_statuses' => 'Sélectionnez un/des statut(s)'
+            'select_statuses' => 'Sélectionnez un/des statut(s)',
         ],
         'ticket_list' => 'Liste des tickets',
         'title' => 'Titre',
@@ -27,8 +28,9 @@ return [
         'status' => 'Statut',
         'creation_date' => 'Date de création',
         'action' => 'Action',
-        'create_ticket' => 'Créer un nouveau ticket'
+        'create_ticket' => 'Créer un nouveau ticket',
     ],
+
     'create' => [
         'form' => [
             'title' => 'Titre',
@@ -39,9 +41,10 @@ return [
             'submit' => 'Envoyer'
         ],
         'messages' => [
-            'success' => 'Votre ticket a bien été crée'
-        ]
+            'success' => 'Votre ticket a bien été crée',
+        ],
     ],
+
     'show' => [
         'info_block' => [
             'category' => 'Catégorie:',
@@ -55,9 +58,9 @@ return [
                 'submit' => 'Répondre'
             ],
             'messages' => [
-                'success' => 'Votre réponse a bien été crée'
-            ]
-        ]
-    ]
+                'success' => 'Votre réponse a bien été crée',
+            ],
+        ],
+    ],
 
 ];

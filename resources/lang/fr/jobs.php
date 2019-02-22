@@ -38,6 +38,6 @@ return [
     'seraph' => 'Primat',
     'force_master' => 'Chanoine',
     'mentalist' => 'Envouteur',
-    'arcanist' => 'Arcaniste'
+    'arcanist' => 'Arcaniste',
 
 ];

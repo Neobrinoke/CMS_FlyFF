@@ -66,12 +66,12 @@ class GuildMember extends Model
         'm_nGivePxp' => 'int',
         'm_idWar' => 'int',
         'm_idVote' => 'int',
-        'm_nClass' => 'int'
+        'm_nClass' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        'CreateTime'
+        'CreateTime',
     ];
 
     /**

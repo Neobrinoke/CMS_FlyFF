@@ -24,7 +24,7 @@ class ShopController extends Controller
         $shops = Shop::all();
 
         return view('shop.index', [
-            'shops' => $shops
+            'shops' => $shops,
         ]);
     }
 
@@ -87,7 +87,7 @@ class ShopController extends Controller
             'categories' => $categories,
             'canNotFind' => $canNotFind,
             'sortList' => $sortList,
-            'saleTypes' => $saleTypes
+            'saleTypes' => $saleTypes,
         ]);
     }
 
@@ -111,7 +111,7 @@ class ShopController extends Controller
 
         return view('shop.item.show', [
             'shop' => $shop,
-            'item' => $item
+            'item' => $item,
         ]);
     }
 
@@ -124,7 +124,7 @@ class ShopController extends Controller
     public function cartShow(Cart $cart)
     {
         return view('shop.cart.show', [
-            'cart' => $cart
+            'cart' => $cart,
         ]);
     }
 

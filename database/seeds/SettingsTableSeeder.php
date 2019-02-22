@@ -15,7 +15,7 @@ class SettingsTableSeeder extends Seeder
         Setting::query()->create([
             'exp_rate' => 'x150',
             'drop_rate' => 'x50',
-            'penyas_rate' => 'x750'
+            'penyas_rate' => 'x750',
         ]);
     }
 }

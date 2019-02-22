@@ -10,11 +10,11 @@ return [
             'update_date' => 'Dernière mise à jour',
             'statuses' => [
                 'valid' => 'Valide',
-                'banned' => 'Banni'
+                'banned' => 'Banni',
             ],
             'buttons' => [
-                'edit' => 'Éditer'
-            ]
+                'edit' => 'Éditer',
+            ],
         ],
         'edit' => [
             'title' => 'Modification des informations',
@@ -29,10 +29,11 @@ return [
             'messages' => [
                 'success' => 'Vos informations on bien été édité',
                 'new_password' => '* Remplissez ce champ uniquement si vous voulez changer de mot de passe !',
-                'password_error' => 'Le mot de passe actuelle est invalide.'
-            ]
-        ]
+                'password_error' => 'Le mot de passe actuelle est invalide.',
+            ],
+        ],
     ],
+
     'game' => [
         'account' => [
             'index' => [
@@ -43,8 +44,8 @@ return [
                 'status' => 'Statut',
                 'action' => 'Action',
                 'buttons' => [
-                    'add' => 'Ajouter'
-                ]
+                    'add' => 'Ajouter',
+                ],
             ],
             'create' => [
                 'title' => 'Ajouter un nouveau compte de jeu',
@@ -53,8 +54,8 @@ return [
                 'password_confirmation' => 'Mot de passe (confirmation)',
                 'submit' => 'Créer',
                 'messages' => [
-                    'success' => 'Le compte [:account] a bien été crée'
-                ]
+                    'success' => 'Le compte [:account] a bien été crée',
+                ],
             ],
             'edit' => [
                 'title' => 'Modifier le compte [:account]',
@@ -65,18 +66,19 @@ return [
                 'submit' => 'Créer',
                 'messages' => [
                     'success' => 'Le compte [:account] a bien été édité',
-                    'password_error' => 'Le mot de passe actuelle est invalide.'
-                ]
-            ]
-        ]
+                    'password_error' => 'Le mot de passe actuelle est invalide.',
+                ],
+            ],
+        ],
     ],
+
     'history' => [
         'title' => 'Historiques',
         'titles' => [
             '1' => 'Achat boutique',
             '2' => 'Rechargement',
             '3' => 'Connexion',
-            '4' => 'Vote'
+            '4' => 'Vote',
         ],
         'buy_shop' => [
             'cart' => [
@@ -84,12 +86,12 @@ return [
                 'name' => 'Nom',
                 'quantity' => 'Qte',
                 'unit_price' => 'Prix Unit.',
-                'ttl_price' => 'Prix Ttl.'
-            ]
+                'ttl_price' => 'Prix Ttl.',
+            ],
         ],
         'login' => [
-            'message' => 'Connexion depuis l\'adresse IP: :ip'
-        ]
-    ]
+            'message' => 'Connexion depuis l\'adresse IP: :ip',
+        ],
+    ],
 
 ];

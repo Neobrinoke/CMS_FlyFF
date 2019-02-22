@@ -25,7 +25,7 @@ class ShopsTableSeeder extends Seeder
             'http://eu-uimg-wgp.webzen.com/1220129452/News/09032018_104050_turning-point-fr_384506.jpg',
             'http://eu-uimg-wgp.webzen.com/1220129452/News/06032018_115934_fr-170x127-2_431744.png',
             'http://eu-uimg-wgp.webzen.com/1220129452/News/06032018_094608_2d84b3831f3b3b960d4af15c5cb40c7ced99d89f702cab0c65-pimgpsh-fullsize-distr_351687.jpg',
-            'http://eu-uimg-wgp.webzen.com/1220129452/News/10042017_153435_0c4f79e89df1096b94318520ebe7142f281da71c7e5dfa11bd-pimgpsh-fullsize-distr_560755.jpg'
+            'http://eu-uimg-wgp.webzen.com/1220129452/News/10042017_153435_0c4f79e89df1096b94318520ebe7142f281da71c7e5dfa11bd-pimgpsh-fullsize-distr_560755.jpg',
         ];
 
         $itemImages = [
@@ -36,7 +36,7 @@ class ShopsTableSeeder extends Seeder
             'https://www.crystal-flyff.fr/img/boutique/MPmax.png',
             'https://www.crystal-flyff.fr/img/boutique/npet23.png',
             'https://www.crystal-flyff.fr/img/boutique/vip.png',
-            'https://www.crystal-flyff.fr/img/boutique/changementnom.png'
+            'https://www.crystal-flyff.fr/img/boutique/changementnom.png',
         ];
 
         $itemIds = [
@@ -58,7 +58,7 @@ class ShopsTableSeeder extends Seeder
             '35015',
             '35016',
             '35017',
-            '35018'
+            '35018',
         ];
 
         $shops = [];
@@ -66,37 +66,37 @@ class ShopsTableSeeder extends Seeder
         $shops[] = Shop::query()->create([
             'label' => 'Cash Shop',
             'image_thumbnail' => $shopImages[array_rand($shopImages)],
-            'is_active' => true
+            'is_active' => true,
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Vote point',
             'image_thumbnail' => $shopImages[array_rand($shopImages)],
-            'is_active' => true
+            'is_active' => true,
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Evenement',
             'image_thumbnail' => $shopImages[array_rand($shopImages)],
-            'is_active' => true
+            'is_active' => true,
         ]);
 
         $shops[] = Shop::query()->create([
             'label' => 'Halloween',
             'image_thumbnail' => $shopImages[array_rand($shopImages)],
-            'is_active' => true
+            'is_active' => true,
         ]);
 
         $categories = [];
 
         $categories[] = ShopCategory::query()->create([
             'label' => 'Armes',
-            'color' => 'violet'
+            'color' => 'violet',
         ]);
 
         $categories[] = ShopCategory::query()->create([
             'label' => 'Bijoux',
-            'color' => 'orange'
+            'color' => 'orange',
         ]);
 
         /** @var Shop $shop */
@@ -117,13 +117,13 @@ class ShopsTableSeeder extends Seeder
                         'title' => $faker->text(15),
                         'description' => $faker->text(50),
                         'price' => $faker->numberBetween(50, 2500),
-                        'image_thumbnail' => $image
+                        'image_thumbnail' => $image,
                     ]);
 
                     for ($j = 0; $j < rand(0, 5); $j++) {
                         ShopImage::query()->create([
                             'item_id' => $item->id,
-                            'image' => $itemImages[array_rand($itemImages)]
+                            'image' => $itemImages[array_rand($itemImages)],
                         ]);
                     }
                 }

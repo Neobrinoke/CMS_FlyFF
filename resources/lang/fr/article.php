@@ -5,6 +5,7 @@ return [
     'show_all' => 'Voir plus d\'articles',
     'show_more' => 'Voir plus sur l\'article',
     'detail' => 'Par :author, <time datetime=":created_at">:created_at</time>',
+
     'comment' => [
         'post' => 'Postez votre commentaire',
         'read' => 'Commentaires',
@@ -20,8 +21,8 @@ return [
                 'create' => 'La réponse a bien été envoyée',
                 'edit' => 'La réponse a bien été éditée',
                 'delete' => 'La réponse a bien été supprimée',
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 
 ];

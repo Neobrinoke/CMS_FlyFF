@@ -77,12 +77,12 @@ class Guild extends Model
         'm_nLose' => 'int',
         'm_nSurrender' => 'int',
         'm_nWinPoint' => 'int',
-        'm_dwLogo' => 'int'
+        'm_dwLogo' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
-        'CreateTime'
+        'CreateTime',
     ];
 
     /**

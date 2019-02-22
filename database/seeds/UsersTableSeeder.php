@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'https://semantic-ui.com/images/avatar2/large/matthew.png',
             'https://semantic-ui.com/images/avatar2/large/molly.png',
             'https://semantic-ui.com/images/avatar2/large/elyse.png',
-            'https://semantic-ui.com/images/avatar/large/steve.jpg'
+            'https://semantic-ui.com/images/avatar/large/steve.jpg',
         ];
 
         User::query()->create([
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'cash_point' => 987654321,
             'vote_point' => 987654321,
-            'avatar_url' => $avatars[array_rand($avatars)]
+            'avatar_url' => $avatars[array_rand($avatars)],
         ]);
 
         for ($i = 0; $i < 10; $i++) {
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('0000'),
                 'cash_point' => 65498,
                 'vote_point' => 9871,
-                'avatar_url' => $avatar_url
+                'avatar_url' => $avatar_url,
             ]);
         }
     }

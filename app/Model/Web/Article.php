@@ -50,14 +50,14 @@ class Article extends Model
     protected $casts = [
         'category_id' => 'int',
         'author_id' => 'int',
-        'authorized_comment' => 'bool'
+        'authorized_comment' => 'bool',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**
@@ -119,7 +119,7 @@ class Article extends Model
     {
         return trans('article.detail', [
             'author' => $this->author->name,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
         ]);
     }
 

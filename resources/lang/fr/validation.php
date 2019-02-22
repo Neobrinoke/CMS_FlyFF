@@ -177,7 +177,7 @@ return [
         'category_id' => 'catégorie',
         'attachments.*' => 'fichiers attachés',
         'profile_img' => 'photo de profil',
-        'image_thumbnail' => 'image de couverture'
+        'image_thumbnail' => 'image de couverture',
     ],
 
 ];

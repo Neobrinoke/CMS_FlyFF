@@ -46,7 +46,7 @@ class ShopItem extends Model
         'title',
         'description',
         'price',
-        'image_thumbnail'
+        'image_thumbnail',
     ];
 
     /** @var array */
@@ -56,14 +56,14 @@ class ShopItem extends Model
         'shop_id' => 'int',
         'item_id' => 'int',
         'sale_type' => 'int',
-        'price' => 'int'
+        'price' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /** @var int */

@@ -6,6 +6,7 @@ return [
 
     'choose_shop' => 'Choisissez une boutique !',
     'show_item_details' => 'Voir les détails de l\'objet',
+
     'search' => [
         'header' => 'Section de recherche',
         'title' => 'Titre',
@@ -25,15 +26,18 @@ return [
             'price-asc' => 'Prix ↑',
             'price-desc' => 'Prix ↓',
             'title-asc' => 'Nom ↑',
-            'title-desc' => 'Nom ↓'
+            'title-desc' => 'Nom ↓',
         ],
     ],
+
     'quantity' => 'Quantité',
     'add_to_cart' => 'Ajouter au panier',
+
     'sale_types' => [
         Shop::SALE_CS_TYPE => 'GPotato Point',
-        Shop::SALE_VOTE_TYPE => 'Vote Point'
+        Shop::SALE_VOTE_TYPE => 'Vote Point',
     ],
+
     'cart' => [
         'cart_summary' => 'Récapitulatif de votre panier',
         'buy_summary' => 'Finalisation de l\'achat du panier',
@@ -51,9 +55,9 @@ return [
         'error' => [
             'empty_cart' => 'Votre panier est vide',
             'char_not_found' => 'Personnage introuvable',
-            'insufficient_balance' => 'Solde insuffisant'
+            'insufficient_balance' => 'Solde insuffisant',
         ],
-        'success' => 'L\'objet a bien été envoyé à :name. Merci de vous reconnecter pour y avoir accès.'
-    ]
+        'success' => 'L\'objet a bien été envoyé à :name. Merci de vous reconnecter pour y avoir accès.',
+    ],
 
 ];

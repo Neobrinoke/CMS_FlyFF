@@ -4,7 +4,7 @@ return [
 
     'lang' => [
         'title' => 'Langues',
-        'search' => 'Recherche ...'
-    ]
+        'search' => 'Recherche ...',
+    ],
 
 ];

@@ -40,13 +40,13 @@ class CombatInfo extends Model
     /** @var array */
     protected $casts = [
         'CombatID' => 'int',
-        'SEQ' => 'int'
+        'SEQ' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'StartDt',
-        'EndDt'
+        'EndDt',
     ];
 
     /**

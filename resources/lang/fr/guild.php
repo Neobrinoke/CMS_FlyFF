@@ -13,6 +13,7 @@ return [
     'gvg_win' => 'Gagnées:',
     'gvg_lose' => 'Perdus:',
     'gvg_surrender' => 'Abandonnées:',
+
     'member_ranking' => [
         'name' => 'Nom',
         'job' => 'Classe',
@@ -21,7 +22,7 @@ return [
         'rank' => 'Grade',
         'rank_lvl' => 'Niveau de Grade',
         'member_since' => 'Membre depuis',
-        'status' => 'Statut'
-    ]
+        'status' => 'Statut',
+    ],
 
 ];

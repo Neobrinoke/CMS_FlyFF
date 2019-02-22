@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:website.users',
             'password' => 'required|string|min:6|confirmed',
             'rules' => 'accepted',
-            'profile_img' => 'image|max:10000'
+            'profile_img' => 'image|max:10000',
         ]);
     }
 
@@ -78,7 +78,7 @@ class RegisterController extends Controller
             $image = $data['profile_img'];
 
             $values['avatar_url'] = '/uploads/' . $image->store('user/avatars', [
-                'disk' => 'public'
+                'disk' => 'public',
             ]);
         } else {
             $values['avatar_url'] = '/images/default_avatar.png';

@@ -29,14 +29,14 @@ class ArticleCategory extends Model
     /** @var array */
     protected $fillable = [
         'label',
-        'color'
+        'color',
     ];
 
     /** @var array */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**

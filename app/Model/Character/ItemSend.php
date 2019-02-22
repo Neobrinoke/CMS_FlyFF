@@ -93,7 +93,7 @@ class ItemSend extends Model
         'adwUMItemId1',
         'adwUMItemId2',
         'adwUMItemId3',
-        'adwUMItemId4'
+        'adwUMItemId4',
     ];
 
     /** @var array */
@@ -123,12 +123,12 @@ class ItemSend extends Model
         'adwUMItemId1' => 'int',
         'adwUMItemId2' => 'int',
         'adwUMItemId3' => 'int',
-        'adwUMItemId4' => 'int'
+        'adwUMItemId4' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'ReceiveDt',
-        'ProvideDt'
+        'ProvideDt',
     ];
 }

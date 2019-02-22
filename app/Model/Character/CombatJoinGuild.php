@@ -50,14 +50,14 @@ class CombatJoinGuild extends Model
         'Reward' => 'int',
         'Point' => 'int',
         'StraightWin' => 'int',
-        'SEQ' => 'int'
+        'SEQ' => 'int',
     ];
 
     /** @var array */
     protected $dates = [
         'RewardDt',
         'CancelDt',
-        'ApplyDt'
+        'ApplyDt',
     ];
 
     /**
