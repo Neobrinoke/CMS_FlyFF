@@ -1,0 +1,109 @@
+* {
+  --primary-color: #27a4ca;
+  --primary-color-hover: #2386a5;
+}
+
+body {
+  background: url("/images/background.jpg") no-repeat #ffffff;
+  background-size: cover;
+}
+
+section.logo {
+  margin: 50px 0;
+  text-align: center;
+}
+
+main.ui.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main.ui.container aside {
+  width: 250px;
+  margin-right: 15px;
+}
+
+main section.content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  max-width: calc(100% - 250px);
+}
+
+.box .ui.attached.message,
+.ui.labeled.input .ui.label {
+  color: white;
+  padding: 1em 1em;
+}
+
+.ui.menu.stackable .ui.container a.active {
+  background-color: white;
+}
+
+.ui.menu .item.active::after,
+.ui.menu .item.activable:hover::after {
+  content: "";
+  border-bottom: 4px solid var(--primary-color);
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.ui.vertical.menu .item.active::after,
+.ui.vertical.menu .item.activable:hover::after {
+  border-left: 4px solid var(--primary-color);
+  border-bottom: none;
+  bottom: 0;
+  top: 0;
+}
+
+.box {
+  margin-bottom: 15px;
+}
+
+.ui.primary {
+  background-color: var(--primary-color) !important;
+}
+
+a.ui.primary:hover,
+button.ui.primary:hover,
+input[type='submit'].ui.primary:hover {
+  background-color: var(--primary-color-hover) !important;
+}
+
+.ui.image.guild_logo {
+  margin-right: 0.25em;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  main.ui.container aside {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  main.ui.container {
+    display: block;
+  }
+
+  main section.content {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.unstackable.items > .item > .image,
+  .ui.unstackable.items > .item > .image > img {
+    display: none !important;
+  }
+
+  .ui.items > .item > .image + .content {
+    padding-left: 0;
+  }
+}
+

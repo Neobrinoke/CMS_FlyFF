@@ -1,0 +1,51 @@
+* {
+  --primary-color: #27a4ca;
+  --primary-color-hover: #2386a5;
+}
+
+header.ui.menu {
+  width: 100%;
+  margin: 0;
+}
+
+header.ui.menu .item.header {
+  width: 224px;
+}
+
+header.ui.menu .item.header span {
+  margin-left: 10px;
+}
+
+section.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100vh - 56px);
+}
+
+section.container nav.ui.vertical.menu {
+  overflow-x: auto;
+  -ms-flex-preferred-size: 225px;
+      flex-basis: 225px;
+  margin: 0;
+  border-bottom: 0;
+  border-top: 0;
+}
+
+section.container main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-x: auto;
+}
+
+section.container main h1 div.ui.breadcrumb.right.floated {
+  margin-top: 10px;
+}
+
+section.container main h1,
+section.container main article,
+section.container main section {
+  margin: 15px;
+}
+
