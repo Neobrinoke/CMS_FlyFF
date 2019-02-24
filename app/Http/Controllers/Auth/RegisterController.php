@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Model\Web\User;
 use App\Http\Controllers\Controller;
@@ -78,8 +78,8 @@ class RegisterController extends Controller
             $image = $data['profile_img'];
 
             $values['avatar_url'] = '/uploads/' . $image->store('user/avatars', [
-                'disk' => 'public',
-            ]);
+                    'disk' => 'public',
+                ]);
         } else {
             $values['avatar_url'] = '/images/default_avatar.png';
         }

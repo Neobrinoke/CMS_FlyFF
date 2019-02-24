@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Model\Character\Character;
 use App\Model\Character\Guild;
 use Illuminate\Http\Response;
