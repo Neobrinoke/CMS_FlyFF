@@ -21,7 +21,7 @@
                             <div class="ui calendar date-picker">
                                 <div class="ui input left icon">
                                     <i class="time icon"></i>
-                                    <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}">
+                                    <input type="text" name="creation_date_min" id="creation_date_min" value="{{ request('creation_date_min') }}" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                             <div class="ui calendar date-picker">
                                 <div class="ui input left icon">
                                     <i class="time icon"></i>
-                                    <input type="text" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}">
+                                    <input type="text" name="creation_date_max" id="creation_date_max" value="{{ request('creation_date_max') }}" autocomplete="off">
                                 </div>
                             </div>
                         </div>

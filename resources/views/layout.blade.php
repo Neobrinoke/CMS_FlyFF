@@ -20,18 +20,22 @@
             <a href="{{ route('shop.index') }}" class="item activable"><i class="shopping cart icon"></i>@lang('nav.shop')</a>
             <div class="right menu">
                 @auth
-                    <a href="{{ route('shop.cart') }}" class="item activable">
-                        <i class="shopping basket icon"></i>@lang('nav.cart')<span class="ui blue circular label">{{ count(session('cart.items') ?? []) }}</span>
-                    </a>
-                    <a href="{{ route('ticket.index') }}" class="item activable">
-                        <i class="ticket icon"></i>@lang('nav.ticket')<span class="ui green circular label">{{ $loggedUser->tickets->count() }}</span>
-                    </a>
+                    @if($loggedUser->hasVerifiedEmail())
+                        <a href="{{ route('shop.cart') }}" class="item activable">
+                            <i class="shopping basket icon"></i>@lang('nav.cart')<span class="ui blue circular label">{{ count(session('cart.items') ?? []) }}</span>
+                        </a>
+                        <a href="{{ route('ticket.index') }}" class="item activable">
+                            <i class="ticket icon"></i>@lang('nav.ticket')<span class="ui green circular label">{{ $loggedUser->tickets->count() }}</span>
+                        </a>
+                    @endif
                     <div class="ui top right pointing dropdown icon item">
                         <img class="ui avatar image" src="{{ $loggedUser->avatar_image }}"><span>{{ $loggedUser->name }}</span>
                         <div class="menu">
-                            <a href="{{ route('admin.home') }}" class="item"><i class="cogs icon"></i>@lang('nav.back_office')</a>
-                            <a href="{{ route('settings.general.index') }}" class="item"><i class="cog icon"></i>@lang('nav.player_settings')</a>
-                            <div class="divider"></div>
+                            @if($loggedUser->hasVerifiedEmail())
+                                <a href="{{ route('admin.home') }}" class="item"><i class="cogs icon"></i>@lang('nav.back_office')</a>
+                                <a href="{{ route('settings.general.index') }}" class="item"><i class="cog icon"></i>@lang('nav.player_settings')</a>
+                                <div class="divider"></div>
+                            @endif
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="item">
                                 <i class="sign out icon"></i>@lang('nav.logout')
                             </a>

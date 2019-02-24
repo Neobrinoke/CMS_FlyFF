@@ -27,6 +27,10 @@ main section.content {
     max-width: calc(100% - 250px);
 }
 
+#showNavBar {
+    display: none;
+}
+
 .box .ui.attached.message, .ui.labeled.input .ui.label {
     color: white;
     padding: 1em 1em;
@@ -75,7 +79,6 @@ input[type='submit'].ui.primary:hover {
 }
 
 @media screen and (max-width: 991px) {
-
     main.ui.container aside {
         width: 100%;
         margin-right: 0;
