@@ -1,11 +1,11 @@
 # CMS FlyFF - Open Source
-CMS FlyFF is a FlyForFun CMS built with PHP 7.2 and Laravel 5.6.
+CMS FlyFF is a FlyForFun CMS built with PHP 7.2 and Laravel 5.7.
 
 This project has been created for challenge and purpose a CMS with latest conventions.
 
 ## Requirements
 - Language: `PHP`
-- Framework: `Laravel` 5.6
+- Framework: `Laravel` 5.7
 - Database: `MsSQL` (possible to change DB connection with laravel)
 - PHP dependency manager:  `composer`
 - ASSET dependency manager:  `npm (need NodeJS)`
@@ -36,7 +36,7 @@ This project has been created for challenge and purpose a CMS with latest conven
 - Login with `admin@email.fr` & `admin`
 
 ## Information
-- Email configuration are needed for password recovery system.
+- Email configuration are needed for password recovery and email verification system.
 
 ## Bug & Security Vulnerabilities
 If you discover a bug or security vulnerability, please open an issue. All security vulnerabilities will be promptly addressed.
