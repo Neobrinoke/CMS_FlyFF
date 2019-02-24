@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ mix('assets/css/back.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/back.css') }}">
 @endsection
 
 @section('layout')
     <header class="ui menu">
         <div class="item header">
-            <img src="{{ asset('assets/images/header_logo.png') }}" alt=""><span>{{ config('app.name') }}</span>
+            <img src="{{ asset('images/header_logo.png') }}" alt=""><span>{{ config('app.name') }}</span>
         </div>
         @yield('nav-buttons')
         <div class="right menu">

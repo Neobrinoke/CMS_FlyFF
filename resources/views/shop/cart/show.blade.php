@@ -16,10 +16,10 @@
                         <th>@lang('shop.cart.image')</th>
                         <th>@lang('shop.cart.name')</th>
                         <th>@lang('shop.cart.quantity')</th>
-                        <th class="right aligned">@lang('shop.cart.unit_price') <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
-                        <th class="right aligned">@lang('shop.cart.unit_price') <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
-                        <th class="right aligned">@lang('shop.cart.ttl_price') <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
-                        <th class="right aligned">@lang('shop.cart.ttl_price') <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
+                        <th class="right aligned">@lang('shop.cart.unit_price') <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
+                        <th class="right aligned">@lang('shop.cart.unit_price') <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
+                        <th class="right aligned">@lang('shop.cart.ttl_price') <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
+                        <th class="right aligned">@lang('shop.cart.ttl_price') <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,15 +44,15 @@
                                 </form>
                             </td>
                             @if($item->sale_type === \App\Model\Web\Shop::SALE_CS_TYPE)
-                                <td class="right aligned">{{ $item->price }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
-                                <td class="right aligned">0 <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
-                                <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
-                                <td class="right aligned">0 <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                                <td class="right aligned">{{ $item->price }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                                <td class="right aligned">0 <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                                <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                                <td class="right aligned">0 <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
                             @else
-                                <td class="right aligned">0 <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
-                                <td class="right aligned">{{ $item->price }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
-                                <td class="right aligned">0 <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
-                                <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                                <td class="right aligned">0 <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                                <td class="right aligned">{{ $item->price }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                                <td class="right aligned">0 <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                                <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
                             @endif
                         </tr>
                     @endforeach
@@ -63,10 +63,10 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th class="right aligned">{{ $cart->getTotalUnitCsPrice() }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
-                        <th class="right aligned">{{ $cart->getTotalUnitVotePrice() }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
-                        <th class="right aligned">{{ $cart->getTotalTtlCsPrice() }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
-                        <th class="right aligned">{{ $cart->getTotalTtlVotePrice() }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
+                        <th class="right aligned">{{ $cart->getTotalUnitCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
+                        <th class="right aligned">{{ $cart->getTotalUnitVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
+                        <th class="right aligned">{{ $cart->getTotalTtlCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
+                        <th class="right aligned">{{ $cart->getTotalTtlVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
                     </tr>
                 </tfoot>
             </table>
@@ -76,13 +76,13 @@
                     <section class="ui stackable grid">
                         <div class="four wide column">
                             <p>@lang('shop.cart.you_have')</p>
-                            <p>{{ $loggedUser->cash_point }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></p>
-                            <p>{{ $loggedUser->vote_point }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></p>
+                            <p>{{ $loggedUser->cash_point }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></p>
+                            <p>{{ $loggedUser->vote_point }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></p>
                         </div>
                         <div class="four wide column">
                             <p>@lang('shop.cart.you_will_have')</p>
-                            <p>{{ $loggedUser->cash_point - $cart->getTotalTtlCsPrice() }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></p>
-                            <p>{{ $loggedUser->vote_point - $cart->getTotalTtlVotePrice() }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></p>
+                            <p>{{ $loggedUser->cash_point - $cart->getTotalTtlCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></p>
+                            <p>{{ $loggedUser->vote_point - $cart->getTotalTtlVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></p>
                         </div>
                         <div class="height wide column">
                             <form class="ui form" action="{{ route('shop.cart.buy') }}" method="POST">

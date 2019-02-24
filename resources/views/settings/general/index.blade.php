@@ -27,11 +27,11 @@
                         <td><time datetime="{{ $loggedUser->updated_at }}">{{ $loggedUser->updated_at }}</time></td>
                     </tr>
                     <tr>
-                        <td><img src="{{ asset('assets/images/sale_cs_image.png') }}"> @lang('shop.sale_types.1')</td>
+                        <td><img src="{{ asset('images/sale_cs_image.png') }}"> @lang('shop.sale_types.1')</td>
                         <td>{{ $loggedUser->cash_point }}</td>
                     </tr>
                     <tr>
-                        <td><img src="{{ asset('assets/images/sale_vote_image.png') }}"> @lang('shop.sale_types.2')</td>
+                        <td><img src="{{ asset('images/sale_vote_image.png') }}"> @lang('shop.sale_types.2')</td>
                         <td>{{ $loggedUser->vote_point }}</td>
                     </tr>
                 </tbody>
