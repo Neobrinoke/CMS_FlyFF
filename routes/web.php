@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -19,15 +20,7 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
     Route::get('/', 'HomeController@home')->name('home');
 
     // Auth URL
-    Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login');
-    Route::post('logout', 'LoginController@logout')->name('logout');
-    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'RegisterController@register');
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
-    Route::post('password/reset', 'ResetPasswordController@reset');
+    Auth::routes(['verify' => true]);
 
     // Article URL
     Route::get('/articles', 'ArticleController@index')->name('article.index');
@@ -49,7 +42,7 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
     Route::get('/shop/{shop}-{slug}', 'ShopController@show')->name('shop.show');
     Route::get('/shop/{shop}/{item}-{slug}', 'ShopController@item')->name('shop.item');
 
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth', 'verified'])->group(function () {
         // Shop cart URL
         Route::get('/shop/cart', 'ShopController@cartShow')->name('shop.cart');
         Route::post('/shop/cart/buy', 'ShopController@cartBuy')->name('shop.cart.buy');
@@ -89,7 +82,7 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
         Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'LoginController@login');
 
-        Route::middleware(['auth'])->group(function () {
+        Route::middleware(['auth', 'verified'])->group(function () {
             // Home URL
             Route::get('/', 'HomeController@home')->name('home');
 

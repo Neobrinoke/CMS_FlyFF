@@ -4,6 +4,7 @@ return [
 
     'login' => 'Connexion',
     'register' => 'S\'inscrire',
+    'email_verify' => 'Veuillez vérifier votre adresse email',
     'news' => 'Actualités',
     'article' => ':title',
     'player_settings' => 'Paramètres',

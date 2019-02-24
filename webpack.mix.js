@@ -11,8 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js');
+mix.copy('resources/assets/svg', 'public/assets/svg');
+mix.copy('resources/assets/images', 'public/assets/images');
 
-mix.sass('resources/assets/sass/app.scss', 'public/css');
-mix.sass('resources/assets/sass/front.scss', 'public/css');
-mix.sass('resources/assets/sass/back.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/assets/js');
+
+mix.sass('resources/assets/sass/app.scss', 'public/assets/css');
+mix.sass('resources/assets/sass/front.scss', 'public/assets/css');
+mix.sass('resources/assets/sass/back.scss', 'public/assets/css');

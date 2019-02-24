@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('css')
-    <link rel="stylesheet" href="{{ mix('css/front.css') }}">
+    <link rel="stylesheet" href="{{ mix('assets/css/front.css') }}">
 @endsection
 
 @section('layout')
     <nav class="ui menu stackable">
         <div class="ui container">
-            <a href="{{ route('home') }}" class="header item"><img class="logo" src="{{ asset('images/nav_logo.png') }}"></a>
+            <a href="{{ route('home') }}" class="header item"><img class="logo" src="{{ asset('assets/images/nav_logo.png') }}"></a>
             <a href="{{ route('article.index') }}" class="item activable"><i class="newspaper outline icon"></i>@lang('nav.news')</a>
             <div class="ui top pointing dropdown item">
                 <i class="sort amount up icon"></i>@lang('nav.ranking.header')
@@ -48,7 +48,7 @@
 
     <header class="ui container">
         <section class="logo">
-            <img src="{{ asset('images/header_logo.png') }}" alt="logo">
+            <img src="{{ asset('assets/images/header_logo.png') }}" alt="logo">
         </section>
     </header>
 
@@ -105,23 +105,23 @@
                 <div class="ui attached fluid segment">
                     <div class="ui middle aligned list">
                         <div class="item">
-                            <img class="ui image" src="{{ asset('images/MVP.png') }}" title="@lang('aside.hall_of_fame.mvp')">
+                            <img class="ui image" src="{{ asset('assets/images/MVP.png') }}" title="@lang('aside.hall_of_fame.mvp')">
                             <div class="middle aligned content">{{ $serverStatus->mvp_info }}</div>
                         </div>
                         <div class="item">
-                            <img class="ui image" src="{{ asset('images/GS.png') }}" title="@lang('aside.hall_of_fame.gs')">
+                            <img class="ui image" src="{{ asset('assets/images/GS.png') }}" title="@lang('aside.hall_of_fame.gs')">
                             <div class="middle aligned content">{{ $serverStatus->gs_info }}</div>
                         </div>
                         <div class="item">
-                            <img class="ui image" src="{{ asset('images/souv.png') }}" title="@lang('aside.hall_of_fame.souv')">
+                            <img class="ui image" src="{{ asset('assets/images/souv.png') }}" title="@lang('aside.hall_of_fame.souv')">
                             <div class="middle aligned content">{{ $serverStatus->lord_info }}</div>
                         </div>
                         <div class="item">
                             @if($serverStatus->event_info)
-                                <img class="ui image popup_element" src="{{ asset('images/event.png') }}" title="@lang('aside.hall_of_fame.event')" data-html="{!! nl2br($serverStatus->event_info->details) !!}">
+                                <img class="ui image popup_element" src="{{ asset('assets/images/event.png') }}" title="@lang('aside.hall_of_fame.event')" data-html="{!! nl2br($serverStatus->event_info->details) !!}">
                                 <div class="middle aligned content">{{ $serverStatus->event_info->message }}</div>
                             @else
-                                <img class="ui image" src="{{ asset('images/event.png') }}" title="@lang('aside.hall_of_fame.event')">
+                                <img class="ui image" src="{{ asset('assets/images/event.png') }}" title="@lang('aside.hall_of_fame.event')">
                                 <div class="middle aligned content">@lang('aside.hall_of_fame.no_event_currently')</div>
                             @endif
                         </div>
@@ -204,7 +204,7 @@
 
             <div class="ui section divider"></div>
 
-            <img src="{{ asset('images/footer_logo.png') }}" class="ui centered mini image">
+            <img src="{{ asset('assets/images/footer_logo.png') }}" class="ui centered mini image">
             <div class="ui horizontal small divided link list">
                 <a class="item" href="#">Site Map</a>
                 <a class="item" href="#">Contact Us</a>

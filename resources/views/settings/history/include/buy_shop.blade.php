@@ -15,11 +15,11 @@
                 <td>{{ $item->title }}</td>
                 <td>{{ $item->quantity }}</td>
                 @if($item->sale_type === \App\Model\Web\Shop::SALE_CS_TYPE)
-                    <td class="right aligned">{{ $item->price }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
-                    <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                    <td class="right aligned">{{ $item->price }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
+                    <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></td>
                 @else
-                    <td class="right aligned">{{ $item->price }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
-                    <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                    <td class="right aligned">{{ $item->price }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
+                    <td class="right aligned">{{ $item->total_price }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></td>
                 @endif
             </tr>
         @endforeach
@@ -29,8 +29,8 @@
             <th></th>
             <th></th>
             <th></th>
-            <th class="right aligned">{{ $cart->getTotalTtlCsPrice() }} <img src="{{ asset('images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
-            <th class="right aligned">{{ $cart->getTotalTtlVotePrice() }} <img src="{{ asset('images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
+            <th class="right aligned">{{ $cart->getTotalTtlCsPrice() }} <img src="{{ asset('assets/images/sale_cs_image.png') }}" title="@lang('shop.sale_types.1')"></th>
+            <th class="right aligned">{{ $cart->getTotalTtlVotePrice() }} <img src="{{ asset('assets/images/sale_vote_image.png') }}" title="@lang('shop.sale_types.2')"></th>
         </tr>
     </tfoot>
 </table>
