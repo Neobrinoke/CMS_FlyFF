@@ -11,11 +11,11 @@ return [
             'actions' => [
                 'show' => 'Voir',
                 'edit' => 'Editer',
-                'delete' => 'Supprimer'
+                'delete' => 'Supprimer',
             ],
             'statuses' => [
                 'on' => 'Activée',
-                'off' => 'Désactivée'
+                'off' => 'Désactivée',
             ]
         ]
     ],
@@ -30,7 +30,7 @@ return [
             'authorized_comment' => 'Autoriser les commentaires',
             'submit' => 'Envoyer',
             'messages' => [
-                'success' => 'L\'article a bien été ajoutée'
+                'success' => 'L\'article a bien été ajoutée',
             ]
         ]
     ],
@@ -45,7 +45,7 @@ return [
             'authorized_comment' => 'Autoriser les commentaires',
             'submit' => 'Envoyer',
             'messages' => [
-                'success' => 'L\'article a bien été éditée'
+                'success' => 'L\'article a bien été éditée',
             ]
         ]
     ],
@@ -53,7 +53,7 @@ return [
     'destroy' => [
         'messages' => [
             'success'=> 'La suppression s\'est effectuée avec succès',
-            'error' => 'Une erreur est survenue lors de la suppression'
+            'error' => 'Une erreur est survenue lors de la suppression',
         ]
     ],
 
@@ -62,10 +62,10 @@ return [
             'header' => 'Suppression de l\'article [:name]',
             'messages' => [
                 'Voulez-vous vraiment supprimer cet article ?',
-                'Tous les objet lié à cet article ne seront plus disponible'
+                'Tous les objet lié à cet article ne seront plus disponible',
             ],
             'no' => 'Non, surtout pas !',
-            'yes' => 'Oui, j\'en suis sûr !'
+            'yes' => 'Oui, j\'en suis sûr !',
         ]
     ]
 ];
