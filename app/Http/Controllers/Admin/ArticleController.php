@@ -107,6 +107,9 @@ class ArticleController extends AdminController
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $category = ArticleCategory::all();
@@ -158,6 +161,11 @@ class ArticleController extends AdminController
         return redirect()->route('admin.article.show', $article);
     }
 
+    /**
+     * @param Request $request
+     * @param $article
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Request $request, $article)
     {
         $destroyData = Article::find($article);

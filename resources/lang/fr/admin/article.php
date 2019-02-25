@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'index' => [
         'table' => [
             'id' => 'Id',
@@ -68,4 +69,5 @@ return [
             'yes' => 'Oui, j\'en suis sûr !',
         ]
     ]
+
 ];

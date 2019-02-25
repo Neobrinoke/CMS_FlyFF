@@ -14,8 +14,7 @@
 @endsection
 
 @section('content')
-    <form class="ui form" action="{{ route('admin.article.update', [$article]) }}" method="POST"
-          enctype="multipart/form-data">
+    <form class="ui form" action="{{ route('admin.article.update', [$article]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="required field">
             <label for="title">@lang('admin/article.edit.form.title')</label>
@@ -48,8 +47,7 @@
         <div class="field">
             <label for="authorized_comment">@lang('admin/article.edit.form.authorized_comment')</label>
             <div class="ui toggle checkbox">
-                <input type="checkbox" name="authorized_comment" id="authorized_comment" tabindex="0"
-                       class="hidden" {{ (old('authorized_comment') ?: $article->authorized_comment) ? 'checked' : '' }}>
+                <input type="checkbox" name="authorized_comment" id="authorized_comment" tabindex="0" class="hidden" {{ (old('authorized_comment') ?: $article->authorized_comment) ? 'checked' : '' }}>
             </div>
         </div>
         <button class="ui primary floated right button" type="submit">@lang('admin/article.edit.form.submit')</button>
