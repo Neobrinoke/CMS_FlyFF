@@ -32,18 +32,12 @@
             <tr>
                 <td>{{ $article->id }}</td>
                 <td>{{ $article->title }}</td>
-                <td>
-                    @if($article->authorized_comment == 1)
-                        Oui
-                    @else
-                        Non
-                    @endif
-                </td>
+                <td>{{ $article->getAuthorizedCommentLabelAttribute() }}</td>
                 <td>
                     <time datetime="{{ $article->created_at }}">{{ $article->created_at }}</time>
                 </td>
                 <td class="right aligned collapsing">
-                    <a href="{{ route('admin.article.show', [$article, $article->slug]) }}" class="ui purple mini compact button icon"
+                    <a href="{{ route('admin.article.show', [$article]) }}" class="ui purple mini compact button icon"
                        data-tooltip="@lang('admin/article.index.table.actions.show')" data-position="left center"
                        data-inverted=true><i class="eye icon"></i></a>
                     <a href="{{ route('admin.article.edit', [$article]) }}" class="ui primary mini compact button icon"
@@ -67,7 +61,7 @@
 
     @foreach($articles as $article)
         <div class="ui modal" id="article_{{ $article->id }}_destroy_modal">
-            <div class="header">@lang('admin/article.modal.delete.header', ['name' => $article->label])</div>
+            <div class="header">@lang('admin/article.modal.delete.header', ['name' => $article->title])</div>
             <div class="content">
                 @foreach(trans('admin/article.modal.delete.messages') as $message)
                     <p>{{ $message }}</p>

@@ -27,15 +27,10 @@ class ArticleController extends AdminController
      * Show category articles.
      *
      * @param ArticleCategory $category
-     * @param string $slug
      * @return Response
      */
-    public function categoryIndex(ArticleCategory $category, string $slug)
+    public function categoryIndex(ArticleCategory $category)
     {
-        if ($slug !== $category->slug) {
-            return redirect()->route('article.category.show', [$category, $category->slug]);
-        }
-
         return view('admin.article.index', [
             'articles' => $category->articles()->paginate(5)
         ]);
@@ -45,15 +40,10 @@ class ArticleController extends AdminController
      * Show detail of article.
      *
      * @param Article $article
-     * @param string $slug
      * @return Response
      */
-    public function show(Article $article, string $slug)
+    public function show(Article $article)
     {
-        if ($slug !== $article->slug) {
-            return redirect()->route('admin.article.show', [$article->id, $article->slug]);
-        }
-
         return view('admin.article.show', [
             'article' => $article,
         ]);
@@ -92,7 +82,6 @@ class ArticleController extends AdminController
             $validatedData['image_header'] = '/uploads/' . $file;
         }
 
-
         $validatedData['authorized_comment'] = $request->input('authorized_comment') ? true : false;
 
         Article::query()->create($validatedData);
@@ -111,6 +100,7 @@ class ArticleController extends AdminController
     public function edit(Article $article)
     {
         $category = ArticleCategory::all();
+
         return view('admin.article.edit', [
             'article' => $article,
             'categories' => $category
@@ -120,6 +110,7 @@ class ArticleController extends AdminController
     public function create()
     {
         $category = ArticleCategory::all();
+
         return view('admin.article.create', [
             'categories' => $category
         ]);
@@ -139,7 +130,7 @@ class ArticleController extends AdminController
             'content' => 'required',
             'category_id' => 'required',
             'image_thumbnail' => 'image',
-            'image_header' => 'image'
+            'image_header' => 'image',
         ]);
 
         if ($request->file('image_thumbnail')) {
@@ -164,6 +155,21 @@ class ArticleController extends AdminController
 
         $request->session()->flash('success', trans('admin/article.edit.form.messages.success'));
 
-        return redirect()->route('admin.article.show', [$article, $article->slug]);
+        return redirect()->route('admin.article.show', $article);
     }
+
+    public function destroy(Request $request, $article)
+    {
+        $destroyData = Article::find($article);
+
+        if (!$destroyData)
+            $request->session()->flash('error', trans('admin/article.destroy.messages.error'));
+
+        $destroyData->delete();
+
+        $request->session()->flash('success', trans('admin/article.destroy.messages.success'));
+
+        return redirect()->route('admin.article.index');
+    }
+
 }

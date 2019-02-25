@@ -99,7 +99,7 @@ Route::prefix(LaravelLocalization::setLocale())->middleware(['localeSessionRedir
             Route::get('/articles', 'ArticleController@index')->name('article.index');
             Route::get('/article/create', 'ArticleController@create')->name('article.create');
             Route::post('/article/create', 'ArticleController@store')->name('article.store');
-            Route::get('/article/{article}-{slug}', 'ArticleController@show')->name('article.show');
+            Route::get('/article/{article}', 'ArticleController@show')->name('article.show');
             Route::get('/article/{article}/edit', 'ArticleController@edit')->name('article.edit');
             Route::post('/article/{article}/edit', 'ArticleController@update')->name('article.update');
             Route::post('/article/{article}/destroy', 'ArticleController@destroy')->name('article.destroy');

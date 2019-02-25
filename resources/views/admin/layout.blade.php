@@ -51,6 +51,13 @@
                     <a class="item activable left icon" href="{{ route('admin.shop.create') }}"><i class="plus icon"></i>@lang('admin/nav.shop.add')</a>
                 </div>
             </div>
+            <div class="item">
+                <i class="file alternate icon"></i>@lang('admin/nav.article.title')
+                <div class="menu">
+                    <a class="item activable left icon" href="{{ route('admin.article.index') }}"><i class="list icon"></i>@lang('admin/nav.shop.browse')</a>
+                    <a class="item activable left icon" href="{{ route('admin.article.create') }}"><i class="plus icon"></i>@lang('admin/nav.shop.add')</a>
+                </div>
+            </div>
             <a class="item"><i class="grid layout icon"></i> Browse</a>
             <a class="item activable">Messages</a>
         </nav>

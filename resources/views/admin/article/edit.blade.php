@@ -19,24 +19,25 @@
         @csrf
         <div class="required field">
             <label for="title">@lang('admin/article.edit.form.title')</label>
-            <input type="text" name="title" id="title" value="{{ old('label') ?: $article->title }}">
+            <input type="text" name="title" id="title" value="{{ old('label') ?: $article->title }}" required>
         </div>
-        <div class="field">
+        <div class="required field">
             <label for="image_thumbnail">@lang('admin/article.edit.form.image_thumbnail')</label>
             <img src="{{ $article->image_thumbnail }}" height="100px">
-            <input type="file" name="image_thumbnail" id="image_thumbnail">
+            <input type="file" name="image_thumbnail" id="image_thumbnail" required>
         </div>
-        <div class="field">
+        <div class="required field">
             <label for="image_thumbnail">@lang('admin/article.edit.form.image_header')</label>
             <img src="{{ $article->image_header }}" height="100px">
-            <input type="file" name="image_header" id="image_header">
+            <input type="file" name="image_header" id="image_header" required>
         </div>
         <div class="required field">
             <label for="category_id">@lang('admin/article.edit.form.category')</label>
-            <select name="category_id" id="category_id">
+            <select name="category_id" id="category_id" required>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}"
-                            @if($article->category_id == $category->id) selected @endif>{{$category->label}}</option>
+                    <option value="{{ $category->id }}"{{ $article->category_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->label }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -47,7 +48,8 @@
         <div class="field">
             <label for="authorized_comment">@lang('admin/article.edit.form.authorized_comment')</label>
             <div class="ui toggle checkbox">
-                <input type="checkbox" name="authorized_comment" id="authorized_comment" tabindex="0" class="hidden" {{ (old('authorized_comment') ?: $article->authorized_comment) ? 'checked' : '' }}>
+                <input type="checkbox" name="authorized_comment" id="authorized_comment" tabindex="0"
+                       class="hidden" {{ (old('authorized_comment') ?: $article->authorized_comment) ? 'checked' : '' }}>
             </div>
         </div>
         <button class="ui primary floated right button" type="submit">@lang('admin/article.edit.form.submit')</button>

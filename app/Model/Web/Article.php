@@ -132,4 +132,9 @@ class Article extends Model
     {
         return str_slug($this->title);
     }
+
+    public function getAuthorizedCommentLabelAttribute(): string
+    {
+        return $this->authorized_comment == 1 ? trans('article.admin_table.yes') : trans('article.admin_table.no');
+    }
 }

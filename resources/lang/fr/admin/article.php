@@ -19,6 +19,7 @@ return [
             ]
         ]
     ],
+
     'create' => [
         'form' => [
             'title' => 'Titre de l\'article',
@@ -33,6 +34,7 @@ return [
             ]
         ]
     ],
+
     'edit' => [
         'form' => [
             'title' => 'Titre de l\'article',
@@ -47,6 +49,14 @@ return [
             ]
         ]
     ],
+
+    'destroy' => [
+        'messages' => [
+            'success'=> 'La suppression s\'est effectuée avec succès',
+            'error' => 'Une erreur est survenue lors de la suppression'
+        ]
+    ],
+
     'modal' => [
         'delete' => [
             'header' => 'Suppression de l\'article [:name]',

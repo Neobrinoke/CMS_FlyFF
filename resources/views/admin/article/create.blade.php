@@ -19,27 +19,27 @@
         <input type="hidden" name="author_id" id="author_id" value="1">
         <div class="required field">
             <label for="title">@lang('admin/article.create.form.title')</label>
-            <input type="text" name="title" id="title" value="{{ old('title') }}">
+            <input type="text" name="title" id="title" value="{{ old('title') }}" required>
         </div>
-        <div class="field">
+        <div class="required field">
             <label for="image_thumbnail">@lang('admin/article.create.form.image_thumbnail')</label>
-            <input type="file" name="image_thumbnail" id="image_thumbnail">
+            <input type="file" name="image_thumbnail" id="image_thumbnail" required>
         </div>
-        <div class="field">
+        <div class="required field">
             <label for="image_thumbnail">@lang('admin/article.create.form.image_header')</label>
-            <input type="file" name="image_header" id="image_header">
+            <input type="file" name="image_header" id="image_header" required>
         </div>
         <div class="required field">
             <label for="category_id">@lang('admin/article.create.form.category')</label>
-            <select name="category_id" id="category_id">
+            <select name="category_id" id="category_id" required>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->label}}</option>
+                    <option value="{{ $category->id }}">{{ $category->label }}</option>
                 @endforeach
             </select>
         </div>
         <div class="required field">
             <label for="content">@lang('admin/article.create.form.content')</label>
-            <textarea type="text" name="content" id="content">{{ old('content')}}</textarea>
+            <textarea type="text" name="content" id="content" required>{{ old('content') }}</textarea>
         </div>
         <div class="field">
             <label for="authorized_comment">@lang('admin/article.create.form.authorized_comment')</label>
