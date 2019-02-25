@@ -11,4 +11,11 @@ return [
         'show' => 'Boutique [:name]',
     ],
 
+    'article' => [
+        'index' => 'Liste des articles',
+        'create' => 'Création d\'un nouvel article',
+        'edit' => 'Edition de l\'article [:name]',
+        'show' => 'Article [:name]',
+    ],
+
 ];

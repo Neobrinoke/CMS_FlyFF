@@ -6,6 +6,11 @@ return [
     'show_more' => 'Voir plus sur l\'article',
     'detail' => 'Par :author, <time datetime=":created_at">:created_at</time>',
 
+    'admin_table' => [
+        'yes' => 'Oui',
+        'no' => 'Non',
+    ],
+
     'comment' => [
         'post' => 'Postez votre commentaire',
         'read' => 'Commentaires',
